@@ -1,0 +1,6 @@
+node_modules/
+yarn-error.log
+
+# I use README.adoc.
+# README.md for only npm.
+README.md

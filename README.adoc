@@ -1,0 +1,12 @@
+:chapter-label:
+:icons: font
+:lang: en
+:sectanchors:
+:sectlinks:
+:sectnums:
+:sectnumlevels: 1
+:source-highlighter: highlightjs
+:toc: preamble
+:toclevels: 1
+
+= Advanced PoE Filter
