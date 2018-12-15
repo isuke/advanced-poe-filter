@@ -10,7 +10,7 @@
 //
 start = script
 
-script = sections:(section blankline*)* { return sections.map(s => s[0]) }
+script = blankOrCommentLine* sections:(section blankOrCommentLine*)* { return sections.map(s => s[0]) }
 
 section = block:block
 
@@ -18,9 +18,9 @@ block =
   activity:('Show' / 'Hide') __ name:name br
   INDENT
     line0:line
-    blankline*
-    lines:(SAMEDENT line blankline*)*
-    mixins:(SAMEDENT mixin blankline*)*
+    blankOrCommentLine*
+    lines:(SAMEDENT line blankOrCommentLine*)*
+    mixins:(SAMEDENT mixin blankOrCommentLine*)*
   OUTDENT {
   let conditions = {};
   let actions = {};
@@ -44,9 +44,9 @@ mixin =
   'Mixin' __ name:name br
   INDENT
     block0:block
-    blankline*
+    blankOrCommentLine*
     blocks:(SAMEDENT block)*
-    blankline*
+    blankOrCommentLine*
   OUTDENT {
     let allBlocks = [block0].concat(blocks.map(b => b[1]))
     return { name, blocks: allBlocks }
@@ -157,23 +157,19 @@ soundId =
   / 'ShAlchemy' / 'ShBlessed' / 'ShChaos' / 'ShDivine' / 'ShExalted' / 'ShFusing' / 'ShGeneral' / 'ShMirror' / 'ShRegal' / 'ShVaal'
 soundVolume = num:num &{ return 0 <= num && num <= 300 } { return num }
 
-//
-// Basic Values
-//
 boolean = 'True' / 'False'
 char = [^"]
 name = '"' name:$char* '"' { return name }
 names = name0:name names:(__ name)* { return [name0].concat(names.map((n) => n[1])) }
 num = num:$[0-9]+ { return parseInt(num, 10) }
 br = [\n] { return undefined }
-blankline = [\n] { return undefined }
+blankLine = [\n] { return undefined }
+commentLine = _* '#' comment:$[^\n]* { return comment }
+blankOrCommentLine = blankLine / commentLine
 _ = ' '
 __ = _+ { return ' ' }
 indent = '    '
 
-//
-// Indent
-//
 SAMEDENT
   = i:$indent* &{ return getIndentLevel(i) === indentLevel } { return indentLevel }
 
