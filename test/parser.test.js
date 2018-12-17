@@ -3,7 +3,7 @@ const outdent = require('outdent')
 
 const parser = require('../dist/parser')
 
-test('parser : single section', (t) => {
+test('parse : single section', (t) => {
   const script = outdent`
     Show "Map Section"
         Class "Maps"
@@ -35,7 +35,7 @@ test('parser : single section', (t) => {
   t.deepEqual(result, expected)
 })
 
-test('parser : multi section', (t) => {
+test('parse : multi section', (t) => {
   const script = outdent`
     Hide "Hide Map Section"
         Class "Maps"
@@ -81,7 +81,7 @@ test('parser : multi section', (t) => {
   t.deepEqual(result, expected)
 })
 
-test('parser : single mixin', (t) => {
+test('parse : single mixin', (t) => {
   const script = outdent`
     Show "Map Section"
         Class "Maps"
@@ -141,7 +141,7 @@ test('parser : single mixin', (t) => {
   t.deepEqual(result, expected)
 })
 
-test('parser : multi mixin', (t) => {
+test('parse : multi mixin', (t) => {
   const script = outdent`
     Show "Map Section"
         Class "Maps"
@@ -219,7 +219,7 @@ test('parser : multi mixin', (t) => {
   t.deepEqual(result, expected)
 })
 
-test('parser : nested mixin', (t) => {
+test('parse : nested mixin', (t) => {
   const script = outdent`
     Show "Map Section"
         Class "Maps"
@@ -298,7 +298,7 @@ test('parser : nested mixin', (t) => {
   t.deepEqual(result, expected)
 })
 
-test('parser : comment', (t) => {
+test('parse : comment', (t) => {
   const script = outdent`
     # This is Comment
     # This is Comment

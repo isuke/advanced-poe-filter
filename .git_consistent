@@ -55,6 +55,9 @@ scope:
     -
       name: parser
       description: 'pegjs'
+    -
+      name: expander
+      description: 'expander.js'
 subject:
   type: string
   required: true
