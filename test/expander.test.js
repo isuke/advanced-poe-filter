@@ -61,7 +61,6 @@ test('expand : multi section', (t) => {
       activity: 'Show',
       conditions: {
         Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
-        MapTier: '> 3',
       },
       actions: {
         SetBorderColor: '250 251 252',
@@ -94,7 +93,6 @@ test('expand : multi section', (t) => {
           activity: 'Show',
           conditions: {
             Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
-            MapTier: '> 3',
           },
           actions: {
             SetBorderColor: '250 251 252',

@@ -43,7 +43,6 @@ test('parse : multi section', (t) => {
 
     Show "Flask Section"
         Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
-        MapTier > 3
 
         SetBorderColor 250 251 252
         PlayAlertSound 1 300
@@ -66,7 +65,6 @@ test('parse : multi section', (t) => {
       activity: 'Show',
       conditions: {
         Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
-        MapTier: '> 3',
       },
       actions: {
         SetBorderColor: '250 251 252',

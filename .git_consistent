@@ -58,6 +58,9 @@ scope:
     -
       name: expander
       description: 'expander.js'
+    -
+      name: generator
+      description: 'generator.js'
 subject:
   type: string
   required: true
