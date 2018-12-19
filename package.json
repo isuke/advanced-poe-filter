@@ -1,7 +1,7 @@
 {
   "name": "advanced-poe-filter",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "isuke <isuke770@gmail.com>",
   "license": "CC-BY-NC-ND-4.0",
   "private": true,

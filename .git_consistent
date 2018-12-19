@@ -53,6 +53,9 @@ scope:
   suffix: ')'
   values:
     -
+      name: index
+      description: 'index.js'
+    -
       name: parser
       description: 'pegjs'
     -
