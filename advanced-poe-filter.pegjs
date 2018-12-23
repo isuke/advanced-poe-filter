@@ -15,33 +15,33 @@ script = blankOrCommentLine* sections:(section blankOrCommentLine*)* { return se
 section = block:block
 
 block =
-  activity:('Show' / 'Hide') __ name:name br
+  activity:('Show' / 'Hide') __ name:string br
   INDENT
     line0:line
     blankOrCommentLine*
     lines:(SAMEDENT line blankOrCommentLine*)*
     mixins:(SAMEDENT mixin blankOrCommentLine*)*
   OUTDENT {
-  let conditions = {};
-  let actions = {};
+    let conditions = {};
+    let actions = {};
 
-  [line0].concat(lines.map(l => l[1])).forEach((line) => {
-    if(line.lineType == 'condition') {
-      conditions[line.attr] = line.val
-    } else if(line.lineType == 'action') {
-      actions[line.attr] = line.val
-    }
-  })
+    [line0].concat(lines.map(l => l[1])).forEach((line) => {
+      if(line.lineType == 'condition') {
+        conditions[line.attr] = line.val
+      } else if(line.lineType == 'action') {
+        actions[line.attr] = line.val
+      }
+    })
 
-  let allMixins = mixins.map(m => m[1])
+    let allMixins = mixins.map(m => m[1])
 
-  return { name, activity, conditions, actions, mixins: allMixins }
-}
+    return { name, activity, conditions, actions, mixins: allMixins }
+  }
 
 line = line:(condition / action) br { return line }
 
 mixin =
-  'Mixin' __ name:name br
+  'Mixin' __ name:string br
   INDENT
     block0:block
     blankOrCommentLine*
@@ -51,6 +51,10 @@ mixin =
     let allBlocks = [block0].concat(blocks.map(b => b[1]))
     return { name, blocks: allBlocks }
   }
+
+blankLine = [\n] { return undefined }
+commentLine = _* '#' comment:$[^\n]* { return comment }
+blankOrCommentLine = blankLine / commentLine
 
 //
 // Condition
@@ -79,36 +83,34 @@ condition =
   / conditionHasExplicitMod
 
 // Condition Attributes
-conditionClass          = attr:'Class'          __ val:conditionValueArray   { return { lineType: 'condition', attr, val} }
-conditionBaseType       = attr:'BaseType'       __ val:conditionValueArray   { return { lineType: 'condition', attr, val} }
-conditionProphecy       = attr:'Prophecy'       __ val:conditionValueArray   { return { lineType: 'condition', attr, val} }
-conditionDropLevel      = attr:'DropLevel'      __ val:conditionValueNumber  { return { lineType: 'condition', attr, val} }
-conditionItemLevel      = attr:'ItemLevel'      __ val:conditionValueNumber  { return { lineType: 'condition', attr, val} }
-conditionGemLevel       = attr:'GemLevel'       __ val:conditionValueNumber  { return { lineType: 'condition', attr, val} }
-conditionStackSize      = attr:'StackSize'      __ val:conditionValueNumber  { return { lineType: 'condition', attr, val} }
-conditionMapTier        = attr:'MapTier'        __ val:conditionValueNumber  { return { lineType: 'condition', attr, val} }
-conditionQuality        = attr:'Quality'        __ val:conditionValueNumber  { return { lineType: 'condition', attr, val} }
-conditionLinkedSockets  = attr:'LinkedSockets'  __ val:conditionValueNumber  { return { lineType: 'condition', attr, val} }
-conditionSockets        = attr:'Sockets'        __ val:conditionValueNumber  { return { lineType: 'condition', attr, val} }
-conditionSocketGroup    = attr:'SocketGroup'    __ val:conditionValueRGB     { return { lineType: 'condition', attr, val} }
-conditionRarity         = attr:'Rarity'         __ val:conditionValueRarity  { return { lineType: 'condition', attr, val} }
-conditionShaperItem     = attr:'ShaperItem'     __ val:conditionValueBoolean { return { lineType: 'condition', attr, val} }
-conditionElderItem      = attr:'ElderItem'      __ val:conditionValueBoolean { return { lineType: 'condition', attr, val} }
-conditionCorrupted      = attr:'Corrupted'      __ val:conditionValueBoolean { return { lineType: 'condition', attr, val} }
-conditionIdentified     = attr:'Identified'     __ val:conditionValueBoolean { return { lineType: 'condition', attr, val} }
-conditionShapedMap      = attr:'ShapedMap'      __ val:conditionValueBoolean { return { lineType: 'condition', attr, val} }
-conditionHeight         = attr:'Height'         __ val:conditionValueNumber  { return { lineType: 'condition', attr, val} }
-conditionWidth          = attr:'Width'          __ val:conditionValueNumber  { return { lineType: 'condition', attr, val} }
-conditionHasExplicitMod = attr:'HasExplicitMod' __ val:conditionValueArray   { return { lineType: 'condition', attr, val} }
+conditionClass          = attr:'Class'          __ val:conditionValueArray      { return { lineType: 'condition', attr, val} }
+conditionBaseType       = attr:'BaseType'       __ val:conditionValueArray      { return { lineType: 'condition', attr, val} }
+conditionProphecy       = attr:'Prophecy'       __ val:conditionValueArray      { return { lineType: 'condition', attr, val} }
+conditionDropLevel      = attr:'DropLevel'      __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
+conditionItemLevel      = attr:'ItemLevel'      __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
+conditionGemLevel       = attr:'GemLevel'       __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
+conditionStackSize      = attr:'StackSize'      __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
+conditionMapTier        = attr:'MapTier'        __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
+conditionQuality        = attr:'Quality'        __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
+conditionLinkedSockets  = attr:'LinkedSockets'  __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
+conditionSockets        = attr:'Sockets'        __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
+conditionSocketGroup    = attr:'SocketGroup'    __ val:conditionValueSocketRGBW { return { lineType: 'condition', attr, val} }
+conditionRarity         = attr:'Rarity'         __ val:conditionValueRarity     { return { lineType: 'condition', attr, val} }
+conditionShaperItem     = attr:'ShaperItem'     __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
+conditionElderItem      = attr:'ElderItem'      __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
+conditionCorrupted      = attr:'Corrupted'      __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
+conditionIdentified     = attr:'Identified'     __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
+conditionShapedMap      = attr:'ShapedMap'      __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
+conditionHeight         = attr:'Height'         __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
+conditionWidth          = attr:'Width'          __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
+conditionHasExplicitMod = attr:'HasExplicitMod' __ val:conditionValueArray      { return { lineType: 'condition', attr, val} }
 
 // Condition Values
 conditionValueArray = names
 conditionValueNumber = operator:operator __ num:num { return `${operator} ${num}` }
-conditionValueRGB = r:'R'* g:'G'* b:'B'* w:'W'* { return r.concat(g, b, w).join('') }
-conditionValueRarity = operator:(operator __)? rarity:('Normal' / 'Magic' / 'Rare' / 'Unique') { return operator ? `${operator[0]} ${rarity}` : rarity }
+conditionValueSocketRGBW = socketRGBW
+conditionValueRarity = operator:(operator __)? rarity:rarity { return operator ? `${operator[0]} ${rarity}` : rarity }
 conditionValueBoolean = boolean
-
-operator = '<=' / '>=' / '<' / '>' / '='
 
 //
 // Action
@@ -142,9 +144,17 @@ actionValueColor = red:rgbaNum __ green:rgbaNum __ blue:rgbaNum alpha:(__ rgbaNu
 actionValueFontSize = fontSize
 actionValueSound = id:soundId __ volume:soundVolume { return `${id} ${volume}` }
 actionValueBoolean = boolean
-actionValueFilePath = name
+actionValueFilePath = string
 actionValueMinimapIcon = size:minimapIconSize __ color:minimapIconColor __ shape:minimapIconShape { return `${size} ${color} ${shape}` }
 actionValuePlayEffect = color:playEffectColor temp:(__ 'Temp')? { return temp ? `${color} Temp` : `${color}` }
+
+//
+// Value
+//
+names = name0:string names:(__ string)* { return [name0].concat(names.map((n) => n[1])) }
+operator = '<=' / '>=' / '<' / '>' / '='
+rarity = 'Normal' / 'Magic' / 'Rare' / 'Unique'
+socketRGBW = r:'R'* g:'G'* b:'B'* w:'W'* { return r.concat(g, b, w).join('') }
 rgbaNum = num:num &{ return 0 <= num && num <= 255 } { return num }
 fontSize = num:num &{ return 18 <= num && num <= 45 } { return num }
 minimapIconSize = '0' / '1' / '2'
@@ -157,19 +167,24 @@ soundId =
   / 'ShAlchemy' / 'ShBlessed' / 'ShChaos' / 'ShDivine' / 'ShExalted' / 'ShFusing' / 'ShGeneral' / 'ShMirror' / 'ShRegal' / 'ShVaal'
 soundVolume = num:num &{ return 0 <= num && num <= 300 } { return num }
 
+//
+// Atomic Value
+//
 boolean = 'True' / 'False'
-char = [^"]
-name = '"' name:$char* '"' { return name }
-names = name0:name names:(__ name)* { return [name0].concat(names.map((n) => n[1])) }
+string = '"' string:$[^\n|^"]* '"' { return string }
 num = num:$[0-9]+ { return parseInt(num, 10) }
+
+//
+// Base Token
+//
 br = [\n] { return undefined }
-blankLine = [\n] { return undefined }
-commentLine = _* '#' comment:$[^\n]* { return comment }
-blankOrCommentLine = blankLine / commentLine
 _ = ' '
 __ = _+ { return ' ' }
 indent = '    '
 
+//
+// Indent
+//
 SAMEDENT
   = i:$indent* &{ return getIndentLevel(i) === indentLevel } { return indentLevel }
 

@@ -42,6 +42,7 @@ test('parse : all actions and conditions', (t) => {
         Class          "Life Flasks" "Mana Flasks" "Hybrid Flasks"
         BaseType       "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
         Prophecy       "Foo" "Bar"
+        SocketGroup    W
         HasExplicitMod "Piyo" "Piyo"
 
         SetBorderColor           100 101 102 200
@@ -99,6 +100,7 @@ test('parse : all actions and conditions', (t) => {
         Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
         BaseType: ['Two-Toned Boots', 'Spiked Gloves', 'Gripped Gloves', 'Fingerless Silk Gloves', 'Bone Helmet'],
         Prophecy: ['Foo', 'Bar'],
+        SocketGroup: 'W',
         HasExplicitMod: ['Piyo', 'Piyo'],
       },
       actions: {
