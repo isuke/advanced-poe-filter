@@ -3,6 +3,120 @@ const outdent = require('outdent')
 
 const parser = require('../dist/parser')
 
+test('parse : all actions and conditions', (t) => {
+  const script = outdent`
+    Show "Section1"
+        Class          "Maps"
+        BaseType       "Sacrificial Garb"
+        Prophecy       "Foo"
+        DropLevel      > 85
+        ItemLevel      >= 70
+        GemLevel       = 10
+        StackSize      < 11
+        MapTier        <= 12
+        Quality        = 15
+        LinkedSockets  = 6
+        Sockets        = 5
+        SocketGroup    RGB
+        Rarity         = Rare
+        ShaperItem     True
+        ElderItem      False
+        Corrupted      True
+        Identified     True
+        ShapedMap      True
+        Height         > 1
+        Width          > 2
+        HasExplicitMod "Piyo"
+
+        SetBorderColor           100 101 102
+        SetTextColor             103 104 105
+        SetBackgroundColor       106 107 108
+        SetFontSize              30
+        PlayAlertSound           1 300
+        DisableDropSound         False
+        CustomAlertSound         "C\\foobar\\sound.mp3"
+        MinimapIcon              1 Red Circle
+        PlayEffect               Red
+
+    Show "Section2"
+        Class          "Life Flasks" "Mana Flasks" "Hybrid Flasks"
+        BaseType       "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+        Prophecy       "Foo" "Bar"
+        HasExplicitMod "Piyo" "Piyo"
+
+        SetBorderColor           100 101 102 200
+        SetTextColor             103 104 105 201
+        SetBackgroundColor       106 107 108 202
+        PlayAlertSoundPositional ShAlchemy 200
+        PlayEffect               Blue Temp
+
+   `
+
+  const expected = [
+    {
+      name: 'Section1',
+      activity: 'Show',
+      conditions: {
+        Class: ['Maps'],
+        BaseType: ['Sacrificial Garb'],
+        Prophecy: ['Foo'],
+        DropLevel: '> 85',
+        ItemLevel: '>= 70',
+        GemLevel: '= 10',
+        StackSize: '< 11',
+        MapTier: '<= 12',
+        Quality: '= 15',
+        LinkedSockets: '= 6',
+        Sockets: '= 5',
+        SocketGroup: 'RGB',
+        Rarity: '= Rare',
+        ShaperItem: 'True',
+        ElderItem: 'False',
+        Corrupted: 'True',
+        Identified: 'True',
+        ShapedMap: 'True',
+        Height: '> 1',
+        Width: '> 2',
+        HasExplicitMod: ['Piyo'],
+      },
+      actions: {
+        SetBorderColor: '100 101 102',
+        SetTextColor: '103 104 105',
+        SetBackgroundColor: '106 107 108',
+        SetFontSize: 30,
+        PlayAlertSound: '1 300',
+        DisableDropSound: 'False',
+        CustomAlertSound: 'C\\foobar\\sound.mp3',
+        MinimapIcon: '1 Red Circle',
+        PlayEffect: 'Red',
+      },
+      mixins: [],
+    },
+    {
+      name: 'Section2',
+      activity: 'Show',
+      conditions: {
+        Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
+        BaseType: ['Two-Toned Boots', 'Spiked Gloves', 'Gripped Gloves', 'Fingerless Silk Gloves', 'Bone Helmet'],
+        Prophecy: ['Foo', 'Bar'],
+        HasExplicitMod: ['Piyo', 'Piyo'],
+      },
+      actions: {
+        SetBorderColor: '100 101 102 200',
+        SetTextColor: '103 104 105 201',
+        SetBackgroundColor: '106 107 108 202',
+        PlayAlertSoundPositional: 'ShAlchemy 200',
+        PlayEffect: 'Blue Temp',
+      },
+      mixins: [],
+    },
+  ]
+
+  const result = parser.parse(script)
+
+  t.deepEqual(result, expected)
+})
+
 test('parse : single section', (t) => {
   const script = outdent`
     Show "Map Section"
