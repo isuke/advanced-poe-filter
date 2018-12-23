@@ -80,9 +80,9 @@ test('parse : all actions and conditions', (t) => {
         HasExplicitMod: ['Piyo'],
       },
       actions: {
-        SetBorderColor: '100 101 102',
-        SetTextColor: '103 104 105',
-        SetBackgroundColor: '106 107 108',
+        SetBorderColor: '100 101 102 255',
+        SetTextColor: '103 104 105 255',
+        SetBackgroundColor: '106 107 108 255',
         SetFontSize: 30,
         PlayAlertSound: '1 300',
         DisableDropSound: 'False',
@@ -137,7 +137,7 @@ test('parse : single section', (t) => {
         MapTier: '> 3',
       },
       actions: {
-        SetBorderColor: '250 251 252',
+        SetBorderColor: '250 251 252 255',
         PlayAlertSound: '1 300',
       },
       mixins: [],
@@ -181,7 +181,7 @@ test('parse : multi section', (t) => {
         Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
       },
       actions: {
-        SetBorderColor: '250 251 252',
+        SetBorderColor: '250 251 252 255',
         PlayAlertSound: '1 300',
       },
       mixins: [],
@@ -221,7 +221,7 @@ test('parse : single mixin', (t) => {
         MapTier: '> 3',
       },
       actions: {
-        SetBorderColor: '250 251 252',
+        SetBorderColor: '250 251 252 255',
         PlayAlertSound: '1 300',
       },
       mixins: [
@@ -433,7 +433,7 @@ test('parse : comment', (t) => {
         MapTier: '> 3',
       },
       actions: {
-        SetBorderColor: '250 251 252',
+        SetBorderColor: '250 251 252 255',
         PlayAlertSound: '1 300',
       },
       mixins: [],

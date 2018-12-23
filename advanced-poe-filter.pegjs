@@ -138,7 +138,7 @@ actionMinimapIcon              = attr:'MinimapIcon'              __ val:actionVa
 actionPlayEffect               = attr:'PlayEffect'               __ val:actionValuePlayEffect  { return { lineType: 'action', attr, val } }
 
 // Action Values
-actionValueColor = red:rgbaNum __ green:rgbaNum __ blue:rgbaNum alpha:(__ rgbaNum)? { return alpha ? `${red} ${green} ${blue} ${alpha[1]}` : `${red} ${green} ${blue}` }
+actionValueColor = red:rgbaNum __ green:rgbaNum __ blue:rgbaNum alpha:(__ rgbaNum)? { return `${red} ${green} ${blue} ${alpha ? alpha[1] : 255}` }
 actionValueFontSize = fontSize
 actionValueSound = id:soundId __ volume:soundVolume { return `${id} ${volume}` }
 actionValueBoolean = boolean

@@ -262,7 +262,7 @@ function peg$parse(input, options) {
       peg$c100 = peg$literalExpectation("MinimapIcon", false),
       peg$c101 = "PlayEffect",
       peg$c102 = peg$literalExpectation("PlayEffect", false),
-      peg$c103 = function(red, green, blue, alpha) { return alpha ? `${red} ${green} ${blue} ${alpha[1]}` : `${red} ${green} ${blue}` },
+      peg$c103 = function(red, green, blue, alpha) { return `${red} ${green} ${blue} ${alpha ? alpha[1] : 255}` },
       peg$c104 = function(id, volume) { return `${id} ${volume}` },
       peg$c105 = function(size, color, shape) { return `${size} ${color} ${shape}` },
       peg$c106 = "Temp",
