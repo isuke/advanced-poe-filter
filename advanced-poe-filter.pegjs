@@ -170,7 +170,7 @@ soundVolume = num:num &{ return 0 <= num && num <= 300 } { return num }
 //
 // Atomic Value
 //
-boolean = 'True' / 'False'
+boolean = val:('True' / 'False') { return val === 'True' }
 string = '"' string:$[^\n|^"]* '"' { return string }
 num = num:$[0-9]+ { return parseInt(num, 10) }
 

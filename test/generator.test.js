@@ -14,6 +14,7 @@ test('generate : single section', (t) => {
           conditions: {
             Class: ['Maps'],
             MapTier: '> 3',
+            Identified: false,
           },
           actions: {
             SetBorderColor: '250 251 252',
@@ -31,6 +32,7 @@ test('generate : single section', (t) => {
 Show
     Class "Maps"
     MapTier > 3
+    Identified False
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
 

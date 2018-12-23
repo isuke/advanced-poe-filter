@@ -38,3 +38,13 @@ test('product : multi array', (t) => {
 
   t.deepEqual(result, expected)
 })
+
+test('toUpperFirstChar', (t) => {
+  const string = 'true'
+  const expected = 'True'
+
+  const result = utils.toUpperFirstChar(string)
+
+  t.is(result, expected)
+  t.is(string, 'true')
+})

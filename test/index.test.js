@@ -8,6 +8,7 @@ test('compile : single section', (t) => {
 Show "Map Section"
     Class "Maps"
     MapTier > 3
+    Identified False
 
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
@@ -21,6 +22,7 @@ Show "Map Section"
 Show
     Class "Maps"
     MapTier > 3
+    Identified False
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
