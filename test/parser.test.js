@@ -81,9 +81,9 @@ test('parse : all actions and conditions', (t) => {
         HasExplicitMod: ['Piyo'],
       },
       actions: {
-        SetBorderColor: '100 101 102 255',
-        SetTextColor: '103 104 105 255',
-        SetBackgroundColor: '106 107 108 255',
+        SetBorderColor: { rgb: { r: 100, g: 101, b: 102 }, alpha: 255 },
+        SetTextColor: { rgb: { r: 103, g: 104, b: 105 }, alpha: 255 },
+        SetBackgroundColor: { rgb: { r: 106, g: 107, b: 108 }, alpha: 255 },
         SetFontSize: 30,
         PlayAlertSound: '1 300',
         DisableDropSound: false,
@@ -104,9 +104,9 @@ test('parse : all actions and conditions', (t) => {
         HasExplicitMod: ['Piyo', 'Piyo'],
       },
       actions: {
-        SetBorderColor: '100 101 102 200',
-        SetTextColor: '103 104 105 201',
-        SetBackgroundColor: '106 107 108 202',
+        SetBorderColor: { rgb: { r: 100, g: 101, b: 102 }, alpha: 200 },
+        SetTextColor: { rgb: { r: 103, g: 104, b: 105 }, alpha: 201 },
+        SetBackgroundColor: { rgb: { r: 106, g: 107, b: 108 }, alpha: 202 },
         PlayAlertSoundPositional: 'ShAlchemy 200',
         PlayEffect: 'Blue Temp',
       },
@@ -139,7 +139,7 @@ test('parse : single section', (t) => {
         MapTier: '> 3',
       },
       actions: {
-        SetBorderColor: '250 251 252 255',
+        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
         PlayAlertSound: '1 300',
       },
       mixins: [],
@@ -183,7 +183,7 @@ test('parse : multi section', (t) => {
         Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
       },
       actions: {
-        SetBorderColor: '250 251 252 255',
+        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
         PlayAlertSound: '1 300',
       },
       mixins: [],
@@ -223,7 +223,7 @@ test('parse : single mixin', (t) => {
         MapTier: '> 3',
       },
       actions: {
-        SetBorderColor: '250 251 252 255',
+        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
         PlayAlertSound: '1 300',
       },
       mixins: [
@@ -234,7 +234,7 @@ test('parse : single mixin', (t) => {
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
-              actions: { SetBackgroundColor: '255 0 0 100' },
+              actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
               mixins: [],
             },
             {
@@ -293,7 +293,7 @@ test('parse : multi mixin', (t) => {
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
-              actions: { SetBackgroundColor: '255 0 0 100' },
+              actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
               mixins: [],
             },
             {
@@ -371,7 +371,7 @@ test('parse : nested mixin', (t) => {
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
-              actions: { SetBackgroundColor: '255 0 0 100' },
+              actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
               mixins: [],
             },
             {

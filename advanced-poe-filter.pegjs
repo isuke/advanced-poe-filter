@@ -138,7 +138,7 @@ actionMinimapIcon              = attr:'MinimapIcon'              __ val:actionVa
 actionPlayEffect               = attr:'PlayEffect'               __ val:actionValuePlayEffect  { return { lineType: 'action', attr, val } }
 
 // Action Values
-actionValueColor = red:rgbaNum __ green:rgbaNum __ blue:rgbaNum alpha:(__ rgbaNum)? { return `${red} ${green} ${blue} ${alpha ? alpha[1] : 255}` }
+actionValueColor = color
 actionValueFontSize = fontSize
 actionValueSound = id:soundId __ volume:soundVolume { return `${id} ${volume}` }
 actionValueBoolean = boolean
@@ -150,6 +150,7 @@ actionValuePlayEffect = color:playEffectColor temp:(__ 'Temp')? { return temp ? 
 // Value
 //
 names = name0:string names:(__ string)* { return [name0].concat(names.map((n) => n[1])) }
+color = r:rgbaNum __ g:rgbaNum __ b:rgbaNum alpha:(__ rgbaNum)? { return { rgb: { r, g, b }, alpha: alpha ? alpha[1] : 255 } }
 operator = '<=' / '>=' / '<' / '>' / '='
 rarity = 'Normal' / 'Magic' / 'Rare' / 'Unique'
 socketRGBW = $('R'* $'G'* $'B'* $'W'*)

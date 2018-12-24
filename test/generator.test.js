@@ -17,7 +17,7 @@ test('generate : single section', (t) => {
             Identified: false,
           },
           actions: {
-            SetBorderColor: '250 251 252',
+            SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
             PlayAlertSound: '1 300',
           },
         },
@@ -33,7 +33,7 @@ Show
     Class "Maps"
     MapTier > 3
     Identified False
-    SetBorderColor 250 251 252
+    SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
 
@@ -70,7 +70,7 @@ test('generate : multi section', (t) => {
             Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
           },
           actions: {
-            SetBorderColor: '250 251 252',
+            SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
             PlayAlertSound: '1 300',
           },
         },
@@ -93,7 +93,7 @@ Hide
 ################################################################################
 Show
     Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
-    SetBorderColor 250 251 252
+    SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
 
@@ -119,7 +119,7 @@ test('generate : multi block', (t) => {
             MapTier: '>= 11',
           },
           actions: {
-            SetBackgroundColor: '255 0 0 100',
+            SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
             PlayAlertSound: '1 300',
           },
         },
@@ -132,7 +132,7 @@ test('generate : multi block', (t) => {
             MapTier: '>= 6',
           },
           actions: {
-            SetBackgroundColor: '255 0 0 100',
+            SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
             PlayAlertSound: '2 300',
           },
         },
@@ -144,7 +144,7 @@ test('generate : multi block', (t) => {
             Rarity: 'Rare',
           },
           actions: {
-            SetBackgroundColor: '255 0 0 100',
+            SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
           },
         },
 
