@@ -411,38 +411,3 @@ test('parse : nested mixin', (t) => {
 
   t.deepEqual(result, expected)
 })
-
-test('parse : comment', (t) => {
-  const script = outdent`
-    # This is Comment
-    # This is Comment
-    Show "Map Section"
-        Class "Maps"
-        MapTier > 3
-
-        # This is "Comment"
-        SetBorderColor 250 251 252
-        PlayAlertSound 1 300
-
-   `
-
-  const expected = [
-    {
-      name: 'Map Section',
-      activity: 'Show',
-      conditions: {
-        Class: ['Maps'],
-        MapTier: '> 3',
-      },
-      actions: {
-        SetBorderColor: '250 251 252 255',
-        PlayAlertSound: '1 300',
-      },
-      mixins: [],
-    },
-  ]
-
-  const result = parser.parse(script)
-
-  t.deepEqual(result, expected)
-})
