@@ -152,7 +152,7 @@ actionValuePlayEffect = color:playEffectColor temp:(__ 'Temp')? { return temp ? 
 names = name0:string names:(__ string)* { return [name0].concat(names.map((n) => n[1])) }
 operator = '<=' / '>=' / '<' / '>' / '='
 rarity = 'Normal' / 'Magic' / 'Rare' / 'Unique'
-socketRGBW = r:'R'* g:'G'* b:'B'* w:'W'* { return r.concat(g, b, w).join('') }
+socketRGBW = $('R'* $'G'* $'B'* $'W'*)
 rgbaNum = num:num &{ return 0 <= num && num <= 255 } { return num }
 fontSize = num:num &{ return 18 <= num && num <= 45 } { return num }
 minimapIconSize = '0' / '1' / '2'
