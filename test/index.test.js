@@ -5,11 +5,14 @@ const compiler = require('../lib/index')
 
 test('compile : single section', (t) => {
   const advancedScriptText = outdent`
+# This is Comment
+# This is Comment
 Show "Map Section"
     Class "Maps"
     MapTier > 3
     Identified False
 
+    # This is Comment
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
 
@@ -34,7 +37,40 @@ Show
   t.deepEqual(result, expected)
 })
 
-test('compile : single section', (t) => {
+test('compile : single section with variables', (t) => {
+  const advancedScriptText = outdent`
+Show "Flasks"
+    Class Var(myClass) "Utility Flasks"
+    Identified False
+
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
+   `
+
+  const variables = {
+    myClass: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
+  }
+
+  const expected = outdent`
+################################################################################
+# Flasks                                                                       #
+################################################################################
+Show
+    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
+    Identified False
+    SetBorderColor 250 251 252 255
+    PlayAlertSound 1 300
+
+
+  `
+
+  const result = compiler.compile(advancedScriptText, variables)
+
+  t.deepEqual(result, expected)
+})
+
+test('compile : multi section', (t) => {
   const advancedScriptText = outdent`
 Hide "Hide Map Section"
     Class "Maps"
