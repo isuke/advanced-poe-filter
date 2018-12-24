@@ -31,6 +31,37 @@ Show "Map Section"
   t.is(result, expected)
 })
 
+test('prepend : remove comments', (t) => {
+  const advancedScriptText = outdent`
+# This is Comment
+# This is Comment
+Show "Map Section"
+    Class "Maps"
+    MapTier > 3
+    Identified False
+
+    # This is Comment
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
+   `
+
+  const expected = outdent`
+Show "Map Section"
+    Class "Maps"
+    MapTier > 3
+    Identified False
+
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
+  `
+
+  const result = prepender.prepend(advancedScriptText)
+
+  t.is(result, expected)
+})
+
 test('prepend : simple value', (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
