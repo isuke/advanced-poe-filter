@@ -51,6 +51,16 @@ test('parse : all actions and conditions', (t) => {
         PlayAlertSoundPositional ShAlchemy 200
         PlayEffect               Blue Temp
 
+    Show "Section3"
+        SetBorderColor           Negate()
+        SetTextColor             Grayscale()
+        SetBackgroundColor       Lighten(10%)
+
+    Show "Section4"
+        SetBorderColor           Darken(20%)
+        SetTextColor             Whiten(31%)
+        SetBackgroundColor       Blacken(100%)
+
    `
 
   const expected = [
@@ -109,6 +119,28 @@ test('parse : all actions and conditions', (t) => {
         SetBackgroundColor: { rgb: { r: 106, g: 107, b: 108 }, alpha: 202 },
         PlayAlertSoundPositional: 'ShAlchemy 200',
         PlayEffect: 'Blue Temp',
+      },
+      mixins: [],
+    },
+    {
+      name: 'Section3',
+      activity: 'Show',
+      conditions: {},
+      actions: {
+        SetBorderColor: { function: 'Negate', val: undefined },
+        SetTextColor: { function: 'Grayscale', val: undefined },
+        SetBackgroundColor: { function: 'Lighten', val: 0.1 },
+      },
+      mixins: [],
+    },
+    {
+      name: 'Section4',
+      activity: 'Show',
+      conditions: {},
+      actions: {
+        SetBorderColor: { function: 'Darken', val: 0.2 },
+        SetTextColor: { function: 'Whiten', val: 0.31 },
+        SetBackgroundColor: { function: 'Blacken', val: 1 },
       },
       mixins: [],
     },

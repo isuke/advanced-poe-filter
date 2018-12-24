@@ -137,8 +137,24 @@ actionCustomAlertSound         = attr:'CustomAlertSound'         __ val:actionVa
 actionMinimapIcon              = attr:'MinimapIcon'              __ val:actionValueMinimapIcon { return { lineType: 'action', attr, val } }
 actionPlayEffect               = attr:'PlayEffect'               __ val:actionValuePlayEffect  { return { lineType: 'action', attr, val } }
 
+// Action Functions
+actionFunctionColors =
+    actionFunctionNegate
+  / actionFunctionGrayscale
+  / actionFunctionLighten
+  / actionFunctionDarken
+  / actionFunctionWhiten
+  / actionFunctionBlacken
+
+actionFunctionNegate     = name:'Negate'    '()' { return { function: name, val: undefined } }
+actionFunctionGrayscale  = name:'Grayscale' '()' { return { function: name, val: undefined } }
+actionFunctionLighten    = name:'Lighten'   '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
+actionFunctionDarken     = name:'Darken'    '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
+actionFunctionWhiten     = name:'Whiten'    '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
+actionFunctionBlacken    = name:'Blacken'   '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
+
 // Action Values
-actionValueColor = color
+actionValueColor = color / actionFunctionColors
 actionValueFontSize = fontSize
 actionValueSound = id:soundId __ volume:soundVolume { return `${id} ${volume}` }
 actionValueBoolean = boolean
