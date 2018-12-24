@@ -364,3 +364,75 @@ test('expand : multi mixin', (t) => {
 
   t.deepEqual(result, expected)
 })
+
+test('expand : color function', (t) => {
+  const advancedScriptObject = [
+    {
+      name: 'Map Section',
+      activity: 'Show',
+      conditions: {
+        Class: ['Maps'],
+      },
+      actions: {
+        SetBorderColor: { rgb: { r: 200, g: 100, b: 50 }, alpha: 123 },
+        SetTextColor: { rgb: { r: 200, g: 100, b: 50 }, alpha: 123 },
+        SetBackgroundColor: { rgb: { r: 200, g: 100, b: 50 }, alpha: 123 },
+      },
+      mixins: [
+        {
+          name: 'Rarity',
+          blocks: [
+            {
+              name: 'Rare',
+              activity: 'Show',
+              conditions: { Rarity: 'Rare' },
+              actions: {
+                SetBorderColor: { function: 'Negate', val: undefined },
+                SetTextColor: { function: 'Grayscale', val: undefined },
+                SetBackgroundColor: { function: 'Lighten', val: 0.3 },
+              },
+              mixins: [],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
+  const expected = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          name: { Rarity: 'Rare' },
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            Rarity: 'Rare',
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 55, g: 155, b: 205 }, alpha: 123 },
+            SetTextColor: { rgb: { r: 124.5, g: 124.5, b: 124.5 }, alpha: 123 },
+            SetBackgroundColor: { rgb: { r: 218.00000000000003, g: 143.99999999999997, b: 106.99999999999996 }, alpha: 123 },
+          },
+        },
+        {
+          name: { Rarity: undefined },
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 200, g: 100, b: 50 }, alpha: 123 },
+            SetTextColor: { rgb: { r: 200, g: 100, b: 50 }, alpha: 123 },
+            SetBackgroundColor: { rgb: { r: 200, g: 100, b: 50 }, alpha: 123 },
+          },
+        },
+      ],
+    },
+  ]
+
+  const result = expander.expand(advancedScriptObject)
+
+  t.deepEqual(result, expected)
+})

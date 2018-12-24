@@ -12,6 +12,7 @@
     "build:parser": "pegjs -o dist/parser.js advanced-poe-filter.pegjs"
   },
   "dependencies": {
+    "color": "^3.1.0",
     "lodash.clonedeep": "^4.5.0"
   },
   "devDependencies": {
