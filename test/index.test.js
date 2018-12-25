@@ -110,6 +110,52 @@ Show
   t.is(result, expected)
 })
 
+test('compile : single mixin with color function', (t) => {
+  const advancedScriptText = outdent`
+Show "Map Section"
+    Class "Maps"
+
+    SetBorderColor     200 100 50 123
+    SetTextColor       200 100 50 123
+    SetBackgroundColor 200 100 50 123
+
+    Mixin "Rarity"
+        Show "Rare"
+            Rarity = Rare
+
+            SetBorderColor     Negate()
+            SetTextColor       Grayscale()
+            SetBackgroundColor Lighten(30%)
+
+   `
+
+  const expected = outdent`
+################################################################################
+# Map Section                                                                  #
+################################################################################
+# Rarity is "Rare"
+Show
+    Class "Maps"
+    Rarity = Rare
+    SetBorderColor 55 155 205 123
+    SetTextColor 125 125 125 123
+    SetBackgroundColor 218 144 107 123
+
+# Rarity is Any
+Show
+    Class "Maps"
+    SetBorderColor 200 100 50 123
+    SetTextColor 200 100 50 123
+    SetBackgroundColor 200 100 50 123
+
+
+  `
+
+  const result = compiler.compile(advancedScriptText)
+
+  t.deepEqual(result, expected)
+})
+
 test('parse : multi mixin', (t) => {
   const advancedScriptText = outdent`
 Hide "Gears"
