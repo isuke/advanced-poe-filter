@@ -17,7 +17,7 @@ test('generate : single section', (t) => {
             Identified: false,
           },
           actions: {
-            SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
             PlayAlertSound: '1 300',
           },
         },
@@ -33,7 +33,7 @@ Show
     Class "Maps"
     MapTier > 3
     Identified False
-    SetBorderColor 250 251 252 255
+    SetBorderColor 250 126 107 255
     PlayAlertSound 1 300
 
 
