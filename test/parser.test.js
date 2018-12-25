@@ -43,6 +43,7 @@ test('parse : all actions and conditions', (t) => {
         BaseType       "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
         Prophecy       "Foo" "Bar"
         SocketGroup    W
+        Rarity         Rare
         HasExplicitMod "Piyo" "Piyo"
 
         SetBorderColor           100 101 102 200
@@ -111,6 +112,7 @@ test('parse : all actions and conditions', (t) => {
         BaseType: ['Two-Toned Boots', 'Spiked Gloves', 'Gripped Gloves', 'Fingerless Silk Gloves', 'Bone Helmet'],
         Prophecy: ['Foo', 'Bar'],
         SocketGroup: 'W',
+        Rarity: 'Rare',
         HasExplicitMod: ['Piyo', 'Piyo'],
       },
       actions: {
