@@ -27,7 +27,6 @@ test('parse : all actions and conditions', (t) => {
         Height         > 1
         Width          > 2
         HasExplicitMod "Piyo"
-
         SetBorderColor           100 101 102
         SetTextColor             103 104 105
         SetBackgroundColor       106 107 108
@@ -37,7 +36,6 @@ test('parse : all actions and conditions', (t) => {
         CustomAlertSound         "C\\foobar\\sound.mp3"
         MinimapIcon              1 Red Circle
         PlayEffect               Red
-
     Show "Section2"
         Class          "Life Flasks" "Mana Flasks" "Hybrid Flasks"
         BaseType       "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
@@ -45,18 +43,15 @@ test('parse : all actions and conditions', (t) => {
         SocketGroup    W
         Rarity         Rare
         HasExplicitMod "Piyo" "Piyo"
-
         SetBorderColor           100 101 102 200
         SetTextColor             103 104 105 201
         SetBackgroundColor       106 107 108 202
         PlayAlertSoundPositional ShAlchemy 200
         PlayEffect               Blue Temp
-
     Show "Section3"
         SetBorderColor           Negate()
         SetTextColor             Grayscale()
         SetBackgroundColor       Lighten(10%)
-
     Show "Section4"
         SetBorderColor           Darken(20%)
         SetTextColor             Whiten(31%)
@@ -158,7 +153,6 @@ test('parse : single section', (t) => {
     Show "Map Section"
         Class "Maps"
         MapTier > 3
-
         SetBorderColor 250 251 252
         PlayAlertSound 1 300
 
@@ -190,10 +184,8 @@ test('parse : multi section', (t) => {
     Hide "Hide Map Section"
         Class "Maps"
         MapTier <= 4
-
     Show "Flask Section"
         Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
-
         SetBorderColor 250 251 252
         PlayAlertSound 1 300
 
@@ -234,15 +226,12 @@ test('parse : single mixin', (t) => {
     Show "Map Section"
         Class "Maps"
         MapTier > 3
-
         SetBorderColor 250 251 252
         PlayAlertSound 1 300
-
         Mixin "Rarity"
             Show "Rare"
                 Rarity Rare
                 SetBackgroundColor 255 0 0 100
-
             Hide "Magic"
                 Rarity Magic
 
@@ -293,20 +282,16 @@ test('parse : multi mixin', (t) => {
   const script = outdent`
     Show "Map Section"
         Class "Maps"
-
         Mixin "Rarity"
             Show "Rare"
                 Rarity Rare
                 SetBackgroundColor 255 0 0 100
-
             Hide "Magic"
                 Rarity Magic
-
         Mixin "Tier"
             Show "High Tier"
                 MapTier >= 11
                 PlayAlertSound  1 300
-
             Show "Middle Tier"
                 MapTier >=  6
                 PlayAlertSound 2 300
@@ -371,20 +356,16 @@ test('parse : nested mixin', (t) => {
   const script = outdent`
     Show "Map Section"
         Class "Maps"
-
         Mixin "Rarity"
             Show "Rare"
                 Rarity Rare
                 SetBackgroundColor 255 0 0 100
-
             Hide "Magic"
                 Rarity Magic
-
                 Mixin "Tier"
                     Show "High Tier"
                         MapTier >= 11
                         PlayAlertSound  1 300
-
                     Show "Middle Tier"
                         MapTier >=  6
                         PlayAlertSound 2 300

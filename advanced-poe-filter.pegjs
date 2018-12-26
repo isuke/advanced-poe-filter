@@ -10,17 +10,16 @@
 //
 start = script
 
-script = blankLine* sections:(section blankLine*)* { return sections.map(s => s[0]) }
+script = section*
 
-section = block:block
+section = block
 
 block =
   activity:('Show' / 'Hide') __ name:string br
   INDENT
     line0:line
-    blankLine*
-    lines:(SAMEDENT line blankLine*)*
-    mixins:(SAMEDENT mixin blankLine*)*
+    lines:(SAMEDENT line)*
+    mixins:(SAMEDENT mixin)*
   OUTDENT {
     let conditions = {};
     let actions = {};
@@ -44,15 +43,11 @@ mixin =
   'Mixin' __ name:string br
   INDENT
     block0:block
-    blankLine*
     blocks:(SAMEDENT block)*
-    blankLine*
   OUTDENT {
     let allBlocks = [block0].concat(blocks.map(b => b[1]))
     return { name, blocks: allBlocks }
   }
-
-blankLine = [\n] { return undefined }
 
 //
 // Condition
