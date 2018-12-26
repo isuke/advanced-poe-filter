@@ -18,7 +18,8 @@ Show "Map Section"
 
    `
 
-  const expected = outdent`
+  const expected = {
+    'No Name': outdent`
 ################################################################################
 # Map Section                                                                  #
 ################################################################################
@@ -30,7 +31,8 @@ Show
     PlayAlertSound 1 300
 
 
-  `
+    `,
+  }
 
   const result = compiler.compile(advancedScriptText)
 
@@ -52,7 +54,8 @@ Show "Flasks"
     myClass: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
   }
 
-  const expected = outdent`
+  const expected = {
+    'No Name': outdent`
 ################################################################################
 # Flasks                                                                       #
 ################################################################################
@@ -63,9 +66,71 @@ Show
     PlayAlertSound 1 300
 
 
-  `
+    `,
+  }
 
   const result = compiler.compile(advancedScriptText, variables)
+
+  t.deepEqual(result, expected)
+})
+
+test('compile : single section with properties', (t) => {
+  const advancedScriptText = outdent`
+Show "Flasks"
+    Class "Utility Flasks"
+    Quality >= Prop(flaskQuality)
+
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
+   `
+
+  const properties = {
+    T1: { flaskQuality: 0 },
+    T2: { flaskQuality: 10 },
+    T3: { flaskQuality: 20 },
+  }
+
+  const expected = {
+    T1: outdent`
+################################################################################
+# Flasks                                                                       #
+################################################################################
+Show
+    Class "Utility Flasks"
+    Quality >= 0
+    SetBorderColor 250 251 252 255
+    PlayAlertSound 1 300
+
+
+    `,
+    T2: outdent`
+################################################################################
+# Flasks                                                                       #
+################################################################################
+Show
+    Class "Utility Flasks"
+    Quality >= 10
+    SetBorderColor 250 251 252 255
+    PlayAlertSound 1 300
+
+
+    `,
+    T3: outdent`
+################################################################################
+# Flasks                                                                       #
+################################################################################
+Show
+    Class "Utility Flasks"
+    Quality >= 20
+    SetBorderColor 250 251 252 255
+    PlayAlertSound 1 300
+
+
+    `,
+  }
+
+  const result = compiler.compile(advancedScriptText, {}, properties)
 
   t.deepEqual(result, expected)
 })
@@ -84,7 +149,8 @@ Show "Flask Section"
 
    `
 
-  const expected = outdent`
+  const expected = {
+    'No Name': outdent`
 ################################################################################
 # Hide Map Section                                                             #
 ################################################################################
@@ -103,11 +169,12 @@ Show
     PlayAlertSound 1 300
 
 
-  `
+    `,
+  }
 
   const result = compiler.compile(advancedScriptText)
 
-  t.is(result, expected)
+  t.deepEqual(result, expected)
 })
 
 test('compile : single mixin with color function', (t) => {
@@ -129,7 +196,8 @@ Show "Map Section"
 
    `
 
-  const expected = outdent`
+  const expected = {
+    'No Name': outdent`
 ################################################################################
 # Map Section                                                                  #
 ################################################################################
@@ -149,7 +217,8 @@ Show
     SetBackgroundColor 200 100 50 123
 
 
-  `
+    `,
+  }
 
   const result = compiler.compile(advancedScriptText)
 
@@ -204,7 +273,8 @@ Hide "Gears"
 
    `
 
-  const expected = outdent`
+  const expected = {
+    'No Name': outdent`
 ################################################################################
 # Gears                                                                        #
 ################################################################################
@@ -699,9 +769,10 @@ Hide
     DisableDropSound True
 
 
-  `
+    `,
+  }
 
   const result = compiler.compile(advancedScriptText)
 
-  t.is(result, expected)
+  t.deepEqual(result, expected)
 })

@@ -61,7 +61,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : simple value', (t) => {
+test('prepend : simple variables', (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class "Life Flasks" "Mana Flasks" Var(myClass1) Var(myClass2)
@@ -97,7 +97,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : complex value', (t) => {
+test('prepend : complex variables', (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class Var(myClass) "Utility Flasks"
@@ -123,6 +123,42 @@ Show "Map Section"
   `
 
   const result = prepender.prepend(advancedScriptText, variables)
+
+  t.is(result, expected)
+})
+
+test('prepend : simple props', (t) => {
+  const advancedScriptText = outdent`
+Show "Map Section"
+    Class "Life Flasks" "Mana Flasks" Prop(myClass1) Prop(myClass2)
+    MapTier > Prop(myMapTier)
+    Identified Prop(myIdentified)
+
+    SetBorderColor Prop(myBorderColor)
+    PlayAlertSound Prop(myPlayAlertSoundId) 300
+
+   `
+
+  const props = {
+    myClass1: 'Hybrid Flasks',
+    myClass2: 'Utility Flasks',
+    myMapTier: 3,
+    myIdentified: false,
+    myBorderColor: '250 251 252',
+    myPlayAlertSoundId: 1,
+  }
+
+  const expected = outdent`
+Show "Map Section"
+    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
+    MapTier > 3
+    Identified False
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
+  `
+
+  const result = prepender.prepend(advancedScriptText, {}, props)
 
   t.is(result, expected)
 })
