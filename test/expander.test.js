@@ -1,6 +1,6 @@
 const test = require('ava')
 
-const expander = require('../lib/expander')
+const expander = require('../src/expander')
 
 test('expand : single section', (t) => {
   const advancedScriptObject = [

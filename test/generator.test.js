@@ -1,7 +1,7 @@
 const test = require('ava')
 const outdent = require('outdent')
 
-const generator = require('../lib/generator')
+const generator = require('../src/generator')
 
 test('generate : single section', (t) => {
   const scriptObject = [

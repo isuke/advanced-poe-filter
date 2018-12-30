@@ -1,4 +1,4 @@
-const utils = require('../lib/utils')
+const utils = require('../src/utils')
 
 const prepend = (advancedScriptText, variables = {}, props = {}) => {
   let result = advancedScriptText

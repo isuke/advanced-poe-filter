@@ -1,6 +1,6 @@
 const Color = require('color')
 
-const utils = require('../lib/utils')
+const utils = require('../src/utils')
 
 const expand = (advancedScriptObject) => {
   return advancedScriptObject.map((asvancedSectionObject) => {

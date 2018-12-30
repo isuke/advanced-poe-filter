@@ -1,9 +1,9 @@
-const prepender = require('../lib/prepender')
-const parser = require('../dist/parser')
-const expander = require('../lib/expander')
-const generator = require('../lib/generator')
+const prepender = require('../src/prepender')
+const parser = require('../lib/parser')
+const expander = require('../src/expander')
+const generator = require('../src/generator')
 
-const utils = require('../lib/utils')
+const utils = require('../src/utils')
 
 const compile = (advancedScriptText, variables = {}, properties = {}) => {
   let result = {}

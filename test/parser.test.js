@@ -1,7 +1,7 @@
 const test = require('ava')
 const outdent = require('outdent')
 
-const parser = require('../dist/parser')
+const parser = require('../lib/parser')
 
 test('parse : all actions and conditions', (t) => {
   const script = outdent`

@@ -1,7 +1,7 @@
 const test = require('ava')
 const outdent = require('outdent')
 
-const prepender = require('../lib/prepender')
+const prepender = require('../src/prepender')
 
 test('prepend : nothing anyone', (t) => {
   const advancedScriptText = outdent`

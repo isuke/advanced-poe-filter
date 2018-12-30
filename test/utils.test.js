@@ -1,6 +1,6 @@
 const test = require('ava')
 
-const utils = require('../lib/utils')
+const utils = require('../src/utils')
 
 test('product : empty array', (t) => {
   const result = utils.product([])

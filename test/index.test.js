@@ -1,7 +1,7 @@
 const test = require('ava')
 const outdent = require('outdent')
 
-const compiler = require('../lib/index')
+const compiler = require('../src/index')
 
 test('compile : single section', (t) => {
   const advancedScriptText = outdent`
