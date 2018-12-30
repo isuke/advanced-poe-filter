@@ -1,4 +1,4 @@
-const cloneDeep = require('lodash.clonedeep')
+import cloneDeep from 'lodash.clonedeep'
 
 const product = (headArray, ...tailArraies) => {
   let result = []
@@ -55,12 +55,4 @@ const toUpperFirstChar = (string) => {
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-module.exports = {
-  product,
-  createObject,
-  takeLastExist,
-  assignImmutable,
-  forIn,
-  mapObject,
-  toUpperFirstChar,
-}
+export { product, createObject, takeLastExist, assignImmutable, forIn, mapObject, toUpperFirstChar }

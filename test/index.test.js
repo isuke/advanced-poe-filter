@@ -1,7 +1,7 @@
-const test = require('ava')
-const outdent = require('outdent')
+import test from 'ava'
+import outdent from 'outdent'
 
-const compiler = require('../src/index')
+import { compile } from '../src/index'
 
 test('compile : single section', (t) => {
   const advancedScriptText = outdent`
@@ -34,7 +34,7 @@ Show
     `,
   }
 
-  const result = compiler.compile(advancedScriptText)
+  const result = compile(advancedScriptText)
 
   t.deepEqual(result, expected)
 })
@@ -69,7 +69,7 @@ Show
     `,
   }
 
-  const result = compiler.compile(advancedScriptText, variables)
+  const result = compile(advancedScriptText, variables)
 
   t.deepEqual(result, expected)
 })
@@ -130,7 +130,7 @@ Show
     `,
   }
 
-  const result = compiler.compile(advancedScriptText, {}, properties)
+  const result = compile(advancedScriptText, {}, properties)
 
   t.deepEqual(result, expected)
 })
@@ -172,7 +172,7 @@ Show
     `,
   }
 
-  const result = compiler.compile(advancedScriptText)
+  const result = compile(advancedScriptText)
 
   t.deepEqual(result, expected)
 })
@@ -220,7 +220,7 @@ Show
     `,
   }
 
-  const result = compiler.compile(advancedScriptText)
+  const result = compile(advancedScriptText)
 
   t.deepEqual(result, expected)
 })
@@ -772,7 +772,7 @@ Hide
     `,
   }
 
-  const result = compiler.compile(advancedScriptText)
+  const result = compile(advancedScriptText)
 
   t.deepEqual(result, expected)
 })

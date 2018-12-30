@@ -1,4 +1,4 @@
-const utils = require('../src/utils')
+import { forIn, mapObject, toUpperFirstChar } from '../src/utils'
 
 const generate = (scriptObject) => {
   return scriptObject.reduce((acc, sectionObject, i) => {
@@ -36,7 +36,7 @@ const _generateBlockName = (blockNameObject) => {
   if (Object.keys(blockNameObject).length === 0) return ''
 
   let temp = []
-  utils.forIn(blockNameObject, (val, key) => {
+  forIn(blockNameObject, (val, key) => {
     if (val) {
       temp.push(`${key} is "${val}"`)
     } else {
@@ -47,11 +47,9 @@ const _generateBlockName = (blockNameObject) => {
 }
 
 const _generateConditions = (blockObject) => {
-  return utils
-    .mapObject(blockObject.conditions, (val, key) => {
-      return _generateCondition(val, key)
-    })
-    .join('')
+  return mapObject(blockObject.conditions, (val, key) => {
+    return _generateCondition(val, key)
+  }).join('')
 }
 
 const _generateCondition = (conditionVal, conditionKey) => {
@@ -66,7 +64,7 @@ const _generateCondition = (conditionVal, conditionKey) => {
     case 'Corrupted':
     case 'Identified':
     case 'ShapedMap':
-      return `    ${conditionKey} ${utils.toUpperFirstChar(conditionVal)}\n`
+      return `    ${conditionKey} ${toUpperFirstChar(conditionVal)}\n`
     default:
       return `    ${conditionKey} ${conditionVal}\n`
   }
@@ -74,17 +72,13 @@ const _generateCondition = (conditionVal, conditionKey) => {
 
 const _generateActions = (blockObject) => {
   if (blockObject.activity === 'Show') {
-    return utils
-      .mapObject(blockObject.actions, (val, key) => {
-        return _generateAction(val, key)
-      })
-      .join('')
+    return mapObject(blockObject.actions, (val, key) => {
+      return _generateAction(val, key)
+    }).join('')
   } else {
-    return utils
-      .mapObject({ DisableDropSound: true }, (val, key) => {
-        return _generateAction(val, key)
-      })
-      .join('')
+    return mapObject({ DisableDropSound: true }, (val, key) => {
+      return _generateAction(val, key)
+    }).join('')
   }
 }
 
@@ -95,12 +89,10 @@ const _generateAction = (actionVal, actionKey) => {
     case 'SetBackgroundColor':
       return `    ${actionKey} ${Math.round(actionVal.rgb.r)} ${Math.round(actionVal.rgb.g)} ${Math.round(actionVal.rgb.b)} ${Math.round(actionVal.alpha)}\n`
     case 'DisableDropSound':
-      return `    ${actionKey} ${utils.toUpperFirstChar(actionVal)}\n`
+      return `    ${actionKey} ${toUpperFirstChar(actionVal)}\n`
     default:
       return `    ${actionKey} ${actionVal}\n`
   }
 }
 
-module.exports = {
-  generate,
-}
+export default generate

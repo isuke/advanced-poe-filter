@@ -1,6 +1,6 @@
-const Color = require('color')
+import Color from 'color'
 
-const utils = require('../src/utils')
+import { product, createObject, takeLastExist, assignImmutable, forIn } from '../src/utils'
 
 const expand = (advancedScriptObject) => {
   return advancedScriptObject.map((asvancedSectionObject) => {
@@ -13,7 +13,7 @@ const expand = (advancedScriptObject) => {
 
 const _createBlocks = (asvancedSectionObject) => {
   if (asvancedSectionObject.mixins.length > 0) {
-    return utils.product(..._adjustMiixns(asvancedSectionObject.mixins)).map((p) => {
+    return product(..._adjustMiixns(asvancedSectionObject.mixins)).map((p) => {
       return _mergeScriptObject(asvancedSectionObject, ...p)
     })
   } else {
@@ -32,7 +32,7 @@ const _adjustMiixns = (mixins) => {
   return mixins.map((mixin) => {
     let temp = mixin.blocks.map((block) => {
       return {
-        name: utils.createObject(mixin.name, block.name),
+        name: createObject(mixin.name, block.name),
         activity: block.activity,
         conditions: block.conditions,
         actions: block.actions,
@@ -47,18 +47,18 @@ const _adjustMiixns = (mixins) => {
 
 const _mergeScriptObject = (rootObject, ...others) => {
   return {
-    name: utils.assignImmutable({}, ...others.map((o) => o.name)),
-    activity: utils.takeLastExist([rootObject.activity, ...others.map((o) => o.activity)]),
-    conditions: utils.assignImmutable(rootObject.conditions, ...others.map((o) => o.conditions)),
+    name: assignImmutable({}, ...others.map((o) => o.name)),
+    activity: takeLastExist([rootObject.activity, ...others.map((o) => o.activity)]),
+    conditions: assignImmutable(rootObject.conditions, ...others.map((o) => o.conditions)),
     actions: _mergeActions(rootObject.actions, ...others.map((o) => o.actions)),
   }
 }
 
 const _mergeActions = (root, ...others) => {
-  let result = utils.assignImmutable(root, ...others)
+  let result = assignImmutable(root, ...others)
 
   others.forEach((other) => {
-    utils.forIn(other, (valObject, key) => {
+    forIn(other, (valObject, key) => {
       switch (key) {
         case 'SetBorderColor':
         case 'SetTextColor':
@@ -81,13 +81,11 @@ const _mergeActions = (root, ...others) => {
 
 const _emptyBlock = (mixinName) => {
   return {
-    name: utils.createObject(mixinName),
+    name: createObject(mixinName),
     activity: undefined,
     conditions: {},
     actions: {},
   }
 }
 
-module.exports = {
-  expand,
-}
+export default expand

@@ -1,6 +1,6 @@
-const test = require('ava')
+import test from 'ava'
 
-const utils = require('../src/utils')
+import * as utils from '../src/utils'
 
 test('product : empty array', (t) => {
   const result = utils.product([])

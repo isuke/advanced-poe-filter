@@ -1,7 +1,7 @@
-const test = require('ava')
-const outdent = require('outdent')
+import test from 'ava'
+import outdent from 'outdent'
 
-const prepender = require('../src/prepender')
+import prepend from '../src/prepender'
 
 test('prepend : nothing anyone', (t) => {
   const advancedScriptText = outdent`
@@ -25,7 +25,7 @@ Show "Map Section"
 
   `
 
-  const result = prepender.prepend(advancedScriptText)
+  const result = prepend(advancedScriptText)
 
   t.is(result, expected)
 })
@@ -56,7 +56,7 @@ Show "Map Section"
 
   `
 
-  const result = prepender.prepend(advancedScriptText)
+  const result = prepend(advancedScriptText)
 
   t.is(result, expected)
 })
@@ -92,7 +92,7 @@ Show "Map Section"
 
   `
 
-  const result = prepender.prepend(advancedScriptText, variables)
+  const result = prepend(advancedScriptText, variables)
 
   t.is(result, expected)
 })
@@ -122,7 +122,7 @@ Show "Map Section"
 
   `
 
-  const result = prepender.prepend(advancedScriptText, variables)
+  const result = prepend(advancedScriptText, variables)
 
   t.is(result, expected)
 })
@@ -158,7 +158,7 @@ Show "Map Section"
 
   `
 
-  const result = prepender.prepend(advancedScriptText, {}, props)
+  const result = prepend(advancedScriptText, {}, props)
 
   t.is(result, expected)
 })

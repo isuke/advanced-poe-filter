@@ -1,4 +1,4 @@
-const utils = require('../src/utils')
+import { toUpperFirstChar } from '../src/utils'
 
 const prepend = (advancedScriptText, variables = {}, props = {}) => {
   let result = advancedScriptText
@@ -65,12 +65,10 @@ const _convertValue = (ruleName, value) => {
     case 'Identified':
     case 'ShapedMap':
     case 'DisableDropSound':
-      return utils.toUpperFirstChar(value)
+      return toUpperFirstChar(value)
     default:
       return value
   }
 }
 
-module.exports = {
-  prepend,
-}
+export default prepend

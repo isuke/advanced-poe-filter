@@ -6,8 +6,8 @@
   "license": "CC-BY-NC-ND-4.0",
   "private": true,
   "scripts": {
-    "lint": "eslint src/**/*.js test/**/*.js",
-    "fix": "eslint --fix src/**/*.js test/**/*.js",
+    "lint": "eslint ./*.js src/**/*.js test/**/*.js",
+    "fix": "eslint --fix ./*.js src/**/*.js test/**/*.js",
     "test": "ava --verbose",
     "build:parser": "pegjs -o lib/parser.js src/advanced-poe-filter.pegjs"
   },
@@ -16,10 +16,11 @@
     "lodash.clonedeep": "^4.5.0"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^1.0.1",
     "eslint": "^5.10.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
+    "esm": "^3.0.84",
     "outdent": "^0.7.0",
     "pegjs": "^0.10.0",
     "prettier": "^1.15.3",

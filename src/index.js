@@ -1,22 +1,20 @@
-const prepender = require('../src/prepender')
-const parser = require('../lib/parser')
-const expander = require('../src/expander')
-const generator = require('../src/generator')
+import prepend from '../src/prepender'
+import { parse } from '../lib/parser'
+import expand from '../src/expander'
+import generate from '../src/generator'
 
-const utils = require('../src/utils')
+import { forIn } from '../src/utils'
 
 const compile = (advancedScriptText, variables = {}, properties = {}) => {
   let result = {}
   if (Object.keys(properties).length === 0) {
-    result['No Name'] = generator.generate(expander.expand(parser.parse(prepender.prepend(advancedScriptText, variables))))
+    result['No Name'] = generate(expand(parse(prepend(advancedScriptText, variables))))
   } else {
-    utils.forIn(properties, (props, key) => {
-      result[key] = generator.generate(expander.expand(parser.parse(prepender.prepend(advancedScriptText, variables, props))))
+    forIn(properties, (props, key) => {
+      result[key] = generate(expand(parse(prepend(advancedScriptText, variables, props))))
     })
   }
   return result
 }
 
-module.exports = {
-  compile,
-}
+export { compile }

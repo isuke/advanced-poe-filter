@@ -1,7 +1,7 @@
-const test = require('ava')
-const outdent = require('outdent')
+import test from 'ava'
+import outdent from 'outdent'
 
-const generator = require('../src/generator')
+import generate from '../src/generator'
 
 test('generate : single section', (t) => {
   const scriptObject = [
@@ -39,7 +39,7 @@ Show
 
   `
 
-  const result = generator.generate(scriptObject)
+  const result = generate(scriptObject)
 
   t.is(result, expected)
 })
@@ -99,7 +99,7 @@ Show
 
   `
 
-  const result = generator.generate(scriptObject)
+  const result = generate(scriptObject)
 
   t.is(result, expected)
 })
@@ -283,7 +283,7 @@ Show
 
   `
 
-  const result = generator.generate(scriptObject)
+  const result = generate(scriptObject)
 
   t.is(result, expected)
 })

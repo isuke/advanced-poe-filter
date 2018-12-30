@@ -1,6 +1,6 @@
-const test = require('ava')
+import test from 'ava'
 
-const expander = require('../src/expander')
+import expand from '../src/expander'
 
 test('expand : single section', (t) => {
   const advancedScriptObject = [
@@ -39,7 +39,7 @@ test('expand : single section', (t) => {
     },
   ]
 
-  const result = expander.expand(advancedScriptObject)
+  const result = expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -103,7 +103,7 @@ test('expand : multi section', (t) => {
     },
   ]
 
-  const result = expander.expand(advancedScriptObject)
+  const result = expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -192,7 +192,7 @@ test('expand : single mixin', (t) => {
     },
   ]
 
-  const result = expander.expand(advancedScriptObject)
+  const result = expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -360,7 +360,7 @@ test('expand : multi mixin', (t) => {
     },
   ]
 
-  const result = expander.expand(advancedScriptObject)
+  const result = expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -432,7 +432,7 @@ test('expand : color function', (t) => {
     },
   ]
 
-  const result = expander.expand(advancedScriptObject)
+  const result = expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })

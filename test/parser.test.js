@@ -1,7 +1,7 @@
-const test = require('ava')
-const outdent = require('outdent')
+import test from 'ava'
+import outdent from 'outdent'
 
-const parser = require('../lib/parser')
+import { parse } from '../lib/parser'
 
 test('parse : all actions and conditions', (t) => {
   const script = outdent`
@@ -143,7 +143,7 @@ test('parse : all actions and conditions', (t) => {
     },
   ]
 
-  const result = parser.parse(script)
+  const result = parse(script)
 
   t.deepEqual(result, expected)
 })
@@ -174,7 +174,7 @@ test('parse : single section', (t) => {
     },
   ]
 
-  const result = parser.parse(script)
+  const result = parse(script)
 
   t.deepEqual(result, expected)
 })
@@ -216,7 +216,7 @@ test('parse : multi section', (t) => {
     },
   ]
 
-  const result = parser.parse(script)
+  const result = parse(script)
 
   t.deepEqual(result, expected)
 })
@@ -273,7 +273,7 @@ test('parse : single mixin', (t) => {
     },
   ]
 
-  const result = parser.parse(script)
+  const result = parse(script)
 
   t.deepEqual(result, expected)
 })
@@ -347,7 +347,7 @@ test('parse : multi mixin', (t) => {
     },
   ]
 
-  const result = parser.parse(script)
+  const result = parse(script)
 
   t.deepEqual(result, expected)
 })
@@ -422,7 +422,7 @@ test('parse : nested mixin', (t) => {
     },
   ]
 
-  const result = parser.parse(script)
+  const result = parse(script)
 
   t.deepEqual(result, expected)
 })
