@@ -1,29 +1,42 @@
 {
   "name": "advanced-poe-filter",
   "version": "0.0.1",
-  "main": "src/index.js",
+  "main": "lib/advanced-poe-filter.umd.js",
+  "module": "lib/advanced-poe-filter.esm.js",
   "author": "isuke <isuke770@gmail.com>",
   "license": "CC-BY-NC-ND-4.0",
   "private": true,
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "lint": "eslint ./*.js src/**/*.js test/**/*.js",
     "fix": "eslint --fix ./*.js src/**/*.js test/**/*.js",
     "test": "ava --verbose",
-    "build:parser": "pegjs -o lib/parser.js src/advanced-poe-filter.pegjs"
+    "build": "yarn run build:parser && yarn run build:index",
+    "build:parser": "pegjs --format=es -o lib/parser.js src/advanced-poe-filter.pegjs",
+    "build:index": "webpack --mode=production --progress --hide-modules"
   },
   "dependencies": {
     "color": "^3.1.0",
     "lodash.clonedeep": "^4.5.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "ava": "^1.0.1",
+    "babel-loader": "^8.0.4",
     "eslint": "^5.10.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
     "esm": "^3.0.84",
     "outdent": "^0.7.0",
-    "pegjs": "^0.10.0",
+    "pegjs": "0.11.0-dev.325",
     "prettier": "^1.15.3",
-    "sinon": "^7.2.2"
+    "sinon": "^7.2.2",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.1.2"
   }
 }
