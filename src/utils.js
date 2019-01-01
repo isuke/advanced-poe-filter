@@ -50,9 +50,17 @@ const mapObject = (object, callback) => {
   return result
 }
 
+const mapKeys = (object, callback) => {
+  let result = {}
+  forIn(object, (val, key) => {
+    result[key] = callback(val, key)
+  })
+  return result
+}
+
 const toUpperFirstChar = (string) => {
   const s = string.toString()
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-export { product, createObject, takeLastExist, assignImmutable, forIn, mapObject, toUpperFirstChar }
+export { product, createObject, takeLastExist, assignImmutable, forIn, mapObject, mapKeys, toUpperFirstChar }

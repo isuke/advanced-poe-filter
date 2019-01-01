@@ -3,18 +3,22 @@ import { parse } from '../lib/parser'
 import expand from '../src/expander'
 import generate from '../src/generator'
 
-import { forIn } from '../src/utils'
+import { forIn, mapKeys } from '../src/utils'
 
-const compile = (advancedScriptText, variables = {}, properties = {}) => {
+const getObject = (advancedScriptText, variables = {}, properties = {}) => {
   let result = {}
   if (Object.keys(properties).length === 0) {
-    result['No Name'] = generate(expand(parse(prepend(advancedScriptText, variables))))
+    result['No Name'] = expand(parse(prepend(advancedScriptText, variables)))
   } else {
     forIn(properties, (props, key) => {
-      result[key] = generate(expand(parse(prepend(advancedScriptText, variables, props))))
+      result[key] = expand(parse(prepend(advancedScriptText, variables, props)))
     })
   }
   return result
 }
 
-export { compile }
+const compile = (advancedScriptText, variables = {}, properties = {}) => {
+  return mapKeys(getObject(advancedScriptText, variables, properties), (val, _key) => generate(val))
+}
+
+export { getObject, compile }

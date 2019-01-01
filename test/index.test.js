@@ -1,7 +1,50 @@
 import test from 'ava'
 import outdent from 'outdent'
 
-import { compile } from '../src/index'
+import { getObject, compile } from '../src/index'
+
+test('getObject : single section', (t) => {
+  const advancedScriptText = outdent`
+# This is Comment
+# This is Comment
+Show "Map Section"
+    Class "Maps"
+    MapTier > 3
+    Identified False
+
+    # This is Comment
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
+   `
+
+  const expected = {
+    'No Name': [
+      {
+        name: 'Map Section',
+        blocks: [
+          {
+            name: {},
+            activity: 'Show',
+            conditions: {
+              Class: ['Maps'],
+              MapTier: '> 3',
+              Identified: false,
+            },
+            actions: {
+              SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+              PlayAlertSound: '1 300',
+            },
+          },
+        ],
+      },
+    ],
+  }
+
+  const result = getObject(advancedScriptText)
+
+  t.deepEqual(result, expected)
+})
 
 test('compile : single section', (t) => {
   const advancedScriptText = outdent`
