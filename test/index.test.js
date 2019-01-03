@@ -268,6 +268,51 @@ Show
   t.deepEqual(result, expected)
 })
 
+test('compile : single mixin with fontSize function', (t) => {
+  const advancedScriptText = outdent`
+Show "Map Section"
+    Class "Maps"
+
+    Mixin "Rarity"
+        Show "Rare"
+            Rarity = Rare
+            SetFontSize Plus(5)
+        Show "Magic"
+            Rarity = Rare
+            SetFontSize Minus(6)
+
+   `
+
+  const expected = {
+    'No Name': outdent`
+################################################################################
+# Map Section                                                                  #
+################################################################################
+# Rarity is "Rare"
+Show
+    Class "Maps"
+    Rarity = Rare
+    SetFontSize 37
+
+# Rarity is "Magic"
+Show
+    Class "Maps"
+    Rarity = Rare
+    SetFontSize 26
+
+# Rarity is Any
+Show
+    Class "Maps"
+
+
+    `,
+  }
+
+  const result = compile(advancedScriptText)
+
+  t.deepEqual(result, expected)
+})
+
 test('parse : multi mixin', (t) => {
   const advancedScriptText = outdent`
 Hide "Gears"
