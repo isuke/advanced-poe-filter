@@ -72,6 +72,14 @@ const _mergeActions = (root, ...others) => {
               alpha: root[key].alpha,
             }
           }
+          break
+        case 'SetFontSize':
+          if (valObject.function) {
+            const val1 = root[key] ? root[key] : 32
+            const val2 = valObject.function === 'Plus' ? valObject.val : -valObject.val
+            result[key] = Math.min(Math.max(val1 + val2, 18), 45)
+          }
+          break
       }
     })
   })

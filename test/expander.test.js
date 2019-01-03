@@ -436,3 +436,155 @@ test('expand : color function', (t) => {
 
   t.deepEqual(result, expected)
 })
+
+test('expand : fontSize function', (t) => {
+  const advancedScriptObject = [
+    {
+      name: 'Map Section',
+      activity: 'Show',
+      conditions: {
+        Class: ['Maps'],
+      },
+      actions: {
+        SetFontSize: 36,
+      },
+      mixins: [
+        {
+          name: 'Rarity',
+          blocks: [
+            {
+              name: 'Rare',
+              activity: 'Show',
+              conditions: { Rarity: 'Rare' },
+              actions: {
+                SetFontSize: { function: 'Plus', val: 27 },
+              },
+              mixins: [],
+            },
+            {
+              name: 'Magic',
+              activity: 'Show',
+              conditions: { Rarity: 'Magic' },
+              actions: {
+                SetFontSize: { function: 'Minus', val: 6 },
+              },
+              mixins: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'Jewel Section',
+      activity: 'Show',
+      conditions: {
+        Class: ['Jewels'],
+      },
+      actions: {},
+      mixins: [
+        {
+          name: 'Rarity',
+          blocks: [
+            {
+              name: 'Rare',
+              activity: 'Show',
+              conditions: { Rarity: 'Rare' },
+              actions: {
+                SetFontSize: { function: 'Plus', val: 5 },
+              },
+              mixins: [],
+            },
+            {
+              name: 'Magic',
+              activity: 'Show',
+              conditions: { Rarity: 'Magic' },
+              actions: {
+                SetFontSize: { function: 'Minus', val: 28 },
+              },
+              mixins: [],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
+  const expected = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          name: { Rarity: 'Rare' },
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            Rarity: 'Rare',
+          },
+          actions: {
+            SetFontSize: 45,
+          },
+        },
+        {
+          name: { Rarity: 'Magic' },
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            Rarity: 'Magic',
+          },
+          actions: {
+            SetFontSize: 30,
+          },
+        },
+        {
+          name: { Rarity: undefined },
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+          },
+          actions: {
+            SetFontSize: 36,
+          },
+        },
+      ],
+    },
+    {
+      name: 'Jewel Section',
+      blocks: [
+        {
+          name: { Rarity: 'Rare' },
+          activity: 'Show',
+          conditions: {
+            Class: ['Jewels'],
+            Rarity: 'Rare',
+          },
+          actions: {
+            SetFontSize: 37,
+          },
+        },
+        {
+          name: { Rarity: 'Magic' },
+          activity: 'Show',
+          conditions: {
+            Class: ['Jewels'],
+            Rarity: 'Magic',
+          },
+          actions: {
+            SetFontSize: 18,
+          },
+        },
+        {
+          name: { Rarity: undefined },
+          activity: 'Show',
+          conditions: {
+            Class: ['Jewels'],
+          },
+          actions: {},
+        },
+      ],
+    },
+  ]
+
+  const result = expand(advancedScriptObject)
+
+  t.deepEqual(result, expected)
+})
