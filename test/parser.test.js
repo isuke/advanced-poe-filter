@@ -52,10 +52,12 @@ test('parse : all actions and conditions', (t) => {
         SetBorderColor           Negate()
         SetTextColor             Grayscale()
         SetBackgroundColor       Lighten(10%)
+        SetFontSize              Plus(5)
     Show "Section4"
         SetBorderColor           Darken(20%)
         SetTextColor             Whiten(31%)
         SetBackgroundColor       Blacken(100%)
+        SetFontSize              Minus(6)
 
    `
 
@@ -127,6 +129,7 @@ test('parse : all actions and conditions', (t) => {
         SetBorderColor: { function: 'Negate', val: undefined },
         SetTextColor: { function: 'Grayscale', val: undefined },
         SetBackgroundColor: { function: 'Lighten', val: 0.1 },
+        SetFontSize: { function: 'Plus', val: 5 },
       },
       mixins: [],
     },
@@ -138,6 +141,7 @@ test('parse : all actions and conditions', (t) => {
         SetBorderColor: { function: 'Darken', val: 0.2 },
         SetTextColor: { function: 'Whiten', val: 0.31 },
         SetBackgroundColor: { function: 'Blacken', val: 1 },
+        SetFontSize: { function: 'Minus', val: 6 },
       },
       mixins: [],
     },

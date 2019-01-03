@@ -133,7 +133,7 @@ actionMinimapIcon              = attr:'MinimapIcon'              __ val:actionVa
 actionPlayEffect               = attr:'PlayEffect'               __ val:actionValuePlayEffect  { return { lineType: 'action', attr, val } }
 
 // Action Functions
-actionFunctionColors =
+actionFunctionColor =
     actionFunctionNegate
   / actionFunctionGrayscale
   / actionFunctionLighten
@@ -148,9 +148,16 @@ actionFunctionDarken     = name:'Darken'    '(' num:num '%' ')' &{ return 0 <= n
 actionFunctionWhiten     = name:'Whiten'    '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
 actionFunctionBlacken    = name:'Blacken'   '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
 
+actionFunctionFontSize =
+    actionFunctionPlus
+  / actionFunctionMinus
+
+actionFunctionPlus  = name:'Plus'  '(' num:num ')' &{ return 0 <= num && num <= 27 } { return { function: name, val: num } }
+actionFunctionMinus = name:'Minus' '(' num:num ')' &{ return 0 <= num && num <= 27 } { return { function: name, val: num } }
+
 // Action Values
-actionValueColor = color / actionFunctionColors
-actionValueFontSize = fontSize
+actionValueColor = color / actionFunctionColor
+actionValueFontSize = fontSize / actionFunctionFontSize
 actionValueSound = id:soundId __ volume:soundVolume { return `${id} ${volume}` }
 actionValueBoolean = boolean
 actionValueFilePath = string
