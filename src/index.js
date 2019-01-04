@@ -3,7 +3,7 @@ import { parse } from '../lib/parser'
 import expand from '../src/expander'
 import generate from '../src/generator'
 
-import { forIn, mapKeys } from '../src/utils'
+import { forIn, mapVals } from '../src/utils'
 
 const getObject = (advancedScriptText, variables = {}, properties = {}) => {
   let result = {}
@@ -18,7 +18,7 @@ const getObject = (advancedScriptText, variables = {}, properties = {}) => {
 }
 
 const compile = (advancedScriptText, variables = {}, properties = {}) => {
-  return mapKeys(getObject(advancedScriptText, variables, properties), (val, _key) => generate(val))
+  return mapVals(getObject(advancedScriptText, variables, properties), (val, _key) => generate(val))
 }
 
 export { getObject, compile }
