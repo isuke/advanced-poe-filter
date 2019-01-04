@@ -1,60 +1,94 @@
+// @flow
+
 import Color from 'color'
 
 import { product, createObject, takeLastExist, assignImmutable, forIn } from '../src/utils'
 
-const expand = (advancedScriptObject) => {
-  return advancedScriptObject.map((asvancedSectionObject) => {
-    return {
-      name: asvancedSectionObject.name,
-      blocks: _createBlocks(asvancedSectionObject),
-    }
-  })
+/*::
+type AdvancedBlock = {
+  name: string,
+  activity: string,
+  conditions: object,
+  actions: object,
+  mixins: Array<Mixin>,
 }
 
-const _createBlocks = (asvancedSectionObject) => {
-  if (asvancedSectionObject.mixins.length > 0) {
-    return product(..._adjustMiixns(asvancedSectionObject.mixins)).map((p) => {
-      return _mergeScriptObject(asvancedSectionObject, ...p)
-    })
+type Mixin = {
+  name: string,
+  blocks: Array<AdvancedBlock>,
+}
+*/
+
+/*::
+type Section = {
+  name: string,
+  blocks: Array<Block>,
+}
+
+type Block = {
+  name: object,
+  activity: string,
+  conditions: object,
+  actions: object,
+}
+*/
+
+const expand = (advancedScriptObject /*: Array<AdvancedBlock> */) /*: Array<Section> */ => {
+  return advancedScriptObject.map((advancedBlock /*: AdvancedBlock */) => _convertAdvancedBlockToSection(advancedBlock))
+}
+
+const _convertAdvancedBlockToSection = (advancedBlock /*: AdvancedBlock */) /*: Section */ => {
+  if (advancedBlock.mixins.length === 0) {
+    return {
+      name: advancedBlock.name,
+      blocks: [
+        {
+          name: {},
+          activity: advancedBlock.activity,
+          conditions: advancedBlock.conditions,
+          actions: advancedBlock.actions,
+        },
+      ],
+    }
   } else {
-    return [
-      {
-        name: {},
-        activity: asvancedSectionObject.activity,
-        conditions: asvancedSectionObject.conditions,
-        actions: asvancedSectionObject.actions,
-      },
-    ]
+    const producted /*: Array<Array<Block>> */ = product(...advancedBlock.mixins.map((mixin) => _convertMixinToBlocks(mixin)))
+
+    return {
+      name: advancedBlock.name,
+      blocks: producted.map((p) => _mergeBlocks(advancedBlock, ...p)),
+    }
   }
 }
 
-const _adjustMiixns = (mixins) => {
-  return mixins.map((mixin) => {
-    let temp = mixin.blocks.map((block) => {
+const _convertMixinToBlocks = (mixin /*: Mixin */) /* Array<Block> */ => {
+  const sections /*: Array<Section> */ = mixin.blocks.map((advancedBlock) => _convertAdvancedBlockToSection(advancedBlock))
+
+  let blocks /*: Array<Blocks> */ = sections.reduce((acc, section) => {
+    const nameObject = createObject(mixin.name, section.name)
+    const blocks = section.blocks.map((block) => {
       return {
-        name: createObject(mixin.name, block.name),
+        name: assignImmutable(nameObject, block.name),
         activity: block.activity,
         conditions: block.conditions,
         actions: block.actions,
       }
     })
+    return acc.concat(blocks)
+  }, [])
 
-    temp.push(_emptyBlock(mixin.name))
-
-    return temp
-  })
+  return blocks.concat(_emptyBlock(mixin.name))
 }
 
-const _mergeScriptObject = (rootObject, ...others) => {
+const _mergeBlocks = (advancedBlock /*: advancedBlock */, ...blocks /*: Array<Block> */) /*: Block */ => {
   return {
-    name: assignImmutable({}, ...others.map((o) => o.name)),
-    activity: takeLastExist([rootObject.activity, ...others.map((o) => o.activity)]),
-    conditions: assignImmutable(rootObject.conditions, ...others.map((o) => o.conditions)),
-    actions: _mergeActions(rootObject.actions, ...others.map((o) => o.actions)),
+    name: assignImmutable({}, ...blocks.map((o) => o.name)),
+    activity: takeLastExist([advancedBlock.activity, ...blocks.map((o) => o.activity)]),
+    conditions: assignImmutable(advancedBlock.conditions, ...blocks.map((o) => o.conditions)),
+    actions: _mergeActions(advancedBlock.actions, ...blocks.map((o) => o.actions)),
   }
 }
 
-const _mergeActions = (root, ...others) => {
+const _mergeActions = (root /*: object */, ...others /*: Array<object> */) /*: object */ => {
   let result = assignImmutable(root, ...others)
 
   others.forEach((other) => {
@@ -87,7 +121,7 @@ const _mergeActions = (root, ...others) => {
   return result
 }
 
-const _emptyBlock = (mixinName) => {
+const _emptyBlock = (mixinName /*: string */) /*: Block */ => {
   return {
     name: createObject(mixinName),
     activity: undefined,
