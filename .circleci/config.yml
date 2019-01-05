@@ -1,0 +1,14 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:11.6.0
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn run lint
+      - run: yarn run flow
+      - run: |
+          yarn run build:parser
+          yarn run build:index --progress=false
+      - run: yarn run test
