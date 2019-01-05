@@ -864,3 +864,87 @@ Hide
 
   t.deepEqual(result, expected)
 })
+
+test('expand : nested mixin', (t) => {
+  const advancedScriptText = outdent`
+Hide "Gears"
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+
+    Mixin "Rarity"
+        Hide "Rare"
+            Rarity Rare
+            SetFontSize 45
+            PlayEffect Yellow Temp
+
+            Mixin "Shaper/Elder"
+                Show "Shaper"
+                    ShaperItem True
+                    SetBackgroundColor 0 0 255 200
+                    PlayEffect White
+                Show "Elder"
+                    ElderItem True
+                    SetBackgroundColor 20 20 255 200
+                    PlayEffect White
+        Hide "Magic"
+            Rarity Magic
+            SetFontSize 36
+        Hide "Normal"
+            Rarity Normal
+            SetFontSize 18
+
+   `
+
+  const expected = {
+    'No Name': outdent`
+################################################################################
+# Gears                                                                        #
+################################################################################
+# Rarity is "Rare" - Shaper/Elder is "Shaper"
+Show
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Rarity Rare
+    ShaperItem True
+    SetFontSize 45
+    PlayEffect White
+    SetBackgroundColor 0 0 255 200
+
+# Rarity is "Rare" - Shaper/Elder is "Elder"
+Show
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Rarity Rare
+    ElderItem True
+    SetFontSize 45
+    PlayEffect White
+    SetBackgroundColor 20 20 255 200
+
+# Rarity is "Rare" - Shaper/Elder is Any
+Hide
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Rarity Rare
+    DisableDropSound True
+
+# Rarity is "Magic"
+Hide
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Rarity Magic
+    DisableDropSound True
+
+# Rarity is "Normal"
+Hide
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Rarity Normal
+    DisableDropSound True
+
+# Rarity is Any
+Hide
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    DisableDropSound True
+
+
+    `,
+  }
+
+  const result = compile(advancedScriptText)
+
+  t.deepEqual(result, expected)
+})
