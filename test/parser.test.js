@@ -5,59 +5,59 @@ import { parse } from '../lib/parser'
 
 test('parse : all actions and conditions', (t) => {
   const script = outdent`
-    Show "Section1"
-        Class          "Maps"
-        BaseType       "Sacrificial Garb"
-        Prophecy       "Foo"
-        DropLevel      > 85
-        ItemLevel      >= 70
-        GemLevel       = 10
-        StackSize      < 11
-        MapTier        <= 12
-        Quality        = 15
-        LinkedSockets  = 6
-        Sockets        = 5
-        SocketGroup    RGB
-        Rarity         = Rare
-        ShaperItem     True
-        ElderItem      False
-        Corrupted      True
-        Identified     True
-        ShapedMap      True
-        Height         > 1
-        Width          > 2
-        HasExplicitMod "Piyo"
-        SetBorderColor           100 101 102
-        SetTextColor             103 104 105
-        SetBackgroundColor       106 107 108
-        SetFontSize              30
-        PlayAlertSound           1 300
-        DisableDropSound         False
-        CustomAlertSound         "C\\foobar\\sound.mp3"
-        MinimapIcon              1 Red Circle
-        PlayEffect               Red
-    Show "Section2"
-        Class          "Life Flasks" "Mana Flasks" "Hybrid Flasks"
-        BaseType       "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
-        Prophecy       "Foo" "Bar"
-        SocketGroup    W
-        Rarity         Rare
-        HasExplicitMod "Piyo" "Piyo"
-        SetBorderColor           100 101 102 200
-        SetTextColor             103 104 105 201
-        SetBackgroundColor       106 107 108 202
-        PlayAlertSoundPositional ShAlchemy 200
-        PlayEffect               Blue Temp
-    Show "Section3"
-        SetBorderColor           Negate()
-        SetTextColor             Grayscale()
-        SetBackgroundColor       Lighten(10%)
-        SetFontSize              Plus(5)
-    Show "Section4"
-        SetBorderColor           Darken(20%)
-        SetTextColor             Whiten(31%)
-        SetBackgroundColor       Blacken(100%)
-        SetFontSize              Minus(6)
+Show "Section1"
+    Class          "Maps"
+    BaseType       "Sacrificial Garb"
+    Prophecy       "Foo"
+    DropLevel      > 85
+    ItemLevel      >= 70
+    GemLevel       = 10
+    StackSize      < 11
+    MapTier        <= 12
+    Quality        = 15
+    LinkedSockets  = 6
+    Sockets        = 5
+    SocketGroup    RGB
+    Rarity         = Rare
+    ShaperItem     True
+    ElderItem      False
+    Corrupted      True
+    Identified     True
+    ShapedMap      True
+    Height         > 1
+    Width          > 2
+    HasExplicitMod "Piyo"
+    SetBorderColor           100 101 102
+    SetTextColor             103 104 105
+    SetBackgroundColor       106 107 108
+    SetFontSize              30
+    PlayAlertSound           1 300
+    DisableDropSound         False
+    CustomAlertSound         "C\\foobar\\sound.mp3"
+    MinimapIcon              1 Red Circle
+    PlayEffect               Red
+Show "Section2"
+    Class          "Life Flasks" "Mana Flasks" "Hybrid Flasks"
+    BaseType       "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Prophecy       "Foo" "Bar"
+    SocketGroup    W
+    Rarity         Rare
+    HasExplicitMod "Piyo" "Piyo"
+    SetBorderColor           100 101 102 200
+    SetTextColor             103 104 105 201
+    SetBackgroundColor       106 107 108 202
+    PlayAlertSoundPositional ShAlchemy 200
+    PlayEffect               Blue Temp
+Show "Section3"
+    SetBorderColor           Negate()
+    SetTextColor             Grayscale()
+    SetBackgroundColor       Lighten(10%)
+    SetFontSize              Plus(5)
+Show "Section4"
+    SetBorderColor           Darken(20%)
+    SetTextColor             Whiten(31%)
+    SetBackgroundColor       Blacken(100%)
+    SetFontSize              Minus(6)
 
    `
 
@@ -152,13 +152,34 @@ test('parse : all actions and conditions', (t) => {
   t.deepEqual(result, expected)
 })
 
+test('parse : empty section', (t) => {
+  const script = outdent`
+Hide "All Section"
+
+   `
+
+  const expected = [
+    {
+      name: 'All Section',
+      activity: 'Hide',
+      conditions: {},
+      actions: {},
+      mixins: [],
+    },
+  ]
+
+  const result = parse(script)
+
+  t.deepEqual(result, expected)
+})
+
 test('parse : single section', (t) => {
   const script = outdent`
-    Show "Map Section"
-        Class "Maps"
-        MapTier > 3
-        SetBorderColor 250 251 252
-        PlayAlertSound 1 300
+Show "Map Section"
+    Class "Maps"
+    MapTier > 3
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
 
    `
 
@@ -185,13 +206,14 @@ test('parse : single section', (t) => {
 
 test('parse : multi section', (t) => {
   const script = outdent`
-    Hide "Hide Map Section"
-        Class "Maps"
-        MapTier <= 4
-    Show "Flask Section"
-        Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
-        SetBorderColor 250 251 252
-        PlayAlertSound 1 300
+Hide "Hide Map Section"
+    Class "Maps"
+    MapTier <= 4
+Show "Flask Section"
+    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+Hide "Remain Section"
 
    `
 
@@ -218,6 +240,13 @@ test('parse : multi section', (t) => {
       },
       mixins: [],
     },
+    {
+      name: 'Remain Section',
+      activity: 'Hide',
+      conditions: {},
+      actions: {},
+      mixins: [],
+    },
   ]
 
   const result = parse(script)
@@ -227,17 +256,17 @@ test('parse : multi section', (t) => {
 
 test('parse : single mixin', (t) => {
   const script = outdent`
-    Show "Map Section"
-        Class "Maps"
-        MapTier > 3
-        SetBorderColor 250 251 252
-        PlayAlertSound 1 300
-        Mixin "Rarity"
-            Show "Rare"
-                Rarity Rare
-                SetBackgroundColor 255 0 0 100
-            Hide "Magic"
-                Rarity Magic
+Show "Map Section"
+    Class "Maps"
+    MapTier > 3
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+    Mixin "Rarity"
+        Show "Rare"
+            Rarity Rare
+            SetBackgroundColor 255 0 0 100
+        Hide "Magic"
+            Rarity Magic
 
    `
 
@@ -284,21 +313,21 @@ test('parse : single mixin', (t) => {
 
 test('parse : multi mixin', (t) => {
   const script = outdent`
-    Show "Map Section"
-        Class "Maps"
-        Mixin "Rarity"
-            Show "Rare"
-                Rarity Rare
-                SetBackgroundColor 255 0 0 100
-            Hide "Magic"
-                Rarity Magic
-        Mixin "Tier"
-            Show "High Tier"
-                MapTier >= 11
-                PlayAlertSound  1 300
-            Show "Middle Tier"
-                MapTier >=  6
-                PlayAlertSound 2 300
+Show "Map Section"
+    Class "Maps"
+    Mixin "Rarity"
+        Show "Rare"
+            Rarity Rare
+            SetBackgroundColor 255 0 0 100
+        Hide "Magic"
+            Rarity Magic
+    Mixin "Tier"
+        Show "High Tier"
+            MapTier >= 11
+            PlayAlertSound  1 300
+        Show "Middle Tier"
+            MapTier >=  6
+            PlayAlertSound 2 300
 
    `
 
@@ -358,21 +387,21 @@ test('parse : multi mixin', (t) => {
 
 test('parse : nested mixin', (t) => {
   const script = outdent`
-    Show "Map Section"
-        Class "Maps"
-        Mixin "Rarity"
-            Show "Rare"
-                Rarity Rare
-                SetBackgroundColor 255 0 0 100
-            Hide "Magic"
-                Rarity Magic
-                Mixin "Tier"
-                    Show "High Tier"
-                        MapTier >= 11
-                        PlayAlertSound  1 300
-                    Show "Middle Tier"
-                        MapTier >=  6
-                        PlayAlertSound 2 300
+Show "Map Section"
+    Class "Maps"
+    Mixin "Rarity"
+        Show "Rare"
+            Rarity Rare
+            SetBackgroundColor 255 0 0 100
+        Hide "Magic"
+            Rarity Magic
+            Mixin "Tier"
+                Show "High Tier"
+                    MapTier >= 11
+                    PlayAlertSound  1 300
+                Show "Middle Tier"
+                    MapTier >=  6
+                    PlayAlertSound 2 300
 
    `
 

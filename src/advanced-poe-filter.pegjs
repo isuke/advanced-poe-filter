@@ -12,7 +12,7 @@ start = script
 
 script = section*
 
-section = block
+section = block / emptyBlock
 
 block =
   activity:('Show' / 'Hide') __ name:string br
@@ -36,6 +36,10 @@ block =
 
     return { name, activity, conditions, actions, mixins: allMixins }
   }
+
+emptyBlock = activity:('Show' / 'Hide') __ name:string br {
+    return { name, activity, conditions: {}, actions: {}, mixins: [] }
+}
 
 line = line:(condition / action) br { return line }
 

@@ -190,6 +190,8 @@ Show "Flask Section"
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
+Hide "Remain Section"
+
    `
 
   const expected = {
@@ -210,6 +212,13 @@ Show
     Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
+
+
+################################################################################
+# Remain Section                                                               #
+################################################################################
+Hide
+    DisableDropSound True
 
 
     `,
