@@ -44,10 +44,10 @@ const _convertLine = (line, functionName, valueObject) => {
   const ruleName = lineMatch[1]
   const valuesStr = lineMatch[2]
 
-  const functionStrs = valuesStr.match(new RegExp(`${functionName}\\([^(|^)]+\\)`, 'g')) || []
+  const functionStrs = valuesStr.match(new RegExp(`${functionName}\\("[^(|^)]+"\\)`, 'g')) || []
 
   return functionStrs.reduce((acc, functionStr) => {
-    const match = functionStr.match(new RegExp(`${functionName}\\((.+)\\)`))
+    const match = functionStr.match(new RegExp(`${functionName}\\("(.+)"\\)`))
     return acc.replace(match[0], _convertValue(ruleName, valueObject[match[1]]))
   }, line)
 }

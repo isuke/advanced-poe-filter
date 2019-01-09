@@ -64,22 +64,22 @@ Show "Map Section"
 test('prepend : simple variables', (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
-    Class "Life Flasks" "Mana Flasks" Var(myClass1) Var(myClass2)
-    MapTier > Var(myMapTier)
-    Identified Var(myIdentified)
+    Class "Life Flasks" "Mana Flasks" Var("My Class1") Var("My Class2")
+    MapTier > Var("My Map Tier")
+    Identified Var("My Identified")
 
-    SetBorderColor Var(myBorderColor)
-    PlayAlertSound Var(myPlayAlertSoundId) 300
+    SetBorderColor Var("My BorderColor")
+    PlayAlertSound Var("My PlayAlertSoundId") 300
 
    `
 
   const variables = {
-    myClass1: 'Hybrid Flasks',
-    myClass2: 'Utility Flasks',
-    myMapTier: 3,
-    myIdentified: false,
-    myBorderColor: '250 251 252',
-    myPlayAlertSoundId: 1,
+    'My Class1': 'Hybrid Flasks',
+    'My Class2': 'Utility Flasks',
+    'My Map Tier': 3,
+    'My Identified': false,
+    'My BorderColor': '250 251 252',
+    'My PlayAlertSoundId': 1,
   }
 
   const expected = outdent`
@@ -100,18 +100,17 @@ Show "Map Section"
 test('prepend : complex variables', (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
-    Class Var(myClass) "Utility Flasks"
-    MapTier Var(myMapTier)
+    Class Var("My Class") "Utility Flasks"
+    MapTier Var("My Map Tier")
 
-    PlayAlertSound Var(myPlayAlertSound)
+    PlayAlertSound Var("My Play Alert Sound")
 
    `
 
   const variables = {
-    myClass: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
-    myMapTier: '> 3',
-    mySetBorderColor: '250 251 252',
-    myPlayAlertSound: '1 300',
+    'My Class': ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
+    'My Map Tier': '> 3',
+    'My Play Alert Sound': '1 300',
   }
 
   const expected = outdent`
@@ -130,22 +129,22 @@ Show "Map Section"
 test('prepend : simple props', (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
-    Class "Life Flasks" "Mana Flasks" Prop(myClass1) Prop(myClass2)
-    MapTier > Prop(myMapTier)
-    Identified Prop(myIdentified)
+    Class "Life Flasks" "Mana Flasks" Prop("My Class1") Prop("My Class2")
+    MapTier > Prop("My MapTier")
+    Identified Prop("My Identified")
 
-    SetBorderColor Prop(myBorderColor)
-    PlayAlertSound Prop(myPlayAlertSoundId) 300
+    SetBorderColor Prop("My BorderColor")
+    PlayAlertSound Prop("My Play Alert Sound Id") 300
 
    `
 
   const props = {
-    myClass1: 'Hybrid Flasks',
-    myClass2: 'Utility Flasks',
-    myMapTier: 3,
-    myIdentified: false,
-    myBorderColor: '250 251 252',
-    myPlayAlertSoundId: 1,
+    'My Class1': 'Hybrid Flasks',
+    'My Class2': 'Utility Flasks',
+    'My MapTier': 3,
+    'My Identified': false,
+    'My BorderColor': '250 251 252',
+    'My Play Alert Sound Id': 1,
   }
 
   const expected = outdent`

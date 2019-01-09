@@ -85,7 +85,7 @@ Show
 test('compile : single section with variables', (t) => {
   const advancedScriptText = outdent`
 Show "Flasks"
-    Class Var(myClass) "Utility Flasks"
+    Class Var("My Class") "Utility Flasks"
     Identified False
 
     SetBorderColor 250 251 252
@@ -94,7 +94,7 @@ Show "Flasks"
    `
 
   const variables = {
-    myClass: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
+    'My Class': ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
   }
 
   const expected = {
@@ -121,7 +121,7 @@ test('compile : single section with properties', (t) => {
   const advancedScriptText = outdent`
 Show "Flasks"
     Class "Utility Flasks"
-    Quality >= Prop(flaskQuality)
+    Quality >= Prop("Flask Quality")
 
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
@@ -129,9 +129,9 @@ Show "Flasks"
    `
 
   const properties = {
-    T1: { flaskQuality: 0 },
-    T2: { flaskQuality: 10 },
-    T3: { flaskQuality: 20 },
+    T1: { 'Flask Quality': 0 },
+    T2: { 'Flask Quality': 10 },
+    T3: { 'Flask Quality': 20 },
   }
 
   const expected = {
