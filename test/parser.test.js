@@ -209,10 +209,68 @@ test('parse : multi section', (t) => {
 Hide "Hide Map Section"
     Class "Maps"
     MapTier <= 4
+
 Show "Flask Section"
     Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
+
+Hide "Remain Section"
+
+   `
+
+  const expected = [
+    {
+      name: 'Hide Map Section',
+      activity: 'Hide',
+      conditions: {
+        Class: ['Maps'],
+        MapTier: '<= 4',
+      },
+      actions: {},
+      mixins: [],
+    },
+    {
+      name: 'Flask Section',
+      activity: 'Show',
+      conditions: {
+        Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
+      },
+      actions: {
+        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+        PlayAlertSound: '1 300',
+      },
+      mixins: [],
+    },
+    {
+      name: 'Remain Section',
+      activity: 'Hide',
+      conditions: {},
+      actions: {},
+      mixins: [],
+    },
+  ]
+
+  const result = parse(script)
+
+  t.deepEqual(result, expected)
+})
+
+test('parse : multi section with comments', (t) => {
+  const script = outdent`
+# This is a comment
+# This is a comment
+Hide "Hide Map Section"
+    Class "Maps"
+    MapTier <= 4
+
+# This is a comment
+Show "Flask Section"
+    # This is a comment
+    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
 Hide "Remain Section"
 
    `
@@ -261,10 +319,12 @@ Show "Map Section"
     MapTier > 3
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
+
     Mixin "Rarity"
         Show "Rare"
             Rarity Rare
             SetBackgroundColor 255 0 0 100
+
         Hide "Magic"
             Rarity Magic
 
@@ -315,16 +375,20 @@ test('parse : multi mixin', (t) => {
   const script = outdent`
 Show "Map Section"
     Class "Maps"
+
     Mixin "Rarity"
         Show "Rare"
             Rarity Rare
             SetBackgroundColor 255 0 0 100
+
         Hide "Magic"
             Rarity Magic
+
     Mixin "Tier"
         Show "High Tier"
             MapTier >= 11
             PlayAlertSound  1 300
+
         Show "Middle Tier"
             MapTier >=  6
             PlayAlertSound 2 300
@@ -389,16 +453,20 @@ test('parse : nested mixin', (t) => {
   const script = outdent`
 Show "Map Section"
     Class "Maps"
+
     Mixin "Rarity"
         Show "Rare"
             Rarity Rare
             SetBackgroundColor 255 0 0 100
+
         Hide "Magic"
             Rarity Magic
+
             Mixin "Tier"
                 Show "High Tier"
                     MapTier >= 11
                     PlayAlertSound  1 300
+
                 Show "Middle Tier"
                     MapTier >=  6
                     PlayAlertSound 2 300

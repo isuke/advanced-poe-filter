@@ -15,12 +15,16 @@ script = section*
 section = block / emptyBlock
 
 block =
+  blankline*
   activity:('Show' / 'Hide') __ name:string br
+  blankline*
   INDENT
     line0:line
-    lines:(SAMEDENT line)*
+    blankline*
+    lines:(SAMEDENT line blankline*)*
     mixins:(SAMEDENT mixin)*
-  OUTDENT {
+  OUTDENT
+  blankline* {
     let conditions = {};
     let actions = {};
 
@@ -37,14 +41,19 @@ block =
     return { name, activity, conditions, actions, mixins: allMixins }
   }
 
-emptyBlock = activity:('Show' / 'Hide') __ name:string br {
+emptyBlock =
+  blankline*
+  activity:('Show' / 'Hide') __ name:string br
+  blankline* {
     return { name, activity, conditions: {}, actions: {}, mixins: [] }
-}
+  }
 
 line = line:(condition / action) br { return line }
 
 mixin =
+  blankline*
   'Mixin' __ name:string br
+  blankline*
   INDENT
     block0:block
     blocks:(SAMEDENT block)*
@@ -52,6 +61,9 @@ mixin =
     let allBlocks = [block0].concat(blocks.map(b => b[1]))
     return { name, blocks: allBlocks }
   }
+
+blankline = br / commentline
+commentline = _* '#' [^\n]* br
 
 //
 // Condition

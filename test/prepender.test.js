@@ -20,37 +20,7 @@ Show "Map Section"
     Class "Maps"
     MapTier > 3
     Identified False
-    SetBorderColor 250 251 252
-    PlayAlertSound 1 300
 
-  `
-
-  const result = prepend(advancedScriptText)
-
-  t.is(result, expected)
-})
-
-test('prepend : remove comments and blankLines', (t) => {
-  const advancedScriptText = outdent`
-# This is Comment
-# This is Comment
-
-Show "Map Section"
-    Class "Maps"
-    MapTier > 3
-    Identified False
-
-    # This is Comment
-    SetBorderColor 250 251 252
-    PlayAlertSound 1 300
-
-   `
-
-  const expected = outdent`
-Show "Map Section"
-    Class "Maps"
-    MapTier > 3
-    Identified False
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
 
@@ -87,6 +57,7 @@ Show "Map Section"
     Class "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
     MapTier > 3
     Identified False
+
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
 
@@ -117,6 +88,7 @@ Show "Map Section"
 Show "Map Section"
     Class "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
     MapTier > 3
+
     PlayAlertSound 1 300
 
   `
@@ -152,6 +124,7 @@ Show "Map Section"
     Class "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
     MapTier > 3
     Identified False
+
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
 

@@ -2,23 +2,9 @@ import { toUpperFirstChar } from '../src/utils'
 
 const prepend = (advancedScriptText, variables = {}, props = {}) => {
   let result = advancedScriptText
-  result = _removeComments(result)
-  result = _removeBlankLines(result)
   result = _replaceVariables(result, variables)
   result = _replaceProps(result, props)
   return result
-}
-
-const _removeComments = (advancedScriptText) => {
-  return advancedScriptText.replace(/ *#.*\n/g, '')
-}
-
-const _removeBlankLines = (advancedScriptText) => {
-  return advancedScriptText
-    .split('\n')
-    .filter((a) => a)
-    .map((a) => `${a}\n`)
-    .join('')
 }
 
 const _replaceVariables = (advancedScriptText, variables) => {
