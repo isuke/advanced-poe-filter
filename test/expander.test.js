@@ -13,7 +13,7 @@ test('expand : single section', (t) => {
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-        PlayAlertSound: '1 300',
+        PlayAlertSound: { id: '1', volume: 300 },
       },
       mixins: [],
     },
@@ -32,7 +32,7 @@ test('expand : single section', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
       ],
@@ -64,7 +64,7 @@ test('expand : multi section', (t) => {
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-        PlayAlertSound: '1 300',
+        PlayAlertSound: { id: '1', volume: 300 },
       },
       mixins: [],
     },
@@ -96,7 +96,7 @@ test('expand : multi section', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
       ],
@@ -119,7 +119,7 @@ test('expand : single mixin', (t) => {
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-        PlayAlertSound: '1 300',
+        PlayAlertSound: { id: '1', volume: 300 },
       },
       mixins: [
         {
@@ -159,7 +159,7 @@ test('expand : single mixin', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
           },
         },
@@ -173,7 +173,7 @@ test('expand : single mixin', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
         {
@@ -185,7 +185,7 @@ test('expand : single mixin', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
       ],
@@ -231,14 +231,14 @@ test('expand : multi mixin', (t) => {
               name: 'High Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 11' },
-              actions: { PlayAlertSound: '1 300' },
+              actions: { PlayAlertSound: { id: '1', volume: 300 } },
               mixins: [],
             },
             {
               name: 'Middle Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 6' },
-              actions: { PlayAlertSound: '2 300' },
+              actions: { PlayAlertSound: { id: '2', volume: 300 } },
               mixins: [],
             },
           ],
@@ -262,7 +262,7 @@ test('expand : multi mixin', (t) => {
           },
           actions: {
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
         {
@@ -275,7 +275,7 @@ test('expand : multi mixin', (t) => {
           },
           actions: {
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
-            PlayAlertSound: '2 300',
+            PlayAlertSound: { id: '2', volume: 300 },
           },
         },
         {
@@ -300,7 +300,7 @@ test('expand : multi mixin', (t) => {
             MapTier: '>= 11',
           },
           actions: {
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
         {
@@ -312,7 +312,7 @@ test('expand : multi mixin', (t) => {
             MapTier: '>= 6',
           },
           actions: {
-            PlayAlertSound: '2 300',
+            PlayAlertSound: { id: '2', volume: 300 },
           },
         },
         {
@@ -334,7 +334,7 @@ test('expand : multi mixin', (t) => {
             MapTier: '>= 11',
           },
           actions: {
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
         {
@@ -345,7 +345,7 @@ test('expand : multi mixin', (t) => {
             MapTier: '>= 6',
           },
           actions: {
-            PlayAlertSound: '2 300',
+            PlayAlertSound: { id: '2', volume: 300 },
           },
         },
         {
@@ -398,14 +398,14 @@ test('expand : nested mixin', (t) => {
                       name: 'High Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 11' },
-                      actions: { PlayAlertSound: '1 300' },
+                      actions: { PlayAlertSound: { id: '1', volume: 300 } },
                       mixins: [],
                     },
                     {
                       name: 'Middle Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 6' },
-                      actions: { PlayAlertSound: '2 300' },
+                      actions: { PlayAlertSound: { id: '2', volume: 300 } },
                       mixins: [],
                     },
                   ],
@@ -446,7 +446,7 @@ test('expand : nested mixin', (t) => {
           },
           actions: {
             SetBackgroundColor: { rb: { r: 255, g: 10, b: 0 }, alpha: 100 },
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
         {
@@ -459,7 +459,7 @@ test('expand : nested mixin', (t) => {
           },
           actions: {
             SetBackgroundColor: { rb: { r: 255, g: 10, b: 0 }, alpha: 100 },
-            PlayAlertSound: '2 300',
+            PlayAlertSound: { id: '2', volume: 300 },
           },
         },
         {

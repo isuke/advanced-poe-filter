@@ -174,7 +174,7 @@ actionFunctionMinus = name:'Minus' '(' num:num ')' &{ return 0 <= num && num <= 
 // Action Values
 actionValueColor = color / actionFunctionColor
 actionValueFontSize = fontSize / actionFunctionFontSize
-actionValueSound = id:soundId __ volume:soundVolume { return `${id} ${volume}` }
+actionValueSound = id:soundId volume:(__ soundVolume)? { return { id, volume: volume ? parseInt(volume[1], 10) : 150 } }
 actionValueBoolean = boolean
 actionValueFilePath = string
 actionValueMinimapIcon = size:minimapIconSize __ color:minimapIconColor __ shape:minimapIconShape { return `${size} ${color} ${shape}` }

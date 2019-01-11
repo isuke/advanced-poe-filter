@@ -46,18 +46,20 @@ Show "Section2"
     SetBorderColor           100 101 102 200
     SetTextColor             103 104 105 201
     SetBackgroundColor       106 107 108 202
-    PlayAlertSoundPositional ShAlchemy 200
+    PlayAlertSound           2
     PlayEffect               Blue Temp
 Show "Section3"
     SetBorderColor           Negate()
     SetTextColor             Grayscale()
     SetBackgroundColor       Lighten(10%)
     SetFontSize              Plus(5)
+    PlayAlertSoundPositional ShAlchemy 200
 Show "Section4"
     SetBorderColor           Darken(20%)
     SetTextColor             Whiten(31%)
     SetBackgroundColor       Blacken(100%)
     SetFontSize              Minus(6)
+    PlayAlertSoundPositional ShBlessed
 
    `
 
@@ -93,7 +95,7 @@ Show "Section4"
         SetTextColor: { rgb: { r: 103, g: 104, b: 105 }, alpha: 255 },
         SetBackgroundColor: { rgb: { r: 106, g: 107, b: 108 }, alpha: 255 },
         SetFontSize: 30,
-        PlayAlertSound: '1 300',
+        PlayAlertSound: { id: '1', volume: 300 },
         DisableDropSound: false,
         CustomAlertSound: 'C\\foobar\\sound.mp3',
         MinimapIcon: '1 Red Circle',
@@ -116,7 +118,7 @@ Show "Section4"
         SetBorderColor: { rgb: { r: 100, g: 101, b: 102 }, alpha: 200 },
         SetTextColor: { rgb: { r: 103, g: 104, b: 105 }, alpha: 201 },
         SetBackgroundColor: { rgb: { r: 106, g: 107, b: 108 }, alpha: 202 },
-        PlayAlertSoundPositional: 'ShAlchemy 200',
+        PlayAlertSound: { id: '2', volume: 150 },
         PlayEffect: 'Blue Temp',
       },
       mixins: [],
@@ -130,6 +132,7 @@ Show "Section4"
         SetTextColor: { function: 'Grayscale', val: undefined },
         SetBackgroundColor: { function: 'Lighten', val: 0.1 },
         SetFontSize: { function: 'Plus', val: 5 },
+        PlayAlertSoundPositional: { id: 'ShAlchemy', volume: 200 },
       },
       mixins: [],
     },
@@ -142,6 +145,7 @@ Show "Section4"
         SetTextColor: { function: 'Whiten', val: 0.31 },
         SetBackgroundColor: { function: 'Blacken', val: 1 },
         SetFontSize: { function: 'Minus', val: 6 },
+        PlayAlertSoundPositional: { id: 'ShBlessed', volume: 150 },
       },
       mixins: [],
     },
@@ -193,7 +197,7 @@ Show "Map Section"
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-        PlayAlertSound: '1 300',
+        PlayAlertSound: { id: '1', volume: 300 },
       },
       mixins: [],
     },
@@ -238,7 +242,7 @@ Hide "Remain Section"
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-        PlayAlertSound: '1 300',
+        PlayAlertSound: { id: '1', volume: 300 },
       },
       mixins: [],
     },
@@ -294,7 +298,7 @@ Hide "Remain Section"
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-        PlayAlertSound: '1 300',
+        PlayAlertSound: { id: '1', volume: 300 },
       },
       mixins: [],
     },
@@ -340,7 +344,7 @@ Show "Map Section"
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-        PlayAlertSound: '1 300',
+        PlayAlertSound: { id: '1', volume: 300 },
       },
       mixins: [
         {
@@ -428,14 +432,14 @@ Show "Map Section"
               name: 'High Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 11' },
-              actions: { PlayAlertSound: '1 300' },
+              actions: { PlayAlertSound: { id: '1', volume: 300 } },
               mixins: [],
             },
             {
               name: 'Middle Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 6' },
-              actions: { PlayAlertSound: '2 300' },
+              actions: { PlayAlertSound: { id: '2', volume: 300 } },
               mixins: [],
             },
           ],
@@ -503,14 +507,14 @@ Show "Map Section"
                       name: 'High Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 11' },
-                      actions: { PlayAlertSound: '1 300' },
+                      actions: { PlayAlertSound: { id: '1', volume: 300 } },
                       mixins: [],
                     },
                     {
                       name: 'Middle Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 6' },
-                      actions: { PlayAlertSound: '2 300' },
+                      actions: { PlayAlertSound: { id: '2', volume: 300 } },
                       mixins: [],
                     },
                   ],

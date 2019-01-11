@@ -37,7 +37,7 @@ Show "Map Section"
             },
             actions: {
               SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-              PlayAlertSound: '1 300',
+              PlayAlertSound: { id: '1', volume: 300 },
             },
           },
         ],

@@ -101,6 +101,9 @@ const _generateAction = (actionVal, actionKey) => {
     case 'SetTextColor':
     case 'SetBackgroundColor':
       return `    ${actionKey} ${Math.round(actionVal.rgb.r)} ${Math.round(actionVal.rgb.g)} ${Math.round(actionVal.rgb.b)} ${Math.round(actionVal.alpha)}\n`
+    case 'PlayAlertSound':
+    case 'PlayAlertSoundPositional':
+      return `    ${actionKey} ${actionVal.id} ${actionVal.volume}\n`
     case 'DisableDropSound':
       return `    ${actionKey} ${toUpperFirstChar(actionVal)}\n`
     default:

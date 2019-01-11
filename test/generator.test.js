@@ -18,7 +18,7 @@ test('generate : single section', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
       ],
@@ -77,7 +77,7 @@ test('generate : multi section', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
       ],
@@ -132,7 +132,7 @@ test('generate : multi block', (t) => {
           },
           actions: {
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
         {
@@ -145,7 +145,7 @@ test('generate : multi block', (t) => {
           },
           actions: {
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
-            PlayAlertSound: '2 300',
+            PlayAlertSound: { id: '2', volume: 300 },
           },
         },
         {
@@ -170,7 +170,7 @@ test('generate : multi block', (t) => {
             MapTier: '>= 11',
           },
           actions: {
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
         {
@@ -182,7 +182,7 @@ test('generate : multi block', (t) => {
             MapTier: '>= 6',
           },
           actions: {
-            PlayAlertSound: '2 300',
+            PlayAlertSound: { id: '2', volume: 300 },
           },
         },
         {
@@ -204,7 +204,7 @@ test('generate : multi block', (t) => {
             MapTier: '>= 11',
           },
           actions: {
-            PlayAlertSound: '1 300',
+            PlayAlertSound: { id: '1', volume: 300 },
           },
         },
         {
@@ -215,7 +215,7 @@ test('generate : multi block', (t) => {
             MapTier: '>= 6',
           },
           actions: {
-            PlayAlertSound: '2 300',
+            PlayAlertSound: { id: '2', volume: 300 },
           },
         },
         {
