@@ -5,6 +5,10 @@ import generate from '../src/generator'
 
 import { forIn, mapVals } from '../src/utils'
 
+import pk from '../package.json'
+
+const version = pk.version
+
 const getObject = (advancedScriptText, variables = {}, properties = {}) => {
   let result = {}
   if (Object.keys(properties).length === 0) {
@@ -18,7 +22,9 @@ const getObject = (advancedScriptText, variables = {}, properties = {}) => {
 }
 
 const compile = (advancedScriptText, variables = {}, properties = {}) => {
-  return mapVals(getObject(advancedScriptText, variables, properties), (val, _key) => generate(val))
+  return mapVals(getObject(advancedScriptText, variables, properties), (val, key) => {
+    return key === 'No Name' ? generate(val, version) : generate(val, version, key)
+  })
 }
 
-export { getObject, compile }
+export { version, getObject, compile }

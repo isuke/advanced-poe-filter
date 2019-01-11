@@ -27,6 +27,12 @@ test('generate : single section', (t) => {
 
   const expected = outdent`
 ################################################################################
+#                                                                              #
+# Created By Advanced PoE Filter (Ver: 0.0.1)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
 # Map Section                                                                  #
 ################################################################################
 Show
@@ -39,7 +45,7 @@ Show
 
   `
 
-  const result = generate(scriptObject)
+  const result = generate(scriptObject, '0.0.1')
 
   t.is(result, expected)
 })
@@ -80,6 +86,12 @@ test('generate : multi section', (t) => {
 
   const expected = outdent`
 ################################################################################
+#                                                                              #
+# Created By Advanced PoE Filter (Ver: 0.0.1)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
 # Hide Map Section                                                             #
 ################################################################################
 Hide
@@ -99,7 +111,7 @@ Show
 
   `
 
-  const result = generate(scriptObject)
+  const result = generate(scriptObject, '0.0.1')
 
   t.is(result, expected)
 })
@@ -220,6 +232,12 @@ test('generate : multi block', (t) => {
 
   const expected = outdent`
 ################################################################################
+#                                                                              #
+# Created By Advanced PoE Filter (Ver: 0.0.1)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
 # Map Section                                                                  #
 ################################################################################
 # Rarity is "Rare" - Tier is "High Tier"
@@ -283,7 +301,7 @@ Show
 
   `
 
-  const result = generate(scriptObject)
+  const result = generate(scriptObject, '0.0.1')
 
   t.is(result, expected)
 })
