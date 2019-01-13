@@ -152,6 +152,8 @@ actionPlayEffect               = attr:'PlayEffect'               __ val:actionVa
 actionFunctionColor =
     actionFunctionNegate
   / actionFunctionGrayscale
+  / actionFunctionSaturate
+  / actionFunctionDesaturate
   / actionFunctionLighten
   / actionFunctionDarken
   / actionFunctionWhiten
@@ -159,10 +161,12 @@ actionFunctionColor =
 
 actionFunctionNegate     = name:'Negate'    '()' { return { function: name, val: undefined } }
 actionFunctionGrayscale  = name:'Grayscale' '()' { return { function: name, val: undefined } }
-actionFunctionLighten    = name:'Lighten'   '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
-actionFunctionDarken     = name:'Darken'    '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
-actionFunctionWhiten     = name:'Whiten'    '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
-actionFunctionBlacken    = name:'Blacken'   '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
+actionFunctionSaturate   = name:'Saturate'   '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
+actionFunctionDesaturate = name:'Desaturate' '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
+actionFunctionLighten    = name:'Lighten'    '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
+actionFunctionDarken     = name:'Darken'     '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
+actionFunctionWhiten     = name:'Whiten'     '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
+actionFunctionBlacken    = name:'Blacken'    '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
 
 actionFunctionFontSize =
     actionFunctionPlus

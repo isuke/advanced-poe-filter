@@ -60,6 +60,9 @@ Show "Section4"
     SetBackgroundColor       Blacken(100%)
     SetFontSize              Minus(6)
     PlayAlertSoundPositional ShBlessed
+Show "Section5"
+    SetBorderColor           Saturate(42%)
+    SetTextColor             Desaturate(53%)
 
    `
 
@@ -146,6 +149,16 @@ Show "Section4"
         SetBackgroundColor: { function: 'Blacken', val: 1 },
         SetFontSize: { function: 'Minus', val: 6 },
         PlayAlertSoundPositional: { id: 'ShBlessed', volume: 150 },
+      },
+      mixins: [],
+    },
+    {
+      name: 'Section5',
+      activity: 'Show',
+      conditions: {},
+      actions: {
+        SetBorderColor: { function: 'Saturate', val: 0.42 },
+        SetTextColor: { function: 'Desaturate', val: 0.53 },
       },
       mixins: [],
     },
