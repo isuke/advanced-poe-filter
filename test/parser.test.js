@@ -63,6 +63,10 @@ Show "Section4"
 Show "Section5"
     SetBorderColor           Saturate(42%)
     SetTextColor             Desaturate(53%)
+    SetBackgroundColor       Hex(123)
+Show "Section6"
+    SetBorderColor           Saturation(64%)
+    SetTextColor             Lightness(75%)
 
    `
 
@@ -159,6 +163,17 @@ Show "Section5"
       actions: {
         SetBorderColor: { function: 'Saturate', val: 0.42 },
         SetTextColor: { function: 'Desaturate', val: 0.53 },
+        SetBackgroundColor: { function: 'Hex', val: 123 },
+      },
+      mixins: [],
+    },
+    {
+      name: 'Section6',
+      activity: 'Show',
+      conditions: {},
+      actions: {
+        SetBorderColor: { function: 'Saturationv', val: 64 },
+        SetTextColor: { function: 'Lightness', val: 75 },
       },
       mixins: [],
     },
