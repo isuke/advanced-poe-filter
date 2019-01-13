@@ -692,6 +692,7 @@ Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
     DisableDropSound True
+    SetFontSize 36
 
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
@@ -820,6 +821,7 @@ Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
     DisableDropSound True
+    SetFontSize 18
 
 # Rarity is Any - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
@@ -998,18 +1000,21 @@ Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
     DisableDropSound True
+    SetFontSize 45
 
 # Rarity is "Magic"
 Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
     DisableDropSound True
+    SetFontSize 36
 
 # Rarity is "Normal"
 Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
     DisableDropSound True
+    SetFontSize 18
 
 # Rarity is Any
 Hide

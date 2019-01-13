@@ -1,4 +1,4 @@
-import { forIn, mapObject, toUpperFirstChar } from '../src/utils'
+import { forIn, assignImmutable, mapObject, toUpperFirstChar } from '../src/utils'
 
 const generate = (scriptObject, version = '', scriptName = '') => {
   return scriptObject.reduce((acc, sectionObject, i) => {
@@ -89,10 +89,23 @@ const _generateActions = (blockObject) => {
       return _generateAction(val, key)
     }).join('')
   } else {
-    return mapObject({ DisableDropSound: true }, (val, key) => {
+    return mapObject(_createHideActions(blockObject.actions), (val, key) => {
       return _generateAction(val, key)
     }).join('')
   }
+}
+
+const _createHideActions = (actions) => {
+  const hideDefaultActions = {
+    DisableDropSound: true,
+  }
+  let result = assignImmutable(hideDefaultActions, actions)
+  delete result.PlayAlertSound
+  delete result.PlayAlertSoundPositional
+  delete result.CustomAlertSound
+  delete result.MinimapIcon
+  delete result.PlayEffect
+  return result
 }
 
 const _generateAction = (actionVal, actionKey) => {

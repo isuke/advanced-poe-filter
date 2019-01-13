@@ -62,7 +62,10 @@ test('generate : multi section', (t) => {
             Class: ['Maps'],
             MapTier: '<= 4',
           },
-          actions: {},
+          actions: {
+            SetFontSize: 38,
+            PlayAlertSound: { id: 1, volume: 300 },
+          },
         },
       ],
     },
@@ -98,6 +101,7 @@ Hide
     Class "Maps"
     MapTier <= 4
     DisableDropSound True
+    SetFontSize 38
 
 
 ################################################################################
