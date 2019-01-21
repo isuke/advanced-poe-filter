@@ -114,6 +114,18 @@ const _mergeActions = (root /*: object */, ...others /*: Array<object> */) /*: o
             result[key] = Math.min(Math.max(val1 + val2, 18), 45)
           }
           break
+        case 'PlayAlertSound':
+          delete result.PlayAlertSoundPositional
+          delete result.CustomAlertSound
+          break
+        case 'PlayAlertSoundPositional':
+          delete result.PlayAlertSound
+          delete result.CustomAlertSound
+          break
+        case 'CustomAlertSound':
+          delete result.PlayAlertSound
+          delete result.PlayAlertSoundPositional
+          break
       }
     })
   })

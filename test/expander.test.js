@@ -119,7 +119,7 @@ test('expand : single mixin', (t) => {
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-        PlayAlertSound: { id: '1', volume: 300 },
+        PlayAlertSoundPositional: { id: '1', volume: 300 },
       },
       mixins: [
         {
@@ -129,7 +129,10 @@ test('expand : single mixin', (t) => {
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
-              actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
+              actions: {
+                SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
+                PlayAlertSound: { id: '2', volume: 300 },
+              },
               mixins: [],
             },
             {
@@ -159,7 +162,7 @@ test('expand : single mixin', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            PlayAlertSound: { id: '1', volume: 300 },
+            PlayAlertSound: { id: '2', volume: 300 },
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
           },
         },
@@ -173,7 +176,7 @@ test('expand : single mixin', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            PlayAlertSound: { id: '1', volume: 300 },
+            PlayAlertSoundPositional: { id: '1', volume: 300 },
           },
         },
         {
@@ -185,7 +188,7 @@ test('expand : single mixin', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            PlayAlertSound: { id: '1', volume: 300 },
+            PlayAlertSoundPositional: { id: '1', volume: 300 },
           },
         },
       ],
