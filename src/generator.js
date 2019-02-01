@@ -1,16 +1,18 @@
 import { forIn, assignImmutable, mapObject, toUpperFirstChar } from '../src/utils'
 
-const generate = (scriptObject, version = '', scriptName = '') => {
+const generate = (scriptObject, version = '', scriptName = '', filterName = '') => {
   return scriptObject.reduce((acc, sectionObject, i) => {
     return acc + _generateSection(sectionObject, i === scriptObject.length - 1)
-  }, _generateHeader(version, scriptName))
+  }, _generateHeader(version, scriptName, filterName))
 }
 
-const _generateHeader = (version, scriptName) => {
+const _generateHeader = (version, scriptName, filterName) => {
+  const name = `${filterName}${scriptName ? ` (${scriptName})` : ''}`
+
   let result = ''
   result += `${'#'.repeat(80)}\n`
   result += `#${' '.repeat(78)}#\n`
-  if (scriptName) result += `# ${scriptName} ${' '.repeat(80 - scriptName.length - 5)} #\n`
+  if (name) result += `# ${name} ${' '.repeat(80 - name.length - 5)} #\n`
   result += `# Created By Advanced PoE Filter (Ver: ${version}) ${' '.repeat(33)}#\n`
   result += `#${' '.repeat(78)}#\n`
   result += `${'#'.repeat(80)}\n`

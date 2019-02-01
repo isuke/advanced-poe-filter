@@ -9,7 +9,7 @@ import pk from '../package.json'
 
 const version = pk.version
 
-const getObject = (advancedScriptText, variables = {}, properties = {}) => {
+const getObject = (advancedScriptText, variables = {}, properties = {}, _name = '') => {
   let result = {}
   if (Object.keys(properties).length === 0) {
     result['No Name'] = expand(parse(prepend(advancedScriptText, variables)))
@@ -21,9 +21,9 @@ const getObject = (advancedScriptText, variables = {}, properties = {}) => {
   return result
 }
 
-const compile = (advancedScriptText, variables = {}, properties = {}) => {
+const compile = (advancedScriptText, variables = {}, properties = {}, name = '') => {
   return mapVals(getObject(advancedScriptText, variables, properties), (val, key) => {
-    return key === 'No Name' ? generate(val, version) : generate(val, version, key)
+    return key === 'No Name' ? generate(val, version, '', name) : generate(val, version, key, name)
   })
 }
 

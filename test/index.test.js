@@ -150,11 +150,13 @@ Show "Flasks"
     T3: { 'Flask Quality': 20 },
   }
 
+  const name = 'My Filter'
+
   const expected = {
     T1: outdent`
 ################################################################################
 #                                                                              #
-# T1                                                                           #
+# My Filter (T1)                                                               #
 # Created By Advanced PoE Filter (Ver: 0.0.1)                                  #
 #                                                                              #
 ################################################################################
@@ -173,7 +175,7 @@ Show
     T2: outdent`
 ################################################################################
 #                                                                              #
-# T2                                                                           #
+# My Filter (T2)                                                               #
 # Created By Advanced PoE Filter (Ver: 0.0.1)                                  #
 #                                                                              #
 ################################################################################
@@ -192,7 +194,7 @@ Show
     T3: outdent`
 ################################################################################
 #                                                                              #
-# T3                                                                           #
+# My Filter (T3)                                                               #
 # Created By Advanced PoE Filter (Ver: 0.0.1)                                  #
 #                                                                              #
 ################################################################################
@@ -210,7 +212,7 @@ Show
     `,
   }
 
-  const result = compile(advancedScriptText, {}, properties)
+  const result = compile(advancedScriptText, {}, properties, name)
 
   t.deepEqual(result, expected)
 })
