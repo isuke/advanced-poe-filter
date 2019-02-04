@@ -4,7 +4,7 @@ import outdent from 'outdent'
 import { getObject, compile, version } from '../src/index'
 
 test('version', (t) => {
-  t.is(version, '0.2.0')
+  t.is(version, '0.2.1')
 })
 
 test('getObject : single section', (t) => {
@@ -77,7 +77,7 @@ Show "Map Section"
     'No Name': outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.2.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.2.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -121,7 +121,7 @@ Show "Flasks"
     'No Name': outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.2.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.2.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -167,7 +167,7 @@ Show "Flasks"
 ################################################################################
 #                                                                              #
 # My Filter (T1)                                                               #
-# Created By Advanced PoE Filter (Ver: 0.2.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.2.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -186,7 +186,7 @@ Show
 ################################################################################
 #                                                                              #
 # My Filter (T2)                                                               #
-# Created By Advanced PoE Filter (Ver: 0.2.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.2.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -205,7 +205,7 @@ Show
 ################################################################################
 #                                                                              #
 # My Filter (T3)                                                               #
-# Created By Advanced PoE Filter (Ver: 0.2.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.2.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -247,7 +247,7 @@ Hide "Remain Section"
     'No Name': outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.2.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.2.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -307,7 +307,7 @@ Show "Map Section"
     'No Name': outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.2.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.2.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -357,7 +357,7 @@ Show "Map Section"
     'No Name': outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.2.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.2.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -441,7 +441,7 @@ Hide "Gears"
     'No Name': outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.2.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.2.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -982,7 +982,7 @@ Hide "Gears"
     'No Name': outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.2.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.2.1)                                  #
 #                                                                              #
 ################################################################################
 
