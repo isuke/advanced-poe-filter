@@ -34,7 +34,7 @@ Show "Section1"
     PlayAlertSound           1 300
     DisableDropSound         False
     CustomAlertSound         "C\\foobar\\sound.mp3"
-    MinimapIcon              1 Red Circle
+    MinimapIcon              0 Red Circle
     PlayEffect               Red
 Show "Section2"
     Class          "Life Flasks" "Mana Flasks" "Hybrid Flasks"
@@ -47,6 +47,7 @@ Show "Section2"
     SetTextColor             103 104 105 201
     SetBackgroundColor       106 107 108 202
     PlayAlertSound           2
+    MinimapIcon              Medium Red Circle
     PlayEffect               Blue Temp
 Show "Section3"
     SetBorderColor           Negate()
@@ -105,7 +106,7 @@ Show "Section6"
         PlayAlertSound: { id: '1', volume: 300 },
         DisableDropSound: false,
         CustomAlertSound: 'C\\foobar\\sound.mp3',
-        MinimapIcon: '1 Red Circle',
+        MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
         PlayEffect: 'Red',
       },
       mixins: [],
@@ -126,6 +127,7 @@ Show "Section6"
         SetTextColor: { rgb: { r: 103, g: 104, b: 105 }, alpha: 201 },
         SetBackgroundColor: { rgb: { r: 106, g: 107, b: 108 }, alpha: 202 },
         PlayAlertSound: { id: '2', volume: 150 },
+        MinimapIcon: { size: 'Medium', color: 'Red', shape: 'Circle' },
         PlayEffect: 'Blue Temp',
       },
       mixins: [],

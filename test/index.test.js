@@ -19,6 +19,8 @@ Show "Map Section"
     # This is Comment
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
+    MinimapIcon Medium Red Circle
+
 
    `
 
@@ -38,6 +40,7 @@ Show "Map Section"
             actions: {
               SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
               PlayAlertSound: { id: '1', volume: 300 },
+              MinimapIcon: { size: 'Medium', color: 'Red', shape: 'Circle' },
             },
           },
         ],
@@ -62,6 +65,8 @@ Show "Map Section"
     # This is Comment
     SetBorderColor 250 251 252
     PlayAlertSound 1 300
+    MinimapIcon Medium Red Circle
+
 
    `
 
@@ -82,6 +87,7 @@ Show
     Identified False
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
+    MinimapIcon 1 Red Circle
 
 
     `,

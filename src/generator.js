@@ -121,6 +121,16 @@ const _generateAction = (actionVal, actionKey) => {
       return `    ${actionKey} ${actionVal.id} ${actionVal.volume}\n`
     case 'DisableDropSound':
       return `    ${actionKey} ${toUpperFirstChar(actionVal)}\n`
+    case 'MinimapIcon':
+      switch (actionVal.size) {
+        case 'Largest':
+          return `    ${actionKey} 0 ${actionVal.color} ${actionVal.shape}\n`
+        case 'Medium':
+          return `    ${actionKey} 1 ${actionVal.color} ${actionVal.shape}\n`
+        case 'Small':
+          return `    ${actionKey} 2 ${actionVal.color} ${actionVal.shape}\n`
+      }
+      break
     default:
       return `    ${actionKey} ${actionVal}\n`
   }

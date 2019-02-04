@@ -187,7 +187,7 @@ actionValueFontSize = fontSize / actionFunctionFontSize
 actionValueSound = id:soundId volume:(__ soundVolume)? { return { id, volume: volume ? parseInt(volume[1], 10) : 150 } }
 actionValueBoolean = boolean
 actionValueFilePath = string
-actionValueMinimapIcon = size:minimapIconSize __ color:minimapIconColor __ shape:minimapIconShape { return `${size} ${color} ${shape}` }
+actionValueMinimapIcon = size:minimapIconSize __ color:minimapIconColor __ shape:minimapIconShape { return { size, color, shape } }
 actionValuePlayEffect = color:playEffectColor temp:(__ 'Temp')? { return temp ? `${color} Temp` : `${color}` }
 
 //
@@ -200,7 +200,18 @@ rarity = 'Normal' / 'Magic' / 'Rare' / 'Unique'
 socketRGBW = $('R'* $'G'* $'B'* $'W'*)
 rgbaNum = num:num &{ return 0 <= num && num <= 255 } { return num }
 fontSize = num:num &{ return 18 <= num && num <= 45 } { return num }
-minimapIconSize = '0' / '1' / '2'
+minimapIconSize = val:('0' / '1' / '2' / 'Largest' / 'Medium' / 'Small') {
+  switch (val) {
+      case '0':
+        return 'Largest'
+      case '1':
+        return 'Medium'
+      case '2':
+        return 'Small'
+      default:
+        return val
+    }
+  }
 minimapIconColor = 'Red' / 'Green' / 'Blue' / 'Brown' / 'White' / 'Yellow'
 minimapIconShape = 'Circle' / 'Diamond' / 'Hexagon' / 'Square' / 'Star' / 'Triangle'
 playEffectColor = 'Red' / 'Green' / 'Blue' / 'Brown' / 'White' / 'Yellow'
