@@ -131,6 +131,12 @@ const _generateAction = (actionVal, actionKey) => {
           return `    ${actionKey} 2 ${actionVal.color} ${actionVal.shape}\n`
       }
       break
+    case 'PlayEffect':
+      if (actionVal.temp) {
+        return `    ${actionKey} ${actionVal.color} Temp\n`
+      } else {
+        return `    ${actionKey} ${actionVal.color}\n`
+      }
     default:
       return `    ${actionKey} ${actionVal}\n`
   }

@@ -20,6 +20,7 @@ test('generate : single section', (t) => {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
             PlayAlertSound: { id: '1', volume: 300 },
             MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
+            PlayEffect: { color: 'Blue', temp: true },
           },
         },
       ],
@@ -43,6 +44,7 @@ Show
     SetBorderColor 250 126 107 255
     PlayAlertSound 1 300
     MinimapIcon 0 Red Circle
+    PlayEffect Blue Temp
 
 
   `

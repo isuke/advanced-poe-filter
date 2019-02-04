@@ -188,7 +188,7 @@ actionValueSound = id:soundId volume:(__ soundVolume)? { return { id, volume: vo
 actionValueBoolean = boolean
 actionValueFilePath = string
 actionValueMinimapIcon = size:minimapIconSize __ color:minimapIconColor __ shape:minimapIconShape { return { size, color, shape } }
-actionValuePlayEffect = color:playEffectColor temp:(__ 'Temp')? { return temp ? `${color} Temp` : `${color}` }
+actionValuePlayEffect = color:playEffectColor temp:(__ 'Temp')? { return temp ? { color, temp: true } : { color, temp: false } }
 
 //
 // Value
