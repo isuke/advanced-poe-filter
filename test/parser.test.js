@@ -3,6 +3,62 @@ import outdent from 'outdent'
 
 import { parse } from '../lib/parser'
 
+test('parse : blank and comment lines', (t) => {
+  const script = [
+    '# This is a comment',
+    '# This is a comment',
+    'Hide "Hide Map Section"',
+    '    Class "Maps"',
+    '    MapTier <= 4',
+    '                 ',
+    '# This is a comment',
+    'Show "Flask Section"',
+    '    # This is a comment',
+    '    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"',
+    '    SetBorderColor 250 251 252',
+    '    PlayAlertSound 1 300',
+    '                         ',
+    'Hide "Remain Section"',
+    '',
+  ].join('\n')
+
+  const expected = [
+    {
+      name: 'Hide Map Section',
+      activity: 'Hide',
+      conditions: {
+        Class: ['Maps'],
+        MapTier: '<= 4',
+      },
+      actions: {},
+      mixins: [],
+    },
+    {
+      name: 'Flask Section',
+      activity: 'Show',
+      conditions: {
+        Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
+      },
+      actions: {
+        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+        PlayAlertSound: { id: '1', volume: 300 },
+      },
+      mixins: [],
+    },
+    {
+      name: 'Remain Section',
+      activity: 'Hide',
+      conditions: {},
+      actions: {},
+      mixins: [],
+    },
+  ]
+
+  const result = parse(script)
+
+  t.deepEqual(result, expected)
+})
+
 test('parse : all actions and conditions', (t) => {
   const script = outdent`
 Show "Section1"
@@ -245,62 +301,6 @@ Hide "Hide Map Section"
     MapTier <= 4
 
 Show "Flask Section"
-    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
-    SetBorderColor 250 251 252
-    PlayAlertSound 1 300
-
-Hide "Remain Section"
-
-   `
-
-  const expected = [
-    {
-      name: 'Hide Map Section',
-      activity: 'Hide',
-      conditions: {
-        Class: ['Maps'],
-        MapTier: '<= 4',
-      },
-      actions: {},
-      mixins: [],
-    },
-    {
-      name: 'Flask Section',
-      activity: 'Show',
-      conditions: {
-        Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
-      },
-      actions: {
-        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-        PlayAlertSound: { id: '1', volume: 300 },
-      },
-      mixins: [],
-    },
-    {
-      name: 'Remain Section',
-      activity: 'Hide',
-      conditions: {},
-      actions: {},
-      mixins: [],
-    },
-  ]
-
-  const result = parse(script)
-
-  t.deepEqual(result, expected)
-})
-
-test('parse : multi section with comments', (t) => {
-  const script = outdent`
-# This is a comment
-# This is a comment
-Hide "Hide Map Section"
-    Class "Maps"
-    MapTier <= 4
-
-# This is a comment
-Show "Flask Section"
-    # This is a comment
     Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
     SetBorderColor 250 251 252
     PlayAlertSound 1 300

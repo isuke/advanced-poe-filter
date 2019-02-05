@@ -62,7 +62,7 @@ mixin =
     return { name, blocks: allBlocks }
   }
 
-blankline = br / commentline
+blankline = _* br / commentline
 commentline = _* '#' [^\n]* br
 
 //
