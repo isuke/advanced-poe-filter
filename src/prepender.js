@@ -1,10 +1,33 @@
-import { toUpperFirstChar } from '../src/utils'
+import { mapVals, toUpperFirstChar } from '../src/utils'
 
 const prepend = (advancedScriptText, variables = {}, props = {}) => {
   let result = advancedScriptText
-  result = _replaceVariables(result, variables)
+  result = _replaceVariables(result, _expandVariables(variables))
   result = _replaceProps(result, props)
   return result
+}
+
+const _expandVariables = (variables) => {
+  return mapVals(variables, (item, _name) => _expandItem(variables, item))
+}
+
+const _expandItem = (variables, item, count = 0) => {
+  if (count >= 10) throw new Error('nest is too deep')
+
+  if (Array.isArray(item)) {
+    return item.map((value) => _expandValue(variables, value, count)).flat()
+  } else {
+    return _expandValue(variables, item, count)
+  }
+}
+
+const _expandValue = (variables, value, count) => {
+  if (typeof value === 'string') {
+    const match = value.match(/# *(.*)/)
+    return match ? _expandItem(variables, variables[match[1]], count + 1) : value
+  } else {
+    return value
+  }
 }
 
 const _replaceVariables = (advancedScriptText, variables) => {

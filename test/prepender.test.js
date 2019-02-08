@@ -34,7 +34,7 @@ Show "Map Section"
 test('prepend : simple variables', (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
-    Class "Life Flasks" "Mana Flasks" Var("My Class1") Var("My Class2")
+    Class Var("My Class1") Var("My Class2") Var("My Class3")
     MapTier > Var("My Map Tier")
     Identified Var("My Identified")
 
@@ -46,6 +46,7 @@ Show "Map Section"
   const variables = {
     'My Class1': 'Hybrid Flasks',
     'My Class2': 'Utility Flasks',
+    'My Class3': ['Life Flasks', 'Mana Flasks'],
     'My Map Tier': 3,
     'My Identified': false,
     'My BorderColor': '250 251 252',
@@ -54,7 +55,7 @@ Show "Map Section"
 
   const expected = outdent`
 Show "Map Section"
-    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
+    Class "Hybrid Flasks" "Utility Flasks" "Life Flasks" "Mana Flasks"
     MapTier > 3
     Identified False
 
@@ -68,34 +69,47 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : complex variables', (t) => {
+test('prepend : nested variables', (t) => {
   const advancedScriptText = outdent`
-Show "Map Section"
-    Class Var("My Class") "Utility Flasks"
-    MapTier Var("My Map Tier")
-
-    PlayAlertSound Var("My Play Alert Sound")
+Show "Flask Section"
+    Class Var("Flask1")
+    ItemLevel Var("MyItemLevel")
 
    `
 
   const variables = {
-    'My Class': ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
-    'My Map Tier': '> 3',
-    'My Play Alert Sound': '1 300',
+    MyItemLevel: '#ItemLevel',
+    ItemLevel: 1,
+    Flask1: ['#Flask2', 'Utility Flask'],
+    Flask2: ['Life Flask', 'Mana Flask', 'Hybrid Flask'],
   }
 
   const expected = outdent`
-Show "Map Section"
-    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
-    MapTier > 3
-
-    PlayAlertSound 1 300
+Show "Flask Section"
+    Class "Life Flask" "Mana Flask" "Hybrid Flask" "Utility Flask"
+    ItemLevel 1
 
   `
 
   const result = prepend(advancedScriptText, variables)
 
   t.is(result, expected)
+})
+
+test('prepend : infinity loop variables', (t) => {
+  const advancedScriptText = outdent`
+Show "Flask Section"
+    Class Var("Flask1")
+    ItemLevel Var("MyItemLevel")
+
+   `
+
+  const variables = {
+    MyItemLevel1: '#MyItemLevel2',
+    MyItemLevel2: '#MyItemLevel1',
+  }
+
+  t.throws(() => prepend(advancedScriptText, variables), 'nest is too deep')
 })
 
 test('prepend : simple props', (t) => {
