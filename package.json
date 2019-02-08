@@ -1,6 +1,6 @@
 {
   "name": "advanced-poe-filter",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "main": "lib/advanced-poe-filter.umd.js",
   "module": "lib/advanced-poe-filter.esm.js",
   "author": "isuke <isuke770@gmail.com>",
@@ -16,7 +16,9 @@
     "test": "ava --verbose",
     "build": "yarn run build:parser && yarn run build:index",
     "build:parser": "pegjs --format=es -o lib/parser.js src/advanced-poe-filter.pegjs",
-    "build:index": "webpack --mode=production --progress --hide-modules"
+    "build:index": "webpack --mode=production --progress --hide-modules",
+    "predeploy": "yarn run build",
+    "deploy": "yarn publish --registry http://localhost:4873"
   },
   "dependencies": {
     "color": "^3.1.0",
