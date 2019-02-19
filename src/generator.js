@@ -121,6 +121,8 @@ const _generateAction = (actionVal, actionKey) => {
       return `    ${actionKey} ${actionVal.id} ${actionVal.volume}\n`
     case 'DisableDropSound':
       return `    ${actionKey} ${toUpperFirstChar(actionVal)}\n`
+    case 'CustomAlertSound':
+      return `    ${actionKey} "${actionVal}"\n`
     case 'MinimapIcon':
       switch (actionVal.size) {
         case 'Largest':

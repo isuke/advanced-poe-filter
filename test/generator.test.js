@@ -84,7 +84,7 @@ test('generate : multi section', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            PlayAlertSound: { id: '1', volume: 300 },
+            CustomAlertSound: './Flask.wav',
           },
         },
       ],
@@ -114,7 +114,7 @@ Hide
 Show
     Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
     SetBorderColor 250 251 252 255
-    PlayAlertSound 1 300
+    CustomAlertSound "./Flask.wav"
 
 
   `
