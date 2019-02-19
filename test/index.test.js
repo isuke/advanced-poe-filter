@@ -227,6 +227,96 @@ Show
   t.deepEqual(result, expected)
 })
 
+test('compile : single section with combined variables and properties', (t) => {
+  const advancedScriptText = outdent`
+Show "Flasks"
+    Class "Utility Flasks"
+    Quality >= Prop("Flask Quality")
+
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
+   `
+
+  const variables = {
+    'Low Quality': 0,
+    'Middle Quality': 10,
+    'High Quality': 20,
+  }
+
+  const properties = {
+    T1: { 'Flask Quality': 'Var("Low Quality")' },
+    T2: { 'Flask Quality': 'Var("Middle Quality")' },
+    T3: { 'Flask Quality': 'Var("High Quality")' },
+  }
+
+  const name = 'My Filter'
+
+  const expected = {
+    T1: outdent`
+################################################################################
+#                                                                              #
+# My Filter (T1)                                                               #
+# Created By Advanced PoE Filter (Ver: 0.3.0)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Flasks                                                                       #
+################################################################################
+Show
+    Class "Utility Flasks"
+    Quality >= 0
+    SetBorderColor 250 251 252 255
+    PlayAlertSound 1 300
+
+
+    `,
+    T2: outdent`
+################################################################################
+#                                                                              #
+# My Filter (T2)                                                               #
+# Created By Advanced PoE Filter (Ver: 0.3.0)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Flasks                                                                       #
+################################################################################
+Show
+    Class "Utility Flasks"
+    Quality >= 10
+    SetBorderColor 250 251 252 255
+    PlayAlertSound 1 300
+
+
+    `,
+    T3: outdent`
+################################################################################
+#                                                                              #
+# My Filter (T3)                                                               #
+# Created By Advanced PoE Filter (Ver: 0.3.0)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Flasks                                                                       #
+################################################################################
+Show
+    Class "Utility Flasks"
+    Quality >= 20
+    SetBorderColor 250 251 252 255
+    PlayAlertSound 1 300
+
+
+    `,
+  }
+
+  const result = compile(advancedScriptText, variables, properties, name)
+
+  t.deepEqual(result, expected)
+})
+
 test('compile : multi section', (t) => {
   const advancedScriptText = outdent`
 Hide "Hide Map Section"

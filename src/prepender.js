@@ -2,8 +2,8 @@ import { mapVals, toUpperFirstChar } from '../src/utils'
 
 const prepend = (advancedScriptText, variables = {}, props = {}) => {
   let result = advancedScriptText
-  result = _replaceVariables(result, _expandVariables(variables))
   result = _replaceProps(result, props)
+  result = _replaceVariables(result, _expandVariables(variables))
   return result
 }
 

@@ -240,3 +240,31 @@ Show "Map Section"
 
   t.is(result, expected)
 })
+
+test('prepend : combined variables and props', (t) => {
+  const advancedScriptText = outdent`
+Show "Map Section"
+    Class "Map"
+    MapTier > Prop("My Map Tier")
+
+   `
+
+  const variables = {
+    'High Map Tier': 11,
+  }
+
+  const props = {
+    'My Map Tier': 'Var("High Map Tier")',
+  }
+
+  const expected = outdent`
+Show "Map Section"
+    Class "Map"
+    MapTier > 11
+
+  `
+
+  const result = prepend(advancedScriptText, variables, props)
+
+  t.is(result, expected)
+})
