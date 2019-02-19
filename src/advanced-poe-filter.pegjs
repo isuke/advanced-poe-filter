@@ -216,8 +216,8 @@ minimapIconColor = 'Red' / 'Green' / 'Blue' / 'Brown' / 'White' / 'Yellow'
 minimapIconShape = 'Circle' / 'Diamond' / 'Hexagon' / 'Square' / 'Star' / 'Triangle'
 playEffectColor = 'Red' / 'Green' / 'Blue' / 'Brown' / 'White' / 'Yellow'
 soundId =
-    '1' / '2' / '3' / '4' / '5' / '6' / '7' / '8' / '9' / '10'
-  / '11' / '12' / '13' / '14' / '15' / '16'
+   '10' / '11' / '12' / '13' / '14' / '15' / '16'
+  / '1' / '2' / '3' / '4' / '5' / '6' / '7' / '8' / '9'
   / 'ShAlchemy' / 'ShBlessed' / 'ShChaos' / 'ShDivine' / 'ShExalted' / 'ShFusing' / 'ShGeneral' / 'ShMirror' / 'ShRegal' / 'ShVaal'
 soundVolume = num:num &{ return 0 <= num && num <= 300 } { return num }
 

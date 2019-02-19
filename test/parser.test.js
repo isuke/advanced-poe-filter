@@ -87,7 +87,7 @@ Show "Section1"
     SetTextColor             103 104 105
     SetBackgroundColor       106 107 108
     SetFontSize              30
-    PlayAlertSound           1 300
+    PlayAlertSound           16 300
     DisableDropSound         False
     CustomAlertSound         "C\\foobar\\sound.mp3"
     MinimapIcon              0 Red Circle
@@ -159,7 +159,7 @@ Show "Section6"
         SetTextColor: { rgb: { r: 103, g: 104, b: 105 }, alpha: 255 },
         SetBackgroundColor: { rgb: { r: 106, g: 107, b: 108 }, alpha: 255 },
         SetFontSize: 30,
-        PlayAlertSound: { id: '1', volume: 300 },
+        PlayAlertSound: { id: '16', volume: 300 },
         DisableDropSound: false,
         CustomAlertSound: 'C\\foobar\\sound.mp3',
         MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
