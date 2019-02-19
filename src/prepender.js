@@ -46,19 +46,25 @@ const _replaceFunction = (advancedScriptText, functionName, valueObject) => {
 }
 
 const _convertLine = (line, functionName, valueObject) => {
+  const functionStrs = line.match(new RegExp(`${functionName}\\("[^(|^)]+"\\)`, 'g')) || []
+
+  if (functionStrs.length === 0) return line
+
   const lineMatch = line.match(/([A-Z][A-Za-z]+) ([^\n]+)/)
 
-  if (!lineMatch) return line
+  if (lineMatch) {
+    const ruleName = lineMatch[1]
 
-  const ruleName = lineMatch[1]
-  const valuesStr = lineMatch[2]
-
-  const functionStrs = valuesStr.match(new RegExp(`${functionName}\\("[^(|^)]+"\\)`, 'g')) || []
-
-  return functionStrs.reduce((acc, functionStr) => {
-    const match = functionStr.match(new RegExp(`${functionName}\\("(.+)"\\)`))
-    return acc.replace(match[0], _convertValue(ruleName, valueObject[match[1]]))
-  }, line)
+    return functionStrs.reduce((acc, functionStr) => {
+      const match = functionStr.match(new RegExp(`${functionName}\\("(.+)"\\)`))
+      return acc.replace(match[0], _convertValue(ruleName, valueObject[match[1]]))
+    }, line)
+  } else {
+    return functionStrs.reduce((acc, functionStr) => {
+      const match = functionStr.match(new RegExp(`${functionName}\\("(.+)"\\)`))
+      return acc.replace(match[0], valueObject[match[1]])
+    }, line)
+  }
 }
 
 const _convertValue = (ruleName, value) => {

@@ -31,7 +31,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : simple variables', (t) => {
+test('prepend : simple variables of value', (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class Var("My Class1") Var("My Class2") Var("My Class3")
@@ -60,6 +60,52 @@ Show "Map Section"
     Identified False
 
     SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
+  `
+
+  const result = prepend(advancedScriptText, variables)
+
+  t.is(result, expected)
+})
+
+test('prepend : simple variables of activity', (t) => {
+  const advancedScriptText = outdent`
+Var("My Activity") "Map Section"
+    Class "Map"
+
+   `
+
+  const variables = {
+    'My Activity': 'Show',
+  }
+
+  const expected = outdent`
+Show "Map Section"
+    Class "Map"
+
+  `
+
+  const result = prepend(advancedScriptText, variables)
+
+  t.is(result, expected)
+})
+
+test('prepend : simple variables of action', (t) => {
+  const advancedScriptText = outdent`
+Show "Map Section"
+    Class "Map"
+    Var("My Action") 1 300
+
+   `
+
+  const variables = {
+    'My Action': 'PlayAlertSound',
+  }
+
+  const expected = outdent`
+Show "Map Section"
+    Class "Map"
     PlayAlertSound 1 300
 
   `
@@ -112,7 +158,7 @@ Show "Flask Section"
   t.throws(() => prepend(advancedScriptText, variables), 'nest is too deep')
 })
 
-test('prepend : simple props', (t) => {
+test('prepend : simple props of value', (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class "Life Flasks" "Mana Flasks" Prop("My Class1") Prop("My Class2")
@@ -140,6 +186,52 @@ Show "Map Section"
     Identified False
 
     SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
+  `
+
+  const result = prepend(advancedScriptText, {}, props)
+
+  t.is(result, expected)
+})
+
+test('prepend : simple props of activity', (t) => {
+  const advancedScriptText = outdent`
+Prop("My Activity") "Map Section"
+    Class "Map"
+
+   `
+
+  const props = {
+    'My Activity': 'Show',
+  }
+
+  const expected = outdent`
+Show "Map Section"
+    Class "Map"
+
+  `
+
+  const result = prepend(advancedScriptText, {}, props)
+
+  t.is(result, expected)
+})
+
+test('prepend : simple props of action', (t) => {
+  const advancedScriptText = outdent`
+Show "Map Section"
+    Class "Map"
+    Prop("My Action") 1 300
+
+   `
+
+  const props = {
+    'My Action': 'PlayAlertSound',
+  }
+
+  const expected = outdent`
+Show "Map Section"
+    Class "Map"
     PlayAlertSound 1 300
 
   `
