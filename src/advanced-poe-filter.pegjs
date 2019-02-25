@@ -164,15 +164,15 @@ actionFunctionColor =
 
 actionFunctionNegate     = name:'Negate'    '()' { return { function: name, val: undefined } }
 actionFunctionGrayscale  = name:'Grayscale' '()' { return { function: name, val: undefined } }
-actionFunctionSaturate   = name:'Saturate'   '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
-actionFunctionDesaturate = name:'Desaturate' '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
-actionFunctionLighten    = name:'Lighten'    '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
-actionFunctionDarken     = name:'Darken'     '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
-actionFunctionWhiten     = name:'Whiten'     '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
-actionFunctionBlacken    = name:'Blacken'    '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num / 100 } }
-actionFunctionHex        = name:'Hex'        '(' num:num     ')' &{ return 0 <= num && num <= 360 } { return { function: name, val: num } }
-actionFunctionSaturation =      'Saturation' '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: 'Saturationv', val: num } }
-actionFunctionLightness  = name:'Lightness'  '(' num:num '%' ')' &{ return 0 <= num && num <= 100 } { return { function: name, val: num } }
+actionFunctionSaturate   = name:'Saturate'   '(' num:num '%' ')' &{ return 0 <= num && num <= 1000 } { return { function: name, val: num / 100 } }
+actionFunctionDesaturate = name:'Desaturate' '(' num:num '%' ')' &{ return 0 <= num && num <= 1000 } { return { function: name, val: num / 100 } }
+actionFunctionLighten    = name:'Lighten'    '(' num:num '%' ')' &{ return 0 <= num && num <= 1000 } { return { function: name, val: num / 100 } }
+actionFunctionDarken     = name:'Darken'     '(' num:num '%' ')' &{ return 0 <= num && num <= 1000 } { return { function: name, val: num / 100 } }
+actionFunctionWhiten     = name:'Whiten'     '(' num:num '%' ')' &{ return 0 <= num && num <= 1000 } { return { function: name, val: num / 100 } }
+actionFunctionBlacken    = name:'Blacken'    '(' num:num '%' ')' &{ return 0 <= num && num <= 1000 } { return { function: name, val: num / 100 } }
+actionFunctionHex        = name:'Hex'        '(' num:num     ')' &{ return 0 <= num && num <= 360  } { return { function: name, val: num } }
+actionFunctionSaturation =      'Saturation' '(' num:num '%' ')' &{ return 0 <= num && num <= 100  } { return { function: 'Saturationv', val: num } }
+actionFunctionLightness  = name:'Lightness'  '(' num:num '%' ')' &{ return 0 <= num && num <= 100  } { return { function: name, val: num } }
 
 actionFunctionFontSize =
     actionFunctionPlus
