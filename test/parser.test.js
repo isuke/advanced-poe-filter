@@ -31,7 +31,7 @@ test('parse : blank and comment lines', (t) => {
         MapTier: '<= 4',
       },
       actions: {},
-      mixins: [],
+      branches: [],
     },
     {
       name: 'Flask Section',
@@ -43,14 +43,14 @@ test('parse : blank and comment lines', (t) => {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
         PlayAlertSound: { id: '1', volume: 300 },
       },
-      mixins: [],
+      branches: [],
     },
     {
       name: 'Remain Section',
       activity: 'Hide',
       conditions: {},
       actions: {},
-      mixins: [],
+      branches: [],
     },
   ]
 
@@ -165,7 +165,7 @@ Show "Section6"
         MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
         PlayEffect: { color: 'Red', temp: false },
       },
-      mixins: [],
+      branches: [],
     },
     {
       name: 'Section2',
@@ -186,7 +186,7 @@ Show "Section6"
         MinimapIcon: { size: 'Medium', color: 'Red', shape: 'Circle' },
         PlayEffect: { color: 'Blue', temp: true },
       },
-      mixins: [],
+      branches: [],
     },
     {
       name: 'Section3',
@@ -199,7 +199,7 @@ Show "Section6"
         SetFontSize: { function: 'Plus', val: 5 },
         PlayAlertSoundPositional: { id: 'ShAlchemy', volume: 200 },
       },
-      mixins: [],
+      branches: [],
     },
     {
       name: 'Section4',
@@ -212,7 +212,7 @@ Show "Section6"
         SetFontSize: { function: 'Minus', val: 6 },
         PlayAlertSoundPositional: { id: 'ShBlessed', volume: 150 },
       },
-      mixins: [],
+      branches: [],
     },
     {
       name: 'Section5',
@@ -223,7 +223,7 @@ Show "Section6"
         SetTextColor: { function: 'Desaturate', val: 0.53 },
         SetBackgroundColor: { function: 'Hex', val: 123 },
       },
-      mixins: [],
+      branches: [],
     },
     {
       name: 'Section6',
@@ -233,7 +233,7 @@ Show "Section6"
         SetBorderColor: { function: 'Saturationv', val: 64 },
         SetTextColor: { function: 'Lightness', val: 75 },
       },
-      mixins: [],
+      branches: [],
     },
   ]
 
@@ -254,7 +254,7 @@ Hide "All Section"
       activity: 'Hide',
       conditions: {},
       actions: {},
-      mixins: [],
+      branches: [],
     },
   ]
 
@@ -285,7 +285,7 @@ Show "Map Section"
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
         PlayAlertSound: { id: '1', volume: 300 },
       },
-      mixins: [],
+      branches: [],
     },
   ]
 
@@ -318,7 +318,7 @@ Hide "Remain Section"
         MapTier: '<= 4',
       },
       actions: {},
-      mixins: [],
+      branches: [],
     },
     {
       name: 'Flask Section',
@@ -330,14 +330,74 @@ Hide "Remain Section"
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
         PlayAlertSound: { id: '1', volume: 300 },
       },
-      mixins: [],
+      branches: [],
     },
     {
       name: 'Remain Section',
       activity: 'Hide',
       conditions: {},
       actions: {},
-      mixins: [],
+      branches: [],
+    },
+  ]
+
+  const result = parse(script)
+
+  t.deepEqual(result, expected)
+})
+
+test('parse : single fork', (t) => {
+  const script = outdent`
+Show "Map Section"
+    Class "Maps"
+    MapTier > 3
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+
+    Fork "Rarity"
+        Show "Rare"
+            Rarity Rare
+            SetBackgroundColor 255 0 0 100
+
+        Hide "Magic"
+            Rarity Magic
+
+   `
+
+  const expected = [
+    {
+      name: 'Map Section',
+      activity: 'Show',
+      conditions: {
+        Class: ['Maps'],
+        MapTier: '> 3',
+      },
+      actions: {
+        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+        PlayAlertSound: { id: '1', volume: 300 },
+      },
+      branches: [
+        {
+          name: 'Rarity',
+          type: 'Fork',
+          blocks: [
+            {
+              name: 'Rare',
+              activity: 'Show',
+              conditions: { Rarity: 'Rare' },
+              actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
+              branches: [],
+            },
+            {
+              name: 'Magic',
+              activity: 'Hide',
+              conditions: { Rarity: 'Magic' },
+              actions: {},
+              branches: [],
+            },
+          ],
+        },
+      ],
     },
   ]
 
@@ -376,23 +436,24 @@ Show "Map Section"
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
         PlayAlertSound: { id: '1', volume: 300 },
       },
-      mixins: [
+      branches: [
         {
           name: 'Rarity',
+          type: 'Mixin',
           blocks: [
             {
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
               actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
-              mixins: [],
+              branches: [],
             },
             {
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
               actions: {},
-              mixins: [],
+              branches: [],
             },
           ],
         },
@@ -435,42 +496,44 @@ Show "Map Section"
       activity: 'Show',
       conditions: { Class: ['Maps'] },
       actions: {},
-      mixins: [
+      branches: [
         {
           name: 'Rarity',
+          type: 'Mixin',
           blocks: [
             {
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
               actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
-              mixins: [],
+              branches: [],
             },
             {
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
               actions: {},
-              mixins: [],
+              branches: [],
             },
           ],
         },
         {
           name: 'Tier',
+          type: 'Mixin',
           blocks: [
             {
               name: 'High Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 11' },
               actions: { PlayAlertSound: { id: '1', volume: 300 } },
-              mixins: [],
+              branches: [],
             },
             {
               name: 'Middle Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 6' },
               actions: { PlayAlertSound: { id: '2', volume: 300 } },
-              mixins: [],
+              branches: [],
             },
           ],
         },
@@ -513,39 +576,41 @@ Show "Map Section"
       activity: 'Show',
       conditions: { Class: ['Maps'] },
       actions: {},
-      mixins: [
+      branches: [
         {
           name: 'Rarity',
+          type: 'Mixin',
           blocks: [
             {
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
               actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
-              mixins: [],
+              branches: [],
             },
             {
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
               actions: {},
-              mixins: [
+              branches: [
                 {
                   name: 'Tier',
+                  type: 'Mixin',
                   blocks: [
                     {
                       name: 'High Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 11' },
                       actions: { PlayAlertSound: { id: '1', volume: 300 } },
-                      mixins: [],
+                      branches: [],
                     },
                     {
                       name: 'Middle Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 6' },
                       actions: { PlayAlertSound: { id: '2', volume: 300 } },
-                      mixins: [],
+                      branches: [],
                     },
                   ],
                 },

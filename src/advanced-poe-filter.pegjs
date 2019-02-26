@@ -22,7 +22,7 @@ block =
     line0:line
     blankline*
     lines:(SAMEDENT line blankline*)*
-    mixins:(SAMEDENT mixin)*
+    branches:(SAMEDENT branch)*
   OUTDENT
   blankline* {
     let conditions = {};
@@ -36,30 +36,30 @@ block =
       }
     })
 
-    let allMixins = mixins.map(m => m[1])
+    let allBranches = branches.map(m => m[1])
 
-    return { name, activity, conditions, actions, mixins: allMixins }
+    return { name, activity, conditions, actions, branches: allBranches }
   }
 
 emptyBlock =
   blankline*
   activity:('Show' / 'Hide') __ name:string br
   blankline* {
-    return { name, activity, conditions: {}, actions: {}, mixins: [] }
+    return { name, activity, conditions: {}, actions: {}, branches: [] }
   }
 
 line = line:(condition / action) br { return line }
 
-mixin =
+branch =
   blankline*
-  'Mixin' __ name:string br
+  type:('Fork' / 'Mixin') __ name:string br
   blankline*
   INDENT
     block0:block
     blocks:(SAMEDENT block)*
   OUTDENT {
     let allBlocks = [block0].concat(blocks.map(b => b[1]))
-    return { name, blocks: allBlocks }
+    return { name, type, blocks: allBlocks }
   }
 
 blankline = _* br / commentline
