@@ -30,7 +30,7 @@ test('generate : single section', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.5.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.5.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -49,7 +49,7 @@ Show
 
   `
 
-  const result = generate(scriptObject, '0.5.0')
+  const result = generate(scriptObject, '0.5.1')
 
   t.is(result, expected)
 })
@@ -81,7 +81,7 @@ test('generate : single unset section', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.5.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.5.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -93,7 +93,7 @@ test('generate : single unset section', (t) => {
 
   `
 
-  const result = generate(scriptObject, '0.5.0')
+  const result = generate(scriptObject, '0.5.1')
 
   t.is(result, expected)
 })
@@ -138,7 +138,7 @@ test('generate : multi section', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.5.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.5.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -163,7 +163,7 @@ Show
 
   `
 
-  const result = generate(scriptObject, '0.5.0')
+  const result = generate(scriptObject, '0.5.1')
 
   t.is(result, expected)
 })
@@ -285,7 +285,7 @@ test('generate : multi block', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.5.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.5.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -350,7 +350,7 @@ Show
 
   `
 
-  const result = generate(scriptObject, '0.5.0')
+  const result = generate(scriptObject, '0.5.1')
 
   t.is(result, expected)
 })
