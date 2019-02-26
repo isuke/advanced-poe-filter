@@ -57,11 +57,13 @@ const _convertLine = (line, functionName, valueObject) => {
 
     return functionStrs.reduce((acc, functionStr) => {
       const match = functionStr.match(new RegExp(`${functionName}\\("(.+)"\\)`))
+      if (!valueObject.hasOwnProperty(match[1])) throw new Error(`'${match[1]}' is not found`)
       return acc.replace(match[0], _convertValue(ruleName, valueObject[match[1]]))
     }, line)
   } else {
     return functionStrs.reduce((acc, functionStr) => {
       const match = functionStr.match(new RegExp(`${functionName}\\("(.+)"\\)`))
+      if (!valueObject.hasOwnProperty(match[1])) throw new Error(`'${match[1]}' is not found`)
       return acc.replace(match[0], valueObject[match[1]])
     }, line)
   }

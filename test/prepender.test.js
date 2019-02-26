@@ -142,6 +142,22 @@ Show "Flask Section"
   t.is(result, expected)
 })
 
+test('prepend : variable not found', (t) => {
+  const advancedScriptText = outdent`
+Show "Flask Section"
+    Class Var("Flask1")
+    ItemLevel Var("MyItemLevelx")
+
+   `
+
+  const variables = {
+    Flask1: ['Life Flask', 'Mana Flask', 'Hybrid Flask'],
+    MyItemLevel: 10,
+  }
+
+  t.throws(() => prepend(advancedScriptText, variables), "'MyItemLevelx' is not found")
+})
+
 test('prepend : infinity loop variables', (t) => {
   const advancedScriptText = outdent`
 Show "Flask Section"
@@ -151,6 +167,7 @@ Show "Flask Section"
    `
 
   const variables = {
+    Flask1: ['Life Flask', 'Mana Flask', 'Hybrid Flask'],
     MyItemLevel1: '#MyItemLevel2',
     MyItemLevel2: '#MyItemLevel1',
   }
