@@ -112,7 +112,7 @@ test('expand : single fork', (t) => {
   const advancedScriptObject = [
     {
       name: 'Map Section',
-      activity: 'Show',
+      activity: 'Unset',
       conditions: {
         Class: ['Maps'],
         MapTier: '> 3',
@@ -189,7 +189,7 @@ test('expand : single fork', (t) => {
         },
         {
           name: { Rarity: 'Normal' },
-          activity: 'Show',
+          activity: 'Unset',
           conditions: {
             Class: ['Maps'],
             MapTier: '> 3',

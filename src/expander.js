@@ -92,7 +92,7 @@ const _mergeBlocks = (advancedBlock /*: advancedBlock */, ...blocks /*: Array<Bl
 
 const _mergeactivities = (root /*: string */, ...others /*: Array<string> */) /*: string */ => {
   let result = [root, ...others].filter((a) => a !== 'Unset')
-  return result ? result.reverse()[0] : 'Unset'
+  return result.length > 0 ? result.reverse()[0] : 'Unset'
 }
 
 const _mergeActions = (root /*: object */, ...others /*: Array<object> */) /*: object */ => {
