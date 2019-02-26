@@ -117,11 +117,11 @@ Show "Section4"
     SetBackgroundColor       Blacken(100%)
     SetFontSize              Minus(6)
     PlayAlertSoundPositional ShBlessed
-Show "Section5"
+Hide "Section5"
     SetBorderColor           Saturate(42%)
     SetTextColor             Desaturate(53%)
     SetBackgroundColor       Hex(123)
-Show "Section6"
+Unset "Section6"
     SetBorderColor           Saturation(64%)
     SetTextColor             Lightness(75%)
 
@@ -216,7 +216,7 @@ Show "Section6"
     },
     {
       name: 'Section5',
-      activity: 'Show',
+      activity: 'Hide',
       conditions: {},
       actions: {
         SetBorderColor: { function: 'Saturate', val: 0.42 },
@@ -227,7 +227,7 @@ Show "Section6"
     },
     {
       name: 'Section6',
-      activity: 'Show',
+      activity: 'Unset',
       conditions: {},
       actions: {
         SetBorderColor: { function: 'Saturationv', val: 64 },

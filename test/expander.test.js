@@ -143,6 +143,13 @@ test('expand : single fork', (t) => {
               actions: {},
               branches: [],
             },
+            {
+              name: 'Normal',
+              activity: 'Unset',
+              conditions: { Rarity: 'Normal' },
+              actions: {},
+              branches: [],
+            },
           ],
         },
       ],
@@ -174,6 +181,19 @@ test('expand : single fork', (t) => {
             Class: ['Maps'],
             MapTier: '> 3',
             Rarity: 'Magic',
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+            PlayAlertSoundPositional: { id: '1', volume: 300 },
+          },
+        },
+        {
+          name: { Rarity: 'Normal' },
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            MapTier: '> 3',
+            Rarity: 'Normal',
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -224,6 +244,13 @@ test('expand : single mixin', (t) => {
               actions: {},
               branches: [],
             },
+            {
+              name: 'Normal',
+              activity: 'Unset',
+              conditions: { Rarity: 'Normal' },
+              actions: {},
+              branches: [],
+            },
           ],
         },
       ],
@@ -255,6 +282,19 @@ test('expand : single mixin', (t) => {
             Class: ['Maps'],
             MapTier: '> 3',
             Rarity: 'Magic',
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+            PlayAlertSoundPositional: { id: '1', volume: 300 },
+          },
+        },
+        {
+          name: { Rarity: 'Normal' },
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            MapTier: '> 3',
+            Rarity: 'Normal',
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },

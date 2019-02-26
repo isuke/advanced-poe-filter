@@ -2,7 +2,7 @@
 
 import Color from 'color'
 
-import { product, createObject, takeLastExist, assignImmutable, forIn } from '../src/utils'
+import { product, createObject, assignImmutable, forIn } from '../src/utils'
 
 /*::
 type AdvancedBlock = {
@@ -84,10 +84,15 @@ const _convertBranchToBlocks = (branch /*: Branch */) /* Array<Block> */ => {
 const _mergeBlocks = (advancedBlock /*: advancedBlock */, ...blocks /*: Array<Block> */) /*: Block */ => {
   return {
     name: assignImmutable({}, ...blocks.map((o) => o.name)),
-    activity: takeLastExist([advancedBlock.activity, ...blocks.map((o) => o.activity)]),
+    activity: _mergeactivities(advancedBlock.activity, ...blocks.map((o) => o.activity)),
     conditions: assignImmutable(advancedBlock.conditions, ...blocks.map((o) => o.conditions)),
     actions: _mergeActions(advancedBlock.actions, ...blocks.map((o) => o.actions)),
   }
+}
+
+const _mergeactivities = (root /*: string */, ...others /*: Array<string> */) /*: string */ => {
+  let result = [root, ...others].filter((a) => a !== 'Unset')
+  return result ? result.reverse()[0] : 'Unset'
 }
 
 const _mergeActions = (root /*: object */, ...others /*: Array<object> */) /*: object */ => {
@@ -138,7 +143,7 @@ const _mergeActions = (root /*: object */, ...others /*: Array<object> */) /*: o
 const _emptyBlock = (branchName /*: string */) /*: Block */ => {
   return {
     name: createObject(branchName),
-    activity: undefined,
+    activity: 'Unset',
     conditions: {},
     actions: {},
   }

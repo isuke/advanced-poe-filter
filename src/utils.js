@@ -28,10 +28,6 @@ const createObject = (key, val = undefined) => {
   return result
 }
 
-const takeLastExist = (array) => {
-  return array.filter((o) => o).reverse()[0]
-}
-
 const assignImmutable = (object, ...objects) => {
   return Object.assign(cloneDeep(object), ...objects)
 }
@@ -63,4 +59,4 @@ const toUpperFirstChar = (string) => {
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-export { product, createObject, takeLastExist, assignImmutable, forIn, mapObject, mapVals, toUpperFirstChar }
+export { product, createObject, assignImmutable, forIn, mapObject, mapVals, toUpperFirstChar }

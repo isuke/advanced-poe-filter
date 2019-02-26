@@ -54,6 +54,50 @@ Show
   t.is(result, expected)
 })
 
+test('generate : single unset section', (t) => {
+  const scriptObject = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          name: {},
+          activity: 'Unset',
+          conditions: {
+            Class: ['Maps'],
+            MapTier: '> 3',
+            Identified: false,
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
+            PlayAlertSound: { id: '1', volume: 300 },
+            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
+            PlayEffect: { color: 'Blue', temp: true },
+          },
+        },
+      ],
+    },
+  ]
+
+  const expected = outdent`
+################################################################################
+#                                                                              #
+# Created By Advanced PoE Filter (Ver: 0.4.1)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Map Section                                                                  #
+################################################################################
+# Unset
+
+
+  `
+
+  const result = generate(scriptObject, '0.4.1')
+
+  t.is(result, expected)
+})
+
 test('generate : multi section', (t) => {
   const scriptObject = [
     {
@@ -217,7 +261,7 @@ test('generate : multi block', (t) => {
         },
         {
           name: { Rarity: undefined, Tier: 'Middle Tier' },
-          activity: 'Show',
+          activity: 'Unset',
           conditions: {
             Class: ['Maps'],
             MapTier: '>= 6',
@@ -297,10 +341,7 @@ Show
     PlayAlertSound 1 300
 
 # Rarity is Any - Tier is "Middle Tier"
-Show
-    Class "Maps"
-    MapTier >= 6
-    PlayAlertSound 2 300
+# Unset
 
 # Rarity is Any - Tier is Any
 Show

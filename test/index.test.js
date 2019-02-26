@@ -384,10 +384,10 @@ Show "Map Section"
         Show "Rare"
             Rarity = Rare
             SetBorderColor     200 100 51 123
-        Show "Magic"
+        Hide "Magic"
             Rarity = Magic
             SetBorderColor     200 100 52 123
-        Show "Normal"
+        Unset "Normal"
             Rarity = Normal
             SetBorderColor     200 100 53 123
 
@@ -411,9 +411,10 @@ Show
     SetBorderColor 200 100 51 123
 
 # Rarity is "Magic"
-Show
+Hide
     Class "Maps"
     Rarity = Magic
+    DisableDropSound True
     SetBorderColor 200 100 52 123
 
 # Rarity is "Normal"
