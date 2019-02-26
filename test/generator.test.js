@@ -30,7 +30,7 @@ test('generate : single section', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.4.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.4.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -49,7 +49,7 @@ Show
 
   `
 
-  const result = generate(scriptObject, '0.4.0')
+  const result = generate(scriptObject, '0.4.1')
 
   t.is(result, expected)
 })
@@ -94,7 +94,7 @@ test('generate : multi section', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.4.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.4.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -119,7 +119,7 @@ Show
 
   `
 
-  const result = generate(scriptObject, '0.4.0')
+  const result = generate(scriptObject, '0.4.1')
 
   t.is(result, expected)
 })
@@ -241,7 +241,7 @@ test('generate : multi block', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.4.0)                                  #
+# Created By Advanced PoE Filter (Ver: 0.4.1)                                  #
 #                                                                              #
 ################################################################################
 
@@ -309,7 +309,7 @@ Show
 
   `
 
-  const result = generate(scriptObject, '0.4.0')
+  const result = generate(scriptObject, '0.4.1')
 
   t.is(result, expected)
 })
