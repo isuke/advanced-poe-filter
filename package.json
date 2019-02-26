@@ -1,6 +1,6 @@
 {
   "name": "advanced-poe-filter",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "main": "lib/advanced-poe-filter.umd.js",
   "module": "lib/advanced-poe-filter.esm.js",
   "author": "isuke <isuke770@gmail.com>",
