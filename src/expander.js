@@ -10,11 +10,12 @@ type AdvancedBlock = {
   activity: string,
   conditions: object,
   actions: object,
-  mixins: Array<Mixin>,
+  branches: Array<Branch>,
 }
 
-type Mixin = {
+type Branch = {
   name: string,
+  type: string,
   blocks: Array<AdvancedBlock>,
 }
 */
@@ -38,7 +39,7 @@ const expand = (advancedScriptObject /*: Array<AdvancedBlock> */) /*: Array<Sect
 }
 
 const _convertAdvancedBlockToSection = (advancedBlock /*: AdvancedBlock */) /*: Section */ => {
-  if (advancedBlock.mixins.length === 0) {
+  if (advancedBlock.branches.length === 0) {
     return {
       name: advancedBlock.name,
       blocks: [
@@ -51,7 +52,7 @@ const _convertAdvancedBlockToSection = (advancedBlock /*: AdvancedBlock */) /*: 
       ],
     }
   } else {
-    const producted /*: Array<Array<Block>> */ = product(...advancedBlock.mixins.map((mixin) => _convertMixinToBlocks(mixin)))
+    const producted /*: Array<Array<Block>> */ = product(...advancedBlock.branches.map((branch) => _convertBranchToBlocks(branch)))
 
     return {
       name: advancedBlock.name,
@@ -60,11 +61,11 @@ const _convertAdvancedBlockToSection = (advancedBlock /*: AdvancedBlock */) /*: 
   }
 }
 
-const _convertMixinToBlocks = (mixin /*: Mixin */) /* Array<Block> */ => {
-  const sections /*: Array<Section> */ = mixin.blocks.map((advancedBlock) => _convertAdvancedBlockToSection(advancedBlock))
+const _convertBranchToBlocks = (branch /*: Branch */) /* Array<Block> */ => {
+  const sections /*: Array<Section> */ = branch.blocks.map((advancedBlock) => _convertAdvancedBlockToSection(advancedBlock))
 
   let blocks /*: Array<Blocks> */ = sections.reduce((acc, section) => {
-    const nameObject = createObject(mixin.name, section.name)
+    const nameObject = createObject(branch.name, section.name)
     const blocks = section.blocks.map((block) => {
       return {
         name: assignImmutable(nameObject, block.name),
@@ -76,7 +77,8 @@ const _convertMixinToBlocks = (mixin /*: Mixin */) /* Array<Block> */ => {
     return acc.concat(blocks)
   }, [])
 
-  return blocks.concat(_emptyBlock(mixin.name))
+  if (branch.type === 'Mixin') blocks = blocks.concat(_emptyBlock(branch.name))
+  return blocks
 }
 
 const _mergeBlocks = (advancedBlock /*: advancedBlock */, ...blocks /*: Array<Block> */) /*: Block */ => {
@@ -133,9 +135,9 @@ const _mergeActions = (root /*: object */, ...others /*: Array<object> */) /*: o
   return result
 }
 
-const _emptyBlock = (mixinName /*: string */) /*: Block */ => {
+const _emptyBlock = (branchName /*: string */) /*: Block */ => {
   return {
-    name: createObject(mixinName),
+    name: createObject(branchName),
     activity: undefined,
     conditions: {},
     actions: {},

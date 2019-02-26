@@ -15,7 +15,7 @@ test('expand : single section', (t) => {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
         PlayAlertSound: { id: '1', volume: 300 },
       },
-      mixins: [],
+      branches: [],
     },
   ]
 
@@ -54,7 +54,7 @@ test('expand : multi section', (t) => {
         MapTier: '<= 4',
       },
       actions: {},
-      mixins: [],
+      branches: [],
     },
     {
       name: 'Flask Section',
@@ -66,7 +66,7 @@ test('expand : multi section', (t) => {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
         PlayAlertSound: { id: '1', volume: 300 },
       },
-      mixins: [],
+      branches: [],
     },
   ]
 
@@ -108,6 +108,87 @@ test('expand : multi section', (t) => {
   t.deepEqual(result, expected)
 })
 
+test('expand : single fork', (t) => {
+  const advancedScriptObject = [
+    {
+      name: 'Map Section',
+      activity: 'Show',
+      conditions: {
+        Class: ['Maps'],
+        MapTier: '> 3',
+      },
+      actions: {
+        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+        PlayAlertSoundPositional: { id: '1', volume: 300 },
+      },
+      branches: [
+        {
+          name: 'Rarity',
+          type: 'Fork',
+          blocks: [
+            {
+              name: 'Rare',
+              activity: 'Show',
+              conditions: { Rarity: 'Rare' },
+              actions: {
+                SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
+                PlayAlertSound: { id: '2', volume: 300 },
+              },
+              branches: [],
+            },
+            {
+              name: 'Magic',
+              activity: 'Hide',
+              conditions: { Rarity: 'Magic' },
+              actions: {},
+              branches: [],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
+  const expected = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          name: { Rarity: 'Rare' },
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            MapTier: '> 3',
+            Rarity: 'Rare',
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+            PlayAlertSound: { id: '2', volume: 300 },
+            SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
+          },
+        },
+        {
+          name: { Rarity: 'Magic' },
+          activity: 'Hide',
+          conditions: {
+            Class: ['Maps'],
+            MapTier: '> 3',
+            Rarity: 'Magic',
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+            PlayAlertSoundPositional: { id: '1', volume: 300 },
+          },
+        },
+      ],
+    },
+  ]
+
+  const result = expand(advancedScriptObject)
+
+  t.deepEqual(result, expected)
+})
+
 test('expand : single mixin', (t) => {
   const advancedScriptObject = [
     {
@@ -121,9 +202,10 @@ test('expand : single mixin', (t) => {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
         PlayAlertSoundPositional: { id: '1', volume: 300 },
       },
-      mixins: [
+      branches: [
         {
           name: 'Rarity',
+          type: 'Mixin',
           blocks: [
             {
               name: 'Rare',
@@ -133,14 +215,14 @@ test('expand : single mixin', (t) => {
                 SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
                 PlayAlertSound: { id: '2', volume: 300 },
               },
-              mixins: [],
+              branches: [],
             },
             {
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
               actions: {},
-              mixins: [],
+              branches: [],
             },
           ],
         },
@@ -207,42 +289,44 @@ test('expand : multi mixin', (t) => {
       activity: 'Show',
       conditions: { Class: ['Maps'] },
       actions: {},
-      mixins: [
+      branches: [
         {
           name: 'Rarity',
+          type: 'Mixin',
           blocks: [
             {
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
               actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
-              mixins: [],
+              branches: [],
             },
             {
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
               actions: {},
-              mixins: [],
+              branches: [],
             },
           ],
         },
         {
           name: 'Tier',
+          type: 'Mixin',
           blocks: [
             {
               name: 'High Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 11' },
               actions: { PlayAlertSound: { id: '1', volume: 300 } },
-              mixins: [],
+              branches: [],
             },
             {
               name: 'Middle Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 6' },
               actions: { PlayAlertSound: { id: '2', volume: 300 } },
-              mixins: [],
+              branches: [],
             },
           ],
         },
@@ -375,16 +459,17 @@ test('expand : nested mixin', (t) => {
       activity: 'Show',
       conditions: { Class: ['Maps'] },
       actions: {},
-      mixins: [
+      branches: [
         {
           name: 'Rarity',
+          type: 'Mixin',
           blocks: [
             {
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
               actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
-              mixins: [],
+              branches: [],
             },
             {
               name: 'Magic',
@@ -393,23 +478,24 @@ test('expand : nested mixin', (t) => {
               actions: {
                 SetBackgroundColor: { rb: { r: 255, g: 10, b: 0 }, alpha: 100 },
               },
-              mixins: [
+              branches: [
                 {
                   name: 'Tier',
+                  type: 'Mixin',
                   blocks: [
                     {
                       name: 'High Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 11' },
                       actions: { PlayAlertSound: { id: '1', volume: 300 } },
-                      mixins: [],
+                      branches: [],
                     },
                     {
                       name: 'Middle Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 6' },
                       actions: { PlayAlertSound: { id: '2', volume: 300 } },
-                      mixins: [],
+                      branches: [],
                     },
                   ],
                 },
@@ -508,9 +594,10 @@ test('expand : color function', (t) => {
         SetTextColor: { rgb: { r: 200, g: 100, b: 50 }, alpha: 123 },
         SetBackgroundColor: { rgb: { r: 200, g: 100, b: 50 }, alpha: 123 },
       },
-      mixins: [
+      branches: [
         {
           name: 'Rarity',
+          type: 'Mixin',
           blocks: [
             {
               name: 'Rare',
@@ -521,7 +608,7 @@ test('expand : color function', (t) => {
                 SetTextColor: { function: 'Grayscale', val: undefined },
                 SetBackgroundColor: { function: 'Lighten', val: 0.3 },
               },
-              mixins: [],
+              branches: [],
             },
           ],
         },
@@ -578,9 +665,10 @@ test('expand : fontSize function', (t) => {
       actions: {
         SetFontSize: 36,
       },
-      mixins: [
+      branches: [
         {
           name: 'Rarity',
+          type: 'Mixin',
           blocks: [
             {
               name: 'Rare',
@@ -589,7 +677,7 @@ test('expand : fontSize function', (t) => {
               actions: {
                 SetFontSize: { function: 'Plus', val: 27 },
               },
-              mixins: [],
+              branches: [],
             },
             {
               name: 'Magic',
@@ -598,7 +686,7 @@ test('expand : fontSize function', (t) => {
               actions: {
                 SetFontSize: { function: 'Minus', val: 6 },
               },
-              mixins: [],
+              branches: [],
             },
           ],
         },
@@ -611,9 +699,10 @@ test('expand : fontSize function', (t) => {
         Class: ['Jewels'],
       },
       actions: {},
-      mixins: [
+      branches: [
         {
           name: 'Rarity',
+          type: 'Mixin',
           blocks: [
             {
               name: 'Rare',
@@ -622,7 +711,7 @@ test('expand : fontSize function', (t) => {
               actions: {
                 SetFontSize: { function: 'Plus', val: 5 },
               },
-              mixins: [],
+              branches: [],
             },
             {
               name: 'Magic',
@@ -631,7 +720,7 @@ test('expand : fontSize function', (t) => {
               actions: {
                 SetFontSize: { function: 'Minus', val: 28 },
               },
-              mixins: [],
+              branches: [],
             },
           ],
         },
