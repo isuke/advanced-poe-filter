@@ -39,9 +39,13 @@ const _generateSection = (sectionObject, isLast = false) => {
 const _generateBlock = (blockObject) => {
   let result = ''
   result += _generateBlockName(blockObject.name)
-  result += `${blockObject.activity}\n`
-  result += _generateConditions(blockObject)
-  result += _generateActions(blockObject)
+  if (blockObject.activity === 'Unset') {
+    result += '# Unset\n'
+  } else {
+    result += `${blockObject.activity}\n`
+    result += _generateConditions(blockObject)
+    result += _generateActions(blockObject)
+  }
   result += '\n'
 
   return result
