@@ -374,6 +374,63 @@ Hide
   t.deepEqual(result, expected)
 })
 
+test('compile : single fork', (t) => {
+  const advancedScriptText = outdent`
+Show "Map Section"
+    Class "Maps"
+    SetBorderColor     200 100 50 123
+
+    Fork "Rarity"
+        Show "Rare"
+            Rarity = Rare
+            SetBorderColor     200 100 51 123
+        Show "Magic"
+            Rarity = Magic
+            SetBorderColor     200 100 52 123
+        Show "Normal"
+            Rarity = Normal
+            SetBorderColor     200 100 53 123
+
+   `
+
+  const expected = {
+    'No Name': outdent`
+################################################################################
+#                                                                              #
+# Created By Advanced PoE Filter (Ver: 0.4.1)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Map Section                                                                  #
+################################################################################
+# Rarity is "Rare"
+Show
+    Class "Maps"
+    Rarity = Rare
+    SetBorderColor 200 100 51 123
+
+# Rarity is "Magic"
+Show
+    Class "Maps"
+    Rarity = Magic
+    SetBorderColor 200 100 52 123
+
+# Rarity is "Normal"
+Show
+    Class "Maps"
+    Rarity = Normal
+    SetBorderColor 200 100 53 123
+
+
+    `,
+  }
+
+  const result = compile(advancedScriptText)
+
+  t.deepEqual(result, expected)
+})
+
 test('compile : single mixin with color function', (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
