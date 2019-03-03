@@ -24,6 +24,7 @@ test('parse : blank and comment lines', (t) => {
 
   const expected = [
     {
+      id: '0001',
       name: 'Hide Map Section',
       activity: 'Hide',
       conditions: {
@@ -34,6 +35,7 @@ test('parse : blank and comment lines', (t) => {
       branches: [],
     },
     {
+      id: '0001',
       name: 'Flask Section',
       activity: 'Show',
       conditions: {
@@ -46,6 +48,7 @@ test('parse : blank and comment lines', (t) => {
       branches: [],
     },
     {
+      id: '0001',
       name: 'Remain Section',
       activity: 'Hide',
       conditions: {},
@@ -129,6 +132,7 @@ Unset "Section6"
 
   const expected = [
     {
+      id: '0001',
       name: 'Section1',
       activity: 'Show',
       conditions: {
@@ -168,6 +172,7 @@ Unset "Section6"
       branches: [],
     },
     {
+      id: '0001',
       name: 'Section2',
       activity: 'Show',
       conditions: {
@@ -189,6 +194,7 @@ Unset "Section6"
       branches: [],
     },
     {
+      id: '0001',
       name: 'Section3',
       activity: 'Show',
       conditions: {},
@@ -202,6 +208,7 @@ Unset "Section6"
       branches: [],
     },
     {
+      id: '0001',
       name: 'Section4',
       activity: 'Show',
       conditions: {},
@@ -215,6 +222,7 @@ Unset "Section6"
       branches: [],
     },
     {
+      id: '0001',
       name: 'Section5',
       activity: 'Hide',
       conditions: {},
@@ -226,6 +234,7 @@ Unset "Section6"
       branches: [],
     },
     {
+      id: '0001',
       name: 'Section6',
       activity: 'Unset',
       conditions: {},
@@ -250,6 +259,7 @@ Hide "All Section"
 
   const expected = [
     {
+      id: '0001',
       name: 'All Section',
       activity: 'Hide',
       conditions: {},
@@ -275,6 +285,7 @@ Show "Map Section"
 
   const expected = [
     {
+      id: '0001',
       name: 'Map Section',
       activity: 'Show',
       conditions: {
@@ -311,6 +322,7 @@ Hide "Remain Section"
 
   const expected = [
     {
+      id: '0001',
       name: 'Hide Map Section',
       activity: 'Hide',
       conditions: {
@@ -321,6 +333,7 @@ Hide "Remain Section"
       branches: [],
     },
     {
+      id: '0001',
       name: 'Flask Section',
       activity: 'Show',
       conditions: {
@@ -333,6 +346,7 @@ Hide "Remain Section"
       branches: [],
     },
     {
+      id: '0001',
       name: 'Remain Section',
       activity: 'Hide',
       conditions: {},
@@ -366,6 +380,7 @@ Show "Map Section"
 
   const expected = [
     {
+      id: '0003',
       name: 'Map Section',
       activity: 'Show',
       conditions: {
@@ -382,6 +397,7 @@ Show "Map Section"
           type: 'Fork',
           blocks: [
             {
+              id: '0001',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -389,6 +405,7 @@ Show "Map Section"
               branches: [],
             },
             {
+              id: '0002',
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
@@ -426,6 +443,7 @@ Show "Map Section"
 
   const expected = [
     {
+      id: '0003',
       name: 'Map Section',
       activity: 'Show',
       conditions: {
@@ -442,6 +460,7 @@ Show "Map Section"
           type: 'Mixin',
           blocks: [
             {
+              id: '0001',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -449,6 +468,7 @@ Show "Map Section"
               branches: [],
             },
             {
+              id: '0002',
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
@@ -492,6 +512,7 @@ Show "Map Section"
 
   const expected = [
     {
+      id: '0005',
       name: 'Map Section',
       activity: 'Show',
       conditions: { Class: ['Maps'] },
@@ -502,6 +523,7 @@ Show "Map Section"
           type: 'Mixin',
           blocks: [
             {
+              id: '0001',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -509,6 +531,7 @@ Show "Map Section"
               branches: [],
             },
             {
+              id: '0002',
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
@@ -522,6 +545,7 @@ Show "Map Section"
           type: 'Mixin',
           blocks: [
             {
+              id: '0003',
               name: 'High Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 11' },
@@ -529,6 +553,7 @@ Show "Map Section"
               branches: [],
             },
             {
+              id: '0004',
               name: 'Middle Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 6' },
@@ -572,6 +597,7 @@ Show "Map Section"
 
   const expected = [
     {
+      id: '0005',
       name: 'Map Section',
       activity: 'Show',
       conditions: { Class: ['Maps'] },
@@ -582,6 +608,7 @@ Show "Map Section"
           type: 'Mixin',
           blocks: [
             {
+              id: '0001',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -589,6 +616,7 @@ Show "Map Section"
               branches: [],
             },
             {
+              id: '0004',
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
@@ -599,6 +627,7 @@ Show "Map Section"
                   type: 'Mixin',
                   blocks: [
                     {
+                      id: '0002',
                       name: 'High Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 11' },
@@ -606,6 +635,7 @@ Show "Map Section"
                       branches: [],
                     },
                     {
+                      id: '0003',
                       name: 'Middle Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 6' },

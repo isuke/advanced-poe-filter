@@ -1,8 +1,17 @@
 {
   const indent = '    '
+  const idDigit = 4
+  const idPadding = '0'.repeat(idDigit)
+  let blockId = 1
   let indentLevel = 0
 
   function getIndentLevel(i) { return i.split(indent).length - 1 }
+  function resetBlockId() { blockId = 1 }
+  function getBlockId() {
+    let result = (idPadding + blockId).slice(- idDigit)
+    blockId++
+    return result
+  }
 }
 
 //
@@ -12,7 +21,10 @@ start = script
 
 script = section*
 
-section = block / emptyBlock
+section = block:(block / emptyBlock) {
+    resetBlockId()
+    return block
+  }
 
 block =
   blankline*
@@ -38,14 +50,14 @@ block =
 
     let allBranches = branches.map(m => m[1])
 
-    return { name, activity, conditions, actions, branches: allBranches }
+    return { id: getBlockId(), name, activity, conditions, actions, branches: allBranches }
   }
 
 emptyBlock =
   blankline*
   activity:('Show' / 'Hide') __ name:string br
   blankline* {
-    return { name, activity, conditions: {}, actions: {}, branches: [] }
+    return { id: getBlockId(), name, activity, conditions: {}, actions: {}, branches: [] }
   }
 
 line = line:(condition / action) br { return line }
