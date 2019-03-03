@@ -6,6 +6,7 @@ import { product, createObject, assignImmutable, forIn } from '../src/utils'
 
 /*::
 type AdvancedBlock = {
+  id: string,
   name: string,
   activity: string,
   conditions: object,
@@ -27,6 +28,7 @@ type Section = {
 }
 
 type Block = {
+  id: string,
   name: object,
   activity: string,
   conditions: object,
@@ -44,6 +46,7 @@ const _convertAdvancedBlockToSection = (advancedBlock /*: AdvancedBlock */) /*: 
       name: advancedBlock.name,
       blocks: [
         {
+          id: advancedBlock.id,
           name: {},
           activity: advancedBlock.activity,
           conditions: advancedBlock.conditions,
@@ -68,6 +71,7 @@ const _convertBranchToBlocks = (branch /*: Branch */) /* Array<Block> */ => {
     const nameObject = createObject(branch.name, section.name)
     const blocks = section.blocks.map((block) => {
       return {
+        id: block.id,
         name: assignImmutable(nameObject, block.name),
         activity: block.activity,
         conditions: block.conditions,
@@ -83,6 +87,7 @@ const _convertBranchToBlocks = (branch /*: Branch */) /* Array<Block> */ => {
 
 const _mergeBlocks = (advancedBlock /*: advancedBlock */, ...blocks /*: Array<Block> */) /*: Block */ => {
   return {
+    id: [advancedBlock.id].concat(...blocks.map((o) => o.id)).join('-'),
     name: assignImmutable({}, ...blocks.map((o) => o.name)),
     activity: _mergeactivities(advancedBlock.activity, ...blocks.map((o) => o.activity)),
     conditions: assignImmutable(advancedBlock.conditions, ...blocks.map((o) => o.conditions)),
@@ -142,6 +147,7 @@ const _mergeActions = (root /*: object */, ...others /*: Array<object> */) /*: o
 
 const _emptyBlock = (branchName /*: string */) /*: Block */ => {
   return {
+    id: '0000', // TODO: unique number
     name: createObject(branchName),
     activity: 'Unset',
     conditions: {},

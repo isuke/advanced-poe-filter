@@ -5,6 +5,7 @@ import expand from '../src/expander'
 test('expand : single section', (t) => {
   const advancedScriptObject = [
     {
+      id: '0001',
       name: 'Map Section',
       activity: 'Show',
       conditions: {
@@ -24,6 +25,7 @@ test('expand : single section', (t) => {
       name: 'Map Section',
       blocks: [
         {
+          id: '0001',
           name: {},
           activity: 'Show',
           conditions: {
@@ -47,6 +49,7 @@ test('expand : single section', (t) => {
 test('expand : multi section', (t) => {
   const advancedScriptObject = [
     {
+      id: '0001',
       name: 'Hide Map Section',
       activity: 'Hide',
       conditions: {
@@ -57,6 +60,7 @@ test('expand : multi section', (t) => {
       branches: [],
     },
     {
+      id: '0001',
       name: 'Flask Section',
       activity: 'Show',
       conditions: {
@@ -75,6 +79,7 @@ test('expand : multi section', (t) => {
       name: 'Hide Map Section',
       blocks: [
         {
+          id: '0001',
           name: {},
           activity: 'Hide',
           conditions: {
@@ -89,6 +94,7 @@ test('expand : multi section', (t) => {
       name: 'Flask Section',
       blocks: [
         {
+          id: '0001',
           name: {},
           activity: 'Show',
           conditions: {
@@ -111,6 +117,7 @@ test('expand : multi section', (t) => {
 test('expand : single fork', (t) => {
   const advancedScriptObject = [
     {
+      id: '0001',
       name: 'Map Section',
       activity: 'Unset',
       conditions: {
@@ -127,6 +134,7 @@ test('expand : single fork', (t) => {
           type: 'Fork',
           blocks: [
             {
+              id: '0002',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -137,6 +145,7 @@ test('expand : single fork', (t) => {
               branches: [],
             },
             {
+              id: '0003',
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
@@ -144,6 +153,7 @@ test('expand : single fork', (t) => {
               branches: [],
             },
             {
+              id: '0004',
               name: 'Normal',
               activity: 'Unset',
               conditions: { Rarity: 'Normal' },
@@ -161,6 +171,7 @@ test('expand : single fork', (t) => {
       name: 'Map Section',
       blocks: [
         {
+          id: '0001-0002',
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
@@ -175,6 +186,7 @@ test('expand : single fork', (t) => {
           },
         },
         {
+          id: '0001-0003',
           name: { Rarity: 'Magic' },
           activity: 'Hide',
           conditions: {
@@ -188,6 +200,7 @@ test('expand : single fork', (t) => {
           },
         },
         {
+          id: '0001-0004',
           name: { Rarity: 'Normal' },
           activity: 'Unset',
           conditions: {
@@ -212,6 +225,7 @@ test('expand : single fork', (t) => {
 test('expand : single mixin', (t) => {
   const advancedScriptObject = [
     {
+      id: '0001',
       name: 'Map Section',
       activity: 'Show',
       conditions: {
@@ -228,6 +242,7 @@ test('expand : single mixin', (t) => {
           type: 'Mixin',
           blocks: [
             {
+              id: '0002',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -238,6 +253,7 @@ test('expand : single mixin', (t) => {
               branches: [],
             },
             {
+              id: '0003',
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
@@ -245,6 +261,7 @@ test('expand : single mixin', (t) => {
               branches: [],
             },
             {
+              id: '0004',
               name: 'Normal',
               activity: 'Unset',
               conditions: { Rarity: 'Normal' },
@@ -262,6 +279,7 @@ test('expand : single mixin', (t) => {
       name: 'Map Section',
       blocks: [
         {
+          id: '0001-0002',
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
@@ -276,6 +294,7 @@ test('expand : single mixin', (t) => {
           },
         },
         {
+          id: '0001-0003',
           name: { Rarity: 'Magic' },
           activity: 'Hide',
           conditions: {
@@ -289,6 +308,7 @@ test('expand : single mixin', (t) => {
           },
         },
         {
+          id: '0001-0004',
           name: { Rarity: 'Normal' },
           activity: 'Show',
           conditions: {
@@ -302,6 +322,7 @@ test('expand : single mixin', (t) => {
           },
         },
         {
+          id: '0001-0000',
           name: { Rarity: undefined },
           activity: 'Show',
           conditions: {
@@ -325,6 +346,7 @@ test('expand : single mixin', (t) => {
 test('expand : multi mixin', (t) => {
   const advancedScriptObject = [
     {
+      id: '0001',
       name: 'Map Section',
       activity: 'Show',
       conditions: { Class: ['Maps'] },
@@ -335,6 +357,7 @@ test('expand : multi mixin', (t) => {
           type: 'Mixin',
           blocks: [
             {
+              id: '0002',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -342,6 +365,7 @@ test('expand : multi mixin', (t) => {
               branches: [],
             },
             {
+              id: '0003',
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
@@ -355,6 +379,7 @@ test('expand : multi mixin', (t) => {
           type: 'Mixin',
           blocks: [
             {
+              id: '0004',
               name: 'High Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 11' },
@@ -362,6 +387,7 @@ test('expand : multi mixin', (t) => {
               branches: [],
             },
             {
+              id: '0005',
               name: 'Middle Tier',
               activity: 'Show',
               conditions: { MapTier: '>= 6' },
@@ -380,6 +406,7 @@ test('expand : multi mixin', (t) => {
       blocks: [
         // Rarity is 'Rare'
         {
+          id: '0001-0002-0004',
           name: { Rarity: 'Rare', Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
@@ -393,6 +420,7 @@ test('expand : multi mixin', (t) => {
           },
         },
         {
+          id: '0001-0002-0005',
           name: { Rarity: 'Rare', Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
@@ -406,6 +434,7 @@ test('expand : multi mixin', (t) => {
           },
         },
         {
+          id: '0001-0002-0000',
           name: { Rarity: 'Rare', Tier: undefined },
           activity: 'Show',
           conditions: {
@@ -419,6 +448,7 @@ test('expand : multi mixin', (t) => {
 
         // Rarity is 'Magic'
         {
+          id: '0001-0003-0004',
           name: { Rarity: 'Magic', Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
@@ -431,6 +461,7 @@ test('expand : multi mixin', (t) => {
           },
         },
         {
+          id: '0001-0003-0005',
           name: { Rarity: 'Magic', Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
@@ -443,6 +474,7 @@ test('expand : multi mixin', (t) => {
           },
         },
         {
+          id: '0001-0003-0000',
           name: { Rarity: 'Magic', Tier: undefined },
           activity: 'Hide',
           conditions: {
@@ -454,6 +486,7 @@ test('expand : multi mixin', (t) => {
 
         // Rarity is undefined
         {
+          id: '0001-0000-0004',
           name: { Rarity: undefined, Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
@@ -465,6 +498,7 @@ test('expand : multi mixin', (t) => {
           },
         },
         {
+          id: '0001-0000-0005',
           name: { Rarity: undefined, Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
@@ -476,6 +510,7 @@ test('expand : multi mixin', (t) => {
           },
         },
         {
+          id: '0001-0000-0000',
           name: { Rarity: undefined, Tier: undefined },
           activity: 'Show',
           conditions: {
@@ -495,6 +530,7 @@ test('expand : multi mixin', (t) => {
 test('expand : nested mixin', (t) => {
   const advancedScriptObject = [
     {
+      id: '0001',
       name: 'Map Section',
       activity: 'Show',
       conditions: { Class: ['Maps'] },
@@ -505,6 +541,7 @@ test('expand : nested mixin', (t) => {
           type: 'Mixin',
           blocks: [
             {
+              id: '0002',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -512,6 +549,7 @@ test('expand : nested mixin', (t) => {
               branches: [],
             },
             {
+              id: '0003',
               name: 'Magic',
               activity: 'Hide',
               conditions: { Rarity: 'Magic' },
@@ -524,6 +562,7 @@ test('expand : nested mixin', (t) => {
                   type: 'Mixin',
                   blocks: [
                     {
+                      id: '0004',
                       name: 'High Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 11' },
@@ -531,6 +570,7 @@ test('expand : nested mixin', (t) => {
                       branches: [],
                     },
                     {
+                      id: '0005',
                       name: 'Middle Tier',
                       activity: 'Show',
                       conditions: { MapTier: '>= 6' },
@@ -553,6 +593,7 @@ test('expand : nested mixin', (t) => {
       blocks: [
         // Rarity is 'Rare'
         {
+          id: '0001-0002',
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
@@ -566,6 +607,7 @@ test('expand : nested mixin', (t) => {
 
         // Rarity is 'Magic'
         {
+          id: '0001-0003-0004',
           name: { Rarity: 'Magic', Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
@@ -579,6 +621,7 @@ test('expand : nested mixin', (t) => {
           },
         },
         {
+          id: '0001-0003-0005',
           name: { Rarity: 'Magic', Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
@@ -592,6 +635,7 @@ test('expand : nested mixin', (t) => {
           },
         },
         {
+          id: '0001-0003-0000',
           name: { Rarity: 'Magic', Tier: undefined },
           activity: 'Hide',
           conditions: {
@@ -605,6 +649,7 @@ test('expand : nested mixin', (t) => {
 
         // Rarity is undefined
         {
+          id: '0001-0000',
           name: { Rarity: undefined },
           activity: 'Show',
           conditions: {
@@ -624,6 +669,7 @@ test('expand : nested mixin', (t) => {
 test('expand : color function', (t) => {
   const advancedScriptObject = [
     {
+      id: '0001',
       name: 'Map Section',
       activity: 'Show',
       conditions: {
@@ -640,6 +686,7 @@ test('expand : color function', (t) => {
           type: 'Mixin',
           blocks: [
             {
+              id: '0002',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -661,6 +708,7 @@ test('expand : color function', (t) => {
       name: 'Map Section',
       blocks: [
         {
+          id: '0001-0002',
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
@@ -674,6 +722,7 @@ test('expand : color function', (t) => {
           },
         },
         {
+          id: '0001-0000',
           name: { Rarity: undefined },
           activity: 'Show',
           conditions: {
@@ -697,6 +746,7 @@ test('expand : color function', (t) => {
 test('expand : fontSize function', (t) => {
   const advancedScriptObject = [
     {
+      id: '0001',
       name: 'Map Section',
       activity: 'Show',
       conditions: {
@@ -711,6 +761,7 @@ test('expand : fontSize function', (t) => {
           type: 'Mixin',
           blocks: [
             {
+              id: '0002',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -720,6 +771,7 @@ test('expand : fontSize function', (t) => {
               branches: [],
             },
             {
+              id: '0003',
               name: 'Magic',
               activity: 'Show',
               conditions: { Rarity: 'Magic' },
@@ -733,6 +785,7 @@ test('expand : fontSize function', (t) => {
       ],
     },
     {
+      id: '0001',
       name: 'Jewel Section',
       activity: 'Show',
       conditions: {
@@ -745,6 +798,7 @@ test('expand : fontSize function', (t) => {
           type: 'Mixin',
           blocks: [
             {
+              id: '0002',
               name: 'Rare',
               activity: 'Show',
               conditions: { Rarity: 'Rare' },
@@ -754,6 +808,7 @@ test('expand : fontSize function', (t) => {
               branches: [],
             },
             {
+              id: '0003',
               name: 'Magic',
               activity: 'Show',
               conditions: { Rarity: 'Magic' },
@@ -773,6 +828,7 @@ test('expand : fontSize function', (t) => {
       name: 'Map Section',
       blocks: [
         {
+          id: '0001-0002',
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
@@ -784,6 +840,7 @@ test('expand : fontSize function', (t) => {
           },
         },
         {
+          id: '0001-0003',
           name: { Rarity: 'Magic' },
           activity: 'Show',
           conditions: {
@@ -795,6 +852,7 @@ test('expand : fontSize function', (t) => {
           },
         },
         {
+          id: '0001-0000',
           name: { Rarity: undefined },
           activity: 'Show',
           conditions: {
@@ -810,6 +868,7 @@ test('expand : fontSize function', (t) => {
       name: 'Jewel Section',
       blocks: [
         {
+          id: '0001-0002',
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
@@ -821,6 +880,7 @@ test('expand : fontSize function', (t) => {
           },
         },
         {
+          id: '0001-0003',
           name: { Rarity: 'Magic' },
           activity: 'Show',
           conditions: {
@@ -832,6 +892,7 @@ test('expand : fontSize function', (t) => {
           },
         },
         {
+          id: '0001-0000',
           name: { Rarity: undefined },
           activity: 'Show',
           conditions: {
