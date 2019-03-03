@@ -31,6 +31,7 @@ Show "Map Section"
         name: 'Map Section',
         blocks: [
           {
+            id: '0001',
             name: {},
             activity: 'Show',
             conditions: {
