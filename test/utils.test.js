@@ -39,6 +39,20 @@ test('product : multi array', (t) => {
   t.deepEqual(result, expected)
 })
 
+test('assignImmutable', (t) => {
+  const obj1 = { a: 'A' }
+  const obj2 = { b: 'B' }
+  const obj3 = { c: 'C' }
+  const expected = { a: 'A', b: 'B', c: 'C' }
+
+  const result = utils.assignImmutable(obj1, obj2, obj3)
+
+  t.deepEqual(result, expected)
+  t.deepEqual(obj1, { a: 'A' })
+  t.deepEqual(obj2, { b: 'B' })
+  t.deepEqual(obj3, { c: 'C' })
+})
+
 test('toUpperFirstChar', (t) => {
   const string = 'true'
   const expected = 'True'

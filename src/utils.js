@@ -1,5 +1,3 @@
-import cloneDeep from 'lodash.clonedeep'
-
 const product = (headArray, ...tailArraies) => {
   let result = []
 
@@ -28,8 +26,8 @@ const createObject = (key, val = undefined) => {
   return result
 }
 
-const assignImmutable = (object, ...objects) => {
-  return Object.assign(cloneDeep(object), ...objects)
+const assignImmutable = (...objects) => {
+  return Object.assign({}, ...objects)
 }
 
 const forIn = (object, callback) => {
