@@ -9,6 +9,7 @@ test('generate : single section', (t) => {
       name: 'Map Section',
       blocks: [
         {
+          id: '0001',
           name: {},
           activity: 'Show',
           conditions: {
@@ -60,6 +61,7 @@ test('generate : single unset section', (t) => {
       name: 'Map Section',
       blocks: [
         {
+          id: '0001',
           name: {},
           activity: 'Unset',
           conditions: {
@@ -104,6 +106,7 @@ test('generate : multi section', (t) => {
       name: 'Hide Map Section',
       blocks: [
         {
+          id: '0001',
           name: {},
           activity: 'Hide',
           conditions: {
@@ -121,6 +124,7 @@ test('generate : multi section', (t) => {
       name: 'Flask Section',
       blocks: [
         {
+          id: '0001',
           name: {},
           activity: 'Show',
           conditions: {
@@ -175,6 +179,7 @@ test('generate : multi block', (t) => {
       blocks: [
         // Rarity is 'Rare'
         {
+          id: '0001-0002-0003',
           name: { Rarity: 'Rare', Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
@@ -188,6 +193,7 @@ test('generate : multi block', (t) => {
           },
         },
         {
+          id: '0001-0002-0004',
           name: { Rarity: 'Rare', Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
@@ -201,6 +207,7 @@ test('generate : multi block', (t) => {
           },
         },
         {
+          id: '0001-0002-0000',
           name: { Rarity: 'Rare', Tier: undefined },
           activity: 'Show',
           conditions: {
@@ -214,6 +221,7 @@ test('generate : multi block', (t) => {
 
         // Rarity is 'Magic'
         {
+          id: '0001-0005-0003',
           name: { Rarity: 'Magic', Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
@@ -226,6 +234,7 @@ test('generate : multi block', (t) => {
           },
         },
         {
+          id: '0001-0005-0004',
           name: { Rarity: 'Magic', Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
@@ -238,6 +247,7 @@ test('generate : multi block', (t) => {
           },
         },
         {
+          id: '0001-0005-0000',
           name: { Rarity: 'Magic', Tier: undefined },
           activity: 'Hide',
           conditions: {
@@ -249,6 +259,7 @@ test('generate : multi block', (t) => {
 
         // Rarity is undefined
         {
+          id: '0001-0000-0003',
           name: { Rarity: undefined, Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
@@ -260,6 +271,7 @@ test('generate : multi block', (t) => {
           },
         },
         {
+          id: '0001-0000-0004',
           name: { Rarity: undefined, Tier: 'Middle Tier' },
           activity: 'Unset',
           conditions: {
@@ -271,6 +283,7 @@ test('generate : multi block', (t) => {
           },
         },
         {
+          id: '0001-0000-0000',
           name: { Rarity: undefined, Tier: undefined },
           activity: 'Show',
           conditions: {
