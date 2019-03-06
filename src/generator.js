@@ -77,12 +77,16 @@ const _generateCondition = (conditionVal, conditionKey) => {
     case 'BaseType':
     case 'Prophecy':
     case 'HasExplicitMod':
+    case 'HasEnchantment':
       return `    ${conditionKey} ${conditionVal.map((v) => `"${v}"`).join(' ')}\n`
     case 'ShaperItem':
     case 'ElderItem':
     case 'Corrupted':
     case 'Identified':
     case 'ShapedMap':
+    case 'FracturedItem':
+    case 'SynthesisedItem':
+    case 'AnyEnchantment':
       return `    ${conditionKey} ${toUpperFirstChar(conditionVal)}\n`
     default:
       return `    ${conditionKey} ${conditionVal}\n`

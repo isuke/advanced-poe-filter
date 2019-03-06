@@ -96,12 +96,16 @@ condition =
   / conditionRarity
   / conditionShaperItem
   / conditionElderItem
+  / conditionFracturedItem
+  / conditionSynthesisedItem
   / conditionCorrupted
   / conditionIdentified
   / conditionShapedMap
   / conditionHeight
   / conditionWidth
   / conditionHasExplicitMod
+  / conditionAnyEnchantment
+  / conditionHasEnchantment
 
 // Condition Attributes
 conditionClass          = attr:'Class'          __ val:conditionValueArray      { return { lineType: 'condition', attr, val} }
@@ -119,12 +123,16 @@ conditionSocketGroup    = attr:'SocketGroup'    __ val:conditionValueSocketRGBW 
 conditionRarity         = attr:'Rarity'         __ val:conditionValueRarity     { return { lineType: 'condition', attr, val} }
 conditionShaperItem     = attr:'ShaperItem'     __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
 conditionElderItem      = attr:'ElderItem'      __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
+conditionFracturedItem  = attr:'FracturedItem'  __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
+conditionSynthesisedItem = attr:'SynthesisedItem' __ val:conditionValueBoolean  { return { lineType: 'condition', attr, val} }
 conditionCorrupted      = attr:'Corrupted'      __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
 conditionIdentified     = attr:'Identified'     __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
 conditionShapedMap      = attr:'ShapedMap'      __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
 conditionHeight         = attr:'Height'         __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
 conditionWidth          = attr:'Width'          __ val:conditionValueNumber     { return { lineType: 'condition', attr, val} }
 conditionHasExplicitMod = attr:'HasExplicitMod' __ val:conditionValueArray      { return { lineType: 'condition', attr, val} }
+conditionAnyEnchantment = attr:'AnyEnchantment' __ val:conditionValueBoolean    { return { lineType: 'condition', attr, val} }
+conditionHasEnchantment = attr:'HasEnchantment' __ val:conditionValueArray      { return { lineType: 'condition', attr, val} }
 
 // Condition Values
 conditionValueArray = names

@@ -80,12 +80,16 @@ Show "Section1"
     Rarity         = Rare
     ShaperItem     True
     ElderItem      False
+    FracturedItem  False
+    SynthesisedItem False
     Corrupted      True
     Identified     True
     ShapedMap      True
     Height         > 1
     Width          > 2
     HasExplicitMod "Piyo"
+    AnyEnchantment True
+    HasEnchantment "Enchantment Decree of Force"
     SetBorderColor           100 101 102
     SetTextColor             103 104 105
     SetBackgroundColor       106 107 108
@@ -151,12 +155,16 @@ Unset "Section6"
         Rarity: '= Rare',
         ShaperItem: true,
         ElderItem: false,
+        FracturedItem: false,
+        SynthesisedItem: false,
         Corrupted: true,
         Identified: true,
         ShapedMap: true,
         Height: '> 1',
         Width: '> 2',
         HasExplicitMod: ['Piyo'],
+        AnyEnchantment: true,
+        HasEnchantment: ['Enchantment Decree of Force'],
       },
       actions: {
         SetBorderColor: { rgb: { r: 100, g: 101, b: 102 }, alpha: 255 },

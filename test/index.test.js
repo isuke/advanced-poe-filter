@@ -64,6 +64,7 @@ Show "Map Section"
     Class "Maps"
     MapTier > 3
     Identified False
+    HasEnchantment "Enchantment Decree of Force"
 
     # This is Comment
     SetBorderColor 250 251 252
@@ -89,6 +90,7 @@ Show
     Class "Maps"
     MapTier > 3
     Identified False
+    HasEnchantment "Enchantment Decree of Force"
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
     MinimapIcon 1 Red Circle
