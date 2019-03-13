@@ -1,7 +1,7 @@
 import test from 'ava'
 import outdent from 'outdent'
 
-import prepend from '../src/prepender'
+import Prepender from '../src/prepender'
 
 test('prepend : nothing anyone', (t) => {
   const advancedScriptText = outdent`
@@ -26,7 +26,8 @@ Show "Map Section"
 
   `
 
-  const result = prepend(advancedScriptText)
+  const prepender = new Prepender(advancedScriptText)
+  const result = prepender.prepend()
 
   t.is(result, expected)
 })
@@ -64,7 +65,8 @@ Show "Map Section"
 
   `
 
-  const result = prepend(advancedScriptText, variables)
+  const prepender = new Prepender(advancedScriptText, variables)
+  const result = prepender.prepend()
 
   t.is(result, expected)
 })
@@ -86,7 +88,8 @@ Show "Map Section"
 
   `
 
-  const result = prepend(advancedScriptText, variables)
+  const prepender = new Prepender(advancedScriptText, variables)
+  const result = prepender.prepend()
 
   t.is(result, expected)
 })
@@ -110,7 +113,8 @@ Show "Map Section"
 
   `
 
-  const result = prepend(advancedScriptText, variables)
+  const prepender = new Prepender(advancedScriptText, variables)
+  const result = prepender.prepend()
 
   t.is(result, expected)
 })
@@ -137,7 +141,8 @@ Show "Flask Section"
 
   `
 
-  const result = prepend(advancedScriptText, variables)
+  const prepender = new Prepender(advancedScriptText, variables)
+  const result = prepender.prepend()
 
   t.is(result, expected)
 })
@@ -155,7 +160,9 @@ Show "Flask Section"
     MyItemLevel: 10,
   }
 
-  t.throws(() => prepend(advancedScriptText, variables), "'MyItemLevelx' is not found")
+  const prepender = new Prepender(advancedScriptText, variables)
+
+  t.throws(() => prepender.prepend(), "'MyItemLevelx' is not found")
 })
 
 test('prepend : infinity loop variables', (t) => {
@@ -172,7 +179,9 @@ Show "Flask Section"
     MyItemLevel2: '#MyItemLevel1',
   }
 
-  t.throws(() => prepend(advancedScriptText, variables), 'nest is too deep')
+  const prepender = new Prepender(advancedScriptText, variables)
+
+  t.throws(() => prepender.prepend(), 'nest is too deep')
 })
 
 test('prepend : simple props of value', (t) => {
@@ -207,7 +216,8 @@ Show "Map Section"
 
   `
 
-  const result = prepend(advancedScriptText, {}, props)
+  const prepender = new Prepender(advancedScriptText, {}, props)
+  const result = prepender.prepend()
 
   t.is(result, expected)
 })
@@ -229,7 +239,8 @@ Show "Map Section"
 
   `
 
-  const result = prepend(advancedScriptText, {}, props)
+  const prepender = new Prepender(advancedScriptText, {}, props)
+  const result = prepender.prepend()
 
   t.is(result, expected)
 })
@@ -253,7 +264,8 @@ Show "Map Section"
 
   `
 
-  const result = prepend(advancedScriptText, {}, props)
+  const prepender = new Prepender(advancedScriptText, {}, props)
+  const result = prepender.prepend()
 
   t.is(result, expected)
 })
@@ -281,7 +293,8 @@ Show "Map Section"
 
   `
 
-  const result = prepend(advancedScriptText, variables, props)
+  const prepender = new Prepender(advancedScriptText, variables, props)
+  const result = prepender.prepend()
 
   t.is(result, expected)
 })

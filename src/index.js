@@ -1,4 +1,4 @@
-import prepend from '../src/prepender'
+import Prepender from '../src/prepender'
 import { parse } from '../lib/parser'
 import Expander from '../src/expander'
 import Generator from '../src/generator'
@@ -12,12 +12,14 @@ const version = pk.version
 const getObject = (advancedScriptText, variables = {}, properties = {}, _name = '') => {
   let result = {}
   if (Object.keys(properties).length === 0) {
-    const expander = new Expander(parse(prepend(advancedScriptText, variables)))
+    const prepender = new Prepender(advancedScriptText, variables)
+    const expander = new Expander(parse(prepender.prepend()))
 
     result['No Name'] = expander.expand()
   } else {
     forIn(properties, (props, key) => {
-      const expander = new Expander(parse(prepend(advancedScriptText, variables, props)))
+      const prepender = new Prepender(advancedScriptText, variables, props)
+      const expander = new Expander(parse(prepender.prepend()))
 
       result[key] = expander.expand()
     })
