@@ -1,7 +1,7 @@
 import prepend from '../src/prepender'
 import { parse } from '../lib/parser'
 import expand from '../src/expander'
-import generate from '../src/generator'
+import Generator from '../src/generator'
 
 import { forIn, mapVals } from '../src/utils'
 
@@ -23,7 +23,9 @@ const getObject = (advancedScriptText, variables = {}, properties = {}, _name = 
 
 const compile = (advancedScriptText, variables = {}, properties = {}, name = '') => {
   return mapVals(getObject(advancedScriptText, variables, properties), (val, key) => {
-    return key === 'No Name' ? generate(val, version, '', name) : generate(val, version, key, name)
+    const generator = key === 'No Name' ? new Generator(val, version, '', name) : new Generator(val, version, key, name)
+
+    return generator.generate()
   })
 }
 
