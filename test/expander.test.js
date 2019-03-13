@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import expand from '../src/expander'
+import Expander from '../src/expander'
 
 test('expand : single section', (t) => {
   const advancedScriptObject = [
@@ -41,7 +41,8 @@ test('expand : single section', (t) => {
     },
   ]
 
-  const result = expand(advancedScriptObject)
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -109,7 +110,8 @@ test('expand : multi section', (t) => {
     },
   ]
 
-  const result = expand(advancedScriptObject)
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -217,7 +219,8 @@ test('expand : single fork', (t) => {
     },
   ]
 
-  const result = expand(advancedScriptObject)
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -338,7 +341,8 @@ test('expand : single mixin', (t) => {
     },
   ]
 
-  const result = expand(advancedScriptObject)
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -522,7 +526,8 @@ test('expand : multi mixin', (t) => {
     },
   ]
 
-  const result = expand(advancedScriptObject)
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -661,7 +666,8 @@ test('expand : nested mixin', (t) => {
     },
   ]
 
-  const result = expand(advancedScriptObject)
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -738,7 +744,8 @@ test('expand : color function', (t) => {
     },
   ]
 
-  const result = expand(advancedScriptObject)
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
@@ -904,7 +911,8 @@ test('expand : fontSize function', (t) => {
     },
   ]
 
-  const result = expand(advancedScriptObject)
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
 
   t.deepEqual(result, expected)
 })
