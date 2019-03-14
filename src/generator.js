@@ -131,10 +131,9 @@ export default class {
   }
 
   _createHideActions(actions) {
-    const hideDefaultActions = {
-      DisableDropSound: true,
-    }
-    let result = assignImmutable(hideDefaultActions, actions)
+    let result = {}
+    if (this.$options.addDisableDropSoundToHideBlock) result.DisableDropSound = true
+    result = assignImmutable(actions, result)
     delete result.PlayAlertSound
     delete result.PlayAlertSoundPositional
     delete result.CustomAlertSound

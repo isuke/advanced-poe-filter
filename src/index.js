@@ -9,7 +9,7 @@ import pk from '../package.json'
 
 const version = pk.version
 
-const getObject = (advancedScriptText, variables = {}, properties = {}, _name = '') => {
+const getObject = (advancedScriptText, variables = {}, properties = {}, _name = '', _options = {}) => {
   const prepender = new Prepender(advancedScriptText, variables)
   const expander = new Expander()
 
@@ -29,8 +29,9 @@ const getObject = (advancedScriptText, variables = {}, properties = {}, _name = 
   return result
 }
 
-const compile = (advancedScriptText, variables = {}, properties = {}, name = '') => {
-  const generator = new Generator({}, version, '', name)
+const compile = (advancedScriptText, variables = {}, properties = {}, name = '', originalOptions = undefined) => {
+  const options = originalOptions ? originalOptions : _defaultOptions
+  const generator = new Generator({}, version, '', name, options)
 
   return mapVals(getObject(advancedScriptText, variables, properties), (val, key) => {
     generator.scriptObject = val
@@ -41,6 +42,10 @@ const compile = (advancedScriptText, variables = {}, properties = {}, name = '')
 
     return generator.generate()
   })
+}
+
+const _defaultOptions = {
+  addDisableDropSoundToHideBlock: true,
 }
 
 export { version, getObject, compile }

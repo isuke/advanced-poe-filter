@@ -417,8 +417,8 @@ Show
 Hide
     Class "Maps"
     Rarity = Magic
-    DisableDropSound True
     SetBorderColor 200 100 52 123
+    DisableDropSound True
 
 # Rarity is "Normal"
 Show
@@ -854,8 +854,8 @@ Show
 Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
-    DisableDropSound True
     SetFontSize 36
+    DisableDropSound True
 
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
@@ -983,8 +983,8 @@ Show
 Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
-    DisableDropSound True
     SetFontSize 18
+    DisableDropSound True
 
 # Rarity is Any - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
@@ -1162,22 +1162,22 @@ Show
 Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
-    DisableDropSound True
     SetFontSize 45
+    DisableDropSound True
 
 # Rarity is "Magic"
 Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
-    DisableDropSound True
     SetFontSize 36
+    DisableDropSound True
 
 # Rarity is "Normal"
 Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
-    DisableDropSound True
     SetFontSize 18
+    DisableDropSound True
 
 # Rarity is Any
 Hide
