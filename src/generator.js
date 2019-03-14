@@ -120,7 +120,7 @@ export default class {
 
   _generateActions(blockObject) {
     if (blockObject.activity === 'Show') {
-      return mapObject(blockObject.actions, (val, key) => {
+      return mapObject(this._createShowActions(blockObject.actions), (val, key) => {
         return this._generateAction(val, key)
       }).join('')
     } else {
@@ -130,10 +130,18 @@ export default class {
     }
   }
 
+  _createShowActions(actions) {
+    let defaultActions = {}
+    if (this.$options.initialFontSize) defaultActions.SetFontSize = this.$options.initialFontSize
+    return assignImmutable(defaultActions, actions)
+  }
+
   _createHideActions(actions) {
-    let result = {}
-    if (this.$options.addDisableDropSoundToHideBlock) result.DisableDropSound = true
-    result = assignImmutable(actions, result)
+    let defaultActions = {}
+    if (this.$options.initialFontSize) defaultActions.SetFontSize = this.$options.initialFontSize
+    if (this.$options.addDisableDropSoundToHideBlock) defaultActions.DisableDropSound = true
+
+    let result = assignImmutable(defaultActions, actions)
     delete result.PlayAlertSound
     delete result.PlayAlertSoundPositional
     delete result.CustomAlertSound

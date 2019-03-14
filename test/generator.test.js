@@ -141,8 +141,8 @@ Hide
     Class "Maps"
     MapTier > 3
     Identified False
-    SetBorderColor 250 126 107 255
     DisableDropSound True
+    SetBorderColor 250 126 107 255
 
 
   `
@@ -201,6 +201,60 @@ Show
   `
 
   const generator = new Generator(scriptObject, '0.7.0', '', '', { convertPlayAlertSoundPositionalToPlayAlertSound: true })
+  const result = generator.generate()
+
+  t.is(result, expected)
+})
+
+test("generate : single section with 'initialFontSize' option", (t) => {
+  const scriptObject = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          id: '0001',
+          name: {},
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            MapTier: '> 3',
+            Identified: false,
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
+            PlayAlertSound: { id: '1', volume: 300 },
+            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
+            PlayEffect: { color: 'Blue', temp: true },
+          },
+        },
+      ],
+    },
+  ]
+
+  const expected = outdent`
+################################################################################
+#                                                                              #
+# Created By Advanced PoE Filter (Ver: 0.7.0)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Map Section                                                                  #
+################################################################################
+Show
+    Class "Maps"
+    MapTier > 3
+    Identified False
+    SetFontSize 38
+    SetBorderColor 250 126 107 255
+    PlayAlertSound 1 300
+    MinimapIcon 0 Red Circle
+    PlayEffect Blue Temp
+
+
+  `
+
+  const generator = new Generator(scriptObject, '0.7.0', '', '', { initialFontSize: 38 })
   const result = generator.generate()
 
   t.is(result, expected)

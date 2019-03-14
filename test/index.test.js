@@ -91,6 +91,7 @@ Show
     MapTier > 3
     Identified False
     HasEnchantment "Enchantment Decree of Force"
+    SetFontSize 32
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
     MinimapIcon 1 Red Circle
@@ -134,6 +135,7 @@ Show "Flasks"
 Show
     Class "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
     Identified False
+    SetFontSize 32
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
@@ -180,6 +182,7 @@ Show "Flasks"
 Show
     Class "Utility Flasks"
     Quality >= 0
+    SetFontSize 32
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
@@ -199,6 +202,7 @@ Show
 Show
     Class "Utility Flasks"
     Quality >= 10
+    SetFontSize 32
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
@@ -218,6 +222,7 @@ Show
 Show
     Class "Utility Flasks"
     Quality >= 20
+    SetFontSize 32
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
@@ -270,6 +275,7 @@ Show "Flasks"
 Show
     Class "Utility Flasks"
     Quality >= 0
+    SetFontSize 32
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
@@ -289,6 +295,7 @@ Show
 Show
     Class "Utility Flasks"
     Quality >= 10
+    SetFontSize 32
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
@@ -308,6 +315,7 @@ Show
 Show
     Class "Utility Flasks"
     Quality >= 20
+    SetFontSize 32
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
@@ -350,6 +358,7 @@ Hide "Remain Section"
 Hide
     Class "Maps"
     MapTier <= 4
+    SetFontSize 32
     DisableDropSound True
 
 
@@ -358,6 +367,7 @@ Hide
 ################################################################################
 Show
     Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
+    SetFontSize 32
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
 
@@ -366,6 +376,7 @@ Show
 # Remain Section                                                               #
 ################################################################################
 Hide
+    SetFontSize 32
     DisableDropSound True
 
 
@@ -411,19 +422,22 @@ Show "Map Section"
 Show
     Class "Maps"
     Rarity = Rare
+    SetFontSize 32
     SetBorderColor 200 100 51 123
 
 # Rarity is "Magic"
 Hide
     Class "Maps"
     Rarity = Magic
-    SetBorderColor 200 100 52 123
+    SetFontSize 32
     DisableDropSound True
+    SetBorderColor 200 100 52 123
 
 # Rarity is "Normal"
 Show
     Class "Maps"
     Rarity = Normal
+    SetFontSize 32
     SetBorderColor 200 100 53 123
 
 
@@ -469,6 +483,7 @@ Show "Map Section"
 Show
     Class "Maps"
     Rarity = Rare
+    SetFontSize 32
     SetBorderColor 55 155 205 123
     SetTextColor 125 125 125 123
     SetBackgroundColor 218 144 107 123
@@ -476,6 +491,7 @@ Show
 # Rarity is Any
 Show
     Class "Maps"
+    SetFontSize 32
     SetBorderColor 200 100 50 123
     SetTextColor 200 100 50 123
     SetBackgroundColor 200 100 50 123
@@ -530,6 +546,7 @@ Show
 # Rarity is Any
 Show
     Class "Maps"
+    SetFontSize 32
 
 
     `,
@@ -991,6 +1008,7 @@ Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     BaseType "Sacrificial Garb"
     LinkedSockets = 6
+    SetFontSize 32
     SetBackgroundColor 100 100 255 255
     PlayAlertSound 3 300
     PlayEffect Red
@@ -1001,6 +1019,7 @@ Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     BaseType "Sacrificial Garb"
     Sockets = 6
+    SetFontSize 32
     SetBackgroundColor 100 100 255 255
     PlayAlertSound 4 300
     PlayEffect Red
@@ -1011,6 +1030,7 @@ Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     BaseType "Sacrificial Garb"
     SocketGroup RGB
+    SetFontSize 32
     SetBackgroundColor 100 100 255 255
     PlayAlertSound 5 100
     PlayEffect Red Temp
@@ -1020,6 +1040,7 @@ Show
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     BaseType "Sacrificial Garb"
+    SetFontSize 32
     SetBackgroundColor 100 100 255 255
     PlayAlertSound 1 300
     PlayEffect Blue
@@ -1029,6 +1050,7 @@ Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     LinkedSockets = 6
+    SetFontSize 32
     SetBackgroundColor 50 50 255 255
     PlayAlertSound 3 300
     PlayEffect Red
@@ -1039,6 +1061,7 @@ Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Sockets = 6
+    SetFontSize 32
     SetBackgroundColor 50 50 255 255
     PlayAlertSound 4 300
     PlayEffect Red
@@ -1049,6 +1072,7 @@ Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     SocketGroup RGB
+    SetFontSize 32
     SetBackgroundColor 50 50 255 255
     PlayAlertSound 5 100
     PlayEffect Red Temp
@@ -1058,6 +1082,7 @@ Show
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    SetFontSize 32
     SetBackgroundColor 50 50 255 255
     PlayAlertSound 2 300
     PlayEffect Blue Temp
@@ -1066,6 +1091,7 @@ Show
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     LinkedSockets = 6
+    SetFontSize 32
     SetBorderColor 255 0 0 255
     PlayAlertSound 3 300
     PlayEffect Red
@@ -1074,6 +1100,7 @@ Show
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Sockets = 6
+    SetFontSize 32
     SetBorderColor 0 255 0 255
     PlayAlertSound 4 300
     PlayEffect Red
@@ -1082,6 +1109,7 @@ Show
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     SocketGroup RGB
+    SetFontSize 32
     SetBorderColor 0 0 255 255
     PlayAlertSound 5 100
     PlayEffect Red Temp
@@ -1089,6 +1117,7 @@ Show
 # Rarity is Any - BaseType is Any - Sockets and Link is Any
 Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    SetFontSize 32
     DisableDropSound True
 
 
@@ -1182,6 +1211,7 @@ Hide
 # Rarity is Any
 Hide
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    SetFontSize 32
     DisableDropSound True
 
 
