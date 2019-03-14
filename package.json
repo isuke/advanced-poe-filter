@@ -33,7 +33,7 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
     "esm": "^3.0.84",
-    "flow-bin": "^0.89.0",
+    "flow-bin": "^0.94.0",
     "outdent": "^0.7.0",
     "pegjs": "0.11.0-dev.325",
     "prettier": "^1.15.3",
