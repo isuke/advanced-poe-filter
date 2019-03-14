@@ -912,6 +912,7 @@ test('expand : fontSize function', (t) => {
   ]
 
   const expander = new Expander(advancedScriptObject)
+  expander.options = { initialFontSize: 32 }
   const result = expander.expand(advancedScriptObject)
 
   t.deepEqual(result, expected)

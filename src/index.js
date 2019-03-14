@@ -3,15 +3,17 @@ import { parse } from '../lib/parser'
 import Expander from '../src/expander'
 import Generator from '../src/generator'
 
-import { forIn, mapVals } from '../src/utils'
+import { assignImmutable, forIn, mapVals } from '../src/utils'
 
 import pk from '../package.json'
 
 const version = pk.version
 
-const getObject = (advancedScriptText, variables = {}, properties = {}, _name = '', _options = {}) => {
+const getObject = (advancedScriptText, variables = {}, properties = {}, _name = '', originalOptions = undefined) => {
+  const options = assignImmutable(_defaultOptions, originalOptions)
   const prepender = new Prepender(advancedScriptText, variables)
   const expander = new Expander()
+  expander.options = options
 
   let result = {}
   if (Object.keys(properties).length === 0) {
@@ -30,10 +32,10 @@ const getObject = (advancedScriptText, variables = {}, properties = {}, _name = 
 }
 
 const compile = (advancedScriptText, variables = {}, properties = {}, name = '', originalOptions = undefined) => {
-  const options = originalOptions ? originalOptions : _defaultOptions
+  const options = assignImmutable(_defaultOptions, originalOptions)
   const generator = new Generator({}, version, '', name, options)
 
-  return mapVals(getObject(advancedScriptText, variables, properties), (val, key) => {
+  return mapVals(getObject(advancedScriptText, variables, properties, options), (val, key) => {
     generator.scriptObject = val
 
     if (key !== 'No Name') {
