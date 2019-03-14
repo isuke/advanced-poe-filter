@@ -150,7 +150,11 @@ export default class {
         return `    ${actionKey} ${Math.round(actionVal.rgb.r)} ${Math.round(actionVal.rgb.g)} ${Math.round(actionVal.rgb.b)} ${Math.round(actionVal.alpha)}\n`
       case 'PlayAlertSound':
       case 'PlayAlertSoundPositional':
-        return `    ${actionKey} ${actionVal.id} ${actionVal.volume}\n`
+        if (this.$options.convertPlayAlertSoundPositionalToPlayAlertSound) {
+          return `    PlayAlertSound ${actionVal.id} ${actionVal.volume}\n`
+        } else {
+          return `    ${actionKey} ${actionVal.id} ${actionVal.volume}\n`
+        }
       case 'DisableDropSound':
         return `    ${actionKey} ${toUpperFirstChar(actionVal)}\n`
       case 'CustomAlertSound':

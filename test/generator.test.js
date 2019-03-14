@@ -153,6 +153,59 @@ Hide
   t.is(result, expected)
 })
 
+test("generate : single section with 'convertPlayAlertSoundPositionalToPlayAlertSound' option", (t) => {
+  const scriptObject = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          id: '0001',
+          name: {},
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            MapTier: '> 3',
+            Identified: false,
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
+            PlayAlertSoundPositional: { id: '1', volume: 300 },
+            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
+            PlayEffect: { color: 'Blue', temp: true },
+          },
+        },
+      ],
+    },
+  ]
+
+  const expected = outdent`
+################################################################################
+#                                                                              #
+# Created By Advanced PoE Filter (Ver: 0.7.0)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Map Section                                                                  #
+################################################################################
+Show
+    Class "Maps"
+    MapTier > 3
+    Identified False
+    SetBorderColor 250 126 107 255
+    PlayAlertSound 1 300
+    MinimapIcon 0 Red Circle
+    PlayEffect Blue Temp
+
+
+  `
+
+  const generator = new Generator(scriptObject, '0.7.0', '', '', { convertPlayAlertSoundPositionalToPlayAlertSound: true })
+  const result = generator.generate()
+
+  t.is(result, expected)
+})
+
 test('generate : multi section', (t) => {
   const scriptObject = [
     {
