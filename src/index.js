@@ -1,7 +1,7 @@
-import prepend from '../src/prepender'
+import Prepender from '../src/prepender'
 import { parse } from '../lib/parser'
-import expand from '../src/expander'
-import generate from '../src/generator'
+import Expander from '../src/expander'
+import Generator from '../src/generator'
 
 import { forIn, mapVals } from '../src/utils'
 
@@ -10,20 +10,36 @@ import pk from '../package.json'
 const version = pk.version
 
 const getObject = (advancedScriptText, variables = {}, properties = {}, _name = '') => {
+  const prepender = new Prepender(advancedScriptText, variables)
+  const expander = new Expander()
+
   let result = {}
   if (Object.keys(properties).length === 0) {
-    result['No Name'] = expand(parse(prepend(advancedScriptText, variables)))
+    expander.advancedScriptObject = parse(prepender.prepend())
+
+    result['No Name'] = expander.expand()
   } else {
     forIn(properties, (props, key) => {
-      result[key] = expand(parse(prepend(advancedScriptText, variables, props)))
+      prepender.props = props
+      expander.advancedScriptObject = parse(prepender.prepend())
+
+      result[key] = expander.expand()
     })
   }
   return result
 }
 
 const compile = (advancedScriptText, variables = {}, properties = {}, name = '') => {
+  const generator = new Generator({}, version, '', name)
+
   return mapVals(getObject(advancedScriptText, variables, properties), (val, key) => {
-    return key === 'No Name' ? generate(val, version, '', name) : generate(val, version, key, name)
+    generator.scriptObject = val
+
+    if (key !== 'No Name') {
+      generator.scriptName = key
+    }
+
+    return generator.generate()
   })
 }
 

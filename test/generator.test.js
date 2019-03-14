@@ -1,7 +1,7 @@
 import test from 'ava'
 import outdent from 'outdent'
 
-import generate from '../src/generator'
+import Generator from '../src/generator'
 
 test('generate : single section', (t) => {
   const scriptObject = [
@@ -50,7 +50,8 @@ Show
 
   `
 
-  const result = generate(scriptObject, '0.7.0')
+  const generator = new Generator(scriptObject, '0.7.0')
+  const result = generator.generate()
 
   t.is(result, expected)
 })
@@ -95,7 +96,8 @@ test('generate : single unset section', (t) => {
 
   `
 
-  const result = generate(scriptObject, '0.7.0')
+  const generator = new Generator(scriptObject, '0.7.0')
+  const result = generator.generate()
 
   t.is(result, expected)
 })
@@ -167,7 +169,8 @@ Show
 
   `
 
-  const result = generate(scriptObject, '0.7.0')
+  const generator = new Generator(scriptObject, '0.7.0')
+  const result = generator.generate()
 
   t.is(result, expected)
 })
@@ -363,7 +366,8 @@ Show
 
   `
 
-  const result = generate(scriptObject, '0.7.0')
+  const generator = new Generator(scriptObject, '0.7.0')
+  const result = generator.generate()
 
   t.is(result, expected)
 })
