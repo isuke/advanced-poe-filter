@@ -1,27 +1,44 @@
 import { forIn, assignImmutable, mapObject, toUpperFirstChar } from '../src/utils'
 
 export default class {
-  constructor(scriptObject, version = '', scriptName = '', filterName = '') {
+  constructor(scriptObject = {}, version = '', scriptName = '', filterName = '', options = {}) {
     this.scriptObject = scriptObject
     this.version = version
     this.scriptName = scriptName
     this.filterName = filterName
+    this.options = options
+  }
+
+  set scriptObject(val) {
+    this.$scriptObject = val
+  }
+  set version(val) {
+    this.$version = val
+  }
+  set scriptName(val) {
+    this.$scriptName = val
+  }
+  set filterName(val) {
+    this.$filterName = val
+  }
+  set options(val) {
+    this.$options = val
   }
 
   generate() {
-    return this.scriptObject.reduce((acc, sectionObject, i) => {
-      return acc + this._generateSection(sectionObject, i === this.scriptObject.length - 1)
-    }, this._generateHeader(this.version, this.scriptName, this.filterName))
+    return this.$scriptObject.reduce((acc, sectionObject, i) => {
+      return acc + this._generateSection(sectionObject, i === this.$scriptObject.length - 1)
+    }, this._generateHeader())
   }
 
   _generateHeader() {
-    const name = `${this.filterName}${this.scriptName ? ` (${this.scriptName})` : ''}`
+    const name = `${this.$filterName}${this.$scriptName ? ` (${this.$scriptName})` : ''}`
 
     let result = ''
     result += `${'#'.repeat(80)}\n`
     result += `#${' '.repeat(78)}#\n`
     if (name) result += `# ${name} ${' '.repeat(80 - name.length - 5)} #\n`
-    result += `# Created By Advanced PoE Filter (Ver: ${this.version}) ${' '.repeat(33)}#\n`
+    result += `# Created By Advanced PoE Filter (Ver: ${this.$version}) ${' '.repeat(33)}#\n`
     result += `#${' '.repeat(78)}#\n`
     result += `${'#'.repeat(80)}\n`
     result += '\n'

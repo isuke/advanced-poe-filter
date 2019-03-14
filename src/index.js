@@ -10,16 +10,18 @@ import pk from '../package.json'
 const version = pk.version
 
 const getObject = (advancedScriptText, variables = {}, properties = {}, _name = '') => {
+  const prepender = new Prepender(advancedScriptText, variables)
+  const expander = new Expander()
+
   let result = {}
   if (Object.keys(properties).length === 0) {
-    const prepender = new Prepender(advancedScriptText, variables)
-    const expander = new Expander(parse(prepender.prepend()))
+    expander.advancedScriptObject = parse(prepender.prepend())
 
     result['No Name'] = expander.expand()
   } else {
     forIn(properties, (props, key) => {
-      const prepender = new Prepender(advancedScriptText, variables, props)
-      const expander = new Expander(parse(prepender.prepend()))
+      prepender.props = props
+      expander.advancedScriptObject = parse(prepender.prepend())
 
       result[key] = expander.expand()
     })
@@ -28,8 +30,14 @@ const getObject = (advancedScriptText, variables = {}, properties = {}, _name = 
 }
 
 const compile = (advancedScriptText, variables = {}, properties = {}, name = '') => {
+  const generator = new Generator({}, version, '', name)
+
   return mapVals(getObject(advancedScriptText, variables, properties), (val, key) => {
-    const generator = key === 'No Name' ? new Generator(val, version, '', name) : new Generator(val, version, key, name)
+    generator.scriptObject = val
+
+    if (key !== 'No Name') {
+      generator.scriptName = key
+    }
 
     return generator.generate()
   })

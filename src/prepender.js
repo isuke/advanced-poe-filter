@@ -1,21 +1,38 @@
 import { mapVals, toUpperFirstChar } from '../src/utils'
 
 export default class {
-  constructor(advancedScriptText, variables = {}, props = {}) {
+  constructor(advancedScriptText = '', variables = {}, props = {}, options = {}) {
     this.advancedScriptText = advancedScriptText
     this.variables = variables
     this.props = props
+    this.options = options
+  }
+
+  set advancedScriptText(val) {
+    this.$advancedScriptText = val
+  }
+
+  set variables(val) {
+    this.$variables = val
+  }
+
+  set props(val) {
+    this.$props = val
+  }
+
+  set options(val) {
+    this.$options = val
   }
 
   prepend() {
-    let result = this.advancedScriptText
-    result = this._replaceProps(result, this.props)
-    result = this._replaceVariables(result, this._expandVariables(this.variables))
+    let result = this.$advancedScriptText
+    result = this._replaceProps(result, this.$props)
+    result = this._replaceVariables(result, this._expandVariables())
     return result
   }
 
   _expandVariables() {
-    return mapVals(this.variables, (item, _name) => this._expandItem(this.variables, item))
+    return mapVals(this.$variables, (item, _name) => this._expandItem(this.$variables, item))
   }
 
   _expandItem(variables, item, count = 0) {

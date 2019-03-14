@@ -3,9 +3,9 @@
 ./node_modules/.*
 
 [include]
+./src
 
 [libs]
-./src
 
 [lints]
 

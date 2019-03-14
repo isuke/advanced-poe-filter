@@ -9,8 +9,8 @@ type AdvancedBlock = {
   id: string,
   name: string,
   activity: string,
-  conditions: object,
-  actions: object,
+  conditions: Object,
+  actions: Object,
   branches: Array<Branch>,
 }
 
@@ -29,28 +29,44 @@ type Section = {
 
 type Block = {
   id: string,
-  name: object,
+  name: Object,
   activity: string,
-  conditions: object,
-  actions: object,
+  conditions: Object,
+  actions: Object,
 }
 */
 
 export default class {
-  /*:: advancedScriptObject: Array<AdvancedBlock> */
-  /*:: _variables: Object */
-  /*:: _props: Object */
-  /*:: _options: Object */
+  /*:: $advancedScriptObject: Array<AdvancedBlock> */
+  /*:: $variables: Object */
+  /*:: $props: Object */
+  /*:: $options: Object */
 
-  constructor(advancedScriptObject /*: Array<AdvancedBlock> */, _variables /*: Object */ = {}, _props /*: Object */ = {}, _options /*: Object */ = {}) {
-    this.advancedScriptObject = advancedScriptObject
-    this._variables = _variables
-    this._props = _props
-    this._options = _options
+  constructor(advancedScriptObject /*: Array<AdvancedBlock> */, variables /*: Object */ = {}, props /*: Object */ = {}, options /*: Object */ = {}) {
+    this.$advancedScriptObject = advancedScriptObject
+    this.$variables = variables
+    this.$props = props
+    this.$options = options
+  }
+
+  set advancedScriptObject(val /*: Array<AdvancedBlock> */) {
+    this.$advancedScriptObject = val
+  }
+
+  set variables(val /*: Object */) {
+    this.$variables = val
+  }
+
+  set props(val /*: Object */) {
+    this.$props = val
+  }
+
+  set options(val /*: Object */) {
+    this.$options = val
   }
 
   expand() /*: Array<Section> */ {
-    return this.advancedScriptObject.map((advancedBlock /*: AdvancedBlock */) => this._convertAdvancedBlockToSection(advancedBlock))
+    return this.$advancedScriptObject.map((advancedBlock /*: AdvancedBlock */) => this._convertAdvancedBlockToSection(advancedBlock))
   }
 
   _convertAdvancedBlockToSection(advancedBlock /*: AdvancedBlock */) /*: Section */ {
@@ -80,7 +96,7 @@ export default class {
   _convertBranchToBlocks(branch /*: Branch */) /* Array<Block> */ {
     const sections /*: Array<Section> */ = branch.blocks.map((advancedBlock) => this._convertAdvancedBlockToSection(advancedBlock))
 
-    let blocks /*: Array<Blocks> */ = sections.reduce((acc, section) => {
+    let blocks /*: Array<Block> */ = sections.reduce((acc, section) => {
       const nameObject = createObject(branch.name, section.name)
       const blocks = section.blocks.map((block) => {
         return {
@@ -98,7 +114,7 @@ export default class {
     return blocks
   }
 
-  _mergeBlocks(advancedBlock /*: advancedBlock */, ...blocks /*: Array<Block> */) /*: Block */ {
+  _mergeBlocks(advancedBlock /*: AdvancedBlock */, ...blocks /*: Array<Block> */) /*: Block */ {
     return {
       id: [advancedBlock.id].concat(...blocks.map((o) => o.id)).join('-'),
       name: assignImmutable({}, ...blocks.map((o) => o.name)),
@@ -113,7 +129,7 @@ export default class {
     return result.length > 0 ? result.reverse()[0] : 'Unset'
   }
 
-  _mergeActions(root /*: object */, ...others /*: Array<object> */) /*: object */ {
+  _mergeActions(root /*: Object */, ...others /*: Array<Object> */) /*: Object */ {
     let result = assignImmutable(root, ...others)
 
     others.forEach((other) => {
