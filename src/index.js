@@ -49,6 +49,7 @@ const compile = (advancedScriptText, variables = {}, properties = {}, name = '',
 const _defaultOptions = {
   addDisableDropSoundToHideBlock: true,
   convertPlayAlertSoundPositionalToPlayAlertSound: false,
+  removeCustomAlertSound: false,
   initialFontSize: 32,
 }
 

@@ -133,7 +133,9 @@ export default class {
   _createShowActions(actions) {
     let defaultActions = {}
     if (this.$options.initialFontSize) defaultActions.SetFontSize = this.$options.initialFontSize
-    return assignImmutable(defaultActions, actions)
+    let result = assignImmutable(defaultActions, actions)
+    if (this.$options.removeCustomAlertSound) delete result.CustomAlertSound
+    return result
   }
 
   _createHideActions(actions) {
