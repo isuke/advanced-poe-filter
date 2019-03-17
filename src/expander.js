@@ -118,13 +118,13 @@ export default class {
     return {
       id: [advancedBlock.id].concat(...blocks.map((o) => o.id)).join('-'),
       name: assignImmutable({}, ...blocks.map((o) => o.name)),
-      activity: this._mergeactivities(advancedBlock.activity, ...blocks.map((o) => o.activity)),
+      activity: this._mergeActivities(advancedBlock.activity, ...blocks.map((o) => o.activity)),
       conditions: assignImmutable(advancedBlock.conditions, ...blocks.map((o) => o.conditions)),
       actions: this._mergeActions(advancedBlock.actions, ...blocks.map((o) => o.actions)),
     }
   }
 
-  _mergeactivities(root /*: string */, ...others /*: Array<string> */) /*: string */ {
+  _mergeActivities(root /*: string */, ...others /*: Array<string> */) /*: string */ {
     let result = [root, ...others].filter((a) => a !== 'Unset')
     return result.length > 0 ? result.reverse()[0] : 'Unset'
   }
@@ -155,13 +155,13 @@ export default class {
               result[key] = Math.min(Math.max(val1 + val2, 18), 45)
             }
             break
+          case 'PlayAlertSoundPositional':
+            // delete result.PlayAlertSound
+            // delete result.CustomAlertSound
+            break
           case 'PlayAlertSound':
             delete result.PlayAlertSoundPositional
-            delete result.CustomAlertSound
-            break
-          case 'PlayAlertSoundPositional':
-            delete result.PlayAlertSound
-            delete result.CustomAlertSound
+            // delete result.CustomAlertSound
             break
           case 'CustomAlertSound':
             delete result.PlayAlertSound

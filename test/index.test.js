@@ -1129,6 +1129,69 @@ Hide
   t.deepEqual(result, expected)
 })
 
+test('compile : multi mixin with conflict alert sound', (t) => {
+  const advancedScriptText = outdent`
+Show "Gears"
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+
+    Mixin "Rarity"
+        Show "Rare"
+            Rarity Rare
+            PlayAlertSound 1 300
+    Mixin "BaseType"
+        Show "Special BodyArmour"
+            BaseType "Sacrificial Garb"
+            CustomAlertSound "./Sounds/Unique.wav"
+
+   `
+
+  const expected = {
+    'No Name': outdent`
+################################################################################
+#                                                                              #
+# Created By Advanced PoE Filter (Ver: 0.8.0)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Gears                                                                        #
+################################################################################
+# Rarity is "Rare" - BaseType is "Special BodyArmour"
+Show
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Rarity Rare
+    BaseType "Sacrificial Garb"
+    SetFontSize 32
+    CustomAlertSound "./Sounds/Unique.wav"
+
+# Rarity is "Rare" - BaseType is Any
+Show
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Rarity Rare
+    SetFontSize 32
+    PlayAlertSound 1 300
+
+# Rarity is Any - BaseType is "Special BodyArmour"
+Show
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType "Sacrificial Garb"
+    SetFontSize 32
+    CustomAlertSound "./Sounds/Unique.wav"
+
+# Rarity is Any - BaseType is Any
+Show
+    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    SetFontSize 32
+
+
+    `,
+  }
+
+  const result = compile(advancedScriptText)
+
+  t.deepEqual(result, expected)
+})
+
 test('compile : nested mixin', (t) => {
   const advancedScriptText = outdent`
 Hide "Gears"
