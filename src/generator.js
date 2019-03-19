@@ -1,4 +1,4 @@
-import { forIn, assignImmutable, mapObject, toUpperFirstChar } from '../src/utils'
+import { forIn, assignImmutable, toUpperFirstChar } from '../src/utils'
 
 export default class {
   constructor(scriptObject = {}, version = '', scriptName = '', filterName = '', options = {}) {
@@ -7,6 +7,64 @@ export default class {
     this.scriptName = scriptName
     this.filterName = filterName
     this.options = options
+  }
+
+  get conditionKeys() {
+    return Object.freeze([
+      'Class',
+      'BaseType',
+      'Rarity',
+
+      'Prophecy',
+
+      'DropLevel',
+      'ItemLevel',
+      'GemLevel',
+
+      'StackSize',
+
+      'MapTier',
+
+      'Quality',
+
+      'LinkedSockets',
+      'Sockets',
+      'SocketGroup',
+
+      'ShaperItem',
+      'ElderItem',
+      'FracturedItem',
+      'SynthesisedItem',
+
+      'Corrupted',
+      'Identified',
+      'ShapedMap',
+
+      'Height',
+      'Width',
+
+      'HasExplicitMod',
+      'AnyEnchantment',
+      'HasEnchantment',
+    ])
+  }
+
+  get actionKeys() {
+    return Object.freeze([
+      'SetFontSize',
+      'SetTextColor',
+      'SetBackgroundColor',
+      'SetBorderColor',
+
+      'MinimapIcon',
+
+      'PlayEffect',
+
+      'PlayAlertSound',
+      'PlayAlertSoundPositional',
+      'CustomAlertSound',
+      'DisableDropSound',
+    ])
   }
 
   set scriptObject(val) {
@@ -91,9 +149,11 @@ export default class {
   }
 
   _generateConditions(blockObject) {
-    return mapObject(blockObject.conditions, (val, key) => {
-      return this._generateCondition(val, key)
-    }).join('')
+    return this.conditionKeys
+      .map((conditionKey) => {
+        return blockObject.conditions.hasOwnProperty(conditionKey) ? this._generateCondition(blockObject.conditions[conditionKey], conditionKey) : ''
+      })
+      .join('')
   }
 
   _generateCondition(conditionVal, conditionKey) {
@@ -120,13 +180,19 @@ export default class {
 
   _generateActions(blockObject) {
     if (blockObject.activity === 'Show') {
-      return mapObject(this._createShowActions(blockObject.actions), (val, key) => {
-        return this._generateAction(val, key)
-      }).join('')
+      const actions = this._createShowActions(blockObject.actions)
+      return this.actionKeys
+        .map((actionKey) => {
+          return actions.hasOwnProperty(actionKey) ? this._generateAction(actions[actionKey], actionKey) : ''
+        })
+        .join('')
     } else {
-      return mapObject(this._createHideActions(blockObject.actions), (val, key) => {
-        return this._generateAction(val, key)
-      }).join('')
+      const actions = this._createHideActions(blockObject.actions)
+      return this.actionKeys
+        .map((actionKey) => {
+          return actions.hasOwnProperty(actionKey) ? this._generateAction(actions[actionKey], actionKey) : ''
+        })
+        .join('')
     }
   }
 

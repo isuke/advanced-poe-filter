@@ -93,9 +93,9 @@ Show
     HasEnchantment "Enchantment Decree of Force"
     SetFontSize 32
     SetBorderColor 250 251 252 255
-    PlayAlertSound 1 300
     MinimapIcon 1 Red Circle
     PlayEffect Blue Temp
+    PlayAlertSound 1 300
 
 
     `,
@@ -430,8 +430,8 @@ Hide
     Class "Maps"
     Rarity = Magic
     SetFontSize 32
-    DisableDropSound True
     SetBorderColor 200 100 52 123
+    DisableDropSound True
 
 # Rarity is "Normal"
 Show
@@ -484,17 +484,17 @@ Show
     Class "Maps"
     Rarity = Rare
     SetFontSize 32
-    SetBorderColor 55 155 205 123
     SetTextColor 125 125 125 123
     SetBackgroundColor 218 144 107 123
+    SetBorderColor 55 155 205 123
 
 # Rarity is Any
 Show
     Class "Maps"
     SetFontSize 32
-    SetBorderColor 200 100 50 123
     SetTextColor 200 100 50 123
     SetBackgroundColor 200 100 50 123
+    SetBorderColor 200 100 50 123
 
 
     `,
@@ -619,93 +619,93 @@ Hide "Gears"
 # Rarity is "Rare" - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Rare
     BaseType "Sacrificial Garb"
+    Rarity Rare
     LinkedSockets = 6
     SetFontSize 45
-    PlayEffect Red
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 3 300
     SetBorderColor 255 0 0 255
+    PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is "Rare" - BaseType is "Special BodyArmour" - Sockets and Link is "6S"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Rare
     BaseType "Sacrificial Garb"
+    Rarity Rare
     Sockets = 6
     SetFontSize 45
-    PlayEffect Red
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 4 300
     SetBorderColor 0 255 0 255
+    PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is "Rare" - BaseType is "Special BodyArmour" - Sockets and Link is "RGB"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Rare
     BaseType "Sacrificial Garb"
+    Rarity Rare
     SocketGroup RGB
     SetFontSize 45
-    PlayEffect Red Temp
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 5 100
     SetBorderColor 0 0 255 255
+    PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is "Rare" - BaseType is "Special BodyArmour" - Sockets and Link is Any
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Rare
     BaseType "Sacrificial Garb"
+    Rarity Rare
     SetFontSize 45
-    PlayEffect Blue
     SetBackgroundColor 100 100 255 255
+    PlayEffect Blue
     PlayAlertSound 1 300
 
 # Rarity is "Rare" - BaseType is "Special Glove and Boots" - Sockets and Link is "6L"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Rare
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Rare
     LinkedSockets = 6
     SetFontSize 45
-    PlayEffect Red
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 3 300
     SetBorderColor 255 0 0 255
+    PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is "Rare" - BaseType is "Special Glove and Boots" - Sockets and Link is "6S"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Rare
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Rare
     Sockets = 6
     SetFontSize 45
-    PlayEffect Red
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 4 300
     SetBorderColor 0 255 0 255
+    PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is "Rare" - BaseType is "Special Glove and Boots" - Sockets and Link is "RGB"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Rare
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Rare
     SocketGroup RGB
     SetFontSize 45
-    PlayEffect Red Temp
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 5 100
     SetBorderColor 0 0 255 255
+    PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is "Rare" - BaseType is "Special Glove and Boots" - Sockets and Link is Any
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Rare
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Rare
     SetFontSize 45
-    PlayEffect Blue Temp
     SetBackgroundColor 50 50 255 255
+    PlayEffect Blue Temp
     PlayAlertSound 2 300
 
 # Rarity is "Rare" - BaseType is Any - Sockets and Link is "6L"
@@ -714,8 +714,8 @@ Show
     Rarity Rare
     LinkedSockets = 6
     SetFontSize 45
-    PlayEffect Red
     SetBorderColor 255 0 0 255
+    PlayEffect Red
     PlayAlertSound 3 300
 
 # Rarity is "Rare" - BaseType is Any - Sockets and Link is "6S"
@@ -724,8 +724,8 @@ Show
     Rarity Rare
     Sockets = 6
     SetFontSize 45
-    PlayEffect Red
     SetBorderColor 0 255 0 255
+    PlayEffect Red
     PlayAlertSound 4 300
 
 # Rarity is "Rare" - BaseType is Any - Sockets and Link is "RGB"
@@ -734,8 +734,8 @@ Show
     Rarity Rare
     SocketGroup RGB
     SetFontSize 45
-    PlayEffect Red Temp
     SetBorderColor 0 0 255 255
+    PlayEffect Red Temp
     PlayAlertSound 5 100
 
 # Rarity is "Rare" - BaseType is Any - Sockets and Link is Any
@@ -748,94 +748,94 @@ Show
 # Rarity is "Magic" - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Magic
     BaseType "Sacrificial Garb"
+    Rarity Magic
     LinkedSockets = 6
     SetFontSize 36
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 3 300
-    PlayEffect Red
     SetBorderColor 255 0 0 255
+    PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is "Magic" - BaseType is "Special BodyArmour" - Sockets and Link is "6S"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Magic
     BaseType "Sacrificial Garb"
+    Rarity Magic
     Sockets = 6
     SetFontSize 36
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 4 300
-    PlayEffect Red
     SetBorderColor 0 255 0 255
+    PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is "Magic" - BaseType is "Special BodyArmour" - Sockets and Link is "RGB"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Magic
     BaseType "Sacrificial Garb"
+    Rarity Magic
     SocketGroup RGB
     SetFontSize 36
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 5 100
-    PlayEffect Red Temp
     SetBorderColor 0 0 255 255
+    PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is "Magic" - BaseType is "Special BodyArmour" - Sockets and Link is Any
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Magic
     BaseType "Sacrificial Garb"
+    Rarity Magic
     SetFontSize 36
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 1 300
     PlayEffect Blue
+    PlayAlertSound 1 300
 
 # Rarity is "Magic" - BaseType is "Special Glove and Boots" - Sockets and Link is "6L"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Magic
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Magic
     LinkedSockets = 6
     SetFontSize 36
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 3 300
-    PlayEffect Red
     SetBorderColor 255 0 0 255
+    PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is "Magic" - BaseType is "Special Glove and Boots" - Sockets and Link is "6S"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Magic
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Magic
     Sockets = 6
     SetFontSize 36
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 4 300
-    PlayEffect Red
     SetBorderColor 0 255 0 255
+    PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is "Magic" - BaseType is "Special Glove and Boots" - Sockets and Link is "RGB"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Magic
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Magic
     SocketGroup RGB
     SetFontSize 36
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 5 100
-    PlayEffect Red Temp
     SetBorderColor 0 0 255 255
+    PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is "Magic" - BaseType is "Special Glove and Boots" - Sockets and Link is Any
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Magic
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Magic
     SetFontSize 36
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 2 300
     PlayEffect Blue Temp
+    PlayAlertSound 2 300
 
 # Rarity is "Magic" - BaseType is Any - Sockets and Link is "6L"
 Show
@@ -844,8 +844,8 @@ Show
     LinkedSockets = 6
     SetFontSize 36
     SetBorderColor 255 0 0 255
-    PlayAlertSound 3 300
     PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is "Magic" - BaseType is Any - Sockets and Link is "6S"
 Show
@@ -854,8 +854,8 @@ Show
     Sockets = 6
     SetFontSize 36
     SetBorderColor 0 255 0 255
-    PlayAlertSound 4 300
     PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is "Magic" - BaseType is Any - Sockets and Link is "RGB"
 Show
@@ -864,8 +864,8 @@ Show
     SocketGroup RGB
     SetFontSize 36
     SetBorderColor 0 0 255 255
-    PlayAlertSound 5 100
     PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is "Magic" - BaseType is Any - Sockets and Link is Any
 Hide
@@ -877,94 +877,94 @@ Hide
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Normal
     BaseType "Sacrificial Garb"
+    Rarity Normal
     LinkedSockets = 6
     SetFontSize 18
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 3 300
-    PlayEffect Red
     SetBorderColor 255 0 0 255
+    PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is "6S"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Normal
     BaseType "Sacrificial Garb"
+    Rarity Normal
     Sockets = 6
     SetFontSize 18
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 4 300
-    PlayEffect Red
     SetBorderColor 0 255 0 255
+    PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is "RGB"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Normal
     BaseType "Sacrificial Garb"
+    Rarity Normal
     SocketGroup RGB
     SetFontSize 18
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 5 100
-    PlayEffect Red Temp
     SetBorderColor 0 0 255 255
+    PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is Any
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Normal
     BaseType "Sacrificial Garb"
+    Rarity Normal
     SetFontSize 18
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 1 300
     PlayEffect Blue
+    PlayAlertSound 1 300
 
 # Rarity is "Normal" - BaseType is "Special Glove and Boots" - Sockets and Link is "6L"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Normal
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Normal
     LinkedSockets = 6
     SetFontSize 18
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 3 300
-    PlayEffect Red
     SetBorderColor 255 0 0 255
+    PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is "Normal" - BaseType is "Special Glove and Boots" - Sockets and Link is "6S"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Normal
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Normal
     Sockets = 6
     SetFontSize 18
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 4 300
-    PlayEffect Red
     SetBorderColor 0 255 0 255
+    PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is "Normal" - BaseType is "Special Glove and Boots" - Sockets and Link is "RGB"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Normal
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Normal
     SocketGroup RGB
     SetFontSize 18
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 5 100
-    PlayEffect Red Temp
     SetBorderColor 0 0 255 255
+    PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is "Normal" - BaseType is "Special Glove and Boots" - Sockets and Link is Any
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Normal
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Rarity Normal
     SetFontSize 18
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 2 300
     PlayEffect Blue Temp
+    PlayAlertSound 2 300
 
 # Rarity is "Normal" - BaseType is Any - Sockets and Link is "6L"
 Show
@@ -973,8 +973,8 @@ Show
     LinkedSockets = 6
     SetFontSize 18
     SetBorderColor 255 0 0 255
-    PlayAlertSound 3 300
     PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is "Normal" - BaseType is Any - Sockets and Link is "6S"
 Show
@@ -983,8 +983,8 @@ Show
     Sockets = 6
     SetFontSize 18
     SetBorderColor 0 255 0 255
-    PlayAlertSound 4 300
     PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is "Normal" - BaseType is Any - Sockets and Link is "RGB"
 Show
@@ -993,8 +993,8 @@ Show
     SocketGroup RGB
     SetFontSize 18
     SetBorderColor 0 0 255 255
-    PlayAlertSound 5 100
     PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is "Normal" - BaseType is Any - Sockets and Link is Any
 Hide
@@ -1010,9 +1010,9 @@ Show
     LinkedSockets = 6
     SetFontSize 32
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 3 300
-    PlayEffect Red
     SetBorderColor 255 0 0 255
+    PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is Any - BaseType is "Special BodyArmour" - Sockets and Link is "6S"
 Show
@@ -1021,9 +1021,9 @@ Show
     Sockets = 6
     SetFontSize 32
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 4 300
-    PlayEffect Red
     SetBorderColor 0 255 0 255
+    PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is Any - BaseType is "Special BodyArmour" - Sockets and Link is "RGB"
 Show
@@ -1032,9 +1032,9 @@ Show
     SocketGroup RGB
     SetFontSize 32
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 5 100
-    PlayEffect Red Temp
     SetBorderColor 0 0 255 255
+    PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is Any - BaseType is "Special BodyArmour" - Sockets and Link is Any
 Show
@@ -1042,8 +1042,8 @@ Show
     BaseType "Sacrificial Garb"
     SetFontSize 32
     SetBackgroundColor 100 100 255 255
-    PlayAlertSound 1 300
     PlayEffect Blue
+    PlayAlertSound 1 300
 
 # Rarity is Any - BaseType is "Special Glove and Boots" - Sockets and Link is "6L"
 Show
@@ -1052,9 +1052,9 @@ Show
     LinkedSockets = 6
     SetFontSize 32
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 3 300
-    PlayEffect Red
     SetBorderColor 255 0 0 255
+    PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is Any - BaseType is "Special Glove and Boots" - Sockets and Link is "6S"
 Show
@@ -1063,9 +1063,9 @@ Show
     Sockets = 6
     SetFontSize 32
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 4 300
-    PlayEffect Red
     SetBorderColor 0 255 0 255
+    PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is Any - BaseType is "Special Glove and Boots" - Sockets and Link is "RGB"
 Show
@@ -1074,9 +1074,9 @@ Show
     SocketGroup RGB
     SetFontSize 32
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 5 100
-    PlayEffect Red Temp
     SetBorderColor 0 0 255 255
+    PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is Any - BaseType is "Special Glove and Boots" - Sockets and Link is Any
 Show
@@ -1084,8 +1084,8 @@ Show
     BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     SetFontSize 32
     SetBackgroundColor 50 50 255 255
-    PlayAlertSound 2 300
     PlayEffect Blue Temp
+    PlayAlertSound 2 300
 
 # Rarity is Any - BaseType is Any - Sockets and Link is "6L"
 Show
@@ -1093,8 +1093,8 @@ Show
     LinkedSockets = 6
     SetFontSize 32
     SetBorderColor 255 0 0 255
-    PlayAlertSound 3 300
     PlayEffect Red
+    PlayAlertSound 3 300
 
 # Rarity is Any - BaseType is Any - Sockets and Link is "6S"
 Show
@@ -1102,8 +1102,8 @@ Show
     Sockets = 6
     SetFontSize 32
     SetBorderColor 0 255 0 255
-    PlayAlertSound 4 300
     PlayEffect Red
+    PlayAlertSound 4 300
 
 # Rarity is Any - BaseType is Any - Sockets and Link is "RGB"
 Show
@@ -1111,8 +1111,8 @@ Show
     SocketGroup RGB
     SetFontSize 32
     SetBorderColor 0 0 255 255
-    PlayAlertSound 5 100
     PlayEffect Red Temp
+    PlayAlertSound 5 100
 
 # Rarity is Any - BaseType is Any - Sockets and Link is Any
 Hide
@@ -1159,8 +1159,8 @@ Show "Gears"
 # Rarity is "Rare" - BaseType is "Special BodyArmour"
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    Rarity Rare
     BaseType "Sacrificial Garb"
+    Rarity Rare
     SetFontSize 32
     CustomAlertSound "./Sounds/Unique.wav"
 
@@ -1238,8 +1238,8 @@ Show
     Rarity Rare
     ShaperItem True
     SetFontSize 45
-    PlayEffect White
     SetBackgroundColor 0 0 255 200
+    PlayEffect White
 
 # Rarity is "Rare" - Shaper/Elder is "Elder"
 Show
@@ -1247,8 +1247,8 @@ Show
     Rarity Rare
     ElderItem True
     SetFontSize 45
-    PlayEffect White
     SetBackgroundColor 20 20 255 200
+    PlayEffect White
 
 # Rarity is "Rare" - Shaper/Elder is Any
 Hide

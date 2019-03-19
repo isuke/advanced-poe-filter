@@ -43,9 +43,9 @@ Show
     MapTier > 3
     Identified False
     SetBorderColor 250 126 107 255
-    PlayAlertSound 1 300
     MinimapIcon 0 Red Circle
     PlayEffect Blue Temp
+    PlayAlertSound 1 300
 
 
   `
@@ -141,8 +141,8 @@ Hide
     Class "Maps"
     MapTier > 3
     Identified False
-    DisableDropSound True
     SetBorderColor 250 126 107 255
+    DisableDropSound True
 
 
   `
@@ -193,9 +193,9 @@ Show
     MapTier > 3
     Identified False
     SetBorderColor 250 126 107 255
-    PlayAlertSound 1 300
     MinimapIcon 0 Red Circle
     PlayEffect Blue Temp
+    PlayAlertSound 1 300
 
 
   `
@@ -299,9 +299,9 @@ Show
     Identified False
     SetFontSize 38
     SetBorderColor 250 126 107 255
-    PlayAlertSound 1 300
     MinimapIcon 0 Red Circle
     PlayEffect Blue Temp
+    PlayAlertSound 1 300
 
 
   `
