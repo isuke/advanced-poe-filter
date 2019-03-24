@@ -130,7 +130,15 @@ export default class {
   }
 
   _mergeActions(root /*: Object */, ...others /*: Array<Object> */) /*: Object */ {
-    let result = assignImmutable(root, ...others)
+    let result = [root, ...others].reduce((acc, current) => {
+      if (current.hasOwnProperty('PlayAlertSoundPositional') || current.hasOwnProperty('PlayAlertSound') || current.hasOwnProperty('CustomAlertSound')) {
+        delete acc.PlayAlertSoundPositional
+        delete acc.PlayAlertSound
+        delete acc.CustomAlertSound
+      }
+
+      return assignImmutable(acc, current)
+    }, {})
 
     others.forEach((other) => {
       forIn(other, (valObject, key) => {
@@ -154,18 +162,6 @@ export default class {
               const val2 = valObject.function === 'Plus' ? valObject.val : -valObject.val
               result[key] = Math.min(Math.max(val1 + val2, 18), 45)
             }
-            break
-          case 'PlayAlertSoundPositional':
-            // delete result.PlayAlertSound
-            // delete result.CustomAlertSound
-            break
-          case 'PlayAlertSound':
-            delete result.PlayAlertSoundPositional
-            // delete result.CustomAlertSound
-            break
-          case 'CustomAlertSound':
-            delete result.PlayAlertSound
-            delete result.PlayAlertSoundPositional
             break
         }
       })

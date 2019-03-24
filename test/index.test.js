@@ -1133,6 +1133,7 @@ test('compile : multi mixin with conflict alert sound', (t) => {
   const advancedScriptText = outdent`
 Show "Gears"
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    PlayAlertSoundPositional 2 100
 
     Mixin "Rarity"
         Show "Rare"
@@ -1182,6 +1183,7 @@ Show
 Show
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     SetFontSize 32
+    PlayAlertSoundPositional 2 100
 
 
     `,
