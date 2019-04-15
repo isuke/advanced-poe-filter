@@ -165,13 +165,13 @@ Show "Flasks"
     T3: { 'Flask Quality': 20 },
   }
 
-  const name = 'My Filter'
+  const filterInfo = { name: 'My Filter' }
 
   const expected = {
     T1: outdent`
 ################################################################################
 #                                                                              #
-# My Filter (T1)                                                               #
+# My Filter - T1 -                                                             #
 # Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
 #                                                                              #
 ################################################################################
@@ -191,7 +191,7 @@ Show
     T2: outdent`
 ################################################################################
 #                                                                              #
-# My Filter (T2)                                                               #
+# My Filter - T2 -                                                             #
 # Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
 #                                                                              #
 ################################################################################
@@ -211,7 +211,7 @@ Show
     T3: outdent`
 ################################################################################
 #                                                                              #
-# My Filter (T3)                                                               #
+# My Filter - T3 -                                                             #
 # Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
 #                                                                              #
 ################################################################################
@@ -230,7 +230,7 @@ Show
     `,
   }
 
-  const result = compile(advancedScriptText, {}, properties, name)
+  const result = compile(advancedScriptText, {}, properties, filterInfo)
 
   t.deepEqual(result, expected)
 })
@@ -258,13 +258,13 @@ Show "Flasks"
     T3: { 'Flask Quality': 'Var("High Quality")' },
   }
 
-  const name = 'My Filter'
+  const filterInfo = { name: 'My Filter' }
 
   const expected = {
     T1: outdent`
 ################################################################################
 #                                                                              #
-# My Filter (T1)                                                               #
+# My Filter - T1 -                                                             #
 # Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
 #                                                                              #
 ################################################################################
@@ -284,7 +284,7 @@ Show
     T2: outdent`
 ################################################################################
 #                                                                              #
-# My Filter (T2)                                                               #
+# My Filter - T2 -                                                             #
 # Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
 #                                                                              #
 ################################################################################
@@ -304,7 +304,7 @@ Show
     T3: outdent`
 ################################################################################
 #                                                                              #
-# My Filter (T3)                                                               #
+# My Filter - T3 -                                                             #
 # Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
 #                                                                              #
 ################################################################################
@@ -323,7 +323,60 @@ Show
     `,
   }
 
-  const result = compile(advancedScriptText, variables, properties, name)
+  const result = compile(advancedScriptText, variables, properties, filterInfo)
+
+  t.deepEqual(result, expected)
+})
+
+test('compile : single section with filterInfo', (t) => {
+  const advancedScriptText = outdent`
+# This is Comment
+# This is Comment
+Show "Map Section"
+    Class "Maps"
+    MapTier > 3
+    Identified False
+    HasEnchantment "Enchantment Decree of Force"
+
+    # This is Comment
+    SetBorderColor 250 251 252
+    PlayAlertSound 1 300
+    MinimapIcon Medium Red Circle
+    PlayEffect Blue Temp
+
+
+   `
+
+  const filterInfo = { name: 'My Filter', version: '3.4.5' }
+
+  const expected = {
+    'No Name': outdent`
+################################################################################
+#                                                                              #
+# My Filter (Ver: 3.4.5)                                                       #
+# Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Map Section                                                                  #
+################################################################################
+Show
+    Class "Maps"
+    MapTier > 3
+    Identified False
+    HasEnchantment "Enchantment Decree of Force"
+    SetFontSize 32
+    SetBorderColor 250 251 252 255
+    MinimapIcon 1 Red Circle
+    PlayEffect Blue Temp
+    PlayAlertSound 1 300
+
+
+    `,
+  }
+
+  const result = compile(advancedScriptText, {}, {}, filterInfo)
 
   t.deepEqual(result, expected)
 })

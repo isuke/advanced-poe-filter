@@ -56,6 +56,63 @@ Show
   t.is(result, expected)
 })
 
+test('generate : single section with scriptName and filterInfo', (t) => {
+  const scriptObject = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          id: '0001',
+          name: {},
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            MapTier: '> 3',
+            Identified: false,
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
+            PlayAlertSound: { id: '1', volume: 300 },
+            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
+            PlayEffect: { color: 'Blue', temp: true },
+          },
+        },
+      ],
+    },
+  ]
+
+  const scriptName = 'T1'
+  const filterInfo = { name: 'My Filter', version: '3.4.5' }
+
+  const expected = outdent`
+################################################################################
+#                                                                              #
+# My Filter - T1 - (Ver: 3.4.5)                                                #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Map Section                                                                  #
+################################################################################
+Show
+    Class "Maps"
+    MapTier > 3
+    Identified False
+    SetBorderColor 250 126 107 255
+    MinimapIcon 0 Red Circle
+    PlayEffect Blue Temp
+    PlayAlertSound 1 300
+
+
+  `
+
+  const generator = new Generator(scriptObject, '9.8.7', scriptName, filterInfo)
+  const result = generator.generate()
+
+  t.is(result, expected)
+})
+
 test('generate : single unset section', (t) => {
   const scriptObject = [
     {
@@ -147,7 +204,7 @@ Hide
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', '', '', { addDisableDropSoundToHideBlock: true })
+  const generator = new Generator(scriptObject, '9.8.7', '', {}, { addDisableDropSoundToHideBlock: true })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -200,7 +257,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', '', '', { convertPlayAlertSoundPositionalToPlayAlertSound: true })
+  const generator = new Generator(scriptObject, '9.8.7', '', {}, { convertPlayAlertSoundPositionalToPlayAlertSound: true })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -252,7 +309,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', '', '', { removeCustomAlertSound: true })
+  const generator = new Generator(scriptObject, '9.8.7', '', {}, { removeCustomAlertSound: true })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -306,7 +363,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', '', '', { initialFontSize: 38 })
+  const generator = new Generator(scriptObject, '9.8.7', '', {}, { initialFontSize: 38 })
   const result = generator.generate()
 
   t.is(result, expected)

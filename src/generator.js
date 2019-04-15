@@ -1,11 +1,11 @@
 import { forIn, assignImmutable, toUpperFirstChar } from '../src/utils'
 
 export default class {
-  constructor(scriptObject = {}, version = '', scriptName = '', filterName = '', options = {}) {
+  constructor(scriptObject = {}, version = '', scriptName = '', filterInfo = {}, options = {}) {
     this.scriptObject = scriptObject
     this.version = version
     this.scriptName = scriptName
-    this.filterName = filterName
+    this.filterInfo = filterInfo
     this.options = options
   }
 
@@ -76,8 +76,8 @@ export default class {
   set scriptName(val) {
     this.$scriptName = val
   }
-  set filterName(val) {
-    this.$filterName = val
+  set filterInfo(val) {
+    this.$filterInfo = val
   }
   set options(val) {
     this.$options = val
@@ -90,7 +90,10 @@ export default class {
   }
 
   _generateHeader() {
-    const name = `${this.$filterName}${this.$scriptName ? ` (${this.$scriptName})` : ''}`
+    const filterName = this.$filterInfo.name ? this.$filterInfo.name : ''
+    const scriptName = this.$scriptName ? ` - ${this.$scriptName} -` : ''
+    const filterVersion = this.$filterInfo.version ? ` (Ver: ${this.$filterInfo.version})` : ''
+    const name = `${filterName}${scriptName}${filterVersion}`
 
     let result = ''
     result += `${'#'.repeat(80)}\n`

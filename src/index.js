@@ -9,7 +9,7 @@ import pk from '../package.json'
 
 const version = pk.version
 
-const getObject = (advancedScriptText, variables = {}, properties = {}, _name = '', originalOptions = undefined) => {
+const getObject = (advancedScriptText, variables = {}, properties = {}, _filterInfo = {}, originalOptions = undefined) => {
   const options = assignImmutable(_defaultOptions, originalOptions)
   const prepender = new Prepender(advancedScriptText, variables)
   const expander = new Expander()
@@ -31,11 +31,11 @@ const getObject = (advancedScriptText, variables = {}, properties = {}, _name = 
   return result
 }
 
-const compile = (advancedScriptText, variables = {}, properties = {}, name = '', originalOptions = undefined) => {
+const compile = (advancedScriptText, variables = {}, properties = {}, filterInfo = {}, originalOptions = undefined) => {
   const options = assignImmutable(_defaultOptions, originalOptions)
-  const generator = new Generator({}, version, '', name, options)
+  const generator = new Generator({}, version, '', filterInfo, options)
 
-  return mapVals(getObject(advancedScriptText, variables, properties, options), (val, key) => {
+  return mapVals(getObject(advancedScriptText, variables, properties, filterInfo, options), (val, key) => {
     generator.scriptObject = val
 
     if (key !== 'No Name') {
