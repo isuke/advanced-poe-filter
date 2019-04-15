@@ -31,7 +31,7 @@ test('generate : single section', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
 #                                                                              #
 ################################################################################
 
@@ -50,7 +50,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '0.8.2')
+  const generator = new Generator(scriptObject, '9.8.7')
   const result = generator.generate()
 
   t.is(result, expected)
@@ -84,7 +84,7 @@ test('generate : single unset section', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
 #                                                                              #
 ################################################################################
 
@@ -96,7 +96,7 @@ test('generate : single unset section', (t) => {
 
   `
 
-  const generator = new Generator(scriptObject, '0.8.2')
+  const generator = new Generator(scriptObject, '9.8.7')
   const result = generator.generate()
 
   t.is(result, expected)
@@ -130,7 +130,7 @@ test("generate : single section with 'addDisableDropSoundToHideBlock' option", (
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
 #                                                                              #
 ################################################################################
 
@@ -147,7 +147,7 @@ Hide
 
   `
 
-  const generator = new Generator(scriptObject, '0.8.2', '', '', { addDisableDropSoundToHideBlock: true })
+  const generator = new Generator(scriptObject, '9.8.7', '', '', { addDisableDropSoundToHideBlock: true })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -181,7 +181,7 @@ test("generate : single section with 'convertPlayAlertSoundPositionalToPlayAlert
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
 #                                                                              #
 ################################################################################
 
@@ -200,7 +200,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '0.8.2', '', '', { convertPlayAlertSoundPositionalToPlayAlertSound: true })
+  const generator = new Generator(scriptObject, '9.8.7', '', '', { convertPlayAlertSoundPositionalToPlayAlertSound: true })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -234,7 +234,7 @@ test("generate : single section with 'removeCustomAlertSound' option", (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
 #                                                                              #
 ################################################################################
 
@@ -252,7 +252,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '0.8.2', '', '', { removeCustomAlertSound: true })
+  const generator = new Generator(scriptObject, '9.8.7', '', '', { removeCustomAlertSound: true })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -286,7 +286,7 @@ test("generate : single section with 'initialFontSize' option", (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
 #                                                                              #
 ################################################################################
 
@@ -306,7 +306,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '0.8.2', '', '', { initialFontSize: 38 })
+  const generator = new Generator(scriptObject, '9.8.7', '', '', { initialFontSize: 38 })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -354,7 +354,7 @@ test('generate : multi section', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
 #                                                                              #
 ################################################################################
 
@@ -378,7 +378,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '0.8.2')
+  const generator = new Generator(scriptObject, '9.8.7')
   const result = generator.generate()
 
   t.is(result, expected)
@@ -510,7 +510,7 @@ test('generate : multi block', (t) => {
   const expected = outdent`
 ################################################################################
 #                                                                              #
-# Created By Advanced PoE Filter (Ver: 0.8.2)                                  #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
 #                                                                              #
 ################################################################################
 
@@ -574,7 +574,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '0.8.2')
+  const generator = new Generator(scriptObject, '9.8.7')
   const result = generator.generate()
 
   t.is(result, expected)
