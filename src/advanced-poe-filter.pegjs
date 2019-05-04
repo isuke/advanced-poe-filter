@@ -50,14 +50,14 @@ block =
 
     let allBranches = branches.map(m => m[1])
 
-    return { id: getBlockId(), name, activity, conditions, actions, branches: allBranches }
+    return { id: getBlockId(), name, activity, conditions, actions, branches: allBranches, location: location() }
   }
 
 emptyBlock =
   blankline*
   activity:('Show' / 'Hide') __ name:string br
   blankline* {
-    return { id: getBlockId(), name, activity, conditions: {}, actions: {}, branches: [] }
+    return { id: getBlockId(), name, activity, conditions: {}, actions: {}, branches: [], location: location() }
   }
 
 line = line:(condition / action) br { return line }
@@ -71,7 +71,7 @@ branch =
     blocks:(SAMEDENT block)*
   OUTDENT {
     let allBlocks = [block0].concat(blocks.map(b => b[1]))
-    return { name, type, blocks: allBlocks }
+    return { name, type, blocks: allBlocks, location: location() }
   }
 
 blankline = _* br / commentline

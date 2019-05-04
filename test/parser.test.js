@@ -33,6 +33,18 @@ test('parse : blank and comment lines', (t) => {
       },
       actions: {},
       branches: [],
+      location: {
+        start: {
+          line: 1,
+          column: 1,
+          offset: 0,
+        },
+        end: {
+          line: 8,
+          column: 1,
+          offset: 136,
+        },
+      },
     },
     {
       id: '0001',
@@ -46,6 +58,18 @@ test('parse : blank and comment lines', (t) => {
         PlayAlertSound: { id: '1', volume: 300 },
       },
       branches: [],
+      location: {
+        start: {
+          line: 8,
+          column: 1,
+          offset: 136,
+        },
+        end: {
+          line: 14,
+          column: 1,
+          offset: 317,
+        },
+      },
     },
     {
       id: '0001',
@@ -54,6 +78,18 @@ test('parse : blank and comment lines', (t) => {
       conditions: {},
       actions: {},
       branches: [],
+      location: {
+        start: {
+          line: 14,
+          column: 1,
+          offset: 317,
+        },
+        end: {
+          line: 15,
+          column: 1,
+          offset: 339,
+        },
+      },
     },
   ]
 
@@ -178,6 +214,18 @@ Unset "Section6"
         PlayEffect: { color: 'Red', temp: false },
       },
       branches: [],
+      location: {
+        start: {
+          line: 1,
+          column: 1,
+          offset: 0,
+        },
+        end: {
+          line: 36,
+          column: 1,
+          offset: 1014,
+        },
+      },
     },
     {
       id: '0001',
@@ -200,6 +248,18 @@ Unset "Section6"
         PlayEffect: { color: 'Blue', temp: true },
       },
       branches: [],
+      location: {
+        start: {
+          line: 36,
+          column: 1,
+          offset: 1014,
+        },
+        end: {
+          line: 49,
+          column: 1,
+          offset: 1563,
+        },
+      },
     },
     {
       id: '0001',
@@ -214,6 +274,18 @@ Unset "Section6"
         PlayAlertSoundPositional: { id: 'ShAlchemy', volume: 200 },
       },
       branches: [],
+      location: {
+        start: {
+          line: 49,
+          column: 1,
+          offset: 1563,
+        },
+        end: {
+          line: 55,
+          column: 1,
+          offset: 1780,
+        },
+      },
     },
     {
       id: '0001',
@@ -228,6 +300,18 @@ Unset "Section6"
         PlayAlertSoundPositional: { id: 'ShBlessed', volume: 150 },
       },
       branches: [],
+      location: {
+        start: {
+          line: 55,
+          column: 1,
+          offset: 1780,
+        },
+        end: {
+          line: 61,
+          column: 1,
+          offset: 1998,
+        },
+      },
     },
     {
       id: '0001',
@@ -240,6 +324,18 @@ Unset "Section6"
         SetBackgroundColor: { function: 'Hex', val: 123 },
       },
       branches: [],
+      location: {
+        start: {
+          line: 61,
+          column: 1,
+          offset: 1998,
+        },
+        end: {
+          line: 65,
+          column: 1,
+          offset: 2140,
+        },
+      },
     },
     {
       id: '0001',
@@ -251,6 +347,18 @@ Unset "Section6"
         SetTextColor: { function: 'Lightness', val: 75 },
       },
       branches: [],
+      location: {
+        start: {
+          line: 65,
+          column: 1,
+          offset: 2140,
+        },
+        end: {
+          line: 68,
+          column: 1,
+          offset: 2246,
+        },
+      },
     },
   ]
 
@@ -273,6 +381,18 @@ Hide "All Section"
       conditions: {},
       actions: {},
       branches: [],
+      location: {
+        start: {
+          line: 1,
+          column: 1,
+          offset: 0,
+        },
+        end: {
+          line: 2,
+          column: 1,
+          offset: 19,
+        },
+      },
     },
   ]
 
@@ -305,6 +425,18 @@ Show "Map Section"
         PlayAlertSound: { id: '1', volume: 300 },
       },
       branches: [],
+      location: {
+        start: {
+          line: 1,
+          column: 1,
+          offset: 0,
+        },
+        end: {
+          line: 6,
+          column: 1,
+          offset: 108,
+        },
+      },
     },
   ]
 
@@ -339,6 +471,18 @@ Hide "Remain Section"
       },
       actions: {},
       branches: [],
+      location: {
+        start: {
+          line: 1,
+          column: 1,
+          offset: 0,
+        },
+        end: {
+          line: 5,
+          column: 1,
+          offset: 59,
+        },
+      },
     },
     {
       id: '0001',
@@ -352,6 +496,18 @@ Hide "Remain Section"
         PlayAlertSound: { id: '1', volume: 300 },
       },
       branches: [],
+      location: {
+        start: {
+          line: 5,
+          column: 1,
+          offset: 59,
+        },
+        end: {
+          line: 10,
+          column: 1,
+          offset: 191,
+        },
+      },
     },
     {
       id: '0001',
@@ -360,6 +516,18 @@ Hide "Remain Section"
       conditions: {},
       actions: {},
       branches: [],
+      location: {
+        start: {
+          line: 10,
+          column: 1,
+          offset: 191,
+        },
+        end: {
+          line: 11,
+          column: 1,
+          offset: 213,
+        },
+      },
     },
   ]
 
@@ -411,6 +579,18 @@ Show "Map Section"
               conditions: { Rarity: 'Rare' },
               actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
               branches: [],
+              location: {
+                start: {
+                  line: 8,
+                  column: 9,
+                  offset: 135,
+                },
+                end: {
+                  line: 12,
+                  column: 1,
+                  offset: 215,
+                },
+              },
             },
             {
               id: '0002',
@@ -419,10 +599,46 @@ Show "Map Section"
               conditions: { Rarity: 'Magic' },
               actions: {},
               branches: [],
+              location: {
+                start: {
+                  line: 12,
+                  column: 9,
+                  offset: 223,
+                },
+                end: {
+                  line: 14,
+                  column: 1,
+                  offset: 261,
+                },
+              },
             },
           ],
+          location: {
+            start: {
+              line: 7,
+              column: 5,
+              offset: 113,
+            },
+            end: {
+              line: 14,
+              column: 1,
+              offset: 261,
+            },
+          },
         },
       ],
+      location: {
+        start: {
+          line: 1,
+          column: 1,
+          offset: 0,
+        },
+        end: {
+          line: 14,
+          column: 1,
+          offset: 261,
+        },
+      },
     },
   ]
 
@@ -474,6 +690,18 @@ Show "Map Section"
               conditions: { Rarity: 'Rare' },
               actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
               branches: [],
+              location: {
+                start: {
+                  line: 8,
+                  column: 9,
+                  offset: 136,
+                },
+                end: {
+                  line: 12,
+                  column: 1,
+                  offset: 216,
+                },
+              },
             },
             {
               id: '0002',
@@ -482,10 +710,46 @@ Show "Map Section"
               conditions: { Rarity: 'Magic' },
               actions: {},
               branches: [],
+              location: {
+                start: {
+                  line: 12,
+                  column: 9,
+                  offset: 224,
+                },
+                end: {
+                  line: 14,
+                  column: 1,
+                  offset: 262,
+                },
+              },
             },
           ],
+          location: {
+            start: {
+              line: 7,
+              column: 5,
+              offset: 113,
+            },
+            end: {
+              line: 14,
+              column: 1,
+              offset: 262,
+            },
+          },
         },
       ],
+      location: {
+        start: {
+          line: 1,
+          column: 1,
+          offset: 0,
+        },
+        end: {
+          line: 14,
+          column: 1,
+          offset: 262,
+        },
+      },
     },
   ]
 
@@ -537,6 +801,18 @@ Show "Map Section"
               conditions: { Rarity: 'Rare' },
               actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
               branches: [],
+              location: {
+                start: {
+                  line: 5,
+                  column: 9,
+                  offset: 64,
+                },
+                end: {
+                  line: 9,
+                  column: 1,
+                  offset: 144,
+                },
+              },
             },
             {
               id: '0002',
@@ -545,8 +821,32 @@ Show "Map Section"
               conditions: { Rarity: 'Magic' },
               actions: {},
               branches: [],
+              location: {
+                start: {
+                  line: 9,
+                  column: 9,
+                  offset: 152,
+                },
+                end: {
+                  line: 12,
+                  column: 1,
+                  offset: 191,
+                },
+              },
             },
           ],
+          location: {
+            start: {
+              line: 4,
+              column: 5,
+              offset: 41,
+            },
+            end: {
+              line: 12,
+              column: 1,
+              offset: 191,
+            },
+          },
         },
         {
           name: 'Tier',
@@ -559,6 +859,18 @@ Show "Map Section"
               conditions: { MapTier: '>= 11' },
               actions: { PlayAlertSound: { id: '1', volume: 300 } },
               branches: [],
+              location: {
+                start: {
+                  line: 13,
+                  column: 9,
+                  offset: 216,
+                },
+                end: {
+                  line: 17,
+                  column: 1,
+                  offset: 294,
+                },
+              },
             },
             {
               id: '0004',
@@ -567,10 +879,46 @@ Show "Map Section"
               conditions: { MapTier: '>= 6' },
               actions: { PlayAlertSound: { id: '2', volume: 300 } },
               branches: [],
+              location: {
+                start: {
+                  line: 17,
+                  column: 9,
+                  offset: 302,
+                },
+                end: {
+                  line: 20,
+                  column: 1,
+                  offset: 380,
+                },
+              },
             },
           ],
+          location: {
+            start: {
+              line: 12,
+              column: 5,
+              offset: 195,
+            },
+            end: {
+              line: 20,
+              column: 1,
+              offset: 380,
+            },
+          },
         },
       ],
+      location: {
+        start: {
+          line: 1,
+          column: 1,
+          offset: 0,
+        },
+        end: {
+          line: 20,
+          column: 1,
+          offset: 380,
+        },
+      },
     },
   ]
 
@@ -622,6 +970,18 @@ Show "Map Section"
               conditions: { Rarity: 'Rare' },
               actions: { SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 } },
               branches: [],
+              location: {
+                start: {
+                  line: 5,
+                  column: 9,
+                  offset: 64,
+                },
+                end: {
+                  line: 9,
+                  column: 1,
+                  offset: 144,
+                },
+              },
             },
             {
               id: '0004',
@@ -641,6 +1001,18 @@ Show "Map Section"
                       conditions: { MapTier: '>= 11' },
                       actions: { PlayAlertSound: { id: '1', volume: 300 } },
                       branches: [],
+                      location: {
+                        start: {
+                          line: 13,
+                          column: 17,
+                          offset: 232,
+                        },
+                        end: {
+                          line: 17,
+                          column: 1,
+                          offset: 326,
+                        },
+                      },
                     },
                     {
                       id: '0003',
@@ -649,14 +1021,74 @@ Show "Map Section"
                       conditions: { MapTier: '>= 6' },
                       actions: { PlayAlertSound: { id: '2', volume: 300 } },
                       branches: [],
+                      location: {
+                        start: {
+                          line: 17,
+                          column: 17,
+                          offset: 342,
+                        },
+                        end: {
+                          line: 20,
+                          column: 1,
+                          offset: 436,
+                        },
+                      },
                     },
                   ],
+                  location: {
+                    start: {
+                      line: 12,
+                      column: 13,
+                      offset: 203,
+                    },
+                    end: {
+                      line: 20,
+                      column: 1,
+                      offset: 436,
+                    },
+                  },
                 },
               ],
+              location: {
+                start: {
+                  line: 9,
+                  column: 9,
+                  offset: 152,
+                },
+                end: {
+                  line: 20,
+                  column: 1,
+                  offset: 436,
+                },
+              },
             },
           ],
+          location: {
+            start: {
+              line: 4,
+              column: 5,
+              offset: 41,
+            },
+            end: {
+              line: 20,
+              column: 1,
+              offset: 436,
+            },
+          },
         },
       ],
+      location: {
+        start: {
+          line: 1,
+          column: 1,
+          offset: 0,
+        },
+        end: {
+          line: 20,
+          column: 1,
+          offset: 436,
+        },
+      },
     },
   ]
 
