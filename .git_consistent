@@ -59,9 +59,6 @@ scope:
       name: prepender
       description: 'prepender.js'
     -
-      name: parser
-      description: 'pegjs'
-    -
       name: expander
       description: 'expander.js'
     -

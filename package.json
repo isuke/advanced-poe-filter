@@ -14,9 +14,7 @@
     "lint": "eslint ./*.js src/**/*.js test/**/*.js",
     "fix": "eslint --fix ./*.js src/**/*.js test/**/*.js",
     "test": "ava --verbose",
-    "build": "yarn run build:parser && yarn run build:index",
-    "build:parser": "pegjs --format=es -o lib/parser.js src/advanced-poe-filter.pegjs",
-    "build:index": "webpack --mode=production --progress --hide-modules",
+    "build": "webpack --mode=production --progress --hide-modules",
     "predeploy": "yarn run build",
     "deploy": "yarn publish --registry http://localhost:4873"
   },
@@ -27,6 +25,7 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
+    "advanced-poe-filter-parser": "^0.0.1",
     "ava": "^1.0.1",
     "babel-loader": "^8.0.4",
     "eslint": "^5.10.0",

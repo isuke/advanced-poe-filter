@@ -1,5 +1,6 @@
+import { parse, SyntaxError as _SyntaxError } from 'advanced-poe-filter-parser'
+
 import Prepender from '../src/prepender'
-import { parse } from '../lib/parser'
 import Expander from '../src/expander'
 import Generator from '../src/generator'
 

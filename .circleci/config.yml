@@ -8,7 +8,5 @@ jobs:
       - run: yarn install
       - run: yarn run lint
       - run: yarn run flow
-      - run: |
-          yarn run build:parser
-          yarn run build:index --progress=false
+      - run: yarn run build --progress=false
       - run: yarn run test
