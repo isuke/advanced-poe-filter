@@ -315,6 +315,112 @@ Show
   t.is(result, expected)
 })
 
+test("generate : single section with 'defaultAlertSoundVolume' option", (t) => {
+  const scriptObject = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          id: '0001',
+          name: {},
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            MapTier: '> 3',
+            Identified: false,
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
+            PlayAlertSound: { id: '1', volume: undefined },
+            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
+            PlayEffect: { color: 'Blue', temp: true },
+          },
+        },
+      ],
+    },
+  ]
+
+  const expected = outdent`
+################################################################################
+#                                                                              #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Map Section                                                                  #
+################################################################################
+Show
+    Class "Maps"
+    MapTier > 3
+    Identified False
+    SetBorderColor 250 126 107 255
+    MinimapIcon 0 Red Circle
+    PlayEffect Blue Temp
+    PlayAlertSound 1 123
+
+
+  `
+
+  const generator = new Generator(scriptObject, '9.8.7', '', {}, { defaultAlertSoundVolume: 123, defaultAlertSoundPositionalVolume: 234 })
+  const result = generator.generate()
+
+  t.is(result, expected)
+})
+
+test("generate : single section with 'defaultAlertSoundPositionalVolume' option", (t) => {
+  const scriptObject = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          id: '0001',
+          name: {},
+          activity: 'Show',
+          conditions: {
+            Class: ['Maps'],
+            MapTier: '> 3',
+            Identified: false,
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
+            PlayAlertSoundPositional: { id: '1', volume: undefined },
+            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
+            PlayEffect: { color: 'Blue', temp: true },
+          },
+        },
+      ],
+    },
+  ]
+
+  const expected = outdent`
+################################################################################
+#                                                                              #
+# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
+#                                                                              #
+################################################################################
+
+################################################################################
+# Map Section                                                                  #
+################################################################################
+Show
+    Class "Maps"
+    MapTier > 3
+    Identified False
+    SetBorderColor 250 126 107 255
+    MinimapIcon 0 Red Circle
+    PlayEffect Blue Temp
+    PlayAlertSoundPositional 1 234
+
+
+  `
+
+  const generator = new Generator(scriptObject, '9.8.7', '', {}, { defaultAlertSoundVolume: 123, defaultAlertSoundPositionalVolume: 234 })
+  const result = generator.generate()
+
+  t.is(result, expected)
+})
+
 test("generate : single section with 'initialFontSize' option", (t) => {
   const scriptObject = [
     {

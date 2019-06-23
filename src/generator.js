@@ -228,11 +228,12 @@ export default class {
       case 'SetBackgroundColor':
         return `    ${actionKey} ${Math.round(actionVal.rgb.r)} ${Math.round(actionVal.rgb.g)} ${Math.round(actionVal.rgb.b)} ${Math.round(actionVal.alpha)}\n`
       case 'PlayAlertSound':
+        return `    ${actionKey} ${actionVal.id} ${actionVal.volume || this.$options.defaultAlertSoundVolume}\n`
       case 'PlayAlertSoundPositional':
         if (this.$options.convertPlayAlertSoundPositionalToPlayAlertSound) {
-          return `    PlayAlertSound ${actionVal.id} ${actionVal.volume}\n`
+          return `    PlayAlertSound ${actionVal.id} ${actionVal.volume || this.$options.defaultAlertSoundPositionalVolume}\n`
         } else {
-          return `    ${actionKey} ${actionVal.id} ${actionVal.volume}\n`
+          return `    ${actionKey} ${actionVal.id} ${actionVal.volume || this.$options.defaultAlertSoundPositionalVolume}\n`
         }
       case 'DisableDropSound':
         return `    ${actionKey} ${toUpperFirstChar(actionVal)}\n`

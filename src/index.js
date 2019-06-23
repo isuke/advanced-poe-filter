@@ -51,6 +51,8 @@ const _defaultOptions = {
   addDisableDropSoundToHideBlock: true,
   convertPlayAlertSoundPositionalToPlayAlertSound: false,
   removeCustomAlertSound: false,
+  defaultAlertSoundVolume: 150,
+  defaultAlertSoundPositionalVolume: 150,
   initialFontSize: 32,
 }
 
