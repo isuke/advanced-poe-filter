@@ -19,7 +19,7 @@
     "deploy": "yarn publish --registry http://localhost:4873"
   },
   "dependencies": {
-    "advanced-poe-filter-parser": "0.1.0",
+    "advanced-poe-filter-parser": "0.1.1",
     "color": "^3.1.0"
   },
   "devDependencies": {
