@@ -105,6 +105,8 @@ export default class {
       case 'Corrupted':
       case 'Identified':
       case 'ShapedMap':
+      case 'ElderMap':
+      case 'BlightedMap':
       case 'DisableDropSound':
         return toUpperFirstChar(value)
       default:

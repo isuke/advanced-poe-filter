@@ -15,6 +15,7 @@ Show "Map Section"
     Class "Maps"
     MapTier > 3
     Identified False
+    BlightedMap True
 
     # This is Comment
     SetBorderColor 250 251 252
@@ -38,6 +39,7 @@ Show "Map Section"
               Class: ['Maps'],
               MapTier: '> 3',
               Identified: false,
+              BlightedMap: true,
             },
             actions: {
               SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -64,6 +66,7 @@ Show "Map Section"
     Class "Maps"
     MapTier > 3
     Identified False
+    BlightedMap True
     HasEnchantment "Enchantment Decree of Force"
 
     # This is Comment
@@ -90,6 +93,7 @@ Show
     Class "Maps"
     MapTier > 3
     Identified False
+    BlightedMap True
     HasEnchantment "Enchantment Decree of Force"
     SetFontSize 32
     SetBorderColor 250 251 252 255

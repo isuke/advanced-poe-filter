@@ -39,6 +39,8 @@ export default class {
       'Corrupted',
       'Identified',
       'ShapedMap',
+      'ElderMap',
+      'BlightedMap',
 
       'Height',
       'Width',
@@ -172,6 +174,8 @@ export default class {
       case 'Corrupted':
       case 'Identified':
       case 'ShapedMap':
+      case 'ElderMap':
+      case 'BlightedMap':
       case 'FracturedItem':
       case 'SynthesisedItem':
       case 'AnyEnchantment':
