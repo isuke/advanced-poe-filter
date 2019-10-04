@@ -36,7 +36,7 @@ Show "Map Section"
             name: {},
             activity: 'Show',
             conditions: {
-              Class: ['Maps'],
+              Class: { ope: '=', vals: ['Maps'] },
               MapTier: '> 3',
               Identified: false,
               BlightedMap: true,
@@ -63,7 +63,7 @@ test('compile : single section', (t) => {
 # This is Comment
 # This is Comment
 Show "Map Section"
-    Class "Maps"
+    Class == "Maps"
     MapTier > 3
     Identified False
     BlightedMap True
@@ -90,11 +90,11 @@ Show "Map Section"
 # Map Section                                                                  #
 ################################################################################
 Show
-    Class "Maps"
+    Class == "Maps"
     MapTier > 3
     Identified False
     BlightedMap True
-    HasEnchantment "Enchantment Decree of Force"
+    HasEnchantment = "Enchantment Decree of Force"
     SetFontSize 32
     SetBorderColor 250 251 252 255
     MinimapIcon 1 Red Circle
@@ -137,7 +137,7 @@ Show "Flasks"
 # Flasks                                                                       #
 ################################################################################
 Show
-    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
+    Class = "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
     Identified False
     SetFontSize 32
     SetBorderColor 250 251 252 255
@@ -184,7 +184,7 @@ Show "Flasks"
 # Flasks                                                                       #
 ################################################################################
 Show
-    Class "Utility Flasks"
+    Class = "Utility Flasks"
     Quality >= 0
     SetFontSize 32
     SetBorderColor 250 251 252 255
@@ -204,7 +204,7 @@ Show
 # Flasks                                                                       #
 ################################################################################
 Show
-    Class "Utility Flasks"
+    Class = "Utility Flasks"
     Quality >= 10
     SetFontSize 32
     SetBorderColor 250 251 252 255
@@ -224,7 +224,7 @@ Show
 # Flasks                                                                       #
 ################################################################################
 Show
-    Class "Utility Flasks"
+    Class = "Utility Flasks"
     Quality >= 20
     SetFontSize 32
     SetBorderColor 250 251 252 255
@@ -277,7 +277,7 @@ Show "Flasks"
 # Flasks                                                                       #
 ################################################################################
 Show
-    Class "Utility Flasks"
+    Class = "Utility Flasks"
     Quality >= 0
     SetFontSize 32
     SetBorderColor 250 251 252 255
@@ -297,7 +297,7 @@ Show
 # Flasks                                                                       #
 ################################################################################
 Show
-    Class "Utility Flasks"
+    Class = "Utility Flasks"
     Quality >= 10
     SetFontSize 32
     SetBorderColor 250 251 252 255
@@ -317,7 +317,7 @@ Show
 # Flasks                                                                       #
 ################################################################################
 Show
-    Class "Utility Flasks"
+    Class = "Utility Flasks"
     Quality >= 20
     SetFontSize 32
     SetBorderColor 250 251 252 255
@@ -366,10 +366,10 @@ Show "Map Section"
 # Map Section                                                                  #
 ################################################################################
 Show
-    Class "Maps"
+    Class = "Maps"
     MapTier > 3
     Identified False
-    HasEnchantment "Enchantment Decree of Force"
+    HasEnchantment = "Enchantment Decree of Force"
     SetFontSize 32
     SetBorderColor 250 251 252 255
     MinimapIcon 1 Red Circle
@@ -413,7 +413,7 @@ Hide "Remain Section"
 # Hide Map Section                                                             #
 ################################################################################
 Hide
-    Class "Maps"
+    Class = "Maps"
     MapTier <= 4
     SetFontSize 32
     DisableDropSound True
@@ -423,7 +423,7 @@ Hide
 # Flask Section                                                                #
 ################################################################################
 Show
-    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
+    Class = "Life Flasks" "Mana Flasks" "Hybrid Flasks"
     SetFontSize 32
     SetBorderColor 250 251 252 255
     PlayAlertSound 1 300
@@ -477,14 +477,14 @@ Show "Map Section"
 ################################################################################
 # Rarity is "Rare"
 Show
-    Class "Maps"
+    Class = "Maps"
     Rarity = Rare
     SetFontSize 32
     SetBorderColor 200 100 51 123
 
 # Rarity is "Magic"
 Hide
-    Class "Maps"
+    Class = "Maps"
     Rarity = Magic
     SetFontSize 32
     SetBorderColor 200 100 52 123
@@ -492,7 +492,7 @@ Hide
 
 # Rarity is "Normal"
 Show
-    Class "Maps"
+    Class = "Maps"
     Rarity = Normal
     SetFontSize 32
     SetBorderColor 200 100 53 123
@@ -538,7 +538,7 @@ Show "Map Section"
 ################################################################################
 # Rarity is "Rare"
 Show
-    Class "Maps"
+    Class = "Maps"
     Rarity = Rare
     SetFontSize 32
     SetTextColor 125 125 125 123
@@ -547,7 +547,7 @@ Show
 
 # Rarity is Any
 Show
-    Class "Maps"
+    Class = "Maps"
     SetFontSize 32
     SetTextColor 200 100 50 123
     SetBackgroundColor 200 100 50 123
@@ -590,19 +590,19 @@ Show "Map Section"
 ################################################################################
 # Rarity is "Rare"
 Show
-    Class "Maps"
+    Class = "Maps"
     Rarity = Rare
     SetFontSize 37
 
 # Rarity is "Magic"
 Show
-    Class "Maps"
+    Class = "Maps"
     Rarity = Rare
     SetFontSize 26
 
 # Rarity is Any
 Show
-    Class "Maps"
+    Class = "Maps"
     SetFontSize 32
 
 
@@ -675,8 +675,8 @@ Hide "Gears"
 ################################################################################
 # Rarity is "Rare" - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Rare
     LinkedSockets = 6
     SetFontSize 45
@@ -687,8 +687,8 @@ Show
 
 # Rarity is "Rare" - BaseType is "Special BodyArmour" - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Rare
     Sockets = 6
     SetFontSize 45
@@ -699,8 +699,8 @@ Show
 
 # Rarity is "Rare" - BaseType is "Special BodyArmour" - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Rare
     SocketGroup RGB
     SetFontSize 45
@@ -711,8 +711,8 @@ Show
 
 # Rarity is "Rare" - BaseType is "Special BodyArmour" - Sockets and Link is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Rare
     SetFontSize 45
     SetBackgroundColor 100 100 255 255
@@ -721,8 +721,8 @@ Show
 
 # Rarity is "Rare" - BaseType is "Special Glove and Boots" - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Rare
     LinkedSockets = 6
     SetFontSize 45
@@ -733,8 +733,8 @@ Show
 
 # Rarity is "Rare" - BaseType is "Special Glove and Boots" - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Rare
     Sockets = 6
     SetFontSize 45
@@ -745,8 +745,8 @@ Show
 
 # Rarity is "Rare" - BaseType is "Special Glove and Boots" - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Rare
     SocketGroup RGB
     SetFontSize 45
@@ -757,8 +757,8 @@ Show
 
 # Rarity is "Rare" - BaseType is "Special Glove and Boots" - Sockets and Link is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Rare
     SetFontSize 45
     SetBackgroundColor 50 50 255 255
@@ -767,7 +767,7 @@ Show
 
 # Rarity is "Rare" - BaseType is Any - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
     LinkedSockets = 6
     SetFontSize 45
@@ -777,7 +777,7 @@ Show
 
 # Rarity is "Rare" - BaseType is Any - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
     Sockets = 6
     SetFontSize 45
@@ -787,7 +787,7 @@ Show
 
 # Rarity is "Rare" - BaseType is Any - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
     SocketGroup RGB
     SetFontSize 45
@@ -797,15 +797,15 @@ Show
 
 # Rarity is "Rare" - BaseType is Any - Sockets and Link is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
     SetFontSize 45
     PlayEffect Yellow Temp
 
 # Rarity is "Magic" - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Magic
     LinkedSockets = 6
     SetFontSize 36
@@ -816,8 +816,8 @@ Show
 
 # Rarity is "Magic" - BaseType is "Special BodyArmour" - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Magic
     Sockets = 6
     SetFontSize 36
@@ -828,8 +828,8 @@ Show
 
 # Rarity is "Magic" - BaseType is "Special BodyArmour" - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Magic
     SocketGroup RGB
     SetFontSize 36
@@ -840,8 +840,8 @@ Show
 
 # Rarity is "Magic" - BaseType is "Special BodyArmour" - Sockets and Link is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Magic
     SetFontSize 36
     SetBackgroundColor 100 100 255 255
@@ -850,8 +850,8 @@ Show
 
 # Rarity is "Magic" - BaseType is "Special Glove and Boots" - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Magic
     LinkedSockets = 6
     SetFontSize 36
@@ -862,8 +862,8 @@ Show
 
 # Rarity is "Magic" - BaseType is "Special Glove and Boots" - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Magic
     Sockets = 6
     SetFontSize 36
@@ -874,8 +874,8 @@ Show
 
 # Rarity is "Magic" - BaseType is "Special Glove and Boots" - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Magic
     SocketGroup RGB
     SetFontSize 36
@@ -886,8 +886,8 @@ Show
 
 # Rarity is "Magic" - BaseType is "Special Glove and Boots" - Sockets and Link is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Magic
     SetFontSize 36
     SetBackgroundColor 50 50 255 255
@@ -896,7 +896,7 @@ Show
 
 # Rarity is "Magic" - BaseType is Any - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
     LinkedSockets = 6
     SetFontSize 36
@@ -906,7 +906,7 @@ Show
 
 # Rarity is "Magic" - BaseType is Any - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
     Sockets = 6
     SetFontSize 36
@@ -916,7 +916,7 @@ Show
 
 # Rarity is "Magic" - BaseType is Any - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
     SocketGroup RGB
     SetFontSize 36
@@ -926,15 +926,15 @@ Show
 
 # Rarity is "Magic" - BaseType is Any - Sockets and Link is Any
 Hide
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
     SetFontSize 36
     DisableDropSound True
 
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Normal
     LinkedSockets = 6
     SetFontSize 18
@@ -945,8 +945,8 @@ Show
 
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Normal
     Sockets = 6
     SetFontSize 18
@@ -957,8 +957,8 @@ Show
 
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Normal
     SocketGroup RGB
     SetFontSize 18
@@ -969,8 +969,8 @@ Show
 
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Normal
     SetFontSize 18
     SetBackgroundColor 100 100 255 255
@@ -979,8 +979,8 @@ Show
 
 # Rarity is "Normal" - BaseType is "Special Glove and Boots" - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Normal
     LinkedSockets = 6
     SetFontSize 18
@@ -991,8 +991,8 @@ Show
 
 # Rarity is "Normal" - BaseType is "Special Glove and Boots" - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Normal
     Sockets = 6
     SetFontSize 18
@@ -1003,8 +1003,8 @@ Show
 
 # Rarity is "Normal" - BaseType is "Special Glove and Boots" - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Normal
     SocketGroup RGB
     SetFontSize 18
@@ -1015,8 +1015,8 @@ Show
 
 # Rarity is "Normal" - BaseType is "Special Glove and Boots" - Sockets and Link is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Rarity Normal
     SetFontSize 18
     SetBackgroundColor 50 50 255 255
@@ -1025,7 +1025,7 @@ Show
 
 # Rarity is "Normal" - BaseType is Any - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
     LinkedSockets = 6
     SetFontSize 18
@@ -1035,7 +1035,7 @@ Show
 
 # Rarity is "Normal" - BaseType is Any - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
     Sockets = 6
     SetFontSize 18
@@ -1045,7 +1045,7 @@ Show
 
 # Rarity is "Normal" - BaseType is Any - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
     SocketGroup RGB
     SetFontSize 18
@@ -1055,15 +1055,15 @@ Show
 
 # Rarity is "Normal" - BaseType is Any - Sockets and Link is Any
 Hide
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
     SetFontSize 18
     DisableDropSound True
 
 # Rarity is Any - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     LinkedSockets = 6
     SetFontSize 32
     SetBackgroundColor 100 100 255 255
@@ -1073,8 +1073,8 @@ Show
 
 # Rarity is Any - BaseType is "Special BodyArmour" - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Sockets = 6
     SetFontSize 32
     SetBackgroundColor 100 100 255 255
@@ -1084,8 +1084,8 @@ Show
 
 # Rarity is Any - BaseType is "Special BodyArmour" - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     SocketGroup RGB
     SetFontSize 32
     SetBackgroundColor 100 100 255 255
@@ -1095,8 +1095,8 @@ Show
 
 # Rarity is Any - BaseType is "Special BodyArmour" - Sockets and Link is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     SetFontSize 32
     SetBackgroundColor 100 100 255 255
     PlayEffect Blue
@@ -1104,8 +1104,8 @@ Show
 
 # Rarity is Any - BaseType is "Special Glove and Boots" - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     LinkedSockets = 6
     SetFontSize 32
     SetBackgroundColor 50 50 255 255
@@ -1115,8 +1115,8 @@ Show
 
 # Rarity is Any - BaseType is "Special Glove and Boots" - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     Sockets = 6
     SetFontSize 32
     SetBackgroundColor 50 50 255 255
@@ -1126,8 +1126,8 @@ Show
 
 # Rarity is Any - BaseType is "Special Glove and Boots" - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     SocketGroup RGB
     SetFontSize 32
     SetBackgroundColor 50 50 255 255
@@ -1137,8 +1137,8 @@ Show
 
 # Rarity is Any - BaseType is "Special Glove and Boots" - Sockets and Link is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Two-Toned Boots" "Spiked Gloves" "Gripped Gloves" "Fingerless Silk Gloves" "Bone Helmet"
     SetFontSize 32
     SetBackgroundColor 50 50 255 255
     PlayEffect Blue Temp
@@ -1146,7 +1146,7 @@ Show
 
 # Rarity is Any - BaseType is Any - Sockets and Link is "6L"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     LinkedSockets = 6
     SetFontSize 32
     SetBorderColor 255 0 0 255
@@ -1155,7 +1155,7 @@ Show
 
 # Rarity is Any - BaseType is Any - Sockets and Link is "6S"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Sockets = 6
     SetFontSize 32
     SetBorderColor 0 255 0 255
@@ -1164,7 +1164,7 @@ Show
 
 # Rarity is Any - BaseType is Any - Sockets and Link is "RGB"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     SocketGroup RGB
     SetFontSize 32
     SetBorderColor 0 0 255 255
@@ -1173,7 +1173,7 @@ Show
 
 # Rarity is Any - BaseType is Any - Sockets and Link is Any
 Hide
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     SetFontSize 32
     DisableDropSound True
 
@@ -1216,29 +1216,29 @@ Show "Gears"
 ################################################################################
 # Rarity is "Rare" - BaseType is "Special BodyArmour"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     Rarity Rare
     SetFontSize 32
     CustomAlertSound "./Sounds/Unique.wav"
 
 # Rarity is "Rare" - BaseType is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
     SetFontSize 32
     PlayAlertSound 1 300
 
 # Rarity is Any - BaseType is "Special BodyArmour"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
-    BaseType "Sacrificial Garb"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    BaseType = "Sacrificial Garb"
     SetFontSize 32
     CustomAlertSound "./Sounds/Unique.wav"
 
 # Rarity is Any - BaseType is Any
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     SetFontSize 32
     PlayAlertSoundPositional 2 100
 
@@ -1293,7 +1293,7 @@ Hide "Gears"
 ################################################################################
 # Rarity is "Rare" - Shaper/Elder is "Shaper"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
     ShaperItem True
     SetFontSize 45
@@ -1302,7 +1302,7 @@ Show
 
 # Rarity is "Rare" - Shaper/Elder is "Elder"
 Show
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
     ElderItem True
     SetFontSize 45
@@ -1311,28 +1311,28 @@ Show
 
 # Rarity is "Rare" - Shaper/Elder is Any
 Hide
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
     SetFontSize 45
     DisableDropSound True
 
 # Rarity is "Magic"
 Hide
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
     SetFontSize 36
     DisableDropSound True
 
 # Rarity is "Normal"
 Hide
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
     SetFontSize 18
     DisableDropSound True
 
 # Rarity is Any
 Hide
-    Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
+    Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     SetFontSize 32
     DisableDropSound True
 

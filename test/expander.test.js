@@ -9,7 +9,7 @@ test('expand : single section', (t) => {
       name: 'Map Section',
       activity: 'Show',
       conditions: {
-        Class: ['Maps'],
+        Class: { ope: '=', vals: ['Maps'] },
         MapTier: '> 3',
       },
       actions: {
@@ -29,7 +29,7 @@ test('expand : single section', (t) => {
           name: {},
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
           },
           actions: {
@@ -54,7 +54,7 @@ test('expand : multi section', (t) => {
       name: 'Hide Map Section',
       activity: 'Hide',
       conditions: {
-        Class: ['Maps'],
+        Class: { ope: '=', vals: ['Maps'] },
         MapTier: '<= 4',
       },
       actions: {},
@@ -65,7 +65,7 @@ test('expand : multi section', (t) => {
       name: 'Flask Section',
       activity: 'Show',
       conditions: {
-        Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
+        Class: { ope: '=', vals: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'] },
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -84,7 +84,7 @@ test('expand : multi section', (t) => {
           name: {},
           activity: 'Hide',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '<= 4',
           },
           actions: {},
@@ -99,7 +99,7 @@ test('expand : multi section', (t) => {
           name: {},
           activity: 'Show',
           conditions: {
-            Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
+            Class: { ope: '=', vals: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'] },
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -123,7 +123,7 @@ test('expand : single fork', (t) => {
       name: 'Map Section',
       activity: 'Unset',
       conditions: {
-        Class: ['Maps'],
+        Class: { ope: '=', vals: ['Maps'] },
         MapTier: '> 3',
       },
       actions: {
@@ -177,7 +177,7 @@ test('expand : single fork', (t) => {
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Rarity: 'Rare',
           },
@@ -192,7 +192,7 @@ test('expand : single fork', (t) => {
           name: { Rarity: 'Magic' },
           activity: 'Hide',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Rarity: 'Magic',
           },
@@ -206,7 +206,7 @@ test('expand : single fork', (t) => {
           name: { Rarity: 'Normal' },
           activity: 'Unset',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Rarity: 'Normal',
           },
@@ -232,7 +232,7 @@ test('expand : single mixin', (t) => {
       name: 'Map Section',
       activity: 'Show',
       conditions: {
-        Class: ['Maps'],
+        Class: { ope: '=', vals: ['Maps'] },
         MapTier: '> 3',
       },
       actions: {
@@ -286,7 +286,7 @@ test('expand : single mixin', (t) => {
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Rarity: 'Rare',
           },
@@ -301,7 +301,7 @@ test('expand : single mixin', (t) => {
           name: { Rarity: 'Magic' },
           activity: 'Hide',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Rarity: 'Magic',
           },
@@ -315,7 +315,7 @@ test('expand : single mixin', (t) => {
           name: { Rarity: 'Normal' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Rarity: 'Normal',
           },
@@ -329,7 +329,7 @@ test('expand : single mixin', (t) => {
           name: { Rarity: undefined },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
           },
           actions: {
@@ -353,7 +353,7 @@ test('expand : multi mixin', (t) => {
       id: '0001',
       name: 'Map Section',
       activity: 'Show',
-      conditions: { Class: ['Maps'] },
+      conditions: { Class: { ope: '=', vals: ['Maps'] } },
       actions: {},
       branches: [
         {
@@ -414,7 +414,7 @@ test('expand : multi mixin', (t) => {
           name: { Rarity: 'Rare', Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Rare',
             MapTier: '>= 11',
           },
@@ -428,7 +428,7 @@ test('expand : multi mixin', (t) => {
           name: { Rarity: 'Rare', Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Rare',
             MapTier: '>= 6',
           },
@@ -442,7 +442,7 @@ test('expand : multi mixin', (t) => {
           name: { Rarity: 'Rare', Tier: undefined },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Rare',
           },
           actions: {
@@ -456,7 +456,7 @@ test('expand : multi mixin', (t) => {
           name: { Rarity: 'Magic', Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Magic',
             MapTier: '>= 11',
           },
@@ -469,7 +469,7 @@ test('expand : multi mixin', (t) => {
           name: { Rarity: 'Magic', Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Magic',
             MapTier: '>= 6',
           },
@@ -482,7 +482,7 @@ test('expand : multi mixin', (t) => {
           name: { Rarity: 'Magic', Tier: undefined },
           activity: 'Hide',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Magic',
           },
           actions: {},
@@ -494,7 +494,7 @@ test('expand : multi mixin', (t) => {
           name: { Rarity: undefined, Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '>= 11',
           },
           actions: {
@@ -506,7 +506,7 @@ test('expand : multi mixin', (t) => {
           name: { Rarity: undefined, Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '>= 6',
           },
           actions: {
@@ -518,7 +518,7 @@ test('expand : multi mixin', (t) => {
           name: { Rarity: undefined, Tier: undefined },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
           },
           actions: {},
         },
@@ -538,7 +538,7 @@ test('expand : nested mixin', (t) => {
       id: '0001',
       name: 'Map Section',
       activity: 'Show',
-      conditions: { Class: ['Maps'] },
+      conditions: { Class: { ope: '=', vals: ['Maps'] } },
       actions: {},
       branches: [
         {
@@ -602,7 +602,7 @@ test('expand : nested mixin', (t) => {
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Rare',
           },
           actions: {
@@ -616,7 +616,7 @@ test('expand : nested mixin', (t) => {
           name: { Rarity: 'Magic', Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Magic',
             MapTier: '>= 11',
           },
@@ -630,7 +630,7 @@ test('expand : nested mixin', (t) => {
           name: { Rarity: 'Magic', Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Magic',
             MapTier: '>= 6',
           },
@@ -644,7 +644,7 @@ test('expand : nested mixin', (t) => {
           name: { Rarity: 'Magic', Tier: undefined },
           activity: 'Hide',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Magic',
           },
           actions: {
@@ -658,7 +658,7 @@ test('expand : nested mixin', (t) => {
           name: { Rarity: undefined },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
           },
           actions: {},
         },
@@ -679,7 +679,7 @@ test('expand : color function', (t) => {
       name: 'Map Section',
       activity: 'Show',
       conditions: {
-        Class: ['Maps'],
+        Class: { ope: '=', vals: ['Maps'] },
       },
       actions: {
         SetBorderColor: { rgb: { r: 200, g: 100, b: 50 }, alpha: 123 },
@@ -718,7 +718,7 @@ test('expand : color function', (t) => {
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Rare',
           },
           actions: {
@@ -732,7 +732,7 @@ test('expand : color function', (t) => {
           name: { Rarity: undefined },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
           },
           actions: {
             SetBorderColor: { rgb: { r: 200, g: 100, b: 50 }, alpha: 123 },
@@ -757,7 +757,7 @@ test('expand : fontSize function', (t) => {
       name: 'Map Section',
       activity: 'Show',
       conditions: {
-        Class: ['Maps'],
+        Class: { ope: '=', vals: ['Maps'] },
       },
       actions: {
         SetFontSize: 36,
@@ -796,7 +796,7 @@ test('expand : fontSize function', (t) => {
       name: 'Jewel Section',
       activity: 'Show',
       conditions: {
-        Class: ['Jewels'],
+        Class: { ope: '=', vals: ['Jewels'] },
       },
       actions: {},
       branches: [
@@ -839,7 +839,7 @@ test('expand : fontSize function', (t) => {
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Rare',
           },
           actions: {
@@ -851,7 +851,7 @@ test('expand : fontSize function', (t) => {
           name: { Rarity: 'Magic' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Magic',
           },
           actions: {
@@ -863,7 +863,7 @@ test('expand : fontSize function', (t) => {
           name: { Rarity: undefined },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
           },
           actions: {
             SetFontSize: 36,
@@ -879,7 +879,7 @@ test('expand : fontSize function', (t) => {
           name: { Rarity: 'Rare' },
           activity: 'Show',
           conditions: {
-            Class: ['Jewels'],
+            Class: { ope: '=', vals: ['Jewels'] },
             Rarity: 'Rare',
           },
           actions: {
@@ -891,7 +891,7 @@ test('expand : fontSize function', (t) => {
           name: { Rarity: 'Magic' },
           activity: 'Show',
           conditions: {
-            Class: ['Jewels'],
+            Class: { ope: '=', vals: ['Jewels'] },
             Rarity: 'Magic',
           },
           actions: {
@@ -903,7 +903,7 @@ test('expand : fontSize function', (t) => {
           name: { Rarity: undefined },
           activity: 'Show',
           conditions: {
-            Class: ['Jewels'],
+            Class: { ope: '=', vals: ['Jewels'] },
           },
           actions: {},
         },

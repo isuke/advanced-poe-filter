@@ -13,7 +13,7 @@ test('generate : single section', (t) => {
           name: {},
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Identified: false,
           },
@@ -39,7 +39,7 @@ test('generate : single section', (t) => {
 # Map Section                                                                  #
 ################################################################################
 Show
-    Class "Maps"
+    Class = "Maps"
     MapTier > 3
     Identified False
     SetBorderColor 250 126 107 255
@@ -66,7 +66,7 @@ test('generate : single section with scriptName and filterInfo', (t) => {
           name: {},
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Identified: false,
           },
@@ -96,7 +96,7 @@ test('generate : single section with scriptName and filterInfo', (t) => {
 # Map Section                                                                  #
 ################################################################################
 Show
-    Class "Maps"
+    Class = "Maps"
     MapTier > 3
     Identified False
     SetBorderColor 250 126 107 255
@@ -123,7 +123,7 @@ test('generate : single unset section', (t) => {
           name: {},
           activity: 'Unset',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Identified: false,
           },
@@ -169,7 +169,7 @@ test("generate : single section with 'addDisableDropSoundToHideBlock' option", (
           name: {},
           activity: 'Hide',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Identified: false,
           },
@@ -195,7 +195,7 @@ test("generate : single section with 'addDisableDropSoundToHideBlock' option", (
 # Map Section                                                                  #
 ################################################################################
 Hide
-    Class "Maps"
+    Class = "Maps"
     MapTier > 3
     Identified False
     SetBorderColor 250 126 107 255
@@ -220,7 +220,7 @@ test("generate : single section with 'convertPlayAlertSoundPositionalToPlayAlert
           name: {},
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Identified: false,
           },
@@ -246,7 +246,7 @@ test("generate : single section with 'convertPlayAlertSoundPositionalToPlayAlert
 # Map Section                                                                  #
 ################################################################################
 Show
-    Class "Maps"
+    Class = "Maps"
     MapTier > 3
     Identified False
     SetBorderColor 250 126 107 255
@@ -273,7 +273,7 @@ test("generate : single section with 'removeCustomAlertSound' option", (t) => {
           name: {},
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Identified: false,
           },
@@ -299,7 +299,7 @@ test("generate : single section with 'removeCustomAlertSound' option", (t) => {
 # Map Section                                                                  #
 ################################################################################
 Show
-    Class "Maps"
+    Class = "Maps"
     MapTier > 3
     Identified False
     SetBorderColor 250 126 107 255
@@ -325,7 +325,7 @@ test("generate : single section with 'defaultAlertSoundVolume' option", (t) => {
           name: {},
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Identified: false,
           },
@@ -351,7 +351,7 @@ test("generate : single section with 'defaultAlertSoundVolume' option", (t) => {
 # Map Section                                                                  #
 ################################################################################
 Show
-    Class "Maps"
+    Class = "Maps"
     MapTier > 3
     Identified False
     SetBorderColor 250 126 107 255
@@ -378,7 +378,7 @@ test("generate : single section with 'defaultAlertSoundPositionalVolume' option"
           name: {},
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Identified: false,
           },
@@ -404,7 +404,7 @@ test("generate : single section with 'defaultAlertSoundPositionalVolume' option"
 # Map Section                                                                  #
 ################################################################################
 Show
-    Class "Maps"
+    Class = "Maps"
     MapTier > 3
     Identified False
     SetBorderColor 250 126 107 255
@@ -431,7 +431,7 @@ test("generate : single section with 'initialFontSize' option", (t) => {
           name: {},
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '> 3',
             Identified: false,
           },
@@ -457,7 +457,7 @@ test("generate : single section with 'initialFontSize' option", (t) => {
 # Map Section                                                                  #
 ################################################################################
 Show
-    Class "Maps"
+    Class = "Maps"
     MapTier > 3
     Identified False
     SetFontSize 38
@@ -485,7 +485,7 @@ test('generate : multi section', (t) => {
           name: {},
           activity: 'Hide',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '<= 4',
           },
           actions: {
@@ -503,7 +503,7 @@ test('generate : multi section', (t) => {
           name: {},
           activity: 'Show',
           conditions: {
-            Class: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
+            Class: { ope: '=', vals: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'] },
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -525,7 +525,7 @@ test('generate : multi section', (t) => {
 # Hide Map Section                                                             #
 ################################################################################
 Hide
-    Class "Maps"
+    Class = "Maps"
     MapTier <= 4
     SetFontSize 38
 
@@ -534,7 +534,7 @@ Hide
 # Flask Section                                                                #
 ################################################################################
 Show
-    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks"
+    Class = "Life Flasks" "Mana Flasks" "Hybrid Flasks"
     SetBorderColor 250 251 252 255
     CustomAlertSound "./Flask.wav"
 
@@ -558,7 +558,7 @@ test('generate : multi block', (t) => {
           name: { Rarity: 'Rare', Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Rare',
             MapTier: '>= 11',
           },
@@ -572,7 +572,7 @@ test('generate : multi block', (t) => {
           name: { Rarity: 'Rare', Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Rare',
             MapTier: '>= 6',
           },
@@ -586,7 +586,7 @@ test('generate : multi block', (t) => {
           name: { Rarity: 'Rare', Tier: undefined },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Rare',
           },
           actions: {
@@ -600,7 +600,7 @@ test('generate : multi block', (t) => {
           name: { Rarity: 'Magic', Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Magic',
             MapTier: '>= 11',
           },
@@ -613,7 +613,7 @@ test('generate : multi block', (t) => {
           name: { Rarity: 'Magic', Tier: 'Middle Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Magic',
             MapTier: '>= 6',
           },
@@ -626,7 +626,7 @@ test('generate : multi block', (t) => {
           name: { Rarity: 'Magic', Tier: undefined },
           activity: 'Hide',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             Rarity: 'Magic',
           },
           actions: {},
@@ -638,7 +638,7 @@ test('generate : multi block', (t) => {
           name: { Rarity: undefined, Tier: 'High Tier' },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '>= 11',
           },
           actions: {
@@ -650,7 +650,7 @@ test('generate : multi block', (t) => {
           name: { Rarity: undefined, Tier: 'Middle Tier' },
           activity: 'Unset',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
             MapTier: '>= 6',
           },
           actions: {
@@ -662,7 +662,7 @@ test('generate : multi block', (t) => {
           name: { Rarity: undefined, Tier: undefined },
           activity: 'Show',
           conditions: {
-            Class: ['Maps'],
+            Class: { ope: '=', vals: ['Maps'] },
           },
           actions: {},
         },
@@ -682,7 +682,7 @@ test('generate : multi block', (t) => {
 ################################################################################
 # Rarity is "Rare" - Tier is "High Tier"
 Show
-    Class "Maps"
+    Class = "Maps"
     Rarity Rare
     MapTier >= 11
     SetBackgroundColor 255 0 0 100
@@ -690,7 +690,7 @@ Show
 
 # Rarity is "Rare" - Tier is "Middle Tier"
 Show
-    Class "Maps"
+    Class = "Maps"
     Rarity Rare
     MapTier >= 6
     SetBackgroundColor 255 0 0 100
@@ -698,32 +698,32 @@ Show
 
 # Rarity is "Rare" - Tier is Any
 Show
-    Class "Maps"
+    Class = "Maps"
     Rarity Rare
     SetBackgroundColor 255 0 0 100
 
 # Rarity is "Magic" - Tier is "High Tier"
 Show
-    Class "Maps"
+    Class = "Maps"
     Rarity Magic
     MapTier >= 11
     PlayAlertSound 1 300
 
 # Rarity is "Magic" - Tier is "Middle Tier"
 Show
-    Class "Maps"
+    Class = "Maps"
     Rarity Magic
     MapTier >= 6
     PlayAlertSound 2 300
 
 # Rarity is "Magic" - Tier is Any
 Hide
-    Class "Maps"
+    Class = "Maps"
     Rarity Magic
 
 # Rarity is Any - Tier is "High Tier"
 Show
-    Class "Maps"
+    Class = "Maps"
     MapTier >= 11
     PlayAlertSound 1 300
 
@@ -732,7 +732,7 @@ Show
 
 # Rarity is Any - Tier is Any
 Show
-    Class "Maps"
+    Class = "Maps"
 
 
   `
