@@ -48,6 +48,7 @@ export default class {
       'HasExplicitMod',
       'AnyEnchantment',
       'HasEnchantment',
+      'HasInfluence',
     ])
   }
 
@@ -168,6 +169,7 @@ export default class {
       case 'Prophecy':
       case 'HasExplicitMod':
       case 'HasEnchantment':
+      case 'HasInfluence':
         return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
       case 'ShaperItem':
       case 'ElderItem':

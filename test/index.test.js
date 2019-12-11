@@ -58,22 +58,50 @@ Show "Map Section"
   t.deepEqual(result, expected)
 })
 
-test('compile : single section', (t) => {
+test('compile : single section (all Conditions and Actions)', (t) => {
   const advancedScriptText = outdent`
 # This is Comment
 # This is Comment
-Show "Map Section"
-    Class == "Maps"
-    MapTier > 3
-    Identified False
-    BlightedMap True
+Show "All Conditions and Actions"
+    Class          "Maps"
+    BaseType       "Sacrificial Garb"
+    Prophecy       == "Foo"
+    DropLevel      > 85
+    ItemLevel      >= 70
+    GemLevel       = 10
+    StackSize      < 11
+    MapTier        <= 12
+    Quality        = 15
+    LinkedSockets  = 6
+    Sockets        = 5
+    SocketGroup    RGB
+    Rarity         = Rare
+    ShaperItem     True
+    ElderItem      False
+    FracturedItem  False
+    SynthesisedItem False
+    Corrupted      True
+    Identified     True
+    ShapedMap      True
+    ElderMap       True
+    BlightedMap    True
+    Height         > 1
+    Width          > 2
+    HasExplicitMod "Piyo"
+    AnyEnchantment True
     HasEnchantment "Enchantment Decree of Force"
+    HasInfluence "Shaper" "Elder"
 
     # This is Comment
-    SetBorderColor 250 251 252
-    PlayAlertSound 1 300
-    MinimapIcon Medium Red Circle
-    PlayEffect Blue Temp
+    SetBorderColor           100 101 102
+    SetTextColor             103 104 105
+    SetBackgroundColor       106 107 108
+    SetFontSize              30
+    PlayAlertSound           16 300
+    DisableDropSound         False
+    CustomAlertSound         "C\\foobar\\sound.mp3"
+    MinimapIcon              0 Red Circle
+    PlayEffect               Red
 
 
    `
@@ -87,19 +115,46 @@ Show "Map Section"
 ################################################################################
 
 ################################################################################
-# Map Section                                                                  #
+# All Conditions and Actions                                                   #
 ################################################################################
 Show
-    Class == "Maps"
-    MapTier > 3
-    Identified False
+    Class = "Maps"
+    BaseType = "Sacrificial Garb"
+    Rarity = Rare
+    Prophecy == "Foo"
+    DropLevel > 85
+    ItemLevel >= 70
+    GemLevel = 10
+    StackSize < 11
+    MapTier <= 12
+    Quality = 15
+    LinkedSockets = 6
+    Sockets = 5
+    SocketGroup RGB
+    ShaperItem True
+    ElderItem False
+    FracturedItem False
+    SynthesisedItem False
+    Corrupted True
+    Identified True
+    ShapedMap True
+    ElderMap True
     BlightedMap True
+    Height > 1
+    Width > 2
+    HasExplicitMod = "Piyo"
+    AnyEnchantment True
     HasEnchantment = "Enchantment Decree of Force"
-    SetFontSize 32
-    SetBorderColor 250 251 252 255
-    MinimapIcon 1 Red Circle
-    PlayEffect Blue Temp
-    PlayAlertSound 1 300
+    HasInfluence = "Shaper" "Elder"
+    SetFontSize 30
+    SetTextColor 103 104 105 255
+    SetBackgroundColor 106 107 108 255
+    SetBorderColor 100 101 102 255
+    MinimapIcon 0 Red Circle
+    PlayEffect Red
+    PlayAlertSound 16 300
+    CustomAlertSound "C\\foobar\\sound.mp3"
+    DisableDropSound False
 
 
     `,
