@@ -2,7 +2,7 @@
 
 import Color from 'color'
 
-import { product, createObject, assignImmutable, forIn } from '../src/utils'
+import { product, compact, createObject, assignImmutable, forIn } from '../src/utils'
 
 /*::
 type AdvancedBlock = {
@@ -66,10 +66,12 @@ export default class {
   }
 
   expand() /*: Array<Section> */ {
-    return this.$advancedScriptObject.map((advancedBlock /*: AdvancedBlock */) => this._convertAdvancedBlockToSection(advancedBlock))
+    return compact(this.$advancedScriptObject.map((advancedBlock /*: AdvancedBlock */) => this._convertAdvancedBlockToSection(advancedBlock)))
   }
 
-  _convertAdvancedBlockToSection(advancedBlock /*: AdvancedBlock */) /*: Section */ {
+  _convertAdvancedBlockToSection(advancedBlock /*: AdvancedBlock */) /*: ?Section */ {
+    if (advancedBlock.activity === 'Ignore') return undefined
+
     if (advancedBlock.branches.length === 0) {
       return {
         name: advancedBlock.name,
@@ -94,7 +96,7 @@ export default class {
   }
 
   _convertBranchToBlocks(branch /*: Branch */) /* Array<Block> */ {
-    const sections /*: Array<Section> */ = branch.blocks.map((advancedBlock) => this._convertAdvancedBlockToSection(advancedBlock))
+    const sections /*: Array<Section> */ = compact(branch.blocks.map((advancedBlock) => this._convertAdvancedBlockToSection(advancedBlock)))
 
     let blocks /*: Array<Block> */ = sections.reduce((acc, section) => {
       const nameObject = createObject(branch.name, section.name)
@@ -111,6 +113,10 @@ export default class {
     }, [])
 
     if (branch.type === 'Mixin') blocks = blocks.concat(this._emptyBlock(branch.name))
+
+    // blocks length is zero when all block is ignore.
+    if (blocks.length === 0) blocks = [this._emptyBlock(branch.name)]
+
     return blocks
   }
 

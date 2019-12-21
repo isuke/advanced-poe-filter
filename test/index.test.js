@@ -1326,6 +1326,9 @@ Hide "Gears"
                     ElderItem True
                     SetBackgroundColor 20 20 255 200
                     PlayEffect White
+                Ignore "3L"
+                    LinkedSockets = 3
+                    SetBorderColor 255 0 0
         Hide "Magic"
             Rarity Magic
             SetFontSize 36

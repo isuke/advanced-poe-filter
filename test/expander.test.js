@@ -73,6 +73,16 @@ test('expand : multi section', (t) => {
       },
       branches: [],
     },
+    {
+      id: '0001',
+      name: 'Ignore Section',
+      activity: 'Ignore',
+      conditions: {
+        Rarity: 'Rare',
+      },
+      actions: {},
+      branches: [],
+    },
   ]
 
   const expected = [
@@ -162,6 +172,14 @@ test('expand : single fork', (t) => {
               actions: {},
               branches: [],
             },
+            {
+              id: '0005',
+              name: 'Unique',
+              activity: 'Ignore',
+              conditions: { Rarity: 'Unique' },
+              actions: {},
+              branches: [],
+            },
           ],
         },
       ],
@@ -225,6 +243,85 @@ test('expand : single fork', (t) => {
   t.deepEqual(result, expected)
 })
 
+test('expand : single fork with all ignore', (t) => {
+  const advancedScriptObject = [
+    {
+      id: '0001',
+      name: 'Map Section',
+      activity: 'Show',
+      conditions: {
+        Class: { ope: '=', vals: ['Maps'] },
+        MapTier: '> 3',
+      },
+      actions: {
+        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+        PlayAlertSoundPositional: { id: '1', volume: 300 },
+      },
+      branches: [
+        {
+          name: 'Rarity',
+          type: 'Fork',
+          blocks: [
+            {
+              id: '0002',
+              name: 'Rare',
+              activity: 'Ignore',
+              conditions: { Rarity: 'Rare' },
+              actions: {
+                SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
+                PlayAlertSound: { id: '2', volume: 300 },
+              },
+              branches: [],
+            },
+            {
+              id: '0003',
+              name: 'Magic',
+              activity: 'Ignore',
+              conditions: { Rarity: 'Magic' },
+              actions: {},
+              branches: [],
+            },
+            {
+              id: '0004',
+              name: 'Normal',
+              activity: 'Ignore',
+              conditions: { Rarity: 'Normal' },
+              actions: {},
+              branches: [],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
+  const expected = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          id: '0001-0000',
+          name: { Rarity: undefined },
+          activity: 'Show',
+          conditions: {
+            Class: { ope: '=', vals: ['Maps'] },
+            MapTier: '> 3',
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+            PlayAlertSoundPositional: { id: '1', volume: 300 },
+          },
+        },
+      ],
+    },
+  ]
+
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
+
+  t.deepEqual(result, expected)
+})
+
 test('expand : single mixin', (t) => {
   const advancedScriptObject = [
     {
@@ -268,6 +365,14 @@ test('expand : single mixin', (t) => {
               name: 'Normal',
               activity: 'Unset',
               conditions: { Rarity: 'Normal' },
+              actions: {},
+              branches: [],
+            },
+            {
+              id: '0005',
+              name: 'Unique',
+              activity: 'Ignore',
+              conditions: { Rarity: 'Unique' },
               actions: {},
               branches: [],
             },
@@ -340,6 +445,161 @@ test('expand : single mixin', (t) => {
       ],
     },
   ]
+
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
+
+  t.deepEqual(result, expected)
+})
+
+test('expand : single mixin with all ignore', (t) => {
+  const advancedScriptObject = [
+    {
+      id: '0001',
+      name: 'Map Section',
+      activity: 'Show',
+      conditions: {
+        Class: { ope: '=', vals: ['Maps'] },
+        MapTier: '> 3',
+      },
+      actions: {
+        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+        PlayAlertSoundPositional: { id: '1', volume: 300 },
+      },
+      branches: [
+        {
+          name: 'Rarity',
+          type: 'Mixin',
+          blocks: [
+            {
+              id: '0002',
+              name: 'Rare',
+              activity: 'Ignore',
+              conditions: { Rarity: 'Rare' },
+              actions: {
+                SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
+                PlayAlertSound: { id: '2', volume: 300 },
+              },
+              branches: [],
+            },
+            {
+              id: '0003',
+              name: 'Magic',
+              activity: 'Ignore',
+              conditions: { Rarity: 'Magic' },
+              actions: {},
+              branches: [],
+            },
+            {
+              id: '0004',
+              name: 'Normal',
+              activity: 'Ignore',
+              conditions: { Rarity: 'Normal' },
+              actions: {},
+              branches: [],
+            },
+            {
+              id: '0005',
+              name: 'Unique',
+              activity: 'Ignore',
+              conditions: { Rarity: 'Unique' },
+              actions: {},
+              branches: [],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
+  const expected = [
+    {
+      name: 'Map Section',
+      blocks: [
+        {
+          id: '0001-0000',
+          name: { Rarity: undefined },
+          activity: 'Show',
+          conditions: {
+            Class: { ope: '=', vals: ['Maps'] },
+            MapTier: '> 3',
+          },
+          actions: {
+            SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+            PlayAlertSoundPositional: { id: '1', volume: 300 },
+          },
+        },
+      ],
+    },
+  ]
+
+  const expander = new Expander(advancedScriptObject)
+  const result = expander.expand(advancedScriptObject)
+
+  t.deepEqual(result, expected)
+})
+
+test('expand : single mixin in ignore', (t) => {
+  const advancedScriptObject = [
+    {
+      id: '0001',
+      name: 'Map Section',
+      activity: 'Ignore',
+      conditions: {
+        Class: { ope: '=', vals: ['Maps'] },
+        MapTier: '> 3',
+      },
+      actions: {
+        SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
+        PlayAlertSoundPositional: { id: '1', volume: 300 },
+      },
+      branches: [
+        {
+          name: 'Rarity',
+          type: 'Mixin',
+          blocks: [
+            {
+              id: '0002',
+              name: 'Rare',
+              activity: 'Show',
+              conditions: { Rarity: 'Rare' },
+              actions: {
+                SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
+                PlayAlertSound: { id: '2', volume: 300 },
+              },
+              branches: [],
+            },
+            {
+              id: '0003',
+              name: 'Magic',
+              activity: 'Hide',
+              conditions: { Rarity: 'Magic' },
+              actions: {},
+              branches: [],
+            },
+            {
+              id: '0004',
+              name: 'Normal',
+              activity: 'Unset',
+              conditions: { Rarity: 'Normal' },
+              actions: {},
+              branches: [],
+            },
+            {
+              id: '0005',
+              name: 'Unique',
+              activity: 'Ignore',
+              conditions: { Rarity: 'Unique' },
+              actions: {},
+              branches: [],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
+  const expected = []
 
   const expander = new Expander(advancedScriptObject)
   const result = expander.expand(advancedScriptObject)

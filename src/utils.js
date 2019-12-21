@@ -20,6 +20,10 @@ const product = (headArray, ...tailArraies) => {
   return result
 }
 
+const compact = (array) => {
+  return array.filter((a) => a)
+}
+
 const createObject = (key, val = undefined) => {
   let result = {}
   result[key] = val
@@ -57,4 +61,4 @@ const toUpperFirstChar = (string) => {
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-export { product, createObject, assignImmutable, forIn, mapObject, mapVals, toUpperFirstChar }
+export { product, compact, createObject, assignImmutable, forIn, mapObject, mapVals, toUpperFirstChar }

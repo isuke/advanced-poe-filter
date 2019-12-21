@@ -39,6 +39,14 @@ test('product : multi array', (t) => {
   t.deepEqual(result, expected)
 })
 
+test('compact', (t) => {
+  const result = utils.compact(['hoge', 0, false, null, NaN, undefined, ''])
+
+  const expected = ['hoge']
+
+  t.deepEqual(result, expected)
+})
+
 test('assignImmutable', (t) => {
   const obj1 = { a: 'A' }
   const obj2 = { b: 'B' }
