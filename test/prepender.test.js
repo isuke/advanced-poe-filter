@@ -71,6 +71,33 @@ Show "Map Section"
   t.is(result, expected)
 })
 
+test('prepend : comment out variables', (t) => {
+  const advancedScriptText = outdent`
+Show "Map Section"
+    Class Var("My Class1") Var("My Class2") Var("My Class3")
+    # MapTier > Var("My Map Tier")
+
+   `
+
+  const variables = {
+    'My Class1': 'Hybrid Flasks',
+    'My Class2': 'Utility Flasks',
+    'My Class3': ['Life Flasks', 'Mana Flasks'],
+  }
+
+  const expected = outdent`
+Show "Map Section"
+    Class "Hybrid Flasks" "Utility Flasks" "Life Flasks" "Mana Flasks"
+    # MapTier > Var("My Map Tier")
+
+  `
+
+  const prepender = new Prepender(advancedScriptText, variables)
+  const result = prepender.prepend()
+
+  t.is(result, expected)
+})
+
 test('prepend : simple variables of activity', (t) => {
   const advancedScriptText = outdent`
 Var("My Activity") "Map Section"

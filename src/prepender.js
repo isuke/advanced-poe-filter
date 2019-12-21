@@ -65,7 +65,13 @@ export default class {
   _replaceFunction(advancedScriptText, functionName, valueObject) {
     return advancedScriptText
       .split('\n')
-      .map((line) => this._convertLine(line, functionName, valueObject))
+      .map((line) => {
+        if (!line.includes('#')) {
+          return this._convertLine(line, functionName, valueObject)
+        } else {
+          return line
+        }
+      })
       .join('\n')
   }
 
