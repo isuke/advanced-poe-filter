@@ -100,8 +100,8 @@ Show "All Conditions and Actions"
     PlayAlertSound           16 300
     DisableDropSound         False
     CustomAlertSound         "C\\foobar\\sound.mp3"
-    MinimapIcon              0 Red Circle
-    PlayEffect               Red
+    MinimapIcon              Largest Cyan Cross
+    PlayEffect               Grey
 
 
    `
@@ -150,8 +150,8 @@ Show
     SetTextColor 103 104 105 255
     SetBackgroundColor 106 107 108 255
     SetBorderColor 100 101 102 255
-    MinimapIcon 0 Red Circle
-    PlayEffect Red
+    MinimapIcon 0 Cyan Cross
+    PlayEffect Grey
     PlayAlertSound 16 300
     CustomAlertSound "C\\foobar\\sound.mp3"
     DisableDropSound False
