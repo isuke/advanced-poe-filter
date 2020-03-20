@@ -8,6 +8,7 @@ module.exports = {
           chrome: '69',
         },
         useBuiltIns: 'usage',
+        corejs: 3,
       },
     ],
   ],
