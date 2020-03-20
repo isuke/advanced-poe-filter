@@ -137,7 +137,11 @@ export default class {
 
   _mergeActions(root /*: Object */, ...others /*: Array<Object> */) /*: Object */ {
     let result = [root, ...others].reduce((acc, current) => {
-      if (current.hasOwnProperty('PlayAlertSoundPositional') || current.hasOwnProperty('PlayAlertSound') || current.hasOwnProperty('CustomAlertSound')) {
+      if (
+        Object.prototype.hasOwnProperty.call(current, 'PlayAlertSoundPositional') ||
+        Object.prototype.hasOwnProperty.call(current, 'PlayAlertSound') ||
+        Object.prototype.hasOwnProperty.call(current, 'CustomAlertSound')
+      ) {
         delete acc.PlayAlertSoundPositional
         delete acc.PlayAlertSound
         delete acc.CustomAlertSound

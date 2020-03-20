@@ -87,13 +87,13 @@ export default class {
 
       return functionStrs.reduce((acc, functionStr) => {
         const match = functionStr.match(new RegExp(`${functionName}\\("(.+)"\\)`))
-        if (!valueObject.hasOwnProperty(match[1])) throw new Error(`'${match[1]}' is not found`)
+        if (!Object.prototype.hasOwnProperty.call(valueObject, match[1])) throw new Error(`'${match[1]}' is not found`)
         return acc.replace(match[0], this._convertValue(ruleName, valueObject[match[1]]))
       }, line)
     } else {
       return functionStrs.reduce((acc, functionStr) => {
         const match = functionStr.match(new RegExp(`${functionName}\\("(.+)"\\)`))
-        if (!valueObject.hasOwnProperty(match[1])) throw new Error(`'${match[1]}' is not found`)
+        if (!Object.prototype.hasOwnProperty.call(valueObject, match[1])) throw new Error(`'${match[1]}' is not found`)
         return acc.replace(match[0], valueObject[match[1]])
       }, line)
     }

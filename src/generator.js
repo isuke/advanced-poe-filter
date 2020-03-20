@@ -157,7 +157,9 @@ export default class {
   _generateConditions(blockObject) {
     return this.conditionKeys
       .map((conditionKey) => {
-        return blockObject.conditions.hasOwnProperty(conditionKey) ? this._generateCondition(blockObject.conditions[conditionKey], conditionKey) : ''
+        return Object.prototype.hasOwnProperty.call(blockObject.conditions, conditionKey)
+          ? this._generateCondition(blockObject.conditions[conditionKey], conditionKey)
+          : ''
       })
       .join('')
   }
@@ -192,14 +194,14 @@ export default class {
       const actions = this._createShowActions(blockObject.actions)
       return this.actionKeys
         .map((actionKey) => {
-          return actions.hasOwnProperty(actionKey) ? this._generateAction(actions[actionKey], actionKey) : ''
+          return Object.prototype.hasOwnProperty.call(actions, actionKey) ? this._generateAction(actions[actionKey], actionKey) : ''
         })
         .join('')
     } else {
       const actions = this._createHideActions(blockObject.actions)
       return this.actionKeys
         .map((actionKey) => {
-          return actions.hasOwnProperty(actionKey) ? this._generateAction(actions[actionKey], actionKey) : ''
+          return Object.prototype.hasOwnProperty.call(actions, actionKey) ? this._generateAction(actions[actionKey], actionKey) : ''
         })
         .join('')
     }
