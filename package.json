@@ -1,5 +1,5 @@
 {
-  "name": "advanced-poe-filter",
+  "name": "@fok/advanced-poe-filter",
   "version": "0.9.1",
   "main": "lib/advanced-poe-filter.umd.js",
   "module": "lib/advanced-poe-filter.esm.js",
