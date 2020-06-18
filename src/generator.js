@@ -49,6 +49,7 @@ export default class {
       'AnyEnchantment',
       'HasEnchantment',
       'HasInfluence',
+      'EnchantmentPassiveNode',
     ])
   }
 
@@ -172,6 +173,7 @@ export default class {
       case 'HasExplicitMod':
       case 'HasEnchantment':
       case 'HasInfluence':
+      case 'EnchantmentPassiveNode':
         return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
       case 'ShaperItem':
       case 'ElderItem':

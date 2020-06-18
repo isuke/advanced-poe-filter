@@ -91,6 +91,7 @@ Show "All Conditions and Actions"
     AnyEnchantment True
     HasEnchantment "Enchantment Decree of Force"
     HasInfluence "Shaper" "Elder"
+    EnchantmentPassiveNode "Damage while you have a Herald" "Projectile Damage"
 
     # This is Comment
     SetBorderColor           100 101 102
@@ -146,6 +147,7 @@ Show
     AnyEnchantment True
     HasEnchantment = "Enchantment Decree of Force"
     HasInfluence = "Shaper" "Elder"
+    EnchantmentPassiveNode = "Damage while you have a Herald" "Projectile Damage"
     SetFontSize 30
     SetTextColor 103 104 105 255
     SetBackgroundColor 106 107 108 255
