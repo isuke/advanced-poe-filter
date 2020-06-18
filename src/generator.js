@@ -172,9 +172,14 @@ export default class {
       case 'Prophecy':
       case 'HasExplicitMod':
       case 'HasEnchantment':
-      case 'HasInfluence':
       case 'EnchantmentPassiveNode':
         return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
+      case 'HasInfluence':
+        if (conditionVal.ope) {
+          return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
+        } else {
+          return `    ${conditionKey} ${conditionVal.val}\n`
+        }
       case 'ShaperItem':
       case 'ElderItem':
       case 'Corrupted':
