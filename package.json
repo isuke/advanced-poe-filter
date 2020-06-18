@@ -1,6 +1,6 @@
 {
   "name": "@fok/advanced-poe-filter",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "main": "lib/advanced-poe-filter.umd.js",
   "module": "lib/advanced-poe-filter.esm.js",
   "author": "isuke <isuke770@gmail.com>",
