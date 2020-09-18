@@ -21,6 +21,8 @@ export default class {
       'ItemLevel',
       'GemLevel',
 
+      'GemQualityType',
+
       'StackSize',
 
       'MapTier',
@@ -50,6 +52,9 @@ export default class {
       'HasEnchantment',
       'HasInfluence',
       'EnchantmentPassiveNode',
+
+      'AlternateQuality',
+      'Replica',
     ])
   }
 
@@ -170,6 +175,7 @@ export default class {
       case 'Class':
       case 'BaseType':
       case 'Prophecy':
+      case 'GemQualityType':
       case 'HasExplicitMod':
       case 'HasEnchantment':
       case 'EnchantmentPassiveNode':
@@ -190,6 +196,8 @@ export default class {
       case 'FracturedItem':
       case 'SynthesisedItem':
       case 'AnyEnchantment':
+      case 'AlternateQuality':
+      case 'Replica':
         return `    ${conditionKey} ${toUpperFirstChar(conditionVal)}\n`
       default:
         return `    ${conditionKey} ${conditionVal}\n`

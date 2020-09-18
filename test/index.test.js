@@ -69,6 +69,7 @@ Show "All Conditions and Actions"
     DropLevel      > 85
     ItemLevel      >= 70
     GemLevel       = 10
+    GemQualityType "Superior"
     StackSize      < 11
     MapTier        <= 12
     Quality        = 15
@@ -92,6 +93,8 @@ Show "All Conditions and Actions"
     HasEnchantment "Enchantment Decree of Force"
     HasInfluence "Shaper" "Elder"
     EnchantmentPassiveNode "Damage while you have a Herald" "Projectile Damage"
+    AlternateQuality True
+    Replica        True
 
     # This is Comment
     SetBorderColor           100 101 102
@@ -126,6 +129,7 @@ Show
     DropLevel > 85
     ItemLevel >= 70
     GemLevel = 10
+    GemQualityType = "Superior"
     StackSize < 11
     MapTier <= 12
     Quality = 15
@@ -148,6 +152,8 @@ Show
     HasEnchantment = "Enchantment Decree of Force"
     HasInfluence = "Shaper" "Elder"
     EnchantmentPassiveNode = "Damage while you have a Herald" "Projectile Damage"
+    AlternateQuality True
+    Replica True
     SetFontSize 30
     SetTextColor 103 104 105 255
     SetBackgroundColor 106 107 108 255
