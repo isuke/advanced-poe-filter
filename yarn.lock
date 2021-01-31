@@ -1225,10 +1225,10 @@ acorn@^7.1.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.1.1.tgz#e35668de0b402f359de515c5482a1ab9f89a69bf"
   integrity sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg==
 
-advanced-poe-filter-parser@0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/advanced-poe-filter-parser/-/advanced-poe-filter-parser-0.2.4.tgz#c10e050af247c871e2745b6db12507e15f3649ba"
-  integrity sha512-PXezWTaIVyNQefkAGW7G0XSY4zRtqnU8ZsUu7n/c3BaJxGowvmmiyEA1JkEklqBoUBWxdsW62TRcHnNDgb+7vg==
+advanced-poe-filter-parser@0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/advanced-poe-filter-parser/-/advanced-poe-filter-parser-0.2.5.tgz#46b9355de138bf55fa53e46caaf431d8a587c2eb"
+  integrity sha512-N0Cy35T7pRCBEI5Xz7SWuwzz3PkhXWYxOE1USCqB/75FNzYofFZP5OMzb2jA3peEOkqQTsvDfBEoFOusKgLvnA==
 
 ajv-errors@^1.0.0:
   version "1.0.1"

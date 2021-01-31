@@ -68,6 +68,7 @@ Show "All Conditions and Actions"
     Prophecy       == "Foo"
     DropLevel      > 85
     ItemLevel      >= 70
+    AreaLevel      < 30
     GemLevel       = 10
     GemQualityType "Superior"
     StackSize      < 11
@@ -82,15 +83,18 @@ Show "All Conditions and Actions"
     FracturedItem  False
     SynthesisedItem False
     Corrupted      True
+    Mirrored       True
     Identified     True
     ShapedMap      True
     ElderMap       True
     BlightedMap    True
     Height         > 1
     Width          > 2
-    HasExplicitMod "Piyo"
+    CorruptedMods  >= 1
+    EnchantmentPassiveNum > 5
+    HasExplicitMod == "Foo" "Bar"
     AnyEnchantment True
-    HasEnchantment "Enchantment Decree of Force"
+    HasEnchantment >= 2 "Foo" "Bar"
     HasInfluence "Shaper" "Elder"
     EnchantmentPassiveNode "Damage while you have a Herald" "Projectile Damage"
     AlternateQuality True
@@ -102,7 +106,8 @@ Show "All Conditions and Actions"
     SetBackgroundColor       106 107 108
     SetFontSize              30
     PlayAlertSound           16 300
-    DisableDropSound         False
+    DisableDropSound
+    EnableDropSound
     CustomAlertSound         "C\\foobar\\sound.mp3"
     MinimapIcon              Largest Cyan Cross
     PlayEffect               Grey
@@ -128,6 +133,7 @@ Show
     Prophecy == "Foo"
     DropLevel > 85
     ItemLevel >= 70
+    AreaLevel < 30
     GemLevel = 10
     GemQualityType = "Superior"
     StackSize < 11
@@ -141,15 +147,18 @@ Show
     FracturedItem False
     SynthesisedItem False
     Corrupted True
+    Mirrored True
     Identified True
     ShapedMap True
     ElderMap True
     BlightedMap True
     Height > 1
     Width > 2
-    HasExplicitMod = "Piyo"
+    CorruptedMods >= 1
+    EnchantmentPassiveNum > 5
+    HasExplicitMod == "Foo" "Bar"
     AnyEnchantment True
-    HasEnchantment = "Enchantment Decree of Force"
+    HasEnchantment >= 2 "Foo" "Bar"
     HasInfluence = "Shaper" "Elder"
     EnchantmentPassiveNode = "Damage while you have a Herald" "Projectile Damage"
     AlternateQuality True
@@ -161,8 +170,9 @@ Show
     MinimapIcon 0 Cyan Cross
     PlayEffect Grey
     PlayAlertSound 16 300
-    CustomAlertSound "C\\foobar\\sound.mp3"
-    DisableDropSound False
+    CustomAlertSound "C\\foobar\\sound.mp3" 100
+    DisableDropSound
+    EnableDropSound
 
 
     `,
@@ -479,7 +489,7 @@ Hide
     Class = "Maps"
     MapTier <= 4
     SetFontSize 32
-    DisableDropSound True
+    DisableDropSound
 
 
 ################################################################################
@@ -497,7 +507,7 @@ Show
 ################################################################################
 Hide
     SetFontSize 32
-    DisableDropSound True
+    DisableDropSound
 
 
     `,
@@ -551,7 +561,7 @@ Hide
     Rarity = Magic
     SetFontSize 32
     SetBorderColor 200 100 52 123
-    DisableDropSound True
+    DisableDropSound
 
 # Rarity is "Normal"
 Show
@@ -992,7 +1002,7 @@ Hide
     Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
     SetFontSize 36
-    DisableDropSound True
+    DisableDropSound
 
 # Rarity is "Normal" - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
@@ -1121,7 +1131,7 @@ Hide
     Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
     SetFontSize 18
-    DisableDropSound True
+    DisableDropSound
 
 # Rarity is Any - BaseType is "Special BodyArmour" - Sockets and Link is "6L"
 Show
@@ -1238,7 +1248,7 @@ Show
 Hide
     Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     SetFontSize 32
-    DisableDropSound True
+    DisableDropSound
 
 
     `,
@@ -1283,7 +1293,7 @@ Show
     BaseType = "Sacrificial Garb"
     Rarity Rare
     SetFontSize 32
-    CustomAlertSound "./Sounds/Unique.wav"
+    CustomAlertSound "./Sounds/Unique.wav" 100
 
 # Rarity is "Rare" - BaseType is Any
 Show
@@ -1297,7 +1307,7 @@ Show
     Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     BaseType = "Sacrificial Garb"
     SetFontSize 32
-    CustomAlertSound "./Sounds/Unique.wav"
+    CustomAlertSound "./Sounds/Unique.wav" 100
 
 # Rarity is Any - BaseType is Any
 Show
@@ -1380,27 +1390,27 @@ Hide
     Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
     SetFontSize 45
-    DisableDropSound True
+    DisableDropSound
 
 # Rarity is "Magic"
 Hide
     Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Magic
     SetFontSize 36
-    DisableDropSound True
+    DisableDropSound
 
 # Rarity is "Normal"
 Hide
     Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Normal
     SetFontSize 18
-    DisableDropSound True
+    DisableDropSound
 
 # Rarity is Any
 Hide
     Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     SetFontSize 32
-    DisableDropSound True
+    DisableDropSound
 
 
     `,

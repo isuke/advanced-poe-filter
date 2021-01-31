@@ -199,7 +199,7 @@ Hide
     MapTier > 3
     Identified False
     SetBorderColor 250 126 107 255
-    DisableDropSound True
+    DisableDropSound
 
 
   `
@@ -507,7 +507,7 @@ test('generate : multi section', (t) => {
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            CustomAlertSound: './Flask.wav',
+            CustomAlertSound: { filePath: './Flask.wav', volume: 150 },
           },
         },
       ],
@@ -536,7 +536,7 @@ Hide
 Show
     Class = "Life Flasks" "Mana Flasks" "Hybrid Flasks"
     SetBorderColor 250 251 252 255
-    CustomAlertSound "./Flask.wav"
+    CustomAlertSound "./Flask.wav" 150
 
 
   `

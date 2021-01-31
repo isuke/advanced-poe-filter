@@ -19,6 +19,7 @@ export default class {
 
       'DropLevel',
       'ItemLevel',
+      'AreaLevel',
       'GemLevel',
 
       'GemQualityType',
@@ -39,6 +40,7 @@ export default class {
       'SynthesisedItem',
 
       'Corrupted',
+      'Mirrored',
       'Identified',
       'ShapedMap',
       'ElderMap',
@@ -46,6 +48,9 @@ export default class {
 
       'Height',
       'Width',
+
+      'CorruptedMods',
+      'EnchantmentPassiveNum',
 
       'HasExplicitMod',
       'AnyEnchantment',
@@ -73,6 +78,7 @@ export default class {
       'PlayAlertSoundPositional',
       'CustomAlertSound',
       'DisableDropSound',
+      'EnableDropSound',
     ])
   }
 
@@ -176,10 +182,15 @@ export default class {
       case 'BaseType':
       case 'Prophecy':
       case 'GemQualityType':
-      case 'HasExplicitMod':
-      case 'HasEnchantment':
       case 'EnchantmentPassiveNode':
         return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
+      case 'HasExplicitMod':
+      case 'HasEnchantment':
+        if (conditionVal.numeric) {
+          return `    ${conditionKey} ${conditionVal.numeric.ope} ${conditionVal.numeric.val} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
+        } else {
+          return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
+        }
       case 'HasInfluence':
         if (conditionVal.ope) {
           return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
@@ -189,6 +200,7 @@ export default class {
       case 'ShaperItem':
       case 'ElderItem':
       case 'Corrupted':
+      case 'Mirrored':
       case 'Identified':
       case 'ShapedMap':
       case 'ElderMap':
@@ -258,10 +270,11 @@ export default class {
         } else {
           return `    ${actionKey} ${actionVal.id} ${actionVal.volume || this.$options.defaultAlertSoundPositionalVolume}\n`
         }
-      case 'DisableDropSound':
-        return `    ${actionKey} ${toUpperFirstChar(actionVal)}\n`
       case 'CustomAlertSound':
-        return `    ${actionKey} "${actionVal}"\n`
+        return `    ${actionKey} "${actionVal.filePath}" ${actionVal.volume || this.$options.defaultAlertSoundVolume}\n`
+      case 'DisableDropSound':
+      case 'EnableDropSound':
+        return `    ${actionKey}\n`
       case 'MinimapIcon':
         switch (actionVal.size) {
           case 'Largest':
