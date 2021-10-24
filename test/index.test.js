@@ -78,6 +78,11 @@ Show "All Conditions and Actions"
     Sockets        = 5
     SocketGroup    RGB
     Rarity         = Rare
+    BaseDefencePercentile > 50
+    BaseArmour       > 40
+    BaseEnergyShield > 41
+    BaseEvasion      > 42
+    BaseWard         > 43
     ShaperItem     True
     ElderItem      False
     FracturedItem  False
@@ -85,9 +90,11 @@ Show "All Conditions and Actions"
     Corrupted      True
     Mirrored       True
     Identified     True
+    Scourged       True
     ShapedMap      True
     ElderMap       True
     BlightedMap    True
+    UberBlightedMap True
     Height         > 1
     Width          > 2
     CorruptedMods  >= 1
@@ -113,10 +120,10 @@ Show "All Conditions and Actions"
     PlayEffect               Grey
 
 
-   `
+   `;
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.5)                                  #
@@ -130,6 +137,11 @@ Show
     Class = "Maps"
     BaseType = "Sacrificial Garb"
     Rarity = Rare
+    BaseDefencePercentile > 50
+    BaseArmour > 40
+    BaseEnergyShield > 41
+    BaseEvasion > 42
+    BaseWard > 43
     Prophecy == "Foo"
     DropLevel > 85
     ItemLevel >= 70
@@ -149,9 +161,11 @@ Show
     Corrupted True
     Mirrored True
     Identified True
+    Scourged True
     ShapedMap True
     ElderMap True
     BlightedMap True
+    UberBlightedMap True
     Height > 1
     Width > 2
     CorruptedMods >= 1
@@ -176,8 +190,8 @@ Show
 
 
     `,
-  }
-
+  };
+;
   const result = compile(advancedScriptText)
 
   t.deepEqual(result, expected)

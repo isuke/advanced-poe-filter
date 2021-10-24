@@ -15,6 +15,12 @@ export default class {
       'BaseType',
       'Rarity',
 
+      'BaseDefencePercentile',
+      'BaseArmour',
+      'BaseEnergyShield',
+      'BaseEvasion',
+      'BaseWard',
+
       'Prophecy',
 
       'DropLevel',
@@ -42,9 +48,11 @@ export default class {
       'Corrupted',
       'Mirrored',
       'Identified',
+      'Scourged',
       'ShapedMap',
       'ElderMap',
       'BlightedMap',
+      'UberBlightedMap',
 
       'Height',
       'Width',
@@ -202,9 +210,11 @@ export default class {
       case 'Corrupted':
       case 'Mirrored':
       case 'Identified':
+      case 'Scourged':
       case 'ShapedMap':
       case 'ElderMap':
       case 'BlightedMap':
+      case 'UberBlightedMap':
       case 'FracturedItem':
       case 'SynthesisedItem':
       case 'AnyEnchantment':
