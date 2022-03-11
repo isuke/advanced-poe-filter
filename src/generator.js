@@ -21,8 +21,6 @@ export default class {
       'BaseEvasion',
       'BaseWard',
 
-      'Prophecy',
-
       'DropLevel',
       'ItemLevel',
       'AreaLevel',
@@ -40,8 +38,6 @@ export default class {
       'Sockets',
       'SocketGroup',
 
-      'ShaperItem',
-      'ElderItem',
       'FracturedItem',
       'SynthesisedItem',
 
@@ -61,6 +57,8 @@ export default class {
       'EnchantmentPassiveNum',
 
       'HasExplicitMod',
+      'HasEaterOfWorldsImplicit',
+      'HasSearingExarchImplicit',
       'AnyEnchantment',
       'HasEnchantment',
       'HasInfluence',
@@ -68,6 +66,8 @@ export default class {
 
       'AlternateQuality',
       'Replica',
+
+      'ArchnemesisMod',
     ])
   }
 
@@ -188,9 +188,9 @@ export default class {
     switch (conditionKey) {
       case 'Class':
       case 'BaseType':
-      case 'Prophecy':
       case 'GemQualityType':
       case 'EnchantmentPassiveNode':
+      case 'ArchnemesisMod':
         return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
       case 'HasExplicitMod':
       case 'HasEnchantment':
@@ -205,8 +205,6 @@ export default class {
         } else {
           return `    ${conditionKey} ${conditionVal.val}\n`
         }
-      case 'ShaperItem':
-      case 'ElderItem':
       case 'Corrupted':
       case 'Mirrored':
       case 'Identified':

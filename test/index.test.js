@@ -65,7 +65,6 @@ test('compile : single section (all Conditions and Actions)', (t) => {
 Show "All Conditions and Actions"
     Class          "Maps"
     BaseType       "Sacrificial Garb"
-    Prophecy       == "Foo"
     DropLevel      > 85
     ItemLevel      >= 70
     AreaLevel      < 30
@@ -83,8 +82,6 @@ Show "All Conditions and Actions"
     BaseEnergyShield > 41
     BaseEvasion      > 42
     BaseWard         > 43
-    ShaperItem     True
-    ElderItem      False
     FracturedItem  False
     SynthesisedItem False
     Corrupted      True
@@ -100,12 +97,15 @@ Show "All Conditions and Actions"
     CorruptedMods  >= 1
     EnchantmentPassiveNum > 5
     HasExplicitMod == "Foo" "Bar"
+    HasEaterOfWorldsImplicit >= 4
+    HasSearingExarchImplicit >= 4
     AnyEnchantment True
     HasEnchantment >= 2 "Foo" "Bar"
     HasInfluence "Shaper" "Elder"
     EnchantmentPassiveNode "Damage while you have a Herald" "Projectile Damage"
     AlternateQuality True
     Replica        True
+    ArchnemesisMod "Toxic"
 
     # This is Comment
     SetBorderColor           100 101 102
@@ -142,7 +142,6 @@ Show
     BaseEnergyShield > 41
     BaseEvasion > 42
     BaseWard > 43
-    Prophecy == "Foo"
     DropLevel > 85
     ItemLevel >= 70
     AreaLevel < 30
@@ -154,8 +153,6 @@ Show
     LinkedSockets = 6
     Sockets = 5
     SocketGroup RGB
-    ShaperItem True
-    ElderItem False
     FracturedItem False
     SynthesisedItem False
     Corrupted True
@@ -171,12 +168,15 @@ Show
     CorruptedMods >= 1
     EnchantmentPassiveNum > 5
     HasExplicitMod == "Foo" "Bar"
+    HasEaterOfWorldsImplicit >= 4
+    HasSearingExarchImplicit >= 4
     AnyEnchantment True
     HasEnchantment >= 2 "Foo" "Bar"
     HasInfluence = "Shaper" "Elder"
     EnchantmentPassiveNode = "Damage while you have a Herald" "Projectile Damage"
     AlternateQuality True
     Replica True
+    ArchnemesisMod = "Toxic"
     SetFontSize 30
     SetTextColor 103 104 105 255
     SetBackgroundColor 106 107 108 255
@@ -1351,11 +1351,11 @@ Hide "Gears"
 
             Mixin "Shaper/Elder"
                 Show "Shaper"
-                    ShaperItem True
+                    HasInfluence "Shaper"
                     SetBackgroundColor 0 0 255 200
                     PlayEffect White
                 Show "Elder"
-                    ElderItem True
+                    HasInfluence "Elder"
                     SetBackgroundColor 20 20 255 200
                     PlayEffect White
                 Ignore "3L"
@@ -1368,10 +1368,10 @@ Hide "Gears"
             Rarity Normal
             SetFontSize 18
 
-   `
+   `;
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.6)                                  #
@@ -1385,7 +1385,7 @@ Hide "Gears"
 Show
     Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
-    ShaperItem True
+    HasInfluence = "Shaper"
     SetFontSize 45
     SetBackgroundColor 0 0 255 200
     PlayEffect White
@@ -1394,7 +1394,7 @@ Show
 Show
     Class = "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
     Rarity Rare
-    ElderItem True
+    HasInfluence = "Elder"
     SetFontSize 45
     SetBackgroundColor 20 20 255 200
     PlayEffect White
@@ -1428,7 +1428,7 @@ Hide
 
 
     `,
-  }
+  };
 
   const result = compile(advancedScriptText)
 
