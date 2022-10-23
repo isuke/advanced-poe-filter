@@ -5,7 +5,3 @@ yarn-error.log
 
 lib/*
 !/lib/advanced-poe-filter.esm.js
-
-# I use README.adoc.
-# README.md for only npm.
-README.md
