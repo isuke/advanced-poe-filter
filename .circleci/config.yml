@@ -1,12 +1,30 @@
 version: 2.1
+
+orbs:
+  node: circleci/node@4.7
+
 jobs:
-  build:
+  lint:
     docker:
-      - image: circleci/node:12.14.0
+      - image: circleci/node:lts
     steps:
       - checkout
-      - run: yarn install
+      - run: yarn
       - run: yarn run lint
+
+  test:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run: yarn
       - run: yarn run flow
       - run: yarn run build --progress=false
       - run: yarn run test
+
+workflows:
+  version: 2.1
+  lint-and-test:
+    jobs:
+      - lint
+      - test
