@@ -120,10 +120,10 @@ Show "All Conditions and Actions"
     PlayEffect               Grey
 
 
-   `;
+   `
 
   const expected = {
-    "No Name": outdent`
+    'No Name': outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.7)                                  #
@@ -190,8 +190,7 @@ Show
 
 
     `,
-  };
-;
+  }
   const result = compile(advancedScriptText)
 
   t.deepEqual(result, expected)
@@ -1368,10 +1367,10 @@ Hide "Gears"
             Rarity Normal
             SetFontSize 18
 
-   `;
+   `
 
   const expected = {
-    "No Name": outdent`
+    'No Name': outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.7)                                  #
@@ -1428,7 +1427,7 @@ Hide
 
 
     `,
-  };
+  }
 
   const result = compile(advancedScriptText)
 
