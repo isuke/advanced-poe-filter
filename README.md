@@ -3,12 +3,12 @@
 ## prepare
 
 ```sh
-$ yarn global add verdaccio
+$ npm install -g verdaccio
 ```
 
 ## deploy
 
 ```sh
 $ verdaccio
-$ yarn run deploy
+$ npm run deploy
 ```

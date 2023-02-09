@@ -9,18 +9,18 @@ jobs:
       - image: circleci/node:lts
     steps:
       - checkout
-      - run: yarn
-      - run: yarn run lint
+      - run: npm install
+      - run: npm run lint
 
   test:
     docker:
       - image: circleci/node:lts
     steps:
       - checkout
-      - run: yarn
-      - run: yarn run flow
-      - run: yarn run build --progress=false
-      - run: yarn run test
+      - run: npm install
+      - run: npm run flow
+      - run: npm run build --progress=false
+      - run: npm run test
 
 workflows:
   version: 2.1

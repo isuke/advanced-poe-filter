@@ -15,8 +15,8 @@
     "fix": "eslint --fix ./*.js src/**/*.js test/**/*.js",
     "test": "ava --verbose",
     "build": "webpack --mode=production --progress --hide-modules",
-    "predeploy": "yarn run build",
-    "deploy": "yarn publish --registry http://localhost:4873"
+    "predeploy": "npm run build",
+    "deploy": "npm publish --registry http://localhost:4873"
   },
   "dependencies": {
     "advanced-poe-filter-parser": "0.2.7",
