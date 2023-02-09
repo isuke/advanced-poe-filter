@@ -1,4 +1,4 @@
-# Advanced PoE Filter [![CircleCI](https://dl.circleci.com/status-badge/img/gh/isuke/advanced-poe-filter/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/isuke/advanced-poe-filter/tree/master) [!["git-consistent friendly"](https://img.shields.io/badge/git--consistent-friendly-brightgreen.svg)]("https://github.com/isuke/git-consistent")
+# Advanced PoE Filter [![Test and Lint](https://github.com/isuke/advanced-poe-filter/actions/workflows/main.yml/badge.svg)](https://github.com/isuke/advanced-poe-filter/actions/workflows/main.yml) [!["git-consistent friendly"](https://img.shields.io/badge/git--consistent-friendly-brightgreen.svg)]("https://github.com/isuke/git-consistent")
 
 ## prepare
 
