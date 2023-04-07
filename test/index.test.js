@@ -97,6 +97,7 @@ Show "All Conditions and Actions"
     CorruptedMods  >= 1
     EnchantmentPassiveNum > 5
     HasExplicitMod == "Foo" "Bar"
+    HasImplicitMod True
     HasEaterOfWorldsImplicit >= 4
     HasSearingExarchImplicit >= 4
     AnyEnchantment True
@@ -106,6 +107,7 @@ Show "All Conditions and Actions"
     AlternateQuality True
     Replica        True
     ArchnemesisMod "Toxic"
+    HasCruciblePassiveTree True
 
     # This is Comment
     SetBorderColor           100 101 102
@@ -168,6 +170,7 @@ Show
     CorruptedMods >= 1
     EnchantmentPassiveNum > 5
     HasExplicitMod == "Foo" "Bar"
+    HasImplicitMod True
     HasEaterOfWorldsImplicit >= 4
     HasSearingExarchImplicit >= 4
     AnyEnchantment True
@@ -177,6 +180,7 @@ Show
     AlternateQuality True
     Replica True
     ArchnemesisMod = "Toxic"
+    HasCruciblePassiveTree True
     SetFontSize 30
     SetTextColor 103 104 105 255
     SetBackgroundColor 106 107 108 255

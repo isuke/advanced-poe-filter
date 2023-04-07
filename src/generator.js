@@ -57,6 +57,7 @@ export default class {
       'EnchantmentPassiveNum',
 
       'HasExplicitMod',
+      'HasImplicitMod',
       'HasEaterOfWorldsImplicit',
       'HasSearingExarchImplicit',
       'AnyEnchantment',
@@ -68,6 +69,8 @@ export default class {
       'Replica',
 
       'ArchnemesisMod',
+
+      'HasCruciblePassiveTree',
     ])
   }
 
@@ -218,6 +221,8 @@ export default class {
       case 'AnyEnchantment':
       case 'AlternateQuality':
       case 'Replica':
+      case 'HasImplicitMod':
+      case 'HasCruciblePassiveTree':
         return `    ${conditionKey} ${toUpperFirstChar(conditionVal)}\n`
       default:
         return `    ${conditionKey} ${conditionVal}\n`
