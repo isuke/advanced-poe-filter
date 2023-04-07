@@ -1,7 +1,7 @@
 import test from 'ava'
 import outdent from 'outdent'
 
-import Generator from '../src/generator'
+import Generator from '../src/generator.js'
 
 test('generate : single section', (t) => {
   const scriptObject = [

@@ -1,7 +1,7 @@
 import test from 'ava'
 import outdent from 'outdent'
 
-import { getObject, compile, version } from '../src/index'
+import { getObject, compile, version } from '../src/index.js'
 
 test('version', (t) => {
   t.is(version, '0.9.7')

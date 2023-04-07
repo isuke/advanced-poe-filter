@@ -1,14 +1,12 @@
 import { parse, SyntaxError as _SyntaxError } from 'advanced-poe-filter-parser'
 
-import Prepender from '../src/prepender'
-import Expander from '../src/expander'
-import Generator from '../src/generator'
+import Prepender from '../src/prepender.js'
+import Expander from '../src/expander.js'
+import Generator from '../src/generator.js'
 
-import { assignImmutable, forIn, mapVals } from '../src/utils'
+import { assignImmutable, forIn, mapVals } from '../src/utils.js'
 
-import pk from '../package.json'
-
-const version = pk.version
+const version = '0.9.7'
 
 const getObject = (advancedScriptText, variables = {}, properties = {}, _filterInfo = {}, originalOptions = undefined) => {
   const options = assignImmutable(_defaultOptions, originalOptions)

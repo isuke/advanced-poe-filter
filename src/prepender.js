@@ -1,4 +1,4 @@
-import { mapVals, toUpperFirstChar } from '../src/utils'
+import { mapVals, toUpperFirstChar } from '../src/utils.js'
 
 export default class {
   constructor(advancedScriptText = '', variables = {}, props = {}, options = {}) {

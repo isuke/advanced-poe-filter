@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import Expander from '../src/expander'
+import Expander from '../src/expander.js'
 
 test('expand : single section', (t) => {
   const advancedScriptObject = [

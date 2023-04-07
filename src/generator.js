@@ -1,4 +1,4 @@
-import { forIn, assignImmutable, toUpperFirstChar } from '../src/utils'
+import { forIn, assignImmutable, toUpperFirstChar } from '../src/utils.js'
 
 export default class {
   constructor(scriptObject = {}, version = '', scriptName = '', filterInfo = {}, options = {}) {

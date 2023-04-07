@@ -1,7 +1,7 @@
 import test from 'ava'
 import outdent from 'outdent'
 
-import Prepender from '../src/prepender'
+import Prepender from '../src/prepender.js'
 
 test('prepend : nothing anyone', (t) => {
   const advancedScriptText = outdent`
@@ -189,7 +189,10 @@ Show "Flask Section"
 
   const prepender = new Prepender(advancedScriptText, variables)
 
-  t.throws(() => prepender.prepend(), "'MyItemLevelx' is not found")
+  const error = t.throws(() => {
+    prepender.prepend()
+  })
+  t.is(error.message, "'MyItemLevelx' is not found")
 })
 
 test('prepend : infinity loop variables', (t) => {
@@ -208,7 +211,10 @@ Show "Flask Section"
 
   const prepender = new Prepender(advancedScriptText, variables)
 
-  t.throws(() => prepender.prepend(), 'nest is too deep')
+  const error = t.throws(() => {
+    prepender.prepend()
+  })
+  t.is(error.message, 'nest is too deep')
 })
 
 test('prepend : simple props of value', (t) => {

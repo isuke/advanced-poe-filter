@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import * as utils from '../src/utils'
+import * as utils from '../src/utils.js'
 
 test('product : empty array', (t) => {
   const result = utils.product([])

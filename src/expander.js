@@ -2,7 +2,7 @@
 
 import Color from 'color'
 
-import { product, compact, createObject, assignImmutable, forIn } from '../src/utils'
+import { product, compact, createObject, assignImmutable, forIn } from '../src/utils.js'
 
 /*::
 type AdvancedBlock = {
@@ -158,10 +158,7 @@ export default class {
           case 'SetBackgroundColor':
             if (valObject.function) {
               result[key] = {
-                rgb: Color(root[key].rgb)
-                  [valObject.function.toLowerCase()](valObject.val)
-                  .rgb()
-                  .object(),
+                rgb: Color(root[key].rgb)[valObject.function.toLowerCase()](valObject.val).rgb().object(),
                 alpha: root[key].alpha,
               }
             }
