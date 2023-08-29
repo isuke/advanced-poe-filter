@@ -1,7 +1,7 @@
-import { forIn, assignImmutable, toUpperFirstChar } from '../src/utils.js'
+import { forIn, assignImmutable, toUpperFirstChar } from "../src/utils.js"
 
 export default class {
-  constructor(scriptObject = {}, version = '', scriptName = '', filterInfo = {}, options = {}) {
+  constructor(scriptObject = {}, version = "", scriptName = "", filterInfo = {}, options = {}) {
     this.scriptObject = scriptObject
     this.version = version
     this.scriptName = scriptName
@@ -11,85 +11,85 @@ export default class {
 
   get conditionKeys() {
     return Object.freeze([
-      'Class',
-      'BaseType',
-      'Rarity',
+      "Class",
+      "BaseType",
+      "Rarity",
 
-      'BaseDefencePercentile',
-      'BaseArmour',
-      'BaseEnergyShield',
-      'BaseEvasion',
-      'BaseWard',
+      "BaseDefencePercentile",
+      "BaseArmour",
+      "BaseEnergyShield",
+      "BaseEvasion",
+      "BaseWard",
 
-      'DropLevel',
-      'ItemLevel',
-      'AreaLevel',
-      'GemLevel',
+      "DropLevel",
+      "ItemLevel",
+      "AreaLevel",
+      "GemLevel",
 
-      'GemQualityType',
+      "GemQualityType",
 
-      'StackSize',
+      "StackSize",
 
-      'MapTier',
+      "MapTier",
 
-      'Quality',
+      "Quality",
 
-      'LinkedSockets',
-      'Sockets',
-      'SocketGroup',
+      "LinkedSockets",
+      "Sockets",
+      "SocketGroup",
 
-      'FracturedItem',
-      'SynthesisedItem',
+      "FracturedItem",
+      "SynthesisedItem",
 
-      'Corrupted',
-      'Mirrored',
-      'Identified',
-      'Scourged',
-      'ShapedMap',
-      'ElderMap',
-      'BlightedMap',
-      'UberBlightedMap',
+      "Corrupted",
+      "Mirrored",
+      "Identified",
+      "Scourged",
+      "ShapedMap",
+      "ElderMap",
+      "BlightedMap",
+      "UberBlightedMap",
 
-      'Height',
-      'Width',
+      "Height",
+      "Width",
 
-      'CorruptedMods',
-      'EnchantmentPassiveNum',
+      "CorruptedMods",
+      "EnchantmentPassiveNum",
 
-      'HasExplicitMod',
-      'HasImplicitMod',
-      'HasEaterOfWorldsImplicit',
-      'HasSearingExarchImplicit',
-      'AnyEnchantment',
-      'HasEnchantment',
-      'HasInfluence',
-      'EnchantmentPassiveNode',
+      "HasExplicitMod",
+      "HasImplicitMod",
+      "HasEaterOfWorldsImplicit",
+      "HasSearingExarchImplicit",
+      "AnyEnchantment",
+      "HasEnchantment",
+      "HasInfluence",
+      "EnchantmentPassiveNode",
 
-      'AlternateQuality',
-      'Replica',
+      "AlternateQuality",
+      "Replica",
 
-      'ArchnemesisMod',
+      "ArchnemesisMod",
 
-      'HasCruciblePassiveTree',
+      "HasCruciblePassiveTree",
     ])
   }
 
   get actionKeys() {
     return Object.freeze([
-      'SetFontSize',
-      'SetTextColor',
-      'SetBackgroundColor',
-      'SetBorderColor',
+      "SetFontSize",
+      "SetTextColor",
+      "SetBackgroundColor",
+      "SetBorderColor",
 
-      'MinimapIcon',
+      "MinimapIcon",
 
-      'PlayEffect',
+      "PlayEffect",
 
-      'PlayAlertSound',
-      'PlayAlertSoundPositional',
-      'CustomAlertSound',
-      'DisableDropSound',
-      'EnableDropSound',
+      "PlayAlertSound",
+      "PlayAlertSoundPositional",
+      "CustomAlertSound",
+      "DisableDropSound",
+      "EnableDropSound",
     ])
   }
 
@@ -116,55 +116,55 @@ export default class {
   }
 
   _generateHeader() {
-    const filterName = this.$filterInfo.name ? this.$filterInfo.name : ''
-    const scriptName = this.$scriptName ? ` - ${this.$scriptName} -` : ''
-    const filterVersion = this.$filterInfo.version ? ` (Ver: ${this.$filterInfo.version})` : ''
+    const filterName = this.$filterInfo.name ? this.$filterInfo.name : ""
+    const scriptName = this.$scriptName ? ` - ${this.$scriptName} -` : ""
+    const filterVersion = this.$filterInfo.version ? ` (Ver: ${this.$filterInfo.version})` : ""
     const name = `${filterName}${scriptName}${filterVersion}`
 
-    let result = ''
-    result += `${'#'.repeat(80)}\n`
-    result += `#${' '.repeat(78)}#\n`
-    if (name) result += `# ${name} ${' '.repeat(80 - name.length - 5)} #\n`
-    result += `# Created By Advanced PoE Filter (Ver: ${this.$version}) ${' '.repeat(33)}#\n`
-    result += `#${' '.repeat(78)}#\n`
-    result += `${'#'.repeat(80)}\n`
-    result += '\n'
+    let result = ""
+    result += `${"#".repeat(80)}\n`
+    result += `#${" ".repeat(78)}#\n`
+    if (name) result += `# ${name} ${" ".repeat(80 - name.length - 5)} #\n`
+    result += `# Created By Advanced PoE Filter (Ver: ${this.$version}) ${" ".repeat(33)}#\n`
+    result += `#${" ".repeat(78)}#\n`
+    result += `${"#".repeat(80)}\n`
+    result += "\n"
 
     return result
   }
 
   _generateSection(sectionObject, isLast = false) {
-    let result = ''
-    result += `${'#'.repeat(80)}\n`
-    result += `# ${sectionObject.name} ${' '.repeat(80 - sectionObject.name.length - 5)} #\n`
-    result += `${'#'.repeat(80)}\n`
+    let result = ""
+    result += `${"#".repeat(80)}\n`
+    result += `# ${sectionObject.name} ${" ".repeat(80 - sectionObject.name.length - 5)} #\n`
+    result += `${"#".repeat(80)}\n`
 
     result = sectionObject.blocks.reduce((acc, blockObject) => {
       return acc + this._generateBlock(blockObject)
     }, result)
 
-    if (sectionObject.blocks.length === 1 && !isLast) result += '\n'
+    if (sectionObject.blocks.length === 1 && !isLast) result += "\n"
 
     return result
   }
 
   _generateBlock(blockObject) {
-    let result = ''
+    let result = ""
     result += this._generateBlockName(blockObject.name)
-    if (blockObject.activity === 'Unset') {
-      result += '# Unset\n'
+    if (blockObject.activity === "Unset") {
+      result += "# Unset\n"
     } else {
       result += `${blockObject.activity}\n`
       result += this._generateConditions(blockObject)
       result += this._generateActions(blockObject)
     }
-    result += '\n'
+    result += "\n"
 
     return result
   }
 
   _generateBlockName(blockNameObject) {
-    if (Object.keys(blockNameObject).length === 0) return ''
+    if (Object.keys(blockNameObject).length === 0) return ""
 
     let temp = []
     forIn(blockNameObject, (val, key) => {
@@ -174,7 +174,7 @@ export default class {
         temp.push(`${key} is Any`)
       }
     })
-    return `# ${temp.join(' - ')}\n`
+    return `# ${temp.join(" - ")}\n`
   }
 
   _generateConditions(blockObject) {
@@ -182,47 +182,47 @@ export default class {
       .map((conditionKey) => {
         return Object.prototype.hasOwnProperty.call(blockObject.conditions, conditionKey)
           ? this._generateCondition(blockObject.conditions[conditionKey], conditionKey)
-          : ''
+          : ""
       })
-      .join('')
+      .join("")
   }
 
   _generateCondition(conditionVal, conditionKey) {
     switch (conditionKey) {
-      case 'Class':
-      case 'BaseType':
-      case 'GemQualityType':
-      case 'EnchantmentPassiveNode':
-      case 'ArchnemesisMod':
-        return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
-      case 'HasExplicitMod':
-      case 'HasEnchantment':
+      case "Class":
+      case "BaseType":
+      case "GemQualityType":
+      case "EnchantmentPassiveNode":
+      case "ArchnemesisMod":
+        return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
+      case "HasExplicitMod":
+      case "HasEnchantment":
         if (conditionVal.numeric) {
-          return `    ${conditionKey} ${conditionVal.numeric.ope} ${conditionVal.numeric.val} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
+          return `    ${conditionKey} ${conditionVal.numeric.ope} ${conditionVal.numeric.val} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
         } else {
-          return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
+          return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
         }
-      case 'HasInfluence':
+      case "HasInfluence":
         if (conditionVal.ope) {
-          return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(' ')}\n`
+          return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
         } else {
           return `    ${conditionKey} ${conditionVal.val}\n`
         }
-      case 'Corrupted':
-      case 'Mirrored':
-      case 'Identified':
-      case 'Scourged':
-      case 'ShapedMap':
-      case 'ElderMap':
-      case 'BlightedMap':
-      case 'UberBlightedMap':
-      case 'FracturedItem':
-      case 'SynthesisedItem':
-      case 'AnyEnchantment':
-      case 'AlternateQuality':
-      case 'Replica':
-      case 'HasImplicitMod':
-      case 'HasCruciblePassiveTree':
+      case "Corrupted":
+      case "Mirrored":
+      case "Identified":
+      case "Scourged":
+      case "ShapedMap":
+      case "ElderMap":
+      case "BlightedMap":
+      case "UberBlightedMap":
+      case "FracturedItem":
+      case "SynthesisedItem":
+      case "AnyEnchantment":
+      case "AlternateQuality":
+      case "Replica":
+      case "HasImplicitMod":
+      case "HasCruciblePassiveTree":
         return `    ${conditionKey} ${toUpperFirstChar(conditionVal)}\n`
       default:
         return `    ${conditionKey} ${conditionVal}\n`
@@ -230,20 +230,20 @@ export default class {
   }
 
   _generateActions(blockObject) {
-    if (blockObject.activity === 'Show') {
+    if (blockObject.activity === "Show") {
       const actions = this._createShowActions(blockObject.actions)
       return this.actionKeys
         .map((actionKey) => {
-          return Object.prototype.hasOwnProperty.call(actions, actionKey) ? this._generateAction(actions[actionKey], actionKey) : ''
+          return Object.prototype.hasOwnProperty.call(actions, actionKey) ? this._generateAction(actions[actionKey], actionKey) : ""
         })
-        .join('')
+        .join("")
     } else {
       const actions = this._createHideActions(blockObject.actions)
       return this.actionKeys
         .map((actionKey) => {
-          return Object.prototype.hasOwnProperty.call(actions, actionKey) ? this._generateAction(actions[actionKey], actionKey) : ''
+          return Object.prototype.hasOwnProperty.call(actions, actionKey) ? this._generateAction(actions[actionKey], actionKey) : ""
         })
-        .join('')
+        .join("")
     }
   }
 
@@ -271,34 +271,34 @@ export default class {
 
   _generateAction(actionVal, actionKey) {
     switch (actionKey) {
-      case 'SetBorderColor':
-      case 'SetTextColor':
-      case 'SetBackgroundColor':
+      case "SetBorderColor":
+      case "SetTextColor":
+      case "SetBackgroundColor":
         return `    ${actionKey} ${Math.round(actionVal.rgb.r)} ${Math.round(actionVal.rgb.g)} ${Math.round(actionVal.rgb.b)} ${Math.round(actionVal.alpha)}\n`
-      case 'PlayAlertSound':
+      case "PlayAlertSound":
         return `    ${actionKey} ${actionVal.id} ${actionVal.volume || this.$options.defaultAlertSoundVolume}\n`
-      case 'PlayAlertSoundPositional':
+      case "PlayAlertSoundPositional":
         if (this.$options.convertPlayAlertSoundPositionalToPlayAlertSound) {
           return `    PlayAlertSound ${actionVal.id} ${actionVal.volume || this.$options.defaultAlertSoundPositionalVolume}\n`
         } else {
           return `    ${actionKey} ${actionVal.id} ${actionVal.volume || this.$options.defaultAlertSoundPositionalVolume}\n`
         }
-      case 'CustomAlertSound':
+      case "CustomAlertSound":
         return `    ${actionKey} "${actionVal.filePath}" ${actionVal.volume || this.$options.defaultAlertSoundVolume}\n`
-      case 'DisableDropSound':
-      case 'EnableDropSound':
+      case "DisableDropSound":
+      case "EnableDropSound":
         return `    ${actionKey}\n`
-      case 'MinimapIcon':
+      case "MinimapIcon":
         switch (actionVal.size) {
-          case 'Largest':
+          case "Largest":
             return `    ${actionKey} 0 ${actionVal.color} ${actionVal.shape}\n`
-          case 'Medium':
+          case "Medium":
             return `    ${actionKey} 1 ${actionVal.color} ${actionVal.shape}\n`
-          case 'Small':
+          case "Small":
             return `    ${actionKey} 2 ${actionVal.color} ${actionVal.shape}\n`
         }
         break
-      case 'PlayEffect':
+      case "PlayEffect":
         if (actionVal.temp) {
           return `    ${actionKey} ${actionVal.color} Temp\n`
         } else {

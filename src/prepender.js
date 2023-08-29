@@ -1,7 +1,7 @@
-import { mapVals, toUpperFirstChar } from '../src/utils.js'
+import { mapVals, toUpperFirstChar } from "../src/utils.js"
 
 export default class {
-  constructor(advancedScriptText = '', variables = {}, props = {}, options = {}) {
+  constructor(advancedScriptText = "", variables = {}, props = {}, options = {}) {
     this.advancedScriptText = advancedScriptText
     this.variables = variables
     this.props = props
@@ -36,7 +36,7 @@ export default class {
   }
 
   _expandItem(variables, item, count = 0) {
-    if (count >= 10) throw new Error('nest is too deep')
+    if (count >= 10) throw new Error("nest is too deep")
 
     if (Array.isArray(item)) {
       return item.map((value) => this._expandValue(variables, value, count)).flat()
@@ -46,7 +46,7 @@ export default class {
   }
 
   _expandValue(variables, value, count) {
-    if (typeof value === 'string') {
+    if (typeof value === "string") {
       const match = value.match(/# *(.*)/)
       return match ? this._expandItem(variables, variables[match[1]], count + 1) : value
     } else {
@@ -55,28 +55,28 @@ export default class {
   }
 
   _replaceVariables(advancedScriptText, variables) {
-    return this._replaceFunction(advancedScriptText, 'Var', variables)
+    return this._replaceFunction(advancedScriptText, "Var", variables)
   }
 
   _replaceProps(advancedScriptText, props) {
-    return this._replaceFunction(advancedScriptText, 'Prop', props)
+    return this._replaceFunction(advancedScriptText, "Prop", props)
   }
 
   _replaceFunction(advancedScriptText, functionName, valueObject) {
     return advancedScriptText
-      .split('\n')
+      .split("\n")
       .map((line) => {
-        if (!line.includes('#')) {
+        if (!line.includes("#")) {
           return this._convertLine(line, functionName, valueObject)
         } else {
           return line
         }
       })
-      .join('\n')
+      .join("\n")
   }
 
   _convertLine(line, functionName, valueObject) {
-    const functionStrs = line.match(new RegExp(`${functionName}\\("[^(|^)]+"\\)`, 'g')) || []
+    const functionStrs = line.match(new RegExp(`${functionName}\\("[^(|^)]+"\\)`, "g")) || []
 
     if (functionStrs.length === 0) return line
 
@@ -101,19 +101,19 @@ export default class {
 
   _convertValue(ruleName, value) {
     switch (ruleName) {
-      case 'Class':
-      case 'BaseType':
-      case 'Prophecy':
-      case 'HasExplicitMod':
-        return (Array.isArray(value) ? value : [value]).map((t) => `"${t}"`).join(' ')
-      case 'ShaperItem':
-      case 'ElderItem':
-      case 'Corrupted':
-      case 'Identified':
-      case 'ShapedMap':
-      case 'ElderMap':
-      case 'BlightedMap':
-      case 'DisableDropSound':
+      case "Class":
+      case "BaseType":
+      case "Prophecy":
+      case "HasExplicitMod":
+        return (Array.isArray(value) ? value : [value]).map((t) => `"${t}"`).join(" ")
+      case "ShaperItem":
+      case "ElderItem":
+      case "Corrupted":
+      case "Identified":
+      case "ShapedMap":
+      case "ElderMap":
+      case "BlightedMap":
+      case "DisableDropSound":
         return toUpperFirstChar(value)
       default:
         return value

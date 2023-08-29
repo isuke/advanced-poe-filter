@@ -1,27 +1,27 @@
-import test from 'ava'
-import outdent from 'outdent'
+import test from "ava"
+import outdent from "outdent"
 
-import Generator from '../src/generator.js'
+import Generator from "../src/generator.js"
 
-test('generate : single section', (t) => {
+test("generate : single section", (t) => {
   const scriptObject = [
     {
-      name: 'Map Section',
+      name: "Map Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Show',
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '> 3',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: "> 3",
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSound: { id: '1', volume: 300 },
-            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
-            PlayEffect: { color: 'Blue', temp: true },
+            PlayAlertSound: { id: "1", volume: 300 },
+            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            PlayEffect: { color: "Blue", temp: true },
           },
         },
       ],
@@ -50,39 +50,39 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7')
+  const generator = new Generator(scriptObject, "9.8.7")
   const result = generator.generate()
 
   t.is(result, expected)
 })
 
-test('generate : single section with scriptName and filterInfo', (t) => {
+test("generate : single section with scriptName and filterInfo", (t) => {
   const scriptObject = [
     {
-      name: 'Map Section',
+      name: "Map Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Show',
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '> 3',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: "> 3",
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSound: { id: '1', volume: 300 },
-            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
-            PlayEffect: { color: 'Blue', temp: true },
+            PlayAlertSound: { id: "1", volume: 300 },
+            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            PlayEffect: { color: "Blue", temp: true },
           },
         },
       ],
     },
   ]
 
-  const scriptName = 'T1'
-  const filterInfo = { name: 'My Filter', version: '3.4.5' }
+  const scriptName = "T1"
+  const filterInfo = { name: "My Filter", version: "3.4.5" }
 
   const expected = outdent`
 ################################################################################
@@ -107,31 +107,31 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', scriptName, filterInfo)
+  const generator = new Generator(scriptObject, "9.8.7", scriptName, filterInfo)
   const result = generator.generate()
 
   t.is(result, expected)
 })
 
-test('generate : single unset section', (t) => {
+test("generate : single unset section", (t) => {
   const scriptObject = [
     {
-      name: 'Map Section',
+      name: "Map Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Unset',
+          activity: "Unset",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '> 3',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: "> 3",
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSound: { id: '1', volume: 300 },
-            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
-            PlayEffect: { color: 'Blue', temp: true },
+            PlayAlertSound: { id: "1", volume: 300 },
+            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            PlayEffect: { color: "Blue", temp: true },
           },
         },
       ],
@@ -153,7 +153,7 @@ test('generate : single unset section', (t) => {
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7')
+  const generator = new Generator(scriptObject, "9.8.7")
   const result = generator.generate()
 
   t.is(result, expected)
@@ -162,22 +162,22 @@ test('generate : single unset section', (t) => {
 test("generate : single section with 'addDisableDropSoundToHideBlock' option", (t) => {
   const scriptObject = [
     {
-      name: 'Map Section',
+      name: "Map Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Hide',
+          activity: "Hide",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '> 3',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: "> 3",
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSound: { id: '1', volume: 300 },
-            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
-            PlayEffect: { color: 'Blue', temp: true },
+            PlayAlertSound: { id: "1", volume: 300 },
+            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            PlayEffect: { color: "Blue", temp: true },
           },
         },
       ],
@@ -204,7 +204,7 @@ Hide
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', '', {}, { addDisableDropSoundToHideBlock: true })
+  const generator = new Generator(scriptObject, "9.8.7", "", {}, { addDisableDropSoundToHideBlock: true })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -213,22 +213,22 @@ Hide
 test("generate : single section with 'convertPlayAlertSoundPositionalToPlayAlertSound' option", (t) => {
   const scriptObject = [
     {
-      name: 'Map Section',
+      name: "Map Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Show',
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '> 3',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: "> 3",
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSoundPositional: { id: '1', volume: 300 },
-            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
-            PlayEffect: { color: 'Blue', temp: true },
+            PlayAlertSoundPositional: { id: "1", volume: 300 },
+            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            PlayEffect: { color: "Blue", temp: true },
           },
         },
       ],
@@ -257,7 +257,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', '', {}, { convertPlayAlertSoundPositionalToPlayAlertSound: true })
+  const generator = new Generator(scriptObject, "9.8.7", "", {}, { convertPlayAlertSoundPositionalToPlayAlertSound: true })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -266,22 +266,22 @@ Show
 test("generate : single section with 'removeCustomAlertSound' option", (t) => {
   const scriptObject = [
     {
-      name: 'Map Section',
+      name: "Map Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Show',
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '> 3',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: "> 3",
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            CustomAlertSound: 'C\\foobar\\sound.mp3',
-            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
-            PlayEffect: { color: 'Blue', temp: true },
+            CustomAlertSound: "C\\foobar\\sound.mp3",
+            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            PlayEffect: { color: "Blue", temp: true },
           },
         },
       ],
@@ -309,7 +309,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', '', {}, { removeCustomAlertSound: true })
+  const generator = new Generator(scriptObject, "9.8.7", "", {}, { removeCustomAlertSound: true })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -318,22 +318,22 @@ Show
 test("generate : single section with 'defaultAlertSoundVolume' option", (t) => {
   const scriptObject = [
     {
-      name: 'Map Section',
+      name: "Map Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Show',
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '> 3',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: "> 3",
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSound: { id: '1', volume: undefined },
-            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
-            PlayEffect: { color: 'Blue', temp: true },
+            PlayAlertSound: { id: "1", volume: undefined },
+            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            PlayEffect: { color: "Blue", temp: true },
           },
         },
       ],
@@ -362,7 +362,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', '', {}, { defaultAlertSoundVolume: 123, defaultAlertSoundPositionalVolume: 234 })
+  const generator = new Generator(scriptObject, "9.8.7", "", {}, { defaultAlertSoundVolume: 123, defaultAlertSoundPositionalVolume: 234 })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -371,22 +371,22 @@ Show
 test("generate : single section with 'defaultAlertSoundPositionalVolume' option", (t) => {
   const scriptObject = [
     {
-      name: 'Map Section',
+      name: "Map Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Show',
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '> 3',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: "> 3",
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSoundPositional: { id: '1', volume: undefined },
-            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
-            PlayEffect: { color: 'Blue', temp: true },
+            PlayAlertSoundPositional: { id: "1", volume: undefined },
+            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            PlayEffect: { color: "Blue", temp: true },
           },
         },
       ],
@@ -415,7 +415,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', '', {}, { defaultAlertSoundVolume: 123, defaultAlertSoundPositionalVolume: 234 })
+  const generator = new Generator(scriptObject, "9.8.7", "", {}, { defaultAlertSoundVolume: 123, defaultAlertSoundPositionalVolume: 234 })
   const result = generator.generate()
 
   t.is(result, expected)
@@ -424,22 +424,22 @@ Show
 test("generate : single section with 'initialFontSize' option", (t) => {
   const scriptObject = [
     {
-      name: 'Map Section',
+      name: "Map Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Show',
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '> 3',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: "> 3",
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSound: { id: '1', volume: 300 },
-            MinimapIcon: { size: 'Largest', color: 'Red', shape: 'Circle' },
-            PlayEffect: { color: 'Blue', temp: true },
+            PlayAlertSound: { id: "1", volume: 300 },
+            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            PlayEffect: { color: "Blue", temp: true },
           },
         },
       ],
@@ -469,24 +469,24 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7', '', {}, { initialFontSize: 38 })
+  const generator = new Generator(scriptObject, "9.8.7", "", {}, { initialFontSize: 38 })
   const result = generator.generate()
 
   t.is(result, expected)
 })
 
-test('generate : multi section', (t) => {
+test("generate : multi section", (t) => {
   const scriptObject = [
     {
-      name: 'Hide Map Section',
+      name: "Hide Map Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Hide',
+          activity: "Hide",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '<= 4',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: "<= 4",
           },
           actions: {
             SetFontSize: 38,
@@ -496,18 +496,18 @@ test('generate : multi section', (t) => {
       ],
     },
     {
-      name: 'Flask Section',
+      name: "Flask Section",
       blocks: [
         {
-          id: '0001',
+          id: "0001",
           name: {},
-          activity: 'Show',
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'] },
+            Class: { ope: "=", vals: ["Life Flasks", "Mana Flasks", "Hybrid Flasks"] },
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-            CustomAlertSound: { filePath: './Flask.wav', volume: 150 },
+            CustomAlertSound: { filePath: "./Flask.wav", volume: 150 },
           },
         },
       ],
@@ -541,53 +541,53 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7')
+  const generator = new Generator(scriptObject, "9.8.7")
   const result = generator.generate()
 
   t.is(result, expected)
 })
 
-test('generate : multi block', (t) => {
+test("generate : multi block", (t) => {
   const scriptObject = [
     {
-      name: 'Map Section',
+      name: "Map Section",
       blocks: [
         // Rarity is 'Rare'
         {
-          id: '0001-0002-0003',
-          name: { Rarity: 'Rare', Tier: 'High Tier' },
-          activity: 'Show',
+          id: "0001-0002-0003",
+          name: { Rarity: "Rare", Tier: "High Tier" },
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            Rarity: 'Rare',
-            MapTier: '>= 11',
+            Class: { ope: "=", vals: ["Maps"] },
+            Rarity: "Rare",
+            MapTier: ">= 11",
           },
           actions: {
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
-            PlayAlertSound: { id: '1', volume: 300 },
+            PlayAlertSound: { id: "1", volume: 300 },
           },
         },
         {
-          id: '0001-0002-0004',
-          name: { Rarity: 'Rare', Tier: 'Middle Tier' },
-          activity: 'Show',
+          id: "0001-0002-0004",
+          name: { Rarity: "Rare", Tier: "Middle Tier" },
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            Rarity: 'Rare',
-            MapTier: '>= 6',
+            Class: { ope: "=", vals: ["Maps"] },
+            Rarity: "Rare",
+            MapTier: ">= 6",
           },
           actions: {
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
-            PlayAlertSound: { id: '2', volume: 300 },
+            PlayAlertSound: { id: "2", volume: 300 },
           },
         },
         {
-          id: '0001-0002-0000',
-          name: { Rarity: 'Rare', Tier: undefined },
-          activity: 'Show',
+          id: "0001-0002-0000",
+          name: { Rarity: "Rare", Tier: undefined },
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            Rarity: 'Rare',
+            Class: { ope: "=", vals: ["Maps"] },
+            Rarity: "Rare",
           },
           actions: {
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
@@ -596,73 +596,73 @@ test('generate : multi block', (t) => {
 
         // Rarity is 'Magic'
         {
-          id: '0001-0005-0003',
-          name: { Rarity: 'Magic', Tier: 'High Tier' },
-          activity: 'Show',
+          id: "0001-0005-0003",
+          name: { Rarity: "Magic", Tier: "High Tier" },
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            Rarity: 'Magic',
-            MapTier: '>= 11',
+            Class: { ope: "=", vals: ["Maps"] },
+            Rarity: "Magic",
+            MapTier: ">= 11",
           },
           actions: {
-            PlayAlertSound: { id: '1', volume: 300 },
+            PlayAlertSound: { id: "1", volume: 300 },
           },
         },
         {
-          id: '0001-0005-0004',
-          name: { Rarity: 'Magic', Tier: 'Middle Tier' },
-          activity: 'Show',
+          id: "0001-0005-0004",
+          name: { Rarity: "Magic", Tier: "Middle Tier" },
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            Rarity: 'Magic',
-            MapTier: '>= 6',
+            Class: { ope: "=", vals: ["Maps"] },
+            Rarity: "Magic",
+            MapTier: ">= 6",
           },
           actions: {
-            PlayAlertSound: { id: '2', volume: 300 },
+            PlayAlertSound: { id: "2", volume: 300 },
           },
         },
         {
-          id: '0001-0005-0000',
-          name: { Rarity: 'Magic', Tier: undefined },
-          activity: 'Hide',
+          id: "0001-0005-0000",
+          name: { Rarity: "Magic", Tier: undefined },
+          activity: "Hide",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            Rarity: 'Magic',
+            Class: { ope: "=", vals: ["Maps"] },
+            Rarity: "Magic",
           },
           actions: {},
         },
 
         // Rarity is undefined
         {
-          id: '0001-0000-0003',
-          name: { Rarity: undefined, Tier: 'High Tier' },
-          activity: 'Show',
+          id: "0001-0000-0003",
+          name: { Rarity: undefined, Tier: "High Tier" },
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '>= 11',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: ">= 11",
           },
           actions: {
-            PlayAlertSound: { id: '1', volume: 300 },
+            PlayAlertSound: { id: "1", volume: 300 },
           },
         },
         {
-          id: '0001-0000-0004',
-          name: { Rarity: undefined, Tier: 'Middle Tier' },
-          activity: 'Unset',
+          id: "0001-0000-0004",
+          name: { Rarity: undefined, Tier: "Middle Tier" },
+          activity: "Unset",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
-            MapTier: '>= 6',
+            Class: { ope: "=", vals: ["Maps"] },
+            MapTier: ">= 6",
           },
           actions: {
-            PlayAlertSound: { id: '2', volume: 300 },
+            PlayAlertSound: { id: "2", volume: 300 },
           },
         },
         {
-          id: '0001-0000-0000',
+          id: "0001-0000-0000",
           name: { Rarity: undefined, Tier: undefined },
-          activity: 'Show',
+          activity: "Show",
           conditions: {
-            Class: { ope: '=', vals: ['Maps'] },
+            Class: { ope: "=", vals: ["Maps"] },
           },
           actions: {},
         },
@@ -737,7 +737,7 @@ Show
 
   `
 
-  const generator = new Generator(scriptObject, '9.8.7')
+  const generator = new Generator(scriptObject, "9.8.7")
   const result = generator.generate()
 
   t.is(result, expected)

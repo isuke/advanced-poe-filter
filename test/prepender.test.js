@@ -1,9 +1,9 @@
-import test from 'ava'
-import outdent from 'outdent'
+import test from "ava"
+import outdent from "outdent"
 
-import Prepender from '../src/prepender.js'
+import Prepender from "../src/prepender.js"
 
-test('prepend : nothing anyone', (t) => {
+test("prepend : nothing anyone", (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class "Maps"
@@ -32,7 +32,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : simple variables of value', (t) => {
+test("prepend : simple variables of value", (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class Var("My Class1") Var("My Class2") Var("My Class3")
@@ -45,13 +45,13 @@ Show "Map Section"
    `
 
   const variables = {
-    'My Class1': 'Hybrid Flasks',
-    'My Class2': 'Utility Flasks',
-    'My Class3': ['Life Flasks', 'Mana Flasks'],
-    'My Map Tier': 3,
-    'My Identified': false,
-    'My BorderColor': '250 251 252',
-    'My PlayAlertSoundId': 1,
+    "My Class1": "Hybrid Flasks",
+    "My Class2": "Utility Flasks",
+    "My Class3": ["Life Flasks", "Mana Flasks"],
+    "My Map Tier": 3,
+    "My Identified": false,
+    "My BorderColor": "250 251 252",
+    "My PlayAlertSoundId": 1,
   }
 
   const expected = outdent`
@@ -71,7 +71,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : comment out variables', (t) => {
+test("prepend : comment out variables", (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class Var("My Class1") Var("My Class2") Var("My Class3")
@@ -80,9 +80,9 @@ Show "Map Section"
    `
 
   const variables = {
-    'My Class1': 'Hybrid Flasks',
-    'My Class2': 'Utility Flasks',
-    'My Class3': ['Life Flasks', 'Mana Flasks'],
+    "My Class1": "Hybrid Flasks",
+    "My Class2": "Utility Flasks",
+    "My Class3": ["Life Flasks", "Mana Flasks"],
   }
 
   const expected = outdent`
@@ -98,7 +98,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : simple variables of activity', (t) => {
+test("prepend : simple variables of activity", (t) => {
   const advancedScriptText = outdent`
 Var("My Activity") "Map Section"
     Class "Map"
@@ -106,7 +106,7 @@ Var("My Activity") "Map Section"
    `
 
   const variables = {
-    'My Activity': 'Show',
+    "My Activity": "Show",
   }
 
   const expected = outdent`
@@ -121,7 +121,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : simple variables of action', (t) => {
+test("prepend : simple variables of action", (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class "Map"
@@ -130,7 +130,7 @@ Show "Map Section"
    `
 
   const variables = {
-    'My Action': 'PlayAlertSound',
+    "My Action": "PlayAlertSound",
   }
 
   const expected = outdent`
@@ -146,7 +146,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : nested variables', (t) => {
+test("prepend : nested variables", (t) => {
   const advancedScriptText = outdent`
 Show "Flask Section"
     Class Var("Flask1")
@@ -155,10 +155,10 @@ Show "Flask Section"
    `
 
   const variables = {
-    MyItemLevel: '#ItemLevel',
+    MyItemLevel: "#ItemLevel",
     ItemLevel: 1,
-    Flask1: ['#Flask2', 'Utility Flask'],
-    Flask2: ['Life Flask', 'Mana Flask', 'Hybrid Flask'],
+    Flask1: ["#Flask2", "Utility Flask"],
+    Flask2: ["Life Flask", "Mana Flask", "Hybrid Flask"],
   }
 
   const expected = outdent`
@@ -174,7 +174,7 @@ Show "Flask Section"
   t.is(result, expected)
 })
 
-test('prepend : variable not found', (t) => {
+test("prepend : variable not found", (t) => {
   const advancedScriptText = outdent`
 Show "Flask Section"
     Class Var("Flask1")
@@ -183,7 +183,7 @@ Show "Flask Section"
    `
 
   const variables = {
-    Flask1: ['Life Flask', 'Mana Flask', 'Hybrid Flask'],
+    Flask1: ["Life Flask", "Mana Flask", "Hybrid Flask"],
     MyItemLevel: 10,
   }
 
@@ -195,7 +195,7 @@ Show "Flask Section"
   t.is(error.message, "'MyItemLevelx' is not found")
 })
 
-test('prepend : infinity loop variables', (t) => {
+test("prepend : infinity loop variables", (t) => {
   const advancedScriptText = outdent`
 Show "Flask Section"
     Class Var("Flask1")
@@ -204,9 +204,9 @@ Show "Flask Section"
    `
 
   const variables = {
-    Flask1: ['Life Flask', 'Mana Flask', 'Hybrid Flask'],
-    MyItemLevel1: '#MyItemLevel2',
-    MyItemLevel2: '#MyItemLevel1',
+    Flask1: ["Life Flask", "Mana Flask", "Hybrid Flask"],
+    MyItemLevel1: "#MyItemLevel2",
+    MyItemLevel2: "#MyItemLevel1",
   }
 
   const prepender = new Prepender(advancedScriptText, variables)
@@ -214,10 +214,10 @@ Show "Flask Section"
   const error = t.throws(() => {
     prepender.prepend()
   })
-  t.is(error.message, 'nest is too deep')
+  t.is(error.message, "nest is too deep")
 })
 
-test('prepend : simple props of value', (t) => {
+test("prepend : simple props of value", (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class "Life Flasks" "Mana Flasks" Prop("My Class1") Prop("My Class2")
@@ -230,12 +230,12 @@ Show "Map Section"
    `
 
   const props = {
-    'My Class1': 'Hybrid Flasks',
-    'My Class2': 'Utility Flasks',
-    'My MapTier': 3,
-    'My Identified': false,
-    'My BorderColor': '250 251 252',
-    'My Play Alert Sound Id': 1,
+    "My Class1": "Hybrid Flasks",
+    "My Class2": "Utility Flasks",
+    "My MapTier": 3,
+    "My Identified": false,
+    "My BorderColor": "250 251 252",
+    "My Play Alert Sound Id": 1,
   }
 
   const expected = outdent`
@@ -255,7 +255,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : simple props of activity', (t) => {
+test("prepend : simple props of activity", (t) => {
   const advancedScriptText = outdent`
 Prop("My Activity") "Map Section"
     Class "Map"
@@ -263,7 +263,7 @@ Prop("My Activity") "Map Section"
    `
 
   const props = {
-    'My Activity': 'Show',
+    "My Activity": "Show",
   }
 
   const expected = outdent`
@@ -278,7 +278,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : simple props of action', (t) => {
+test("prepend : simple props of action", (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class "Map"
@@ -287,7 +287,7 @@ Show "Map Section"
    `
 
   const props = {
-    'My Action': 'PlayAlertSound',
+    "My Action": "PlayAlertSound",
   }
 
   const expected = outdent`
@@ -303,7 +303,7 @@ Show "Map Section"
   t.is(result, expected)
 })
 
-test('prepend : combined variables and props', (t) => {
+test("prepend : combined variables and props", (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class "Map"
@@ -312,11 +312,11 @@ Show "Map Section"
    `
 
   const variables = {
-    'High Map Tier': 11,
+    "High Map Tier": 11,
   }
 
   const props = {
-    'My Map Tier': 'Var("High Map Tier")',
+    "My Map Tier": 'Var("High Map Tier")',
   }
 
   const expected = outdent`

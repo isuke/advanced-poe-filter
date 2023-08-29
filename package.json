@@ -13,7 +13,9 @@
   ],
   "scripts": {
     "lint": "eslint ./*.js src/**/*.js test/**/*.js",
-    "fix": "eslint --fix ./*.js src/**/*.js test/**/*.js",
+    "lint:fix": "eslint --fix ./*.js src/**/*.js test/**/*.js",
+    "prettier": "prettier --write --log-level=warn '**/*.js'",
+    "flow": "flow check",
     "test": "ava --verbose",
     "build": "webpack --mode=production --progress",
     "predeploy": "npm run build",
@@ -25,9 +27,6 @@
     "core-js": "3.32.1"
   },
   "devDependencies": {
-    "@babel/cli": "7.22.10",
-    "@babel/core": "7.22.11",
-    "@babel/preset-env": "7.22.10",
     "ava": "5.3.1",
     "babel-eslint": "10.1.0",
     "babel-loader": "9.1.3",

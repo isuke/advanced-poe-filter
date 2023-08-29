@@ -1,8 +1,9 @@
 // @flow
 
-import Color from 'color'
+//$FlowFixMe
+import Color from "color"
 
-import { product, compact, createObject, assignImmutable, forIn } from '../src/utils.js'
+import { product, compact, createObject, assignImmutable, forIn } from "../src/utils.js"
 
 /*::
 type AdvancedBlock = {
@@ -70,7 +71,7 @@ export default class {
   }
 
   _convertAdvancedBlockToSection(advancedBlock /*: AdvancedBlock */) /*: ?Section */ {
-    if (advancedBlock.activity === 'Ignore') return undefined
+    if (advancedBlock.activity === "Ignore") return undefined
 
     if (advancedBlock.branches.length === 0) {
       return {
@@ -95,7 +96,7 @@ export default class {
     }
   }
 
-  _convertBranchToBlocks(branch /*: Branch */) /* Array<Block> */ {
+  _convertBranchToBlocks(branch /*: Branch */) /*: Array<Block> */ {
     const sections /*: Array<Section> */ = compact(branch.blocks.map((advancedBlock) => this._convertAdvancedBlockToSection(advancedBlock)))
 
     let blocks /*: Array<Block> */ = sections.reduce((acc, section) => {
@@ -112,7 +113,7 @@ export default class {
       return acc.concat(blocks)
     }, [])
 
-    if (branch.type === 'Mixin') blocks = blocks.concat(this._emptyBlock(branch.name))
+    if (branch.type === "Mixin") blocks = blocks.concat(this._emptyBlock(branch.name))
 
     // blocks length is zero when all block is ignore.
     if (blocks.length === 0) blocks = [this._emptyBlock(branch.name)]
@@ -122,7 +123,7 @@ export default class {
 
   _mergeBlocks(advancedBlock /*: AdvancedBlock */, ...blocks /*: Array<Block> */) /*: Block */ {
     return {
-      id: [advancedBlock.id].concat(...blocks.map((o) => o.id)).join('-'),
+      id: [advancedBlock.id].concat(...blocks.map((o) => o.id)).join("-"),
       name: assignImmutable({}, ...blocks.map((o) => o.name)),
       activity: this._mergeActivities(advancedBlock.activity, ...blocks.map((o) => o.activity)),
       conditions: assignImmutable(advancedBlock.conditions, ...blocks.map((o) => o.conditions)),
@@ -131,16 +132,18 @@ export default class {
   }
 
   _mergeActivities(root /*: string */, ...others /*: Array<string> */) /*: string */ {
-    let result = [root, ...others].filter((a) => a !== 'Unset')
-    return result.length > 0 ? result.reverse()[0] : 'Unset'
+    let result = [root, ...others].filter((a) => a !== "Unset")
+    return result.length > 0 ? result.reverse()[0] : "Unset"
   }
 
   _mergeActions(root /*: Object */, ...others /*: Array<Object> */) /*: Object */ {
-    let result = [root, ...others].reduce((acc, current) => {
+    let result = [root, ...others].reduce((acc /*: Object */, current /*: Object */) => {
       if (
-        Object.prototype.hasOwnProperty.call(current, 'PlayAlertSoundPositional') ||
-        Object.prototype.hasOwnProperty.call(current, 'PlayAlertSound') ||
-        Object.prototype.hasOwnProperty.call(current, 'CustomAlertSound')
+        /* eslint-disable no-prototype-builtins */
+        current.hasOwnProperty("PlayAlertSoundPositional") ||
+        current.hasOwnProperty("PlayAlertSound") ||
+        current.hasOwnProperty("CustomAlertSound")
+        /* eslint-enable */
       ) {
         delete acc.PlayAlertSoundPositional
         delete acc.PlayAlertSound
@@ -153,9 +156,9 @@ export default class {
     others.forEach((other) => {
       forIn(other, (valObject, key) => {
         switch (key) {
-          case 'SetBorderColor':
-          case 'SetTextColor':
-          case 'SetBackgroundColor':
+          case "SetBorderColor":
+          case "SetTextColor":
+          case "SetBackgroundColor":
             if (valObject.function) {
               result[key] = {
                 rgb: Color(root[key].rgb)[valObject.function.toLowerCase()](valObject.val).rgb().object(),
@@ -163,10 +166,10 @@ export default class {
               }
             }
             break
-          case 'SetFontSize':
+          case "SetFontSize":
             if (valObject.function) {
               const val1 = root[key] ? root[key] : this.$options.initialFontSize
-              const val2 = valObject.function === 'Plus' ? valObject.val : -valObject.val
+              const val2 = valObject.function === "Plus" ? valObject.val : -valObject.val
               result[key] = Math.min(Math.max(val1 + val2, 18), 45)
             }
             break
@@ -179,9 +182,9 @@ export default class {
 
   _emptyBlock(branchName /*: string */) /*: Block */ {
     return {
-      id: '0000', // TODO: unique number
+      id: "0000", // TODO: unique number
       name: createObject(branchName),
-      activity: 'Unset',
+      activity: "Unset",
       conditions: {},
       actions: {},
     }

@@ -1,13 +1,13 @@
-import test from 'ava'
-import outdent from 'outdent'
+import test from "ava"
+import outdent from "outdent"
 
-import { getObject, compile, version } from '../src/index.js'
+import { getObject, compile, version } from "../src/index.js"
 
-test('version', (t) => {
-  t.is(version, '0.9.9')
+test("version", (t) => {
+  t.is(version, "0.9.9")
 })
 
-test('getObject : single section', (t) => {
+test("getObject : single section", (t) => {
   const advancedScriptText = outdent`
 # This is Comment
 # This is Comment
@@ -27,25 +27,25 @@ Show "Map Section"
    `
 
   const expected = {
-    'No Name': [
+    "No Name": [
       {
-        name: 'Map Section',
+        name: "Map Section",
         blocks: [
           {
-            id: '0001',
+            id: "0001",
             name: {},
-            activity: 'Show',
+            activity: "Show",
             conditions: {
-              Class: { ope: '=', vals: ['Maps'] },
-              MapTier: '> 3',
+              Class: { ope: "=", vals: ["Maps"] },
+              MapTier: "> 3",
               Identified: false,
               BlightedMap: true,
             },
             actions: {
               SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
-              PlayAlertSound: { id: '1', volume: 300 },
-              MinimapIcon: { size: 'Medium', color: 'Red', shape: 'Circle' },
-              PlayEffect: { color: 'Blue', temp: true },
+              PlayAlertSound: { id: "1", volume: 300 },
+              MinimapIcon: { size: "Medium", color: "Red", shape: "Circle" },
+              PlayEffect: { color: "Blue", temp: true },
             },
           },
         ],
@@ -58,7 +58,7 @@ Show "Map Section"
   t.deepEqual(result, expected)
 })
 
-test('compile : single section (all Conditions and Actions)', (t) => {
+test("compile : single section (all Conditions and Actions)", (t) => {
   const advancedScriptText = outdent`
 # This is Comment
 # This is Comment
@@ -125,7 +125,7 @@ Show "All Conditions and Actions"
    `
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.9)                                  #
@@ -200,7 +200,7 @@ Show
   t.deepEqual(result, expected)
 })
 
-test('compile : single section with variables', (t) => {
+test("compile : single section with variables", (t) => {
   const advancedScriptText = outdent`
 Show "Flasks"
     Class Var("My Class") "Utility Flasks"
@@ -212,11 +212,11 @@ Show "Flasks"
    `
 
   const variables = {
-    'My Class': ['Life Flasks', 'Mana Flasks', 'Hybrid Flasks'],
+    "My Class": ["Life Flasks", "Mana Flasks", "Hybrid Flasks"],
   }
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.9)                                  #
@@ -242,7 +242,7 @@ Show
   t.deepEqual(result, expected)
 })
 
-test('compile : single section with properties', (t) => {
+test("compile : single section with properties", (t) => {
   const advancedScriptText = outdent`
 Show "Flasks"
     Class "Utility Flasks"
@@ -254,12 +254,12 @@ Show "Flasks"
    `
 
   const properties = {
-    T1: { 'Flask Quality': 0 },
-    T2: { 'Flask Quality': 10 },
-    T3: { 'Flask Quality': 20 },
+    T1: { "Flask Quality": 0 },
+    T2: { "Flask Quality": 10 },
+    T3: { "Flask Quality": 20 },
   }
 
-  const filterInfo = { name: 'My Filter' }
+  const filterInfo = { name: "My Filter" }
 
   const expected = {
     T1: outdent`
@@ -329,7 +329,7 @@ Show
   t.deepEqual(result, expected)
 })
 
-test('compile : single section with combined variables and properties', (t) => {
+test("compile : single section with combined variables and properties", (t) => {
   const advancedScriptText = outdent`
 Show "Flasks"
     Class "Utility Flasks"
@@ -341,18 +341,18 @@ Show "Flasks"
    `
 
   const variables = {
-    'Low Quality': 0,
-    'Middle Quality': 10,
-    'High Quality': 20,
+    "Low Quality": 0,
+    "Middle Quality": 10,
+    "High Quality": 20,
   }
 
   const properties = {
-    T1: { 'Flask Quality': 'Var("Low Quality")' },
-    T2: { 'Flask Quality': 'Var("Middle Quality")' },
-    T3: { 'Flask Quality': 'Var("High Quality")' },
+    T1: { "Flask Quality": 'Var("Low Quality")' },
+    T2: { "Flask Quality": 'Var("Middle Quality")' },
+    T3: { "Flask Quality": 'Var("High Quality")' },
   }
 
-  const filterInfo = { name: 'My Filter' }
+  const filterInfo = { name: "My Filter" }
 
   const expected = {
     T1: outdent`
@@ -422,7 +422,7 @@ Show
   t.deepEqual(result, expected)
 })
 
-test('compile : single section with filterInfo', (t) => {
+test("compile : single section with filterInfo", (t) => {
   const advancedScriptText = outdent`
 # This is Comment
 # This is Comment
@@ -441,10 +441,10 @@ Show "Map Section"
 
    `
 
-  const filterInfo = { name: 'My Filter', version: '3.4.5' }
+  const filterInfo = { name: "My Filter", version: "3.4.5" }
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # My Filter (Ver: 3.4.5)                                                       #
@@ -475,7 +475,7 @@ Show
   t.deepEqual(result, expected)
 })
 
-test('compile : multi section', (t) => {
+test("compile : multi section", (t) => {
   const advancedScriptText = outdent`
 Hide "Hide Map Section"
     Class "Maps"
@@ -492,7 +492,7 @@ Hide "Remain Section"
    `
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.9)                                  #
@@ -535,7 +535,7 @@ Hide
   t.deepEqual(result, expected)
 })
 
-test('compile : single fork', (t) => {
+test("compile : single fork", (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class "Maps"
@@ -555,7 +555,7 @@ Show "Map Section"
    `
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.9)                                  #
@@ -596,7 +596,7 @@ Show
   t.deepEqual(result, expected)
 })
 
-test('compile : single mixin with color function', (t) => {
+test("compile : single mixin with color function", (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class "Maps"
@@ -616,7 +616,7 @@ Show "Map Section"
    `
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.9)                                  #
@@ -652,7 +652,7 @@ Show
   t.deepEqual(result, expected)
 })
 
-test('compile : single mixin with fontSize function', (t) => {
+test("compile : single mixin with fontSize function", (t) => {
   const advancedScriptText = outdent`
 Show "Map Section"
     Class "Maps"
@@ -668,7 +668,7 @@ Show "Map Section"
    `
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.9)                                  #
@@ -704,7 +704,7 @@ Show
   t.deepEqual(result, expected)
 })
 
-test('compile : multi mixin', (t) => {
+test("compile : multi mixin", (t) => {
   const advancedScriptText = outdent`
 Hide "Gears"
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
@@ -753,7 +753,7 @@ Hide "Gears"
    `
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.9)                                  #
@@ -1276,7 +1276,7 @@ Hide
   t.deepEqual(result, expected)
 })
 
-test('compile : multi mixin with conflict alert sound', (t) => {
+test("compile : multi mixin with conflict alert sound", (t) => {
   const advancedScriptText = outdent`
 Show "Gears"
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
@@ -1294,7 +1294,7 @@ Show "Gears"
    `
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.9)                                  #
@@ -1341,7 +1341,7 @@ Show
   t.deepEqual(result, expected)
 })
 
-test('compile : nested mixin', (t) => {
+test("compile : nested mixin", (t) => {
   const advancedScriptText = outdent`
 Hide "Gears"
     Class "Gloves" "Boots" "Body Armours" "Helmets" "Shields"
@@ -1374,7 +1374,7 @@ Hide "Gears"
    `
 
   const expected = {
-    'No Name': outdent`
+    "No Name": outdent`
 ################################################################################
 #                                                                              #
 # Created By Advanced PoE Filter (Ver: 0.9.9)                                  #
