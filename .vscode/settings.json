@@ -4,11 +4,14 @@
     "source.fixAll.eslint": true
   },
   "editor.formatOnSave": false,
-  "cSpell.userWords": ["synthesised", "archnemesis"],
+  "cSpell.userWords": ["synthesised", "archnemesis", "kalandra"],
   "[javascript]": {
     "editor.formatOnSave": true
   },
   "[json]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
     "editor.formatOnSave": true
   }
 }
