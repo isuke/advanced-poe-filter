@@ -9,6 +9,7 @@
   "repository": "git@github.com:isuke/advanced-poe-filter.git",
   "main": "lib/advanced-poe-filter.cjs",
   "module": "lib/advanced-poe-filter.mjs",
+  "types": "lib/advanced-poe-filter.d.ts",
   "author": "isuke <isuke770@gmail.com>",
   "license": "MIT",
   "private": false,
