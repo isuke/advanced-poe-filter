@@ -1,4 +1,4 @@
-# Advanced PoE Filter [![Test and Lint](https://github.com/isuke/advanced-poe-filter/actions/workflows/main.yml/badge.svg)](https://github.com/isuke/advanced-poe-filter/actions/workflows/main.yml) [!["git-consistent friendly"](https://img.shields.io/badge/git--consistent-friendly-brightgreen.svg)]("https://github.com/isuke/git-consistent") [![npm](https://img.shields.io/npm/v/advanced-poe-filter.svg)](https://www.npmjs.com/package/advanced-poe-filter)
+# Advanced PoE Filter [![Test and Lint](https://github.com/isuke/advanced-poe-filter/actions/workflows/main.yml/badge.svg)](https://github.com/isuke/advanced-poe-filter/actions/workflows/main.yml) [!["git-consistent friendly"](https://img.shields.io/badge/git--consistent-friendly-brightgreen.svg)]("https://github.com/isuke/git-consistent") [![MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](https://raw.githubusercontent.com/isuke/git-consistent/main/LICENSE) [![npm](https://img.shields.io/npm/v/advanced-poe-filter.svg)](https://www.npmjs.com/package/advanced-poe-filter)
 
 Advanced PoE Filter is used by [Filter of Kalandra](https://filter-of-kalandra.netlify.com/).
 
