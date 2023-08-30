@@ -1,8 +1,8 @@
 {
   "name": "@fok/advanced-poe-filter",
   "version": "0.9.9",
-  "main": "lib/advanced-poe-filter.umd.js",
-  "module": "lib/advanced-poe-filter.esm.js",
+  "main": "lib/advanced-poe-filter.cjs",
+  "module": "lib/advanced-poe-filter.mjs",
   "author": "isuke <isuke770@gmail.com>",
   "license": "CC-BY-NC-ND-4.0",
   "private": false,

@@ -6,7 +6,7 @@ export default {
   entry: path.resolve(`${__dirname}/src/index.js`),
   output: {
     path: path.resolve(`${__dirname}/lib/`),
-    filename: "advanced-poe-filter.umd.js",
+    filename: "advanced-poe-filter.cjs",
     libraryTarget: "umd",
   },
 }
