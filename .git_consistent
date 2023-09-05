@@ -64,6 +64,9 @@ scope:
     -
       name: generator
       description: 'generator.js'
+    -
+      name: type
+      description: 'advanced-poe-filter.d.ts'
 subject:
   type: string
   required: true
