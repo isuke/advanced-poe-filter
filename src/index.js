@@ -6,7 +6,7 @@ import Generator from "../src/generator.js"
 
 import { assignImmutable, forIn, mapVals } from "../src/utils.js"
 
-const version = "0.9.9"
+const version = "0.9.12"
 
 const getObject = (advancedScriptText, variables = {}, properties = {}, _filterInfo = {}, originalOptions = undefined) => {
   const options = assignImmutable(_defaultOptions, originalOptions)

@@ -124,7 +124,7 @@ export default class {
     result += `${"#".repeat(80)}\n`
     result += `#${" ".repeat(78)}#\n`
     if (name) result += `# ${name} ${" ".repeat(80 - name.length - 5)} #\n`
-    result += `# Created By Advanced PoE Filter (Ver: ${this.$version}) ${" ".repeat(33)}#\n`
+    result += `# Created By Advanced PoE Filter (Ver: ${this.$version}) ${" ".repeat(80 - this.$version.length - 42)}#\n`
     result += `#${" ".repeat(78)}#\n`
     result += `${"#".repeat(80)}\n`
     result += "\n"
