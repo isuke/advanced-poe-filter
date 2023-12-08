@@ -26,8 +26,6 @@ export default class {
       "AreaLevel",
       "GemLevel",
 
-      "GemQualityType",
-
       "StackSize",
 
       "MapTier",
@@ -65,7 +63,6 @@ export default class {
       "HasInfluence",
       "EnchantmentPassiveNode",
 
-      "AlternateQuality",
       "Replica",
 
       "ArchnemesisMod",
@@ -191,7 +188,6 @@ export default class {
     switch (conditionKey) {
       case "Class":
       case "BaseType":
-      case "GemQualityType":
       case "EnchantmentPassiveNode":
       case "ArchnemesisMod":
         return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
@@ -219,7 +215,6 @@ export default class {
       case "FracturedItem":
       case "SynthesisedItem":
       case "AnyEnchantment":
-      case "AlternateQuality":
       case "Replica":
       case "HasImplicitMod":
       case "HasCruciblePassiveTree":
