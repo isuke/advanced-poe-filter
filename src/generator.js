@@ -26,6 +26,8 @@ export default class {
       "AreaLevel",
       "GemLevel",
 
+      "TransfiguredGem",
+
       "StackSize",
 
       "MapTier",
@@ -204,6 +206,7 @@ export default class {
         } else {
           return `    ${conditionKey} ${conditionVal.val}\n`
         }
+      case "TransfiguredGem":
       case "Corrupted":
       case "Mirrored":
       case "Identified":

@@ -69,6 +69,7 @@ Show "All Conditions and Actions"
     ItemLevel      >= 70
     AreaLevel      < 30
     GemLevel       = 10
+    TransfiguredGem True
     StackSize      < 11
     MapTier        <= 12
     Quality        = 15
@@ -146,6 +147,7 @@ Show
     ItemLevel >= 70
     AreaLevel < 30
     GemLevel = 10
+    TransfiguredGem True
     StackSize < 11
     MapTier <= 12
     Quality = 15
