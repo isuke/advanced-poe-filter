@@ -14,13 +14,13 @@ test("generate : single section", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
             PlayAlertSound: { id: "1", volume: 300 },
-            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            MinimapIcon: { size: "Large", color: "Red", shape: "Circle" },
             PlayEffect: { color: "Blue", temp: true },
           },
         },
@@ -67,13 +67,13 @@ test("generate : single section with scriptName and filterInfo", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
             PlayAlertSound: { id: "1", volume: 300 },
-            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            MinimapIcon: { size: "Large", color: "Red", shape: "Circle" },
             PlayEffect: { color: "Blue", temp: true },
           },
         },
@@ -124,13 +124,13 @@ test("generate : single unset section", (t) => {
           activity: "Unset",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
             PlayAlertSound: { id: "1", volume: 300 },
-            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            MinimapIcon: { size: "Large", color: "Red", shape: "Circle" },
             PlayEffect: { color: "Blue", temp: true },
           },
         },
@@ -170,13 +170,13 @@ test("generate : single section with 'addDisableDropSoundToHideBlock' option", (
           activity: "Hide",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
             PlayAlertSound: { id: "1", volume: 300 },
-            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            MinimapIcon: { size: "Large", color: "Red", shape: "Circle" },
             PlayEffect: { color: "Blue", temp: true },
           },
         },
@@ -210,217 +210,6 @@ Hide
   t.is(result, expected)
 })
 
-test("generate : single section with 'convertPlayAlertSoundPositionalToPlayAlertSound' option", (t) => {
-  const scriptObject = [
-    {
-      name: "Map Section",
-      blocks: [
-        {
-          id: "0001",
-          name: {},
-          activity: "Show",
-          conditions: {
-            Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
-            Identified: false,
-          },
-          actions: {
-            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSoundPositional: { id: "1", volume: 300 },
-            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
-            PlayEffect: { color: "Blue", temp: true },
-          },
-        },
-      ],
-    },
-  ]
-
-  const expected = outdent`
-################################################################################
-#                                                                              #
-# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
-#                                                                              #
-################################################################################
-
-################################################################################
-# Map Section                                                                  #
-################################################################################
-Show
-    Class = "Maps"
-    MapTier > 3
-    Identified False
-    SetBorderColor 250 126 107 255
-    MinimapIcon 0 Red Circle
-    PlayEffect Blue Temp
-    PlayAlertSound 1 300
-
-
-  `
-
-  const generator = new Generator(scriptObject, "9.8.7", "", {}, { convertPlayAlertSoundPositionalToPlayAlertSound: true })
-  const result = generator.generate()
-
-  t.is(result, expected)
-})
-
-test("generate : single section with 'removeCustomAlertSound' option", (t) => {
-  const scriptObject = [
-    {
-      name: "Map Section",
-      blocks: [
-        {
-          id: "0001",
-          name: {},
-          activity: "Show",
-          conditions: {
-            Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
-            Identified: false,
-          },
-          actions: {
-            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            CustomAlertSound: "C\\foobar\\sound.mp3",
-            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
-            PlayEffect: { color: "Blue", temp: true },
-          },
-        },
-      ],
-    },
-  ]
-
-  const expected = outdent`
-################################################################################
-#                                                                              #
-# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
-#                                                                              #
-################################################################################
-
-################################################################################
-# Map Section                                                                  #
-################################################################################
-Show
-    Class = "Maps"
-    MapTier > 3
-    Identified False
-    SetBorderColor 250 126 107 255
-    MinimapIcon 0 Red Circle
-    PlayEffect Blue Temp
-
-
-  `
-
-  const generator = new Generator(scriptObject, "9.8.7", "", {}, { removeCustomAlertSound: true })
-  const result = generator.generate()
-
-  t.is(result, expected)
-})
-
-test("generate : single section with 'defaultAlertSoundVolume' option", (t) => {
-  const scriptObject = [
-    {
-      name: "Map Section",
-      blocks: [
-        {
-          id: "0001",
-          name: {},
-          activity: "Show",
-          conditions: {
-            Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
-            Identified: false,
-          },
-          actions: {
-            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSound: { id: "1", volume: undefined },
-            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
-            PlayEffect: { color: "Blue", temp: true },
-          },
-        },
-      ],
-    },
-  ]
-
-  const expected = outdent`
-################################################################################
-#                                                                              #
-# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
-#                                                                              #
-################################################################################
-
-################################################################################
-# Map Section                                                                  #
-################################################################################
-Show
-    Class = "Maps"
-    MapTier > 3
-    Identified False
-    SetBorderColor 250 126 107 255
-    MinimapIcon 0 Red Circle
-    PlayEffect Blue Temp
-    PlayAlertSound 1 123
-
-
-  `
-
-  const generator = new Generator(scriptObject, "9.8.7", "", {}, { defaultAlertSoundVolume: 123, defaultAlertSoundPositionalVolume: 234 })
-  const result = generator.generate()
-
-  t.is(result, expected)
-})
-
-test("generate : single section with 'defaultAlertSoundPositionalVolume' option", (t) => {
-  const scriptObject = [
-    {
-      name: "Map Section",
-      blocks: [
-        {
-          id: "0001",
-          name: {},
-          activity: "Show",
-          conditions: {
-            Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
-            Identified: false,
-          },
-          actions: {
-            SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
-            PlayAlertSoundPositional: { id: "1", volume: undefined },
-            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
-            PlayEffect: { color: "Blue", temp: true },
-          },
-        },
-      ],
-    },
-  ]
-
-  const expected = outdent`
-################################################################################
-#                                                                              #
-# Created By Advanced PoE Filter (Ver: 9.8.7)                                  #
-#                                                                              #
-################################################################################
-
-################################################################################
-# Map Section                                                                  #
-################################################################################
-Show
-    Class = "Maps"
-    MapTier > 3
-    Identified False
-    SetBorderColor 250 126 107 255
-    MinimapIcon 0 Red Circle
-    PlayEffect Blue Temp
-    PlayAlertSoundPositional 1 234
-
-
-  `
-
-  const generator = new Generator(scriptObject, "9.8.7", "", {}, { defaultAlertSoundVolume: 123, defaultAlertSoundPositionalVolume: 234 })
-  const result = generator.generate()
-
-  t.is(result, expected)
-})
-
 test("generate : single section with 'initialFontSize' option", (t) => {
   const scriptObject = [
     {
@@ -432,13 +221,13 @@ test("generate : single section with 'initialFontSize' option", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Identified: false,
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 125.5, b: 106.99999999999996 }, alpha: 255 },
             PlayAlertSound: { id: "1", volume: 300 },
-            MinimapIcon: { size: "Largest", color: "Red", shape: "Circle" },
+            MinimapIcon: { size: "Large", color: "Red", shape: "Circle" },
             PlayEffect: { color: "Blue", temp: true },
           },
         },
@@ -486,7 +275,7 @@ test("generate : multi section", (t) => {
           activity: "Hide",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "<= 4",
+            MapTier: { ope: "<=", val: 4 },
           },
           actions: {
             SetFontSize: 38,
@@ -559,8 +348,8 @@ test("generate : multi block", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            Rarity: "Rare",
-            MapTier: ">= 11",
+            Rarity: { ope: "=", val: "Rare" },
+            MapTier: { ope: ">=", val: 11 },
           },
           actions: {
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
@@ -573,8 +362,8 @@ test("generate : multi block", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            Rarity: "Rare",
-            MapTier: ">= 6",
+            Rarity: { ope: "=", val: "Rare" },
+            MapTier: { ope: ">=", val: 6 },
           },
           actions: {
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
@@ -587,7 +376,7 @@ test("generate : multi block", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            Rarity: "Rare",
+            Rarity: { ope: "=", val: "Rare" },
           },
           actions: {
             SetBackgroundColor: { rgb: { r: 255, g: 0, b: 0 }, alpha: 100 },
@@ -601,8 +390,8 @@ test("generate : multi block", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            Rarity: "Magic",
-            MapTier: ">= 11",
+            Rarity: { ope: "=", val: "Magic" },
+            MapTier: { ope: ">=", val: 11 },
           },
           actions: {
             PlayAlertSound: { id: "1", volume: 300 },
@@ -614,8 +403,8 @@ test("generate : multi block", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            Rarity: "Magic",
-            MapTier: ">= 6",
+            Rarity: { ope: "=", val: "Magic" },
+            MapTier: { ope: ">=", val: 6 },
           },
           actions: {
             PlayAlertSound: { id: "2", volume: 300 },
@@ -627,7 +416,7 @@ test("generate : multi block", (t) => {
           activity: "Hide",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            Rarity: "Magic",
+            Rarity: { ope: "=", val: "Magic" },
           },
           actions: {},
         },
@@ -639,7 +428,7 @@ test("generate : multi block", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: ">= 11",
+            MapTier: { ope: ">=", val: 11 },
           },
           actions: {
             PlayAlertSound: { id: "1", volume: 300 },
@@ -651,7 +440,7 @@ test("generate : multi block", (t) => {
           activity: "Unset",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: ">= 6",
+            MapTier: { ope: ">=", val: 6 },
           },
           actions: {
             PlayAlertSound: { id: "2", volume: 300 },
@@ -683,7 +472,7 @@ test("generate : multi block", (t) => {
 # Rarity is "Rare" - Tier is "High Tier"
 Show
     Class = "Maps"
-    Rarity Rare
+    Rarity = Rare
     MapTier >= 11
     SetBackgroundColor 255 0 0 100
     PlayAlertSound 1 300
@@ -691,7 +480,7 @@ Show
 # Rarity is "Rare" - Tier is "Middle Tier"
 Show
     Class = "Maps"
-    Rarity Rare
+    Rarity = Rare
     MapTier >= 6
     SetBackgroundColor 255 0 0 100
     PlayAlertSound 2 300
@@ -699,27 +488,27 @@ Show
 # Rarity is "Rare" - Tier is Any
 Show
     Class = "Maps"
-    Rarity Rare
+    Rarity = Rare
     SetBackgroundColor 255 0 0 100
 
 # Rarity is "Magic" - Tier is "High Tier"
 Show
     Class = "Maps"
-    Rarity Magic
+    Rarity = Magic
     MapTier >= 11
     PlayAlertSound 1 300
 
 # Rarity is "Magic" - Tier is "Middle Tier"
 Show
     Class = "Maps"
-    Rarity Magic
+    Rarity = Magic
     MapTier >= 6
     PlayAlertSound 2 300
 
 # Rarity is "Magic" - Tier is Any
 Hide
     Class = "Maps"
-    Rarity Magic
+    Rarity = Magic
 
 # Rarity is Any - Tier is "High Tier"
 Show

@@ -47,10 +47,6 @@ const compile = (advancedScriptText, variables = {}, properties = {}, filterInfo
 
 const _defaultOptions = {
   addDisableDropSoundToHideBlock: true,
-  convertPlayAlertSoundPositionalToPlayAlertSound: false,
-  removeCustomAlertSound: false,
-  defaultAlertSoundVolume: 100,
-  defaultAlertSoundPositionalVolume: 100,
   initialFontSize: 32,
 }
 

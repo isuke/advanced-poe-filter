@@ -10,7 +10,7 @@ test("expand : single section", (t) => {
       activity: "Show",
       conditions: {
         Class: { ope: "=", vals: ["Maps"] },
-        MapTier: "> 3",
+        MapTier: { ope: ">", val: 3 },
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -30,7 +30,7 @@ test("expand : single section", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -134,7 +134,7 @@ test("expand : single fork", (t) => {
       activity: "Unset",
       conditions: {
         Class: { ope: "=", vals: ["Maps"] },
-        MapTier: "> 3",
+        MapTier: { ope: ">", val: 3 },
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -196,7 +196,7 @@ test("expand : single fork", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Rarity: "Rare",
           },
           actions: {
@@ -211,7 +211,7 @@ test("expand : single fork", (t) => {
           activity: "Hide",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Rarity: "Magic",
           },
           actions: {
@@ -225,7 +225,7 @@ test("expand : single fork", (t) => {
           activity: "Unset",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Rarity: "Normal",
           },
           actions: {
@@ -251,7 +251,7 @@ test("expand : single fork with all ignore", (t) => {
       activity: "Show",
       conditions: {
         Class: { ope: "=", vals: ["Maps"] },
-        MapTier: "> 3",
+        MapTier: { ope: ">", val: 3 },
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -305,7 +305,7 @@ test("expand : single fork with all ignore", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -330,7 +330,7 @@ test("expand : single mixin", (t) => {
       activity: "Show",
       conditions: {
         Class: { ope: "=", vals: ["Maps"] },
-        MapTier: "> 3",
+        MapTier: { ope: ">", val: 3 },
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -392,7 +392,7 @@ test("expand : single mixin", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Rarity: "Rare",
           },
           actions: {
@@ -407,7 +407,7 @@ test("expand : single mixin", (t) => {
           activity: "Hide",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Rarity: "Magic",
           },
           actions: {
@@ -421,7 +421,7 @@ test("expand : single mixin", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
             Rarity: "Normal",
           },
           actions: {
@@ -435,7 +435,7 @@ test("expand : single mixin", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -460,7 +460,7 @@ test("expand : single mixin with all ignore", (t) => {
       activity: "Show",
       conditions: {
         Class: { ope: "=", vals: ["Maps"] },
-        MapTier: "> 3",
+        MapTier: { ope: ">", val: 3 },
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -522,7 +522,7 @@ test("expand : single mixin with all ignore", (t) => {
           activity: "Show",
           conditions: {
             Class: { ope: "=", vals: ["Maps"] },
-            MapTier: "> 3",
+            MapTier: { ope: ">", val: 3 },
           },
           actions: {
             SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },
@@ -547,7 +547,7 @@ test("expand : single mixin in ignore", (t) => {
       activity: "Ignore",
       conditions: {
         Class: { ope: "=", vals: ["Maps"] },
-        MapTier: "> 3",
+        MapTier: { ope: ">", val: 3 },
       },
       actions: {
         SetBorderColor: { rgb: { r: 250, g: 251, b: 252 }, alpha: 255 },

@@ -17,10 +17,6 @@ type PoeFilterObject = {
 
 type Options = {
   addDisableDropSoundToHideBlock: boolean
-  convertPlayAlertSoundPositionalToPlayAlertSound: boolean
-  removeCustomAlertSound: boolean
-  defaultAlertSoundVolume: number
-  defaultAlertSoundPositionalVolume: number
   initialFontSize: number
 }
 

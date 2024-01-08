@@ -87,6 +87,9 @@ export default class {
       "PlayAlertSound",
       "PlayAlertSoundPositional",
       "CustomAlertSound",
+      "CustomAlertSoundOptional",
+      "DisableDropSoundIfAlertSound",
+      "EnableDropSoundIfAlertSound",
       "DisableDropSound",
       "EnableDropSound",
     ])
@@ -188,24 +191,7 @@ export default class {
 
   _generateCondition(conditionVal, conditionKey) {
     switch (conditionKey) {
-      case "Class":
-      case "BaseType":
-      case "EnchantmentPassiveNode":
-      case "ArchnemesisMod":
-        return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
-      case "HasExplicitMod":
-      case "HasEnchantment":
-        if (conditionVal.numeric) {
-          return `    ${conditionKey} ${conditionVal.numeric.ope} ${conditionVal.numeric.val} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
-        } else {
-          return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
-        }
-      case "HasInfluence":
-        if (conditionVal.ope) {
-          return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
-        } else {
-          return `    ${conditionKey} ${conditionVal.val}\n`
-        }
+      // Boolean
       case "TransfiguredGem":
       case "Corrupted":
       case "Mirrored":
@@ -222,8 +208,78 @@ export default class {
       case "HasImplicitMod":
       case "HasCruciblePassiveTree":
         return `    ${conditionKey} ${toUpperFirstChar(conditionVal)}\n`
-      default:
-        return `    ${conditionKey} ${conditionVal}\n`
+
+      // Socket Type
+      case "Sockets":
+      case "SocketGroup":
+        return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.val}\n`
+
+      // Rarity
+      case "Rarity":
+        return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.val}\n`
+
+      // Numeric
+      case "DropLevel":
+      case "ItemLevel":
+      case "AreaLevel":
+      case "GemLevel":
+      case "StackSize":
+      case "MapTier":
+      case "Quality":
+      case "LinkedSockets":
+      case "BaseDefencePercentile":
+      case "BaseArmour":
+      case "BaseEnergyShield":
+      case "BaseEvasion":
+      case "BaseWard":
+      case "Height":
+      case "Width":
+      case "CorruptedMods":
+      case "EnchantmentPassiveNum":
+        return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.val}\n`
+
+      // Array
+      case "Class":
+      case "BaseType":
+      case "EnchantmentPassiveNode":
+      case "ArchnemesisMod":
+        return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
+
+      // Numeric and Array
+      case "HasExplicitMod":
+      case "HasEnchantment":
+        if (conditionVal.numeric) {
+          return `    ${conditionKey} ${conditionVal.numeric.ope} ${conditionVal.numeric.val} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
+        } else {
+          return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
+        }
+
+      // Array or None
+      case "HasInfluence":
+        if (conditionVal.ope) {
+          return `    ${conditionKey} ${conditionVal.ope} ${conditionVal.vals.map((v) => `"${v}"`).join(" ")}\n`
+        } else {
+          return `    ${conditionKey} ${conditionVal.val}\n`
+        }
+
+      // Implicit Mod Tier
+      case "HasEaterOfWorldsImplicit":
+      case "HasSearingExarchImplicit":
+        switch (conditionVal.val) {
+          case "Lesser":
+            return `    ${conditionKey} ${conditionVal.ope} 1\n`
+          case "Greater":
+            return `    ${conditionKey} ${conditionVal.ope} 2\n`
+          case "Grand":
+            return `    ${conditionKey} ${conditionVal.ope} 3\n`
+          case "Exceptional":
+            return `    ${conditionKey} ${conditionVal.ope} 4\n`
+          case "Exquisite":
+            return `    ${conditionKey} ${conditionVal.ope} 5\n`
+          case "Perfect":
+            return `    ${conditionKey} ${conditionVal.ope} 6\n`
+        }
+        break
     }
   }
 
@@ -249,7 +305,6 @@ export default class {
     let defaultActions = {}
     if (this.$options.initialFontSize) defaultActions.SetFontSize = this.$options.initialFontSize
     let result = assignImmutable(defaultActions, actions)
-    if (this.$options.removeCustomAlertSound) delete result.CustomAlertSound
     return result
   }
 
@@ -274,21 +329,19 @@ export default class {
       case "SetBackgroundColor":
         return `    ${actionKey} ${Math.round(actionVal.rgb.r)} ${Math.round(actionVal.rgb.g)} ${Math.round(actionVal.rgb.b)} ${Math.round(actionVal.alpha)}\n`
       case "PlayAlertSound":
-        return `    ${actionKey} ${actionVal.id} ${actionVal.volume || this.$options.defaultAlertSoundVolume}\n`
       case "PlayAlertSoundPositional":
-        if (this.$options.convertPlayAlertSoundPositionalToPlayAlertSound) {
-          return `    PlayAlertSound ${actionVal.id} ${actionVal.volume || this.$options.defaultAlertSoundPositionalVolume}\n`
-        } else {
-          return `    ${actionKey} ${actionVal.id} ${actionVal.volume || this.$options.defaultAlertSoundPositionalVolume}\n`
-        }
+        return `    ${actionKey} ${actionVal.id} ${actionVal.volume}\n`
       case "CustomAlertSound":
-        return `    ${actionKey} "${actionVal.filePath}" ${actionVal.volume || this.$options.defaultAlertSoundVolume}\n`
+      case "CustomAlertSoundOptional":
+        return `    ${actionKey} "${actionVal.filePath}" ${actionVal.volume}\n`
+      case "DisableDropSoundIfAlertSound":
+      case "EnableDropSoundIfAlertSound":
       case "DisableDropSound":
       case "EnableDropSound":
         return `    ${actionKey}\n`
       case "MinimapIcon":
         switch (actionVal.size) {
-          case "Largest":
+          case "Large":
             return `    ${actionKey} 0 ${actionVal.color} ${actionVal.shape}\n`
           case "Medium":
             return `    ${actionKey} 1 ${actionVal.color} ${actionVal.shape}\n`
