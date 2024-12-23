@@ -31,6 +31,7 @@ export default class {
       "StackSize",
 
       "MapTier",
+      "WaystoneTier",
 
       "Quality",
 
@@ -225,6 +226,7 @@ export default class {
       case "GemLevel":
       case "StackSize":
       case "MapTier":
+      case "WaystoneTier":
       case "Quality":
       case "LinkedSockets":
       case "BaseDefencePercentile":

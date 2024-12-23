@@ -29,7 +29,7 @@
     "deploy": "npm publish"
   },
   "dependencies": {
-    "advanced-poe-filter-parser": "0.9.10",
+    "advanced-poe-filter-parser": "0.9.12",
     "color": "4.2.3",
     "core-js": "3.35.0"
   },

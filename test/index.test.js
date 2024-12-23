@@ -72,6 +72,7 @@ Show "All Conditions and Actions"
     TransfiguredGem True
     StackSize      < 11
     MapTier        <= 12
+    WaystoneTier   <= 13
     Quality        = 15
     LinkedSockets  = 6
     Sockets        5RGBWD
@@ -150,6 +151,7 @@ Show
     TransfiguredGem True
     StackSize < 11
     MapTier <= 12
+    WaystoneTier <= 13
     Quality = 15
     LinkedSockets = 6
     Sockets = 5RGBWD

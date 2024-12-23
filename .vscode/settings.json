@@ -1,10 +1,10 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "editor.formatOnSave": false,
-  "cSpell.userWords": ["synthesised", "archnemesis", "kalandra"],
+  "cSpell.userWords": ["synthesised", "archnemesis", "kalandra", "Waystone"],
   "[javascript]": {
     "editor.formatOnSave": true
   },
